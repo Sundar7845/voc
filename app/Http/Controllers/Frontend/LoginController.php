@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -15,16 +19,29 @@ class LoginController extends Controller
 
     function login(Request $request)
     {
-        $request->validate([
-            'mobile' => 'required|digits:10',
-            'password' => 'required|min:6',
-        ]);
 
-        if (Auth::attempt(['mobile' => $request->mobile, 'password' => $request->password])) {
-            return redirect()->route('dashboard')->with('success', 'Login Successful');
+        $validator = Validator::make($request->all(), [
+            'employeeNumber'   => 'required',
+            'employeePassword' => 'required|min:6',
+        ]);
+        // Find user by employee number
+        $user = User::where('name', $request->employeeNumber)->first();
+
+        // Check if user exists and password matches
+        if (!$user || !Hash::check($request->employeePassword, $user->password)) {
+            Session::flash('message', 'Invalid credentials!');
+            Session::flash('alert-type', 'error');
+            return back();
         }
 
-        return back()->withErrors(['mobile' => 'Invalid credentials']);
+        // Login user
+        Auth::login($user);
+
+        Session::flash('message', 'Logged in successfully!');
+        Session::flash('alert-type', 'success');
+
+        // Store success message in session
+        return redirect('/');
     }
 
     public function logout()
