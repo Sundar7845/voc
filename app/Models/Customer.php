@@ -8,22 +8,31 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Customer extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'STORE',
-        'NAME',
-        'GENDER',
-        'CUSTOMER_ID',
-        'MOBILE_NUMBER',
-        'DATE_OF_BIRTH',
-        'E-MAIL_ID',
-        'AGE',
-        'MARITAL_STATUS',
-        'ANNIVERSARY_DATE',
-        'EDUCATIONAL_QUALIFICATION',
-        'PROFESSION',
-        'LAST_VISIT_DATE',
-        'SALES_PERSON_HANDLED'
+        'branch_id',
+        'customer_enter_time',
+        'customer_out_time',
+        'name',
+        'phone_number',
+        'email',
+        'dob',
+        'martial_status',
+        'anniversary_date',
+        'profession_id',
+        'educational_qualification_id',
+        'address',
+        'pincode',
+        'know_about',
+        'is_purchased',
+        'store_experience_review',
+        'jewellery_review',
+        'pricing_review',
+        'satification_review',
+        'friendly_review',
+        'knowledge_review',
+        'assit_review',
+        'non-purchased_review'
     ];
 }
