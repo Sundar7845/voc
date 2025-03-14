@@ -30,7 +30,7 @@ class CreateSalesReportsTable extends Migration
             $table->string('sales_qty')->nullable();
             $table->string('ct_wght')->nullable();
             $table->string('textbox_33')->nullable();
-            $table->string('order_account')->nullable();
+            $table->string('customer_id')->nullable();
             $table->string('cust_name')->nullable();
             $table->string('cust_phone')->nullable();
             $table->string('delivery_name')->nullable();

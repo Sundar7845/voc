@@ -26,7 +26,7 @@ class SalesReport extends Model
         'sales_qty',
         'ct_wght',
         'textbox_33',
-        'order_account',
+        'customer_id',
         'cust_name',
         'cust_phone',
         'delivery_name',
