@@ -21,11 +21,11 @@ class LoginController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'employeeNumber'   => 'required',
+            'email'   => 'required',
             'employeePassword' => 'required|min:6',
         ]);
         // Find user by employee number
-        $user = User::where('name', $request->employeeNumber)->first();
+        $user = User::where('name', $request->email)->first();
 
         // Check if user exists and password matches
         if (!$user || !Hash::check($request->employeePassword, $user->password)) {
