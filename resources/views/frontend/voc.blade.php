@@ -937,11 +937,7 @@
                                         <div class="flex gap-1">
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="gender" value="M"
-<<<<<<< HEAD
-                                                    class="sr-only peer" required />
-=======
                                                     class="sr-only peer" required :disabled="disabled" />
->>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                                 <span
                                                     class="flex items-center justify-center py-2 px-4 border-2 border-gray-300 rounded-lg text-gray-700 peer-checked:bg-[#9D4F2A] peer-checked:text-white peer-checked:border-[#9D4F2A] transition duration-300">
                                                     M
@@ -950,11 +946,7 @@
 
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="gender" value="F"
-<<<<<<< HEAD
-                                                    class="sr-only peer" required />
-=======
                                                     class="sr-only peer" required :disabled="disabled" />
->>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                                 <span
                                                     class="flex items-center justify-center py-2 px-4 border-2 border-gray-300 rounded-lg text-gray-700 peer-checked:bg-[#9D4F2A] peer-checked:text-white peer-checked:border-[#9D4F2A] transition duration-300">
                                                     F
@@ -967,27 +959,12 @@
                                 <!-- Phone Number -->
                                 <div class="mb-8">
                                     <div class="mb-1 text-black text-sm">Phone Number</div>
-<<<<<<< HEAD
-                                    <div class="input-container phone-group">
-                                        <input required type="text" maxlength="1" class="phone input-box" />
-                                        <input required type="text" maxlength="1" class="phone input-box" />
-                                        <input required type="text" maxlength="1" class="phone input-box" />
-                                        <input required type="text" maxlength="1" id="phone-4"
-                                            class="phone input-box" />
-                                        <input required type="text" maxlength="1" class="phone input-box" />
-                                        <input required type="text" maxlength="1" class="phone input-box" />
-                                        <input required type="text" maxlength="1" class="phone input-box" />
-                                        <input required type="text" maxlength="1" class="phone input-box" />
-                                        <input required type="text" maxlength="1" class="phone input-box" />
-                                        <input required type="text" maxlength="1" class="phone input-box" />
-=======
                                     <div class="input-container phone-group flex gap-1 flex-wrap">
                                         <template x-for="i in 10" :key="i">
                                             <input required type="text" maxlength="1"
                                                 :disabled="disabled"
                                                 class="phone input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
                                         </template>
->>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                     </div>
                                 </div>
 
@@ -1001,25 +978,14 @@
                                     </div>
 
                                     <div class="relative">
-<<<<<<< HEAD
-                                        <label
-                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Date
-                                            of
-                                            Birth</label>
-=======
                                         <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Date of Birth</label>
->>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                         <input type="date" name="date-of-birth" required
                                             :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
                                 </div>
 
-<<<<<<< HEAD
-
-=======
                                 <!-- Marital Status -->
->>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-6"
                                     x-data="{ maritalStatus: '' }">
                                     <div class="grow flex items-center gap-4">
@@ -1027,24 +993,16 @@
                                         <div class="flex space-x-4">
                                             <label class="flex items-center space-x-2 cursor-pointer">
                                                 <input type="radio" name="marital-status" value="Married"
-<<<<<<< HEAD
-                                                    class="accent-amber-700" required
-=======
                                                     class="accent-amber-700"
                                                     :disabled="disabled"
->>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                                     @change="maritalStatus = 'Married'" />
                                                 <span>Married</span>
                                             </label>
 
                                             <label class="flex items-center space-x-2 cursor-pointer">
                                                 <input type="radio" name="marital-status" value="Not Married"
-<<<<<<< HEAD
-                                                    class="accent-amber-700" required
-=======
                                                     class="accent-amber-700"
                                                     :disabled="disabled"
->>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                                     @change="maritalStatus = 'Not Married'" />
                                                 <span>Not Married</span>
                                             </label>
@@ -1052,38 +1010,20 @@
                                     </div>
 
                                     <div class="relative" x-show="maritalStatus === 'Married'" x-transition>
-<<<<<<< HEAD
-                                        <label
-                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">
-                                            Anniversary Date
-                                        </label>
-                                        <input type="date" name="anniversary-date"
-                                            :required="maritalStatus === 'Married'"
-                                            class="bg-transparent border py-2 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3" />
-=======
                                         <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Anniversary Date</label>
                                         <input type="date" name="anniversary-date"
                                             :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
->>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                     </div>
                                 </div>
 
                                 <!-- Profession & Qualification -->
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-6">
                                     <div class="relative grow">
-<<<<<<< HEAD
-                                        <label
-                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Profession</label>
-                                        <select id="profession" class="w-full border border-gray-300 p-3 rounded"
-                                            required
-                                            class="bg-transparent border py-2 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3">
-=======
                                         <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Profession</label>
                                         <select id="profession"
                                             :disabled="disabled"
                                             class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
->>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                             <option value="">Select</option>
                                             <option value="Doctor">Doctor</option>
                                             <option value="Engineer">Engineer</option>
@@ -1094,18 +1034,10 @@
                                     </div>
 
                                     <div class="relative grow">
-<<<<<<< HEAD
-                                        <label
-                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Qualification</label>
-                                        <select id="qualification" class="w-full border border-gray-300 p-3 rounded"
-                                            required
-                                            class="bg-transparent border py-2 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3">
-=======
                                         <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Qualification</label>
                                         <select id="qualification"
                                             :disabled="disabled"
                                             class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
->>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                             <option value="">Select</option>
                                             <option value="High School">High School</option>
                                             <option value="Bachelor's">Bachelor's</option>
