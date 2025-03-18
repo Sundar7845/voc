@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\LoginController;
+use App\Http\Controllers\Frontend\VocController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::fallback(function () {
     return view('frontend.error');
 });
@@ -20,6 +22,7 @@ Route::fallback(function () {
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('login', [LoginController::class,'showLoginForm'])->name('login');
-Route::post('login/store', [LoginController::class,'login'])->name('loginstore');
-Route::get('logout', [LoginController::class,'logout'])->name('logout');
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login/store', [LoginController::class, 'login'])->name('loginstore');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('voc', [VocController::class, 'voc'])->name('voc');
