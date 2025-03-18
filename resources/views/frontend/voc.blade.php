@@ -28,23 +28,24 @@
                     </div>
 
                     <div>
-                        <button
+                        <a href="{{ route('logout') }}"
                             class="flex gap-1 items-center border cursor-pointer border-black rounded-sm py-2 px-4 hover:text-white hover:bg-black">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="size-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
                             </svg>
 
                             Logout
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="relative min-h-screen" style="
+    <main class="relative min-h-screen"
+        style="
         background-image: url('/images/watermark.png');
         background-repeat: no-repeat;
         background-position: center;
@@ -99,16 +100,26 @@
                                     <div class="mb-4">
                                         <div class="mb-1 text-black text-sm">Phone Number</div>
                                         <div class="input-container phone-group">
-                                            <input required type="text" maxlength="1" id="phone-1" class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-2" class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-3" class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-4" class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-5" class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-6" class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-7" class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-8" class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-9" class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-10" class="phone input-box" />
+                                            <input required type="text" maxlength="1" id="phone-1"
+                                                class="phone input-box" />
+                                            <input required type="text" maxlength="1" id="phone-2"
+                                                class="phone input-box" />
+                                            <input required type="text" maxlength="1" id="phone-3"
+                                                class="phone input-box" />
+                                            <input required type="text" maxlength="1" id="phone-4"
+                                                class="phone input-box" />
+                                            <input required type="text" maxlength="1" id="phone-5"
+                                                class="phone input-box" />
+                                            <input required type="text" maxlength="1" id="phone-6"
+                                                class="phone input-box" />
+                                            <input required type="text" maxlength="1" id="phone-7"
+                                                class="phone input-box" />
+                                            <input required type="text" maxlength="1" id="phone-8"
+                                                class="phone input-box" />
+                                            <input required type="text" maxlength="1" id="phone-9"
+                                                class="phone input-box" />
+                                            <input required type="text" maxlength="1" id="phone-10"
+                                                class="phone input-box" />
                                         </div>
                                     </div>
 
@@ -124,12 +135,18 @@
                                         <div>
                                             <div class="mb-1 text-sm text-black">Pincode</div>
                                             <div class="input-container zip-group">
-                                                <input required type="text" maxlength="1" id="zip-1" class="zip input-box" />
-                                                <input required type="text" maxlength="1" id="zip-2" class="zip input-box" />
-                                                <input required type="text" maxlength="1" id="zip-3" class="zip input-box" />
-                                                <input required type="text" maxlength="1" id="zip-4" class="zip input-box" />
-                                                <input required type="text" maxlength="1" id="zip-5" class="zip input-box" />
-                                                <input required type="text" maxlength="1" id="zip-6" class="zip input-box" />
+                                                <input required type="text" maxlength="1" id="zip-1"
+                                                    class="zip input-box" />
+                                                <input required type="text" maxlength="1" id="zip-2"
+                                                    class="zip input-box" />
+                                                <input required type="text" maxlength="1" id="zip-3"
+                                                    class="zip input-box" />
+                                                <input required type="text" maxlength="1" id="zip-4"
+                                                    class="zip input-box" />
+                                                <input required type="text" maxlength="1" id="zip-5"
+                                                    class="zip input-box" />
+                                                <input required type="text" maxlength="1" id="zip-6"
+                                                    class="zip input-box" />
                                             </div>
                                         </div>
                                     </div>
@@ -137,48 +154,60 @@
                                     <!-- Source Options -->
                                     <div class="flex flex-wrap gap-4 mb-4">
                                         <div>
-                                            <input id="source1" name="source" value="Television Commercial" type="radio" class="hidden" />
+                                            <input id="source1" name="source" value="Television Commercial"
+                                                type="radio" class="hidden" />
                                             <label for="source1" class="text-center">
-                                                <img src="/images/icons/televison.svg" alt="Television Commercial" class="h-8" />
+                                                <img src="/images/icons/televison.svg" alt="Television Commercial"
+                                                    class="h-8" />
                                                 <span> Television Commercial </span>
                                             </label>
                                         </div>
 
                                         <div>
-                                            <input id="source2" name="source" value="Newspaper" type="radio" class="hidden" />
+                                            <input id="source2" name="source" value="Newspaper" type="radio"
+                                                class="hidden" />
                                             <label for="source2" class="text-center">
-                                                <img src="/images/icons/newspaper.svg" alt="newspaper" class="h-8" />
+                                                <img src="/images/icons/newspaper.svg" alt="newspaper"
+                                                    class="h-8" />
                                                 <span> Newspaper </span>
                                             </label>
                                         </div>
 
                                         <div>
-                                            <input id="source3" name="source" value="Social Media" type="radio" class="hidden" />
+                                            <input id="source3" name="source" value="Social Media" type="radio"
+                                                class="hidden" />
                                             <label for="source3" class="text-center">
-                                                <img src="/images/icons/socialmedia.svg" alt="Social Media" class="h-8" />
+                                                <img src="/images/icons/socialmedia.svg" alt="Social Media"
+                                                    class="h-8" />
                                                 <span> Social Media </span>
                                             </label>
                                         </div>
 
                                         <div>
-                                            <input id="source4" name="source" value="Flyer, Brochure, Flex" type="radio" class="hidden" />
+                                            <input id="source4" name="source" value="Flyer, Brochure, Flex"
+                                                type="radio" class="hidden" />
                                             <label for="source4" class="text-center">
-                                                <img src="/images/icons/brochure.svg" alt="Flyer, Brochure, Flex" class="h-8" />
+                                                <img src="/images/icons/brochure.svg" alt="Flyer, Brochure, Flex"
+                                                    class="h-8" />
                                                 <span>Flyer, Brochure, Flex</span>
                                             </label>
                                         </div>
 
                                         <div>
-                                            <input id="source5" name="source" value="Friends & Family" type="radio" class="hidden" />
+                                            <input id="source5" name="source" value="Friends & Family"
+                                                type="radio" class="hidden" />
                                             <label for="source5" class="text-center">
-                                                <img src="/images/icons/family.svg" alt="Friends & Family" class="h-8" />
+                                                <img src="/images/icons/family.svg" alt="Friends & Family"
+                                                    class="h-8" />
                                                 <span>Friends & Family</span>
                                             </label>
                                         </div>
 
                                         <div>
-                                            <input id="source6" name="source" value="Others" type="radio" class="hidden" />
-                                            <label for="source6" class="text-center flex justify-center items-center h-full">
+                                            <input id="source6" name="source" value="Others" type="radio"
+                                                class="hidden" />
+                                            <label for="source6"
+                                                class="text-center flex justify-center items-center h-full">
                                                 <div>Others</div>
                                             </label>
                                         </div>
@@ -194,7 +223,8 @@
 
                             <form method="dialog" class="modal-backdrop z-10">
                                 <button class="text-white absolute top-0 right-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-6">
                                         <path fill-rule="evenodd"
                                             d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
                                             clip-rule="evenodd" />
@@ -223,7 +253,8 @@
                                 </button>
                             </div>
                             <div>
-                                <button onclick="getFeedback.showModal()" @click="open = true; formData.customerId = '001'"
+                                <button onclick="getFeedback.showModal()"
+                                    @click="open = true; formData.customerId = '001'"
                                     class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
                                     Get Feedback
                                 </button>
@@ -246,7 +277,8 @@
                                 </button>
                             </div>
                             <div>
-                                <button onclick="getFeedback.showModal()" @click="open = true; formData.customerId = '002'"
+                                <button onclick="getFeedback.showModal()"
+                                    @click="open = true; formData.customerId = '002'"
                                     class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
                                     Get Feedback
                                 </button>
@@ -269,7 +301,8 @@
                                 </button>
                             </div>
                             <div>
-                                <button onclick="getFeedback.showModal()" @click="open = true; formData.customerId = '003'"
+                                <button onclick="getFeedback.showModal()"
+                                    @click="open = true; formData.customerId = '003'"
                                     class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
                                     Get Feedback
                                 </button>
@@ -296,7 +329,8 @@
                                 <div>
                                     <div class="relative mb-6">
                                         <!-- Sales Executive Select -->
-                                        <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Sales
+                                        <label
+                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Sales
                                             Executive Name</label>
                                         <select x-model="formData.salesExecutive" @change="errors.salesExecutive = ''"
                                             class="bg-transparent border py-3 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3">
@@ -304,27 +338,32 @@
                                             <option value="John Doe">John Doe</option>
                                             <option value="Jane Smith">Jane Smith</option>
                                         </select>
-                                        <p x-show="errors.salesExecutive" class="text-red-500 text-sm my-2" x-text="errors.salesExecutive">
+                                        <p x-show="errors.salesExecutive" class="text-red-500 text-sm my-2"
+                                            x-text="errors.salesExecutive">
                                         </p>
                                     </div>
 
                                     <!-- Customer Type Selection -->
-                                    <label class="block mb-4 text-md font-semibold text-[#9D4F2A]">Customer Type</label>
+                                    <label class="block mb-4 text-md font-semibold text-[#9D4F2A]">Customer
+                                        Type</label>
                                     <div class="flex gap-4">
                                         <label
                                             @click="formData.customerType = 'Purchased Customer'; errors.customerType = ''; customerType = 'purchased'"
                                             class="cursor-pointer p-3 border rounded-lg w-1/2 text-center"
-                                            :class="{'bg-green-500 text-white': formData.customerType === 'Purchased Customer'}">
+                                            :class="{ 'bg-green-500 text-white': formData
+                                                .customerType === 'Purchased Customer' }">
                                             Purchased Customer
                                         </label>
                                         <label
                                             @click="formData.customerType = 'Non-Purchased Customer'; errors.customerType = ''; customerType = 'non-purchased'"
                                             class="cursor-pointer p-3 border rounded-lg w-1/2 text-center"
-                                            :class="{'bg-red-500 text-white': formData.customerType === 'Non-Purchased Customer'}">
+                                            :class="{ 'bg-red-500 text-white': formData
+                                                    .customerType === 'Non-Purchased Customer' }">
                                             Non-Purchased Customer
                                         </label>
                                     </div>
-                                    <p x-show="errors.customerType" class="text-red-500 text-sm mt-2 mb-4" x-text="errors.customerType">
+                                    <p x-show="errors.customerType" class="text-red-500 text-sm mt-2 mb-4"
+                                        x-text="errors.customerType">
                                     </p>
 
                                     <button @click="validateStep1()" class="mt-8 main-btn">
@@ -359,15 +398,18 @@
                                         <label
                                             @click="formData.purchasedFeedback.cleanlinessRating = 'Excellent'; errors.cleanlinessRating = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.cleanlinessRating === 'Excellent'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .cleanlinessRating === 'Excellent' }">
                                             <div>
                                                 <img src="/images/icons/excellent.svg" alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
-                                        <label @click="formData.purchasedFeedback.cleanlinessRating = 'Good'; errors.cleanlinessRating = ''"
+                                        <label
+                                            @click="formData.purchasedFeedback.cleanlinessRating = 'Good'; errors.cleanlinessRating = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.cleanlinessRating === 'Good'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .cleanlinessRating === 'Good' }">
                                             <div>
                                                 <img src="/images/icons/good.svg" alt="good" />
                                             </div>
@@ -376,15 +418,18 @@
                                         <label
                                             @click="formData.purchasedFeedback.cleanlinessRating = 'Average'; errors.cleanlinessRating = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-orange-500 text-white': formData.purchasedFeedback.cleanlinessRating === 'Average'}">
+                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .cleanlinessRating === 'Average' }">
                                             <div>
                                                 <img src="/images/icons/average.svg" alt="average" />
                                             </div>
                                             <div>Average</div>
                                         </label>
-                                        <label @click="formData.purchasedFeedback.cleanlinessRating = 'Poor'; errors.cleanlinessRating = ''"
+                                        <label
+                                            @click="formData.purchasedFeedback.cleanlinessRating = 'Poor'; errors.cleanlinessRating = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-red-500 text-white': formData.purchasedFeedback.cleanlinessRating === 'Poor'}">
+                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .cleanlinessRating === 'Poor' }">
                                             <div>
                                                 <img src="/images/icons/poor.svg" alt="poor" />
                                             </div>
@@ -409,15 +454,18 @@
                                         <label
                                             @click="formData.purchasedFeedback.designUniqueness = 'Excellent'; errors.designUniqueness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.designUniqueness === 'Excellent'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .designUniqueness === 'Excellent' }">
                                             <div>
                                                 <img src="/images/icons/excellent.svg" alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
-                                        <label @click="formData.purchasedFeedback.designUniqueness = 'Good'; errors.designUniqueness = ''"
+                                        <label
+                                            @click="formData.purchasedFeedback.designUniqueness = 'Good'; errors.designUniqueness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.designUniqueness === 'Good'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .designUniqueness === 'Good' }">
                                             <div>
                                                 <img src="/images/icons/good.svg" alt="good" />
                                             </div>
@@ -426,15 +474,18 @@
                                         <label
                                             @click="formData.purchasedFeedback.designUniqueness = 'Average'; errors.designUniqueness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-orange-500 text-white': formData.purchasedFeedback.designUniqueness === 'Average'}">
+                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .designUniqueness === 'Average' }">
                                             <div>
                                                 <img src="/images/icons/average.svg" alt="average" />
                                             </div>
                                             <div>Average</div>
                                         </label>
-                                        <label @click="formData.purchasedFeedback.designUniqueness = 'Poor'; errors.designUniqueness = ''"
+                                        <label
+                                            @click="formData.purchasedFeedback.designUniqueness = 'Poor'; errors.designUniqueness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-red-500 text-white': formData.purchasedFeedback.designUniqueness === 'Poor'}">
+                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .designUniqueness === 'Poor' }">
                                             <div>
                                                 <img src="/images/icons/poor.svg" alt="poor" />
                                             </div>
@@ -450,7 +501,8 @@
                                         <label
                                             @click="formData.purchasedFeedback.designPricingComparison = 'Excellent'; errors.designPricingComparison = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.designPricingComparison === 'Excellent'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .designPricingComparison === 'Excellent' }">
                                             <div>
                                                 <img src="/images/icons/excellent.svg" alt="excellent" />
                                             </div>
@@ -459,7 +511,8 @@
                                         <label
                                             @click="formData.purchasedFeedback.designPricingComparison = 'Good'; errors.designPricingComparison = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.designPricingComparison === 'Good'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .designPricingComparison === 'Good' }">
                                             <div>
                                                 <img src="/images/icons/good.svg" alt="good" />
                                             </div>
@@ -468,7 +521,8 @@
                                         <label
                                             @click="formData.purchasedFeedback.designPricingComparison = 'Average'; errors.designPricingComparison = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-orange-500 text-white': formData.purchasedFeedback.designPricingComparison === 'Average'}">
+                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .designPricingComparison === 'Average' }">
                                             <div>
                                                 <img src="/images/icons/average.svg" alt="average" />
                                             </div>
@@ -477,7 +531,8 @@
                                         <label
                                             @click="formData.purchasedFeedback.designPricingComparison = 'Poor'; errors.designPricingComparison = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-red-500 text-white': formData.purchasedFeedback.designPricingComparison === 'Poor'}">
+                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .designPricingComparison === 'Poor' }">
                                             <div>
                                                 <img src="/images/icons/poor.svg" alt="poor" />
                                             </div>
@@ -508,13 +563,15 @@
                                 <!-- Step 2B: Non-Purchased Customer Feedback -->
                                 <div>
                                     <!-- Reason -->
-                                    <label class="block mb-4 text-md text-[#9D4F2A] font-semibold">What was the reason for not purchasing
+                                    <label class="block mb-4 text-md text-[#9D4F2A] font-semibold">What was the reason
+                                        for not purchasing
                                         today?</label>
                                     <div class="grid gap-6 grid-cols-2 md:grid-cols-4">
                                         <label
                                             @click="formData.nonPurchasedFeedback.reason = 'Expected design not available'; errors.reason = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData.nonPurchasedFeedback.reason === 'Expected design not available'}">
+                                            :class="{ '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
+                                                    .nonPurchasedFeedback.reason === 'Expected design not available' }">
                                             <div>
                                                 <img class="h-8" src="/images/icons/non-purchase-reason/icon1.svg"
                                                     alt="Expected design not available" />
@@ -522,9 +579,11 @@
                                             <div>Expected design not available</div>
                                         </label>
 
-                                        <label @click="formData.nonPurchasedFeedback.reason = 'Less Collection'; errors.reason = ''"
+                                        <label
+                                            @click="formData.nonPurchasedFeedback.reason = 'Less Collection'; errors.reason = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData.nonPurchasedFeedback.reason === 'Less Collection'}">
+                                            :class="{ '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
+                                                    .nonPurchasedFeedback.reason === 'Less Collection' }">
                                             <div>
                                                 <img class="h-8" src="/images/icons/non-purchase-reason/icon2.svg"
                                                     alt="Less Collection" />
@@ -532,9 +591,11 @@
                                             <div>Less Collection</div>
                                         </label>
 
-                                        <label @click="formData.nonPurchasedFeedback.reason = 'Service was Bad'; errors.reason = ''"
+                                        <label
+                                            @click="formData.nonPurchasedFeedback.reason = 'Service was Bad'; errors.reason = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData.nonPurchasedFeedback.reason === 'Service was Bad'}">
+                                            :class="{ '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
+                                                    .nonPurchasedFeedback.reason === 'Service was Bad' }">
                                             <div>
                                                 <img class="h-8" src="/images/icons/non-purchase-reason/icon3.svg"
                                                     alt="Service was Bad" />
@@ -542,9 +603,11 @@
                                             <div>Service was Bad</div>
                                         </label>
 
-                                        <label @click="formData.nonPurchasedFeedback.reason = 'Size not available'; errors.reason = ''"
+                                        <label
+                                            @click="formData.nonPurchasedFeedback.reason = 'Size not available'; errors.reason = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData.nonPurchasedFeedback.reason === 'Size not available'}">
+                                            :class="{ '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
+                                                    .nonPurchasedFeedback.reason === 'Size not available' }">
                                             <div>
                                                 <img class="h-8" src="/images/icons/non-purchase-reason/icon4.svg"
                                                     alt="Size not available" />
@@ -552,9 +615,11 @@
                                             <div>Size not available</div>
                                         </label>
 
-                                        <label @click="formData.nonPurchasedFeedback.reason = 'Price is too high'; errors.reason = ''"
+                                        <label
+                                            @click="formData.nonPurchasedFeedback.reason = 'Price is too high'; errors.reason = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData.nonPurchasedFeedback.reason === 'Price is too high'}">
+                                            :class="{ '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
+                                                    .nonPurchasedFeedback.reason === 'Price is too high' }">
                                             <div>
                                                 <img class="h-8" src="/images/icons/non-purchase-reason/icon5.svg"
                                                     alt="Price is too high" />
@@ -562,13 +627,16 @@
                                             <div>Price is too high</div>
                                         </label>
 
-                                        <label @click="formData.nonPurchasedFeedback.reason = 'Others'; errors.reason = ''"
+                                        <label
+                                            @click="formData.nonPurchasedFeedback.reason = 'Others'; errors.reason = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center flex items-center justify-center content-center"
-                                            :class="{'!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData.nonPurchasedFeedback.reason === 'Others'}">
+                                            :class="{ '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
+                                                    .nonPurchasedFeedback.reason === 'Others' }">
                                             <div>Others</div>
                                         </label>
                                     </div>
-                                    <p x-show="errors.reason" class="text-red-500 text-sm mt-2 mb-4" x-text="errors.reason"></p>
+                                    <p x-show="errors.reason" class="text-red-500 text-sm mt-2 mb-4"
+                                        x-text="errors.reason"></p>
 
                                     <button @click="validateStep2()" class="mt-8 main-btn">
                                         Continue
@@ -598,7 +666,8 @@
                                         <label
                                             @click="formData.purchasedFeedback.serviceSatisfaction = 'Excellent'; errors.serviceSatisfaction = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.serviceSatisfaction === 'Excellent'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .serviceSatisfaction === 'Excellent' }">
                                             <div>
                                                 <img src="/images/icons/excellent.svg" alt="excellent" />
                                             </div>
@@ -607,7 +676,8 @@
                                         <label
                                             @click="formData.purchasedFeedback.serviceSatisfaction = 'Good'; errors.serviceSatisfaction = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.serviceSatisfaction === 'Good'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .serviceSatisfaction === 'Good' }">
                                             <div>
                                                 <img src="/images/icons/good.svg" alt="good" />
                                             </div>
@@ -616,7 +686,8 @@
                                         <label
                                             @click="formData.purchasedFeedback.serviceSatisfaction = 'Average'; errors.serviceSatisfaction = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-orange-500 text-white': formData.purchasedFeedback.serviceSatisfaction === 'Average'}">
+                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .serviceSatisfaction === 'Average' }">
                                             <div>
                                                 <img src="/images/icons/average.svg" alt="average" />
                                             </div>
@@ -625,7 +696,8 @@
                                         <label
                                             @click="formData.purchasedFeedback.serviceSatisfaction = 'Poor'; errors.serviceSatisfaction = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-red-500 text-white': formData.purchasedFeedback.serviceSatisfaction === 'Poor'}">
+                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .serviceSatisfaction === 'Poor' }">
                                             <div>
                                                 <img src="/images/icons/poor.svg" alt="poor" />
                                             </div>
@@ -642,7 +714,8 @@
                                         <label
                                             @click="formData.purchasedFeedback. staffFriendliness = 'Excellent'; errors. staffFriendliness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.staffFriendliness === 'Excellent'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .staffFriendliness === 'Excellent' }">
                                             <div>
                                                 <img src="/images/icons/excellent.svg" alt="excellent" />
                                             </div>
@@ -651,7 +724,8 @@
                                         <label
                                             @click="formData.purchasedFeedback. staffFriendliness = 'Good'; errors.staffFriendliness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback. staffFriendliness === 'Good'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .staffFriendliness === 'Good' }">
                                             <div>
                                                 <img src="/images/icons/good.svg" alt="good" />
                                             </div>
@@ -660,7 +734,8 @@
                                         <label
                                             @click="formData.purchasedFeedback. staffFriendliness = 'Average'; errors.staffFriendliness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-orange-500 text-white': formData.purchasedFeedback. staffFriendliness === 'Average'}">
+                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .staffFriendliness === 'Average' }">
                                             <div>
                                                 <img src="/images/icons/average.svg" alt="average" />
                                             </div>
@@ -669,7 +744,8 @@
                                         <label
                                             @click="formData.purchasedFeedback. staffFriendliness = 'Poor'; errors.staffFriendliness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-red-500 text-white': formData.purchasedFeedback.staffFriendliness === 'Poor'}">
+                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .staffFriendliness === 'Poor' }">
                                             <div>
                                                 <img src="/images/icons/poor.svg" alt="poor" />
                                             </div>
@@ -683,33 +759,41 @@
                                     <label class="block mb-4">3.⁠ ⁠How knowledgeable was our staff in explaining
                                         products and services?</label>
                                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                        <label @click="formData.purchasedFeedback.staffKnowledge = 'Excellent'; errors.staffKnowledge = ''"
+                                        <label
+                                            @click="formData.purchasedFeedback.staffKnowledge = 'Excellent'; errors.staffKnowledge = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.staffKnowledge === 'Excellent'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .staffKnowledge === 'Excellent' }">
                                             <div>
                                                 <img src="/images/icons/excellent.svg" alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
-                                        <label @click="formData.purchasedFeedback.staffKnowledge = 'Good'; errors.staffKnowledge = ''"
+                                        <label
+                                            @click="formData.purchasedFeedback.staffKnowledge = 'Good'; errors.staffKnowledge = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.staffKnowledge === 'Good'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .staffKnowledge === 'Good' }">
                                             <div>
                                                 <img src="/images/icons/good.svg" alt="good" />
                                             </div>
                                             <div>Good</div>
                                         </label>
-                                        <label @click="formData.purchasedFeedback.staffKnowledge = 'Average'; errors.staffKnowledge = ''"
+                                        <label
+                                            @click="formData.purchasedFeedback.staffKnowledge = 'Average'; errors.staffKnowledge = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-orange-500 text-white': formData.purchasedFeedback.staffKnowledge === 'Average'}">
+                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .staffKnowledge === 'Average' }">
                                             <div>
                                                 <img src="/images/icons/average.svg" alt="average" />
                                             </div>
                                             <div>Average</div>
                                         </label>
-                                        <label @click="formData.purchasedFeedback.staffKnowledge = 'Poor'; errors.staffKnowledge = ''"
+                                        <label
+                                            @click="formData.purchasedFeedback.staffKnowledge = 'Poor'; errors.staffKnowledge = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-red-500 text-white': formData.purchasedFeedback.staffKnowledge === 'Poor'}">
+                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .staffKnowledge === 'Poor' }">
                                             <div>
                                                 <img src="/images/icons/poor.svg" alt="poor" />
                                             </div>
@@ -726,7 +810,8 @@
                                         <label
                                             @click="formData.purchasedFeedback.staffAttentiveness = 'Excellent'; errors.staffAttentiveness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.staffAttentiveness === 'Excellent'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .staffAttentiveness === 'Excellent' }">
                                             <div>
                                                 <img src="/images/icons/excellent.svg" alt="excellent" />
                                             </div>
@@ -735,7 +820,8 @@
                                         <label
                                             @click="formData.purchasedFeedback.staffAttentiveness = 'Good'; errors.staffAttentiveness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-green-500 text-white': formData.purchasedFeedback.staffAttentiveness === 'Good'}">
+                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .staffAttentiveness === 'Good' }">
                                             <div>
                                                 <img src="/images/icons/good.svg" alt="good" />
                                             </div>
@@ -744,7 +830,8 @@
                                         <label
                                             @click="formData.purchasedFeedback.staffAttentiveness = 'Average'; errors.staffAttentiveness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-orange-500 text-white': formData.purchasedFeedback.staffAttentiveness === 'Average'}">
+                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .staffAttentiveness === 'Average' }">
                                             <div>
                                                 <img src="/images/icons/average.svg" alt="average" />
                                             </div>
@@ -753,7 +840,8 @@
                                         <label
                                             @click="formData.purchasedFeedback.staffAttentiveness = 'Poor'; errors.staffAttentiveness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{'!bg-red-500 text-white': formData.purchasedFeedback.staffAttentiveness === 'Poor'}">
+                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .staffAttentiveness === 'Poor' }">
                                             <div>
                                                 <img src="/images/icons/poor.svg" alt="poor" />
                                             </div>
@@ -789,7 +877,8 @@
 
                         <form method="dialog" class="modal-backdrop z-10">
                             <button class="text-white absolute top-0 right-0" @click="clearData">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="size-6">
                                     <path fill-rule="evenodd"
                                         d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
                                         clip-rule="evenodd" />
@@ -848,7 +937,11 @@
                                         <div class="flex gap-1">
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="gender" value="M"
+<<<<<<< HEAD
+                                                    class="sr-only peer" required />
+=======
                                                     class="sr-only peer" required :disabled="disabled" />
+>>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                                 <span
                                                     class="flex items-center justify-center py-2 px-4 border-2 border-gray-300 rounded-lg text-gray-700 peer-checked:bg-[#9D4F2A] peer-checked:text-white peer-checked:border-[#9D4F2A] transition duration-300">
                                                     M
@@ -857,7 +950,11 @@
 
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="gender" value="F"
+<<<<<<< HEAD
+                                                    class="sr-only peer" required />
+=======
                                                     class="sr-only peer" required :disabled="disabled" />
+>>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                                 <span
                                                     class="flex items-center justify-center py-2 px-4 border-2 border-gray-300 rounded-lg text-gray-700 peer-checked:bg-[#9D4F2A] peer-checked:text-white peer-checked:border-[#9D4F2A] transition duration-300">
                                                     F
@@ -870,12 +967,27 @@
                                 <!-- Phone Number -->
                                 <div class="mb-8">
                                     <div class="mb-1 text-black text-sm">Phone Number</div>
+<<<<<<< HEAD
+                                    <div class="input-container phone-group">
+                                        <input required type="text" maxlength="1" class="phone input-box" />
+                                        <input required type="text" maxlength="1" class="phone input-box" />
+                                        <input required type="text" maxlength="1" class="phone input-box" />
+                                        <input required type="text" maxlength="1" id="phone-4"
+                                            class="phone input-box" />
+                                        <input required type="text" maxlength="1" class="phone input-box" />
+                                        <input required type="text" maxlength="1" class="phone input-box" />
+                                        <input required type="text" maxlength="1" class="phone input-box" />
+                                        <input required type="text" maxlength="1" class="phone input-box" />
+                                        <input required type="text" maxlength="1" class="phone input-box" />
+                                        <input required type="text" maxlength="1" class="phone input-box" />
+=======
                                     <div class="input-container phone-group flex gap-1 flex-wrap">
                                         <template x-for="i in 10" :key="i">
                                             <input required type="text" maxlength="1"
                                                 :disabled="disabled"
                                                 class="phone input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
                                         </template>
+>>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                     </div>
                                 </div>
 
@@ -889,14 +1001,25 @@
                                     </div>
 
                                     <div class="relative">
+<<<<<<< HEAD
+                                        <label
+                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Date
+                                            of
+                                            Birth</label>
+=======
                                         <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Date of Birth</label>
+>>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                         <input type="date" name="date-of-birth" required
                                             :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
                                 </div>
 
+<<<<<<< HEAD
+
+=======
                                 <!-- Marital Status -->
+>>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-6"
                                     x-data="{ maritalStatus: '' }">
                                     <div class="grow flex items-center gap-4">
@@ -904,16 +1027,24 @@
                                         <div class="flex space-x-4">
                                             <label class="flex items-center space-x-2 cursor-pointer">
                                                 <input type="radio" name="marital-status" value="Married"
+<<<<<<< HEAD
+                                                    class="accent-amber-700" required
+=======
                                                     class="accent-amber-700"
                                                     :disabled="disabled"
+>>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                                     @change="maritalStatus = 'Married'" />
                                                 <span>Married</span>
                                             </label>
 
                                             <label class="flex items-center space-x-2 cursor-pointer">
                                                 <input type="radio" name="marital-status" value="Not Married"
+<<<<<<< HEAD
+                                                    class="accent-amber-700" required
+=======
                                                     class="accent-amber-700"
                                                     :disabled="disabled"
+>>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                                     @change="maritalStatus = 'Not Married'" />
                                                 <span>Not Married</span>
                                             </label>
@@ -921,20 +1052,38 @@
                                     </div>
 
                                     <div class="relative" x-show="maritalStatus === 'Married'" x-transition>
+<<<<<<< HEAD
+                                        <label
+                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">
+                                            Anniversary Date
+                                        </label>
+                                        <input type="date" name="anniversary-date"
+                                            :required="maritalStatus === 'Married'"
+                                            class="bg-transparent border py-2 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3" />
+=======
                                         <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Anniversary Date</label>
                                         <input type="date" name="anniversary-date"
                                             :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
+>>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                     </div>
                                 </div>
 
                                 <!-- Profession & Qualification -->
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-6">
                                     <div class="relative grow">
+<<<<<<< HEAD
+                                        <label
+                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Profession</label>
+                                        <select id="profession" class="w-full border border-gray-300 p-3 rounded"
+                                            required
+                                            class="bg-transparent border py-2 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3">
+=======
                                         <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Profession</label>
                                         <select id="profession"
                                             :disabled="disabled"
                                             class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
+>>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                             <option value="">Select</option>
                                             <option value="Doctor">Doctor</option>
                                             <option value="Engineer">Engineer</option>
@@ -945,10 +1094,18 @@
                                     </div>
 
                                     <div class="relative grow">
+<<<<<<< HEAD
+                                        <label
+                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Qualification</label>
+                                        <select id="qualification" class="w-full border border-gray-300 p-3 rounded"
+                                            required
+                                            class="bg-transparent border py-2 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3">
+=======
                                         <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Qualification</label>
                                         <select id="qualification"
                                             :disabled="disabled"
                                             class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
+>>>>>>> c86e4317ac95797180ea2a0fcfaa339d6cb9ed63
                                             <option value="">Select</option>
                                             <option value="High School">High School</option>
                                             <option value="Bachelor's">Bachelor's</option>
@@ -995,7 +1152,8 @@
 
                         <form method="dialog" class="modal-backdrop z-10">
                             <button class="text-white absolute top-0 right-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="size-6">
                                     <path fill-rule="evenodd"
                                         d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
                                         clip-rule="evenodd" />

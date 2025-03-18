@@ -12,6 +12,7 @@ class Customer extends Model
 
     protected $fillable = [
         'branch_id',
+        'customer_id',
         'customer_enter_time',
         'customer_out_time',
         'name',

@@ -17,6 +17,7 @@ class CreateCustomersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('branch_id')->nullable();
             $table->foreign('branch_id')->references('id')->on('branches');
+            $table->string('customer_id')->nullable();
             $table->time('customer_enter_time')->nullable();
             $table->time('customer_out_time')->nullable();
             $table->string('name')->nullable();
