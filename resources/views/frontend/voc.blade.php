@@ -966,6 +966,19 @@
                                             :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3 resize-none"></textarea>
                                     </div>
+
+                                    <div>
+                                        <div class="mb-1 text-sm text-black">Pincode</div>
+                                        <div class="input-container zip-group flex gap-1 flex-wrap">
+                                        <template x-for="i in 6" :key="i">
+                                            <input required type="text" maxlength="1"
+                                                :disabled="disabled"
+                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                        </template>
+
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <!-- Save Button -->
