@@ -1,1 +1,37 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+
+  
+  .open-sans {
+    font-family: "Open Sans", sans-serif;
+  }
+
+
+  [x-cloak] { display: none !important; }
+
+
+  .main-btn{
+    @apply bg-[#9D4F2A] text-white px-6 py-2 rounded-sm font-medium shadow-md cursor-pointer flex gap-1 items-center;
+  }
+
+  .input-box {
+   @apply w-10 h-10 rounded-md border border-[#C7C7C7] text-center text-lg font-medium;
+  }
+
+
+
+  input[type='radio'] + label {
+    @apply bg-white rounded-lg shadow-lg border border-gray-200 text-sm size-32 text-black grid gap-1 justify-items-center p-4 cursor-pointer font-medium;
+  }
+  input[type='radio'] + label:hover {
+    @apply bg-orange-100 text-[#964A26] border-[#964A26];
+  }
+  input[type='radio']:checked + label {
+    @apply bg-orange-100 text-[#964A26] border-[#964A26];
+  }
