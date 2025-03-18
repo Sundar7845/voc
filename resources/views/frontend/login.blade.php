@@ -87,21 +87,7 @@
             </div>
         </div>
     </main>
-    <script>
-        const togglePassword = document.getElementById("togglePassword");
-        const passwordField = document.getElementById("employeePassword");
-        const eyeIcon = document.getElementById("eyeIcon");
-        const eyeSlashIcon = document.getElementById("eyeSlashIcon");
 
-        togglePassword.addEventListener("click", () => {
-            const type =
-                passwordField.getAttribute("type") === "password" ? "text" : "password";
-            passwordField.setAttribute("type", type);
-
-            eyeIcon.classList.toggle("hidden");
-            eyeSlashIcon.classList.toggle("hidden");
-        });
-    </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
