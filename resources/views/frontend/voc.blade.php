@@ -1091,12 +1091,6 @@
 
     addCustomerForm();
 
-
-
-
-
-
-
     function viewCustomerDetails(customer) {
       console.log(customer, "customer");
       const form = document.getElementById("customer-details-form");
