@@ -2,7 +2,9 @@
 
 namespace App\Console;
 
+use App\Console\Commands\Customer;
 use App\Console\Commands\Employee;
+use App\Console\Commands\SalesReport;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,7 +18,9 @@ class Kernel extends ConsoleKernel
      */
 
     protected $commands = [
-        Employee::class
+        Employee::class,
+        Customer::class,
+        SalesReport::class
     ];
     protected function schedule(Schedule $schedule)
     {
