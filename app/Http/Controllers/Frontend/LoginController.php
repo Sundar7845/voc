@@ -41,7 +41,7 @@ class LoginController extends Controller
         Session::flash('alert-type', 'success');
 
         // Store success message in session
-        return redirect('/');
+        return redirect('voc');
     }
 
     public function logout()
