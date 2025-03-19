@@ -143,9 +143,10 @@
             </div>
 
             <div class="p-4" x-data="getfeedbackData">
-                @foreach ($walkincustomer as $item)
+                
                     <div
                         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 flex-wrap">
+                        @foreach ($walkincustomer as $item)
                         <div class="bg-[#FFEDD9] overflow-hidden rounded-lg">
                             <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-6">
                                 <div class="flex gap-1 items-center">
@@ -170,8 +171,9 @@
                             </div>
                             <div class="text-sm py-2 px-6">20 mins 56 secs</div>
                         </div>
+                        @endforeach
                     </div>
-                @endforeach
+               
 
                 <dialog id="getFeedback" class="modal">
                     <div class="modal-box p-0 max-w-3xl min-h-60 bg-[#FCFAF9]">
