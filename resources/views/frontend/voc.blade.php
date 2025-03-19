@@ -13,7 +13,7 @@
         <nav class="px-4 md:px-16 py-4 flex justify-between gap-10 items-center">
             <div>
                 <a href="/">
-                    <img src="/images/logo.svg" alt="logo" class="h-16" />
+                    <img src="{{ asset('/images/logo.svg') }}" alt="logo" class="h-16" />
                 </a>
             </div>
 
@@ -24,7 +24,7 @@
                         <div class="text-[#7C7C7C] text-sm">Jewelone Showroom</div>
                     </div>
                     <div>
-                        <img class="size-12 block rounded-full" src="/images/avatar.svg" alt="avatar" />
+                        <img class="size-12 block rounded-full" src={{ asset('/images/avatar.svg') }} alt="avatar" />
                     </div>
 
                     <div>
@@ -79,7 +79,7 @@
                         <div class="modal-box p-0 max-w-2xl bg-[#FCFAF9]">
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-14" src="/images/logo-white.svg" alt="logo" />
+                                    <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
                                 <div class="text-xl text-white font-medium uppercase">
                                     Welcome to Jewel one
@@ -88,7 +88,7 @@
 
                             <div class="px-6 py-10 text-[#4E5356]">
                                 <form id="add-customer-form">
-                                   
+
                                     <!-- Phone Number Fields -->
                                     <div class="flex flex-col justify-center items-center gap-6">
                                         <div class="text-[#9D4F2A] text-md font-semibold">Enter your phone number</div>
@@ -114,9 +114,9 @@
                                             <input required type="text" maxlength="1" id="phone-10"
                                                 class="phone input-box" />
                                         </div>
-                                    
 
-                                 
+                                        <!-- Hidden input to store combined value -->
+                                        <input type="hidden" id="hiddenPhone" name="hiddenPhone" />
 
                                         <div>
                                             <button type="submit" class="main-btn !px-10">Submit</button>
@@ -221,7 +221,7 @@
                         <div x-show="step === 1" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-14" src="/images/logo-white.svg" alt="logo" />
+                                    <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
                                 <div class="text-xl text-white font-medium uppercase">
                                     showroom staff usage
@@ -254,15 +254,19 @@
                                         <label
                                             @click="formData.customerType = 'Purchased Customer'; errors.customerType = ''; customerType = 'purchased'"
                                             class="cursor-pointer p-3 border rounded-lg w-1/2 text-center"
-                                            :class="{ 'bg-green-500 text-white': formData
-                                                .customerType === 'Purchased Customer' }">
+                                            :class="{
+                                                'bg-green-500 text-white': formData
+                                                    .customerType === 'Purchased Customer'
+                                            }">
                                             Purchased Customer
                                         </label>
                                         <label
                                             @click="formData.customerType = 'Non-Purchased Customer'; errors.customerType = ''; customerType = 'non-purchased'"
                                             class="cursor-pointer p-3 border rounded-lg w-1/2 text-center"
-                                            :class="{ 'bg-red-500 text-white': formData
-                                                    .customerType === 'Non-Purchased Customer' }">
+                                            :class="{
+                                                'bg-red-500 text-white': formData
+                                                    .customerType === 'Non-Purchased Customer'
+                                            }">
                                             Non-Purchased Customer
                                         </label>
                                     </div>
@@ -280,7 +284,7 @@
                         <div x-show="step === 2 && customerType === 'purchased'" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-14" src="/images/logo-white.svg" alt="logo" />
+                                    <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
                                 <div class="text-xl text-white font-medium uppercase">
                                     Please share your thoughts about your
@@ -302,40 +306,48 @@
                                         <label
                                             @click="formData.purchasedFeedback.cleanlinessRating = 'Excellent'; errors.cleanlinessRating = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .cleanlinessRating === 'Excellent' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .cleanlinessRating === 'Excellent'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/excellent.svg" alt="excellent" />
+                                                <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.cleanlinessRating = 'Good'; errors.cleanlinessRating = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .cleanlinessRating === 'Good' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .cleanlinessRating === 'Good'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/good.svg" alt="good" />
+                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                             </div>
                                             <div>Good</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.cleanlinessRating = 'Average'; errors.cleanlinessRating = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .cleanlinessRating === 'Average' }">
+                                            :class="{
+                                                '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .cleanlinessRating === 'Average'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/average.svg" alt="average" />
+                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
                                             </div>
                                             <div>Average</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.cleanlinessRating = 'Poor'; errors.cleanlinessRating = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .cleanlinessRating === 'Poor' }">
+                                            :class="{
+                                                '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .cleanlinessRating === 'Poor'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/poor.svg" alt="poor" />
+                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
@@ -358,40 +370,48 @@
                                         <label
                                             @click="formData.purchasedFeedback.designUniqueness = 'Excellent'; errors.designUniqueness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .designUniqueness === 'Excellent' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .designUniqueness === 'Excellent'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/excellent.svg" alt="excellent" />
+                                                <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.designUniqueness = 'Good'; errors.designUniqueness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .designUniqueness === 'Good' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .designUniqueness === 'Good'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/good.svg" alt="good" />
+                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                             </div>
                                             <div>Good</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.designUniqueness = 'Average'; errors.designUniqueness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .designUniqueness === 'Average' }">
+                                            :class="{
+                                                '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .designUniqueness === 'Average'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/average.svg" alt="average" />
+                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
                                             </div>
                                             <div>Average</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.designUniqueness = 'Poor'; errors.designUniqueness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .designUniqueness === 'Poor' }">
+                                            :class="{
+                                                '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .designUniqueness === 'Poor'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/poor.svg" alt="poor" />
+                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
@@ -405,40 +425,48 @@
                                         <label
                                             @click="formData.purchasedFeedback.designPricingComparison = 'Excellent'; errors.designPricingComparison = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .designPricingComparison === 'Excellent' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .designPricingComparison === 'Excellent'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/excellent.svg" alt="excellent" />
+                                                <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.designPricingComparison = 'Good'; errors.designPricingComparison = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .designPricingComparison === 'Good' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .designPricingComparison === 'Good'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/good.svg" alt="good" />
+                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                             </div>
                                             <div>Good</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.designPricingComparison = 'Average'; errors.designPricingComparison = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .designPricingComparison === 'Average' }">
+                                            :class="{
+                                                '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .designPricingComparison === 'Average'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/average.svg" alt="average" />
+                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
                                             </div>
                                             <div>Average</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.designPricingComparison = 'Poor'; errors.designPricingComparison = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .designPricingComparison === 'Poor' }">
+                                            :class="{
+                                                '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .designPricingComparison === 'Poor'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/poor.svg" alt="poor" />
+                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
@@ -456,7 +484,7 @@
                         <div x-show="step === 2 && customerType === 'non-purchased'" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-14" src="/images/logo-white.svg" alt="logo" />
+                                    <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
                                 <div class="text-xl text-white font-medium uppercase">
                                     Please let us know how we can serve you better?
@@ -474,10 +502,13 @@
                                         <label
                                             @click="formData.nonPurchasedFeedback.reason = 'Expected design not available'; errors.reason = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
-                                                    .nonPurchasedFeedback.reason === 'Expected design not available' }">
+                                            :class="{
+                                                '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
+                                                    .nonPurchasedFeedback.reason === 'Expected design not available'
+                                            }">
                                             <div>
-                                                <img class="h-8" src="/images/icons/non-purchase-reason/icon1.svg"
+                                                <img class="h-8"
+                                                    src={{ asset('/images/icons/non-purchase-reason/icon1.svg') }}
                                                     alt="Expected design not available" />
                                             </div>
                                             <div>Expected design not available</div>
@@ -486,10 +517,13 @@
                                         <label
                                             @click="formData.nonPurchasedFeedback.reason = 'Less Collection'; errors.reason = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
-                                                    .nonPurchasedFeedback.reason === 'Less Collection' }">
+                                            :class="{
+                                                '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
+                                                    .nonPurchasedFeedback.reason === 'Less Collection'
+                                            }">
                                             <div>
-                                                <img class="h-8" src="/images/icons/non-purchase-reason/icon2.svg"
+                                                <img class="h-8"
+                                                    src={{ asset('/images/icons/non-purchase-reason/icon2.svg') }}
                                                     alt="Less Collection" />
                                             </div>
                                             <div>Less Collection</div>
@@ -498,10 +532,13 @@
                                         <label
                                             @click="formData.nonPurchasedFeedback.reason = 'Service was Bad'; errors.reason = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
-                                                    .nonPurchasedFeedback.reason === 'Service was Bad' }">
+                                            :class="{
+                                                '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
+                                                    .nonPurchasedFeedback.reason === 'Service was Bad'
+                                            }">
                                             <div>
-                                                <img class="h-8" src="/images/icons/non-purchase-reason/icon3.svg"
+                                                <img class="h-8"
+                                                    src={{ asset('/images/icons/non-purchase-reason/icon3.svg') }}
                                                     alt="Service was Bad" />
                                             </div>
                                             <div>Service was Bad</div>
@@ -510,10 +547,13 @@
                                         <label
                                             @click="formData.nonPurchasedFeedback.reason = 'Size not available'; errors.reason = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
-                                                    .nonPurchasedFeedback.reason === 'Size not available' }">
+                                            :class="{
+                                                '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
+                                                    .nonPurchasedFeedback.reason === 'Size not available'
+                                            }">
                                             <div>
-                                                <img class="h-8" src="/images/icons/non-purchase-reason/icon4.svg"
+                                                <img class="h-8"
+                                                    src={{ asset('/images/icons/non-purchase-reason/icon4.svg') }}
                                                     alt="Size not available" />
                                             </div>
                                             <div>Size not available</div>
@@ -522,10 +562,13 @@
                                         <label
                                             @click="formData.nonPurchasedFeedback.reason = 'Price is too high'; errors.reason = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
-                                                    .nonPurchasedFeedback.reason === 'Price is too high' }">
+                                            :class="{
+                                                '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
+                                                    .nonPurchasedFeedback.reason === 'Price is too high'
+                                            }">
                                             <div>
-                                                <img class="h-8" src="/images/icons/non-purchase-reason/icon5.svg"
+                                                <img class="h-8"
+                                                    src={{ asset('/images/icons/non-purchase-reason/icon5.svg') }}
                                                     alt="Price is too high" />
                                             </div>
                                             <div>Price is too high</div>
@@ -534,8 +577,10 @@
                                         <label
                                             @click="formData.nonPurchasedFeedback.reason = 'Others'; errors.reason = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center flex items-center justify-center content-center"
-                                            :class="{ '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
-                                                    .nonPurchasedFeedback.reason === 'Others' }">
+                                            :class="{
+                                                '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
+                                                    .nonPurchasedFeedback.reason === 'Others'
+                                            }">
                                             <div>Others</div>
                                         </label>
                                     </div>
@@ -552,7 +597,7 @@
                         <div x-show="step === 3 && customerType === 'purchased'" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-14" src="/images/logo-white.svg" alt="logo" />
+                                    <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
                                 <div class="text-xl text-white font-medium uppercase">
                                     How was your experience with our <b>Sales Executive</b>
@@ -570,40 +615,48 @@
                                         <label
                                             @click="formData.purchasedFeedback.serviceSatisfaction = 'Excellent'; errors.serviceSatisfaction = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .serviceSatisfaction === 'Excellent' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .serviceSatisfaction === 'Excellent'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/excellent.svg" alt="excellent" />
+                                                <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.serviceSatisfaction = 'Good'; errors.serviceSatisfaction = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .serviceSatisfaction === 'Good' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .serviceSatisfaction === 'Good'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/good.svg" alt="good" />
+                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                             </div>
                                             <div>Good</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.serviceSatisfaction = 'Average'; errors.serviceSatisfaction = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .serviceSatisfaction === 'Average' }">
+                                            :class="{
+                                                '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .serviceSatisfaction === 'Average'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/average.svg" alt="average" />
+                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
                                             </div>
                                             <div>Average</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.serviceSatisfaction = 'Poor'; errors.serviceSatisfaction = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .serviceSatisfaction === 'Poor' }">
+                                            :class="{
+                                                '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .serviceSatisfaction === 'Poor'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/poor.svg" alt="poor" />
+                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
@@ -618,40 +671,48 @@
                                         <label
                                             @click="formData.purchasedFeedback. staffFriendliness = 'Excellent'; errors. staffFriendliness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .staffFriendliness === 'Excellent' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .staffFriendliness === 'Excellent'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/excellent.svg" alt="excellent" />
+                                                <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback. staffFriendliness = 'Good'; errors.staffFriendliness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .staffFriendliness === 'Good' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .staffFriendliness === 'Good'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/good.svg" alt="good" />
+                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                             </div>
                                             <div>Good</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback. staffFriendliness = 'Average'; errors.staffFriendliness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .staffFriendliness === 'Average' }">
+                                            :class="{
+                                                '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .staffFriendliness === 'Average'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/average.svg" alt="average" />
+                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
                                             </div>
                                             <div>Average</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback. staffFriendliness = 'Poor'; errors.staffFriendliness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .staffFriendliness === 'Poor' }">
+                                            :class="{
+                                                '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .staffFriendliness === 'Poor'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/poor.svg" alt="poor" />
+                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
@@ -666,40 +727,48 @@
                                         <label
                                             @click="formData.purchasedFeedback.staffKnowledge = 'Excellent'; errors.staffKnowledge = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .staffKnowledge === 'Excellent' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .staffKnowledge === 'Excellent'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/excellent.svg" alt="excellent" />
+                                                <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.staffKnowledge = 'Good'; errors.staffKnowledge = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .staffKnowledge === 'Good' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .staffKnowledge === 'Good'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/good.svg" alt="good" />
+                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                             </div>
                                             <div>Good</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.staffKnowledge = 'Average'; errors.staffKnowledge = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .staffKnowledge === 'Average' }">
+                                            :class="{
+                                                '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .staffKnowledge === 'Average'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/average.svg" alt="average" />
+                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
                                             </div>
                                             <div>Average</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.staffKnowledge = 'Poor'; errors.staffKnowledge = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .staffKnowledge === 'Poor' }">
+                                            :class="{
+                                                '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .staffKnowledge === 'Poor'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/poor.svg" alt="poor" />
+                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
@@ -714,40 +783,48 @@
                                         <label
                                             @click="formData.purchasedFeedback.staffAttentiveness = 'Excellent'; errors.staffAttentiveness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .staffAttentiveness === 'Excellent' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .staffAttentiveness === 'Excellent'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/excellent.svg" alt="excellent" />
+                                                <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.staffAttentiveness = 'Good'; errors.staffAttentiveness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .staffAttentiveness === 'Good' }">
+                                            :class="{
+                                                '!bg-green-500 text-white': formData.purchasedFeedback
+                                                    .staffAttentiveness === 'Good'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/good.svg" alt="good" />
+                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                             </div>
                                             <div>Good</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.staffAttentiveness = 'Average'; errors.staffAttentiveness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .staffAttentiveness === 'Average' }">
+                                            :class="{
+                                                '!bg-orange-500 text-white': formData.purchasedFeedback
+                                                    .staffAttentiveness === 'Average'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/average.svg" alt="average" />
+                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
                                             </div>
                                             <div>Average</div>
                                         </label>
                                         <label
                                             @click="formData.purchasedFeedback.staffAttentiveness = 'Poor'; errors.staffAttentiveness = ''"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{ '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .staffAttentiveness === 'Poor' }">
+                                            :class="{
+                                                '!bg-red-500 text-white': formData.purchasedFeedback
+                                                    .staffAttentiveness === 'Poor'
+                                            }">
                                             <div>
-                                                <img src="/images/icons/poor.svg" alt="poor" />
+                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
@@ -767,7 +844,7 @@
                             <!-- Step 3: Thank You -->
                             <div class="flex flex-col items-center justify-center gap-6">
                                 <div>
-                                    <img src="/images/thank-you.svg" alt="thank you" />
+                                    <img src={{ asset('/images/thank-you.svg') }} alt="thank you" />
                                 </div>
                                 <p class="text-gray-600 text-lg text-center">
                                     Thanks for your valuable feedback
@@ -796,7 +873,7 @@
                     <div class="modal-box p-0 max-w-3xl bg-[#FCFAF9]">
                         <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                             <div class="pe-4">
-                                <img class="h-14" src="/images/logo-white.svg" alt="logo" />
+                                <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                             </div>
                             <div class="text-xl text-white font-medium uppercase">
                                 Welcome to Jewel one
@@ -811,13 +888,16 @@
                                         Please enter your below details
                                     </div>
                                     <div>
-                                        <button type="button"
-                                            @click="disabled = !disabled"
+                                        <button type="button" @click="disabled = !disabled"
                                             class="flex items-center gap-1 cursor-pointer px-4 py-2 text-sm border border-[#C7C7C7] rounded-sm">
                                             <svg width="14" height="14" viewBox="0 0 14 15" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M0.613296 9.58195C0.435577 9.75967 0.336844 9.97688 0.317097 10.2138L0.0011519 14.0052C-0.0185947 14.2816 0.218364 14.5186 0.494817 14.4988L4.28616 14.1829C4.52312 14.1632 4.76008 14.0644 4.91805 13.8867L11 7.80476L6.71499 3.5L0.613296 9.58195Z" fill="#4E5356" />
-                                                <path d="M13.7812 3.99548L10.517 0.721857C10.222 0.426048 9.76975 0.426048 9.47479 0.721857L8 2.2009L12.2867 6.5L13.7615 5.02095C14.0761 4.74486 14.0761 4.27157 13.7812 3.99548Z" fill="#4E5356" />
+                                                <path
+                                                    d="M0.613296 9.58195C0.435577 9.75967 0.336844 9.97688 0.317097 10.2138L0.0011519 14.0052C-0.0185947 14.2816 0.218364 14.5186 0.494817 14.4988L4.28616 14.1829C4.52312 14.1632 4.76008 14.0644 4.91805 13.8867L11 7.80476L6.71499 3.5L0.613296 9.58195Z"
+                                                    fill="#4E5356" />
+                                                <path
+                                                    d="M13.7812 3.99548L10.517 0.721857C10.222 0.426048 9.76975 0.426048 9.47479 0.721857L8 2.2009L12.2867 6.5L13.7615 5.02095C14.0761 4.74486 14.0761 4.27157 13.7812 3.99548Z"
+                                                    fill="#4E5356" />
                                             </svg>
                                             <span x-text="disabled ? 'Edit' : 'Cancel'"></span>
                                         </button>
@@ -827,11 +907,11 @@
                                 <!-- Name & Gender -->
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-4">
                                     <div class="relative grow">
-                                        <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">
+                                        <label
+                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">
                                             Name
                                         </label>
-                                        <input name="name" type="text" required
-                                            :disabled="disabled"
+                                        <input name="name" type="text" required :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black placeholder:!text-black rounded-lg block w-full p-3" />
                                     </div>
 
@@ -865,8 +945,7 @@
                                     <div class="mb-1 text-black text-sm">Phone Number</div>
                                     <div class="input-container phone-group flex gap-1 flex-wrap">
                                         <template x-for="i in 10" :key="i">
-                                            <input required type="text" maxlength="1"
-                                                :disabled="disabled"
+                                            <input required type="text" maxlength="1" :disabled="disabled"
                                                 class="phone input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
                                         </template>
                                     </div>
@@ -875,16 +954,17 @@
                                 <!-- Email and DOB -->
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-4">
                                     <div class="relative grow">
-                                        <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Email</label>
-                                        <input type="email" name="email" required
-                                            :disabled="disabled"
+                                        <label
+                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Email</label>
+                                        <input type="email" name="email" required :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
 
                                     <div class="relative">
-                                        <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Date of Birth</label>
-                                        <input type="date" name="date-of-birth" required
-                                            :disabled="disabled"
+                                        <label
+                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Date
+                                            of Birth</label>
+                                        <input type="date" name="date-of-birth" required :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
                                 </div>
@@ -897,16 +977,14 @@
                                         <div class="flex space-x-4">
                                             <label class="flex items-center space-x-2 cursor-pointer">
                                                 <input type="radio" name="marital-status" value="Married"
-                                                    class="accent-amber-700"
-                                                    :disabled="disabled"
+                                                    class="accent-amber-700" :disabled="disabled"
                                                     @change="maritalStatus = 'Married'" />
                                                 <span>Married</span>
                                             </label>
 
                                             <label class="flex items-center space-x-2 cursor-pointer">
                                                 <input type="radio" name="marital-status" value="Not Married"
-                                                    class="accent-amber-700"
-                                                    :disabled="disabled"
+                                                    class="accent-amber-700" :disabled="disabled"
                                                     @change="maritalStatus = 'Not Married'" />
                                                 <span>Not Married</span>
                                             </label>
@@ -914,9 +992,10 @@
                                     </div>
 
                                     <div class="relative" x-show="maritalStatus === 'Married'" x-transition>
-                                        <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Anniversary Date</label>
-                                        <input type="date" name="anniversary-date"
-                                            :disabled="disabled"
+                                        <label
+                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Anniversary
+                                            Date</label>
+                                        <input type="date" name="anniversary-date" :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
                                 </div>
@@ -924,9 +1003,9 @@
                                 <!-- Profession & Qualification -->
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-4">
                                     <div class="relative grow">
-                                        <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Profession</label>
-                                        <select id="profession"
-                                            :disabled="disabled"
+                                        <label
+                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Profession</label>
+                                        <select id="profession" :disabled="disabled"
                                             class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
                                             <option value="">Select</option>
                                             <option value="Doctor">Doctor</option>
@@ -938,9 +1017,9 @@
                                     </div>
 
                                     <div class="relative grow">
-                                        <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Qualification</label>
-                                        <select id="qualification"
-                                            :disabled="disabled"
+                                        <label
+                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Qualification</label>
+                                        <select id="qualification" :disabled="disabled"
                                             class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
                                             <option value="">Select</option>
                                             <option value="High School">High School</option>
@@ -954,86 +1033,84 @@
                                 <!-- Address -->
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-4">
                                     <div class="relative grow">
-                                        <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Address</label>
-                                        <textarea name="address" rows="2" required
-                                            :disabled="disabled"
+                                        <label
+                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Address</label>
+                                        <textarea name="address" rows="2" required :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3 resize-none"></textarea>
                                     </div>
 
                                     <div>
                                         <div class="mb-1 text-sm text-black">Pincode</div>
                                         <div class="input-container zip-group flex gap-1 flex-wrap">
-                                        <template x-for="i in 6" :key="i">
-                                            <input required type="text" maxlength="1"
-                                                :disabled="disabled"
-                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
-                                        </template>
+                                            <template x-for="i in 6" :key="i">
+                                                <input required type="text" maxlength="1" :disabled="disabled"
+                                                    class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            </template>
 
                                         </div>
                                     </div>
 
                                 </div>
 
-                                 <!-- Source Options -->
-                                 <div class="flex flex-wrap gap-4 mb-4">
-                                        <div>
-                                            <input id="source1" name="source" value="Television Commercial"
-                                                type="radio" class="hidden" />
-                                            <label for="source1" class="text-center">
-                                                <img src="/images/icons/televison.svg" alt="Television Commercial"
-                                                    class="h-8" />
-                                                <span> Television Commercial </span>
-                                            </label>
-                                        </div>
-
-                                        <div>
-                                            <input id="source2" name="source" value="Newspaper" type="radio"
-                                                class="hidden" />
-                                            <label for="source2" class="text-center">
-                                                <img src="/images/icons/newspaper.svg" alt="newspaper"
-                                                    class="h-8" />
-                                                <span> Newspaper </span>
-                                            </label>
-                                        </div>
-
-                                        <div>
-                                            <input id="source3" name="source" value="Social Media" type="radio"
-                                                class="hidden" />
-                                            <label for="source3" class="text-center">
-                                                <img src="/images/icons/socialmedia.svg" alt="Social Media"
-                                                    class="h-8" />
-                                                <span> Social Media </span>
-                                            </label>
-                                        </div>
-
-                                        <div>
-                                            <input id="source4" name="source" value="Flyer, Brochure, Flex"
-                                                type="radio" class="hidden" />
-                                            <label for="source4" class="text-center">
-                                                <img src="/images/icons/brochure.svg" alt="Flyer, Brochure, Flex"
-                                                    class="h-8" />
-                                                <span>Flyer, Brochure, Flex</span>
-                                            </label>
-                                        </div>
-
-                                        <div>
-                                            <input id="source5" name="source" value="Friends & Family"
-                                                type="radio" class="hidden" />
-                                            <label for="source5" class="text-center">
-                                                <img src="/images/icons/family.svg" alt="Friends & Family"
-                                                    class="h-8" />
-                                                <span>Friends & Family</span>
-                                            </label>
-                                        </div>
-
-                                       
-
+                                <!-- Source Options -->
+                                <div class="flex flex-wrap gap-4 mb-4">
+                                    <div>
+                                        <input id="source1" name="source" value="Television Commercial"
+                                            type="radio" class="hidden" />
+                                        <label for="source1" class="text-center">
+                                            <img src={{ asset('/images/icons/televison.svg') }}
+                                                alt="Television Commercial" class="h-8" />
+                                            <span> Television Commercial </span>
+                                        </label>
                                     </div>
+
+                                    <div>
+                                        <input id="source2" name="source" value="Newspaper" type="radio"
+                                            class="hidden" />
+                                        <label for="source2" class="text-center">
+                                            <img src={{ asset('/images/icons/newspaper.svg') }} alt="newspaper"
+                                                class="h-8" />
+                                            <span> Newspaper </span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <input id="source3" name="source" value="Social Media" type="radio"
+                                            class="hidden" />
+                                        <label for="source3" class="text-center">
+                                            <img src={{ asset('/images/icons/socialmedia.svg') }} alt="Social Media"
+                                                class="h-8" />
+                                            <span> Social Media </span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <input id="source4" name="source" value="Flyer, Brochure, Flex"
+                                            type="radio" class="hidden" />
+                                        <label for="source4" class="text-center">
+                                            <img src={{ asset('/images/icons/brochure.svg') }}
+                                                alt="Flyer, Brochure, Flex" class="h-8" />
+                                            <span>Flyer, Brochure, Flex</span>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <input id="source5" name="source" value="Friends & Family" type="radio"
+                                            class="hidden" />
+                                        <label for="source5" class="text-center">
+                                            <img src={{ asset('/images/icons/family.svg') }} alt="Friends & Family"
+                                                class="h-8" />
+                                            <span>Friends & Family</span>
+                                        </label>
+                                    </div>
+
+
+
+                                </div>
 
                                 <!-- Save Button -->
                                 <div class="flex justify-center">
-                                    <button type="submit"
-                                        :disabled="disabled"
+                                    <button type="submit" :disabled="disabled"
                                         class="px-10 py-2 cursor-pointer disabled:cursor-not-allowed bg-[#9D4F2A] text-white text-sm rounded hover:bg-[#7C3E21] transition disabled:opacity-50">
                                         Save
                                     </button>
@@ -1060,7 +1137,7 @@
     </main>
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    <script src="{{ asset('js/frontend/voc.js') }}"></script>
     <script>
         // Create handlers for OTP, Phone, and Zip groups
         const createInputHandlers = (inputs, expectedLength) => {
@@ -1153,11 +1230,6 @@
         }
 
         addCustomerForm();
-
-
-
-
-
 
 
         function viewCustomerDetails(customer) {
