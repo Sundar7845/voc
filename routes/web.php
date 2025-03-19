@@ -24,5 +24,8 @@ Route::get('/', function () {
 });
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login/store', [LoginController::class, 'login'])->name('loginstore');
-Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('voc', [VocController::class, 'voc'])->name('voc');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('voc', [VocController::class, 'voc'])->name('voc');
+});

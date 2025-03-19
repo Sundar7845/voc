@@ -12,6 +12,7 @@ class Branches extends Model
 
     protected $fillable = [
         'branch_name',
+        'slug',
         'is_active',
     ];
 }
