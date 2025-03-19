@@ -19,6 +19,8 @@ class CreateWalkinCustomersTable extends Migration
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->unsignedBigInteger('branch_id')->nullable();
             $table->foreign('branch_id')->references('id')->on('branches');
+            $table->string('customer_enter_time')->nullable();
+            $table->string('customer_out_time')->nullable();
             $table->integer('know_about')->default(0);
             $table->integer('is_purchased')->default(0);
             $table->integer('store_experience_review')->default(0);

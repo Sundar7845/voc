@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body class="bg-[#FCFAF9] min-h-screen roboto antialiased">
@@ -58,7 +60,7 @@
 
                         <span
                             class="absolute -top-3 -right-2 bg-green-200 text-green-500 flex items-center justify-center px-2 py-1 rounded-full text-sm">
-                            0
+                            {{ $walkincustomer->count() }}
                         </span>
                     </button>
                 </div>
@@ -141,80 +143,35 @@
             </div>
 
             <div class="p-4" x-data="getfeedbackData">
-                <div
-                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 flex-wrap">
-                    <div class="bg-[#FFEDD9] overflow-hidden rounded-lg">
-                        <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-6">
-                            <div class="flex gap-1 items-center">
-                                <span class="w-2 h-2 rounded-full bg-green-500 block"></span>
-                                <span class="text-md"> Customer #001 </span>
+                @foreach ($walkincustomer as $item)
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 flex-wrap">
+                        <div class="bg-[#FFEDD9] overflow-hidden rounded-lg">
+                            <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-6">
+                                <div class="flex gap-1 items-center">
+                                    <span class="w-2 h-2 rounded-full bg-green-500 block"></span>
+                                    <span class="text-md"> Customer #{{ $formattedCount }}</span>
+                                </div>
+                                <div class="text-xl font-semibold">{{ $item->name ? $item->name : 'new customer' }}
+                                </div>
+                                <div class="my-4">
+                                    <button onclick="customerDetails.showModal()" @click="viewCustomerDetails('001')"
+                                        class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white">
+                                        View Details
+                                    </button>
+                                </div>
+                                <div>
+                                    <button onclick="getFeedback.showModal()"
+                                        @click="open = true; formData.customerId = '001'"
+                                        class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
+                                        Get Feedback
+                                    </button>
+                                </div>
                             </div>
-                            <div class="text-xl font-semibold">Madhu</div>
-                            <div class="my-4">
-                                <button onclick="customerDetails.showModal()" @click="viewCustomerDetails('001')"
-                                    class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white">
-                                    View Details
-                                </button>
-                            </div>
-                            <div>
-                                <button onclick="getFeedback.showModal()"
-                                    @click="open = true; formData.customerId = '001'"
-                                    class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
-                                    Get Feedback
-                                </button>
-                            </div>
+                            <div class="text-sm py-2 px-6">20 mins 56 secs</div>
                         </div>
-                        <div class="text-sm py-2 px-6">20 mins 56 secs</div>
                     </div>
-
-                    <div class="bg-[#FFEDD9] overflow-hidden rounded-lg">
-                        <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-6">
-                            <div class="flex gap-1 items-center">
-                                <span class="w-2 h-2 rounded-full bg-green-500 block"></span>
-                                <span class="text-md"> Customer #002 </span>
-                            </div>
-                            <div class="text-xl font-semibold">Gavya</div>
-                            <div class="my-4">
-                                <button onclick="customerDetails.showModal()" @click="viewCustomerDetails('002')"
-                                    class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white">
-                                    View Details
-                                </button>
-                            </div>
-                            <div>
-                                <button onclick="getFeedback.showModal()"
-                                    @click="open = true; formData.customerId = '002'"
-                                    class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
-                                    Get Feedback
-                                </button>
-                            </div>
-                        </div>
-                        <div class="text-sm py-2 px-6">20 mins 56 secs</div>
-                    </div>
-
-                    <div class="bg-[#FFEDD9] overflow-hidden rounded-lg">
-                        <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-6">
-                            <div class="flex gap-1 items-center">
-                                <span class="w-2 h-2 rounded-full bg-green-500 block"></span>
-                                <span class="text-md"> Customer #003 </span>
-                            </div>
-                            <div class="text-xl font-semibold">Jane</div>
-                            <div class="my-4">
-                                <button onclick="customerDetails.showModal()" @click="viewCustomerDetails('003')"
-                                    class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white">
-                                    View Details
-                                </button>
-                            </div>
-                            <div>
-                                <button onclick="getFeedback.showModal()"
-                                    @click="open = true; formData.customerId = '003'"
-                                    class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
-                                    Get Feedback
-                                </button>
-                            </div>
-                        </div>
-                        <div class="text-sm py-2 px-6">20 mins 56 secs</div>
-                    </div>
-                </div>
+                @endforeach
 
                 <dialog id="getFeedback" class="modal">
                     <div class="modal-box p-0 max-w-3xl min-h-60 bg-[#FCFAF9]">
@@ -1137,6 +1094,31 @@
     </main>
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            @if (session()->has('alert-type') && session()->has('message'))
+                let toastStyles = {
+                    success: "linear-gradient(to right, #00b09b, #96c93d)",
+                    error: "linear-gradient(to right, #ff416c, #ff4b2b)",
+                    warning: "linear-gradient(to right, #ffcc00, #ff8800)",
+                    info: "linear-gradient(to right, #3498db, #2980b9)"
+                };
+
+                Toastify({
+                    text: "{{ session('message') }}",
+                    className: "{{ session('alert-type') }}",
+                    close: true,
+                    duration: 3000,
+                    style: {
+                        background: toastStyles["{{ session('alert-type') }}"]
+                    }
+                }).showToast();
+            @endif
+        });
+    </script>
+
     <script src="{{ asset('js/frontend/voc.js') }}"></script>
     <script>
         // Create handlers for OTP, Phone, and Zip groups
