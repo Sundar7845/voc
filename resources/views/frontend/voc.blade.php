@@ -974,6 +974,9 @@
 
                                 </div>
 
+                                <div class="text-md text-[#964A26] mb-4">
+                                    How do you know about Jewel One?
+                                </div>
                                  <!-- Source Options -->
                                  <div class="flex flex-wrap gap-4 mb-4">
                                         <div>

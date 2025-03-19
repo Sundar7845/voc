@@ -30,8 +30,8 @@
     @apply bg-white rounded-lg shadow-lg border border-gray-200 text-sm size-32 text-black grid gap-1 justify-items-center p-4 cursor-pointer font-medium;
   }
   input[type='radio'] + label:hover {
-    @apply bg-orange-100 text-[#964A26] border-[#964A26];
+    @apply text-black border-[#964A26];
   }
   input[type='radio']:checked + label {
-    @apply bg-orange-100 text-[#964A26] border-[#964A26];
+    @apply text-black border-[#964A26] ring ring-[#964A26];
   }
