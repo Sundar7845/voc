@@ -88,17 +88,10 @@
 
                             <div class="px-6 py-10 text-[#4E5356]">
                                 <form id="add-customer-form">
-                                    <!-- Name Field -->
-                                    <div class="relative mb-4">
-                                        <label for="customer-name"
-                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Name</label>
-                                        <input id="customer-name" name="name" type="text" required
-                                            class="bg-transparent border py-2 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3" />
-                                    </div>
-
+                                   
                                     <!-- Phone Number Fields -->
-                                    <div class="mb-4">
-                                        <div class="mb-1 text-black text-sm">Phone Number</div>
+                                    <div class="flex flex-col justify-center items-center gap-6">
+                                        <div class="text-[#9D4F2A] text-md font-semibold">Enter your phone number</div>
                                         <div class="input-container phone-group">
                                             <input required type="text" maxlength="1" id="phone-1"
                                                 class="phone input-box" />
@@ -121,102 +114,13 @@
                                             <input required type="text" maxlength="1" id="phone-10"
                                                 class="phone input-box" />
                                         </div>
-                                    </div>
+                                    
 
-                                    <!-- Email & Pincode -->
-                                    <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-4">
-                                        <div class="relative grow">
-                                            <label for="customer-email"
-                                                class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Email</label>
-                                            <input type="email" id="customer-email" name="email" required
-                                                class="bg-transparent border py-2 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3" />
-                                        </div>
+                                 
 
                                         <div>
-                                            <div class="mb-1 text-sm text-black">Pincode</div>
-                                            <div class="input-container zip-group">
-                                                <input required type="text" maxlength="1" id="zip-1"
-                                                    class="zip input-box" />
-                                                <input required type="text" maxlength="1" id="zip-2"
-                                                    class="zip input-box" />
-                                                <input required type="text" maxlength="1" id="zip-3"
-                                                    class="zip input-box" />
-                                                <input required type="text" maxlength="1" id="zip-4"
-                                                    class="zip input-box" />
-                                                <input required type="text" maxlength="1" id="zip-5"
-                                                    class="zip input-box" />
-                                                <input required type="text" maxlength="1" id="zip-6"
-                                                    class="zip input-box" />
-                                            </div>
+                                            <button type="submit" class="main-btn !px-10">Submit</button>
                                         </div>
-                                    </div>
-
-                                    <!-- Source Options -->
-                                    <div class="flex flex-wrap gap-4 mb-4">
-                                        <div>
-                                            <input id="source1" name="source" value="Television Commercial"
-                                                type="radio" class="hidden" />
-                                            <label for="source1" class="text-center">
-                                                <img src="/images/icons/televison.svg" alt="Television Commercial"
-                                                    class="h-8" />
-                                                <span> Television Commercial </span>
-                                            </label>
-                                        </div>
-
-                                        <div>
-                                            <input id="source2" name="source" value="Newspaper" type="radio"
-                                                class="hidden" />
-                                            <label for="source2" class="text-center">
-                                                <img src="/images/icons/newspaper.svg" alt="newspaper"
-                                                    class="h-8" />
-                                                <span> Newspaper </span>
-                                            </label>
-                                        </div>
-
-                                        <div>
-                                            <input id="source3" name="source" value="Social Media" type="radio"
-                                                class="hidden" />
-                                            <label for="source3" class="text-center">
-                                                <img src="/images/icons/socialmedia.svg" alt="Social Media"
-                                                    class="h-8" />
-                                                <span> Social Media </span>
-                                            </label>
-                                        </div>
-
-                                        <div>
-                                            <input id="source4" name="source" value="Flyer, Brochure, Flex"
-                                                type="radio" class="hidden" />
-                                            <label for="source4" class="text-center">
-                                                <img src="/images/icons/brochure.svg" alt="Flyer, Brochure, Flex"
-                                                    class="h-8" />
-                                                <span>Flyer, Brochure, Flex</span>
-                                            </label>
-                                        </div>
-
-                                        <div>
-                                            <input id="source5" name="source" value="Friends & Family"
-                                                type="radio" class="hidden" />
-                                            <label for="source5" class="text-center">
-                                                <img src="/images/icons/family.svg" alt="Friends & Family"
-                                                    class="h-8" />
-                                                <span>Friends & Family</span>
-                                            </label>
-                                        </div>
-
-                                        <div>
-                                            <input id="source6" name="source" value="Others" type="radio"
-                                                class="hidden" />
-                                            <label for="source6"
-                                                class="text-center flex justify-center items-center h-full">
-                                                <div>Others</div>
-                                            </label>
-                                        </div>
-
-
-                                    </div>
-
-                                    <div class="flex justify-end">
-                                        <button type="submit" class="main-btn">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -889,7 +793,7 @@
                 </dialog>
 
                 <dialog id="customerDetails" class="modal">
-                    <div class="modal-box p-0 max-w-2xl bg-[#FCFAF9]">
+                    <div class="modal-box p-0 max-w-3xl bg-[#FCFAF9]">
                         <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                             <div class="pe-4">
                                 <img class="h-14" src="/images/logo-white.svg" alt="logo" />
@@ -899,10 +803,10 @@
                             </div>
                         </div>
 
-                        <div x-data="{ disabled: true }" class="px-6 py-8 text-[#4E5356]">
+                        <div x-data="{ disabled: true }" class="p-6 text-[#4E5356]">
                             <form id="customer-details-form">
                                 <!-- Header -->
-                                <div class="flex justify-between gap-5 items-center mb-6">
+                                <div class="flex justify-between gap-5 items-center mb-4">
                                     <div class="text-md font-medium text-[#9D4F2A]">
                                         Please enter your below details
                                     </div>
@@ -921,7 +825,7 @@
                                 </div>
 
                                 <!-- Name & Gender -->
-                                <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-6">
+                                <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-4">
                                     <div class="relative grow">
                                         <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">
                                             Name
@@ -957,7 +861,7 @@
                                 </div>
 
                                 <!-- Phone Number -->
-                                <div class="mb-8">
+                                <div class="mb-4">
                                     <div class="mb-1 text-black text-sm">Phone Number</div>
                                     <div class="input-container phone-group flex gap-1 flex-wrap">
                                         <template x-for="i in 10" :key="i">
@@ -969,7 +873,7 @@
                                 </div>
 
                                 <!-- Email and DOB -->
-                                <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-6">
+                                <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-4">
                                     <div class="relative grow">
                                         <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Email</label>
                                         <input type="email" name="email" required
@@ -986,7 +890,7 @@
                                 </div>
 
                                 <!-- Marital Status -->
-                                <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-6"
+                                <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-4"
                                     x-data="{ maritalStatus: '' }">
                                     <div class="grow flex items-center gap-4">
                                         <div class="text-black text-sm">Marital Status</div>
@@ -1018,7 +922,7 @@
                                 </div>
 
                                 <!-- Profession & Qualification -->
-                                <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-6">
+                                <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-4">
                                     <div class="relative grow">
                                         <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Profession</label>
                                         <select id="profession"
@@ -1048,10 +952,10 @@
                                 </div>
 
                                 <!-- Address -->
-                                <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-6">
+                                <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-4">
                                     <div class="relative grow">
                                         <label class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Address</label>
-                                        <textarea name="address" rows="3" required
+                                        <textarea name="address" rows="2" required
                                             :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3 resize-none"></textarea>
                                     </div>
@@ -1070,11 +974,67 @@
 
                                 </div>
 
+                                 <!-- Source Options -->
+                                 <div class="flex flex-wrap gap-4 mb-4">
+                                        <div>
+                                            <input id="source1" name="source" value="Television Commercial"
+                                                type="radio" class="hidden" />
+                                            <label for="source1" class="text-center">
+                                                <img src="/images/icons/televison.svg" alt="Television Commercial"
+                                                    class="h-8" />
+                                                <span> Television Commercial </span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input id="source2" name="source" value="Newspaper" type="radio"
+                                                class="hidden" />
+                                            <label for="source2" class="text-center">
+                                                <img src="/images/icons/newspaper.svg" alt="newspaper"
+                                                    class="h-8" />
+                                                <span> Newspaper </span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input id="source3" name="source" value="Social Media" type="radio"
+                                                class="hidden" />
+                                            <label for="source3" class="text-center">
+                                                <img src="/images/icons/socialmedia.svg" alt="Social Media"
+                                                    class="h-8" />
+                                                <span> Social Media </span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input id="source4" name="source" value="Flyer, Brochure, Flex"
+                                                type="radio" class="hidden" />
+                                            <label for="source4" class="text-center">
+                                                <img src="/images/icons/brochure.svg" alt="Flyer, Brochure, Flex"
+                                                    class="h-8" />
+                                                <span>Flyer, Brochure, Flex</span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input id="source5" name="source" value="Friends & Family"
+                                                type="radio" class="hidden" />
+                                            <label for="source5" class="text-center">
+                                                <img src="/images/icons/family.svg" alt="Friends & Family"
+                                                    class="h-8" />
+                                                <span>Friends & Family</span>
+                                            </label>
+                                        </div>
+
+                                       
+
+                                    </div>
+
                                 <!-- Save Button -->
-                                <div class="flex justify-end">
+                                <div class="flex justify-center">
                                     <button type="submit"
                                         :disabled="disabled"
-                                        class="px-4 py-2 cursor-pointer disabled:cursor-not-allowed bg-[#9D4F2A] text-white text-sm rounded hover:bg-[#7C3E21] transition disabled:opacity-50">
+                                        class="px-10 py-2 cursor-pointer disabled:cursor-not-allowed bg-[#9D4F2A] text-white text-sm rounded hover:bg-[#7C3E21] transition disabled:opacity-50">
                                         Save
                                     </button>
                                 </div>
@@ -1171,32 +1131,24 @@
             const form = document.getElementById("add-customer-form");
 
             const phoneInputs = [...form.querySelectorAll(".phone")];
-            const zipInputs = [...form.querySelectorAll(".zip")];
 
             createInputHandlers(phoneInputs, 10);
-            createInputHandlers(zipInputs, 6);
 
             form.addEventListener("submit", (e) => {
                 e.preventDefault();
 
-                const name = document.getElementById("customer-name").value;
-                const email = document.getElementById("customer-email").value;
 
                 const phoneNumber = Array.from(phoneInputs).map(input => input.value).join('');
-                const zipCode = Array.from(zipInputs).map(input => input.value).join('');
 
 
-
-                const source =
-                    form.querySelector('input[name="source"]:checked')?.value || "";
 
                 console.log({
-                    name,
                     phoneNumber,
-                    email,
-                    zipCode,
-                    source,
                 });
+
+                form.reset();
+                document.getElementById("addCustomer").close();
+
             });
         }
 
@@ -1231,6 +1183,7 @@
                     phoneNumber,
                     pincode,
                 });
+                form.reset();
             });
 
         }
