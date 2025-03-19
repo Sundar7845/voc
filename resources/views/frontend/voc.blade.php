@@ -981,6 +981,7 @@
                                  <div class="flex flex-wrap gap-4 mb-4">
                                         <div>
                                             <input id="source1" name="source" value="Television Commercial"
+                                            required   :disabled="disabled"
                                                 type="radio" class="hidden" />
                                             <label for="source1" class="text-center">
                                                 <img src="/images/icons/televison.svg" alt="Television Commercial"
@@ -991,6 +992,7 @@
 
                                         <div>
                                             <input id="source2" name="source" value="Newspaper" type="radio"
+                                            required   :disabled="disabled"
                                                 class="hidden" />
                                             <label for="source2" class="text-center">
                                                 <img src="/images/icons/newspaper.svg" alt="newspaper"
@@ -1001,6 +1003,7 @@
 
                                         <div>
                                             <input id="source3" name="source" value="Social Media" type="radio"
+                                            required   :disabled="disabled"
                                                 class="hidden" />
                                             <label for="source3" class="text-center">
                                                 <img src="/images/icons/socialmedia.svg" alt="Social Media"
@@ -1011,6 +1014,7 @@
 
                                         <div>
                                             <input id="source4" name="source" value="Flyer, Brochure, Flex"
+                                            required   :disabled="disabled"
                                                 type="radio" class="hidden" />
                                             <label for="source4" class="text-center">
                                                 <img src="/images/icons/brochure.svg" alt="Flyer, Brochure, Flex"
@@ -1021,6 +1025,7 @@
 
                                         <div>
                                             <input id="source5" name="source" value="Friends & Family"
+                                            required   :disabled="disabled"
                                                 type="radio" class="hidden" />
                                             <label for="source5" class="text-center">
                                                 <img src="/images/icons/family.svg" alt="Friends & Family"
