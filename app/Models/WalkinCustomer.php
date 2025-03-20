@@ -13,6 +13,7 @@ class WalkinCustomer extends Model
     protected $fillable = [
         'customer_id',
         'branch_id',
+        'sales_executive_id',
         'customer_enter_time',
         'customer_out_time',
         'know_about',
@@ -24,6 +25,7 @@ class WalkinCustomer extends Model
         'friendly_review',
         'service_review',
         'assit_review',
-        'non_purchased_review'
+        'non_purchased_review',
+        'spent_time'
     ];
 }

@@ -143,37 +143,42 @@
             </div>
 
             <div class="p-4" x-data="getfeedbackData">
-                
-                    <div
-                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 flex-wrap">
-                        @foreach ($walkincustomer as $item)
+
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 flex-wrap">
+                    @foreach ($walkincustomer as $item)
                         <div class="bg-[#FFEDD9] overflow-hidden rounded-lg">
                             <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-6">
                                 <div class="flex gap-1 items-center">
                                     <span class="w-2 h-2 rounded-full bg-green-500 block"></span>
-                                    <span class="text-md"> Customer #{{ $formattedCount }}</span>
+                                    <span class="text-md"> Customer #{{ $item->formattedCount }}</span>
                                 </div>
                                 <div class="text-xl font-semibold">{{ $item->name ? $item->name : 'new customer' }}
                                 </div>
                                 <div class="my-4">
-                                    <button onclick="customerDetails.showModal()" @click="viewCustomerDetails('001')"
+                                    <button
+                                        @click="open = true; formData.customerId = {{ $item->id }}; viewCustomerDetails({{ $item->customer_id }})"
                                         class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white">
                                         View Details
                                     </button>
+
                                 </div>
                                 <div>
                                     <button onclick="getFeedback.showModal()"
-                                        @click="open = true; formData.customerId = '001'"
+                                        @click="open = true; formData.customerId = {{ $item->id }}"
                                         class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
                                         Get Feedback
                                     </button>
                                 </div>
                             </div>
-                            <div class="text-sm py-2 px-6">20 mins 56 secs</div>
+                            <div class="text-sm py-2 px-6" style="color: red;">
+                                <span id="timer-{{ $item->id }}"
+                                    data-enter-time="{{ $item->customer_enter_time }}">Loading...</span>
+                            </div>
                         </div>
-                        @endforeach
-                    </div>
-               
+                    @endforeach
+                </div>
+
 
                 <dialog id="getFeedback" class="modal">
                     <div class="modal-box p-0 max-w-3xl min-h-60 bg-[#FCFAF9]">
@@ -198,8 +203,11 @@
                                         <select x-model="formData.salesExecutive" @change="errors.salesExecutive = ''"
                                             class="bg-transparent border py-3 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3">
                                             <option value>Select Executive</option>
-                                            <option value="John Doe">John Doe</option>
-                                            <option value="Jane Smith">Jane Smith</option>
+                                            @foreach ($employee as $item)
+                                                <option value={{ $item->id }}>
+                                                    {{ $item->name }} ({{ $item->emp_no }})
+                                                </option>
+                                            @endforeach
                                         </select>
                                         <p x-show="errors.salesExecutive" class="text-red-500 text-sm my-2"
                                             x-text="errors.salesExecutive">
@@ -841,6 +849,7 @@
 
                         <div x-data="{ disabled: true }" class="p-6 text-[#4E5356]">
                             <form id="customer-details-form">
+                                <input type="hidden" name="customerId" id="customerId" value="">
                                 <!-- Header -->
                                 <div class="flex justify-between gap-5 items-center mb-4">
                                     <div class="text-md font-medium text-[#9D4F2A]">
@@ -870,7 +879,8 @@
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">
                                             Name
                                         </label>
-                                        <input name="name" type="text" required :disabled="disabled"
+                                        <input name="name" id="name" type="text" required
+                                            :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black placeholder:!text-black rounded-lg block w-full p-3" />
                                     </div>
 
@@ -879,7 +889,7 @@
                                         <div class="text-sm text-black">Gender</div>
                                         <div class="flex gap-1">
                                             <label class="cursor-pointer">
-                                                <input type="radio" name="gender" value="M"
+                                                <input type="radio" name="gender" id="gender" value="M"
                                                     class="sr-only peer" required :disabled="disabled" />
                                                 <span
                                                     class="flex items-center justify-center py-2 px-4 border-2 border-gray-300 rounded-lg text-gray-700 peer-checked:bg-[#9D4F2A] peer-checked:text-white peer-checked:border-[#9D4F2A] transition duration-300">
@@ -888,7 +898,7 @@
                                             </label>
 
                                             <label class="cursor-pointer">
-                                                <input type="radio" name="gender" value="F"
+                                                <input type="radio" name="gender" id="gender" value="F"
                                                     class="sr-only peer" required :disabled="disabled" />
                                                 <span
                                                     class="flex items-center justify-center py-2 px-4 border-2 border-gray-300 rounded-lg text-gray-700 peer-checked:bg-[#9D4F2A] peer-checked:text-white peer-checked:border-[#9D4F2A] transition duration-300">
@@ -904,7 +914,8 @@
                                     <div class="mb-1 text-black text-sm">Phone Number</div>
                                     <div class="input-container phone-group flex gap-1 flex-wrap">
                                         <template x-for="i in 10" :key="i">
-                                            <input required type="text" maxlength="1" :disabled="disabled"
+                                            <input required type="text" name="phone" id="phone"
+                                                maxlength="1" :disabled="disabled"
                                                 class="phone input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
                                         </template>
                                     </div>
@@ -915,7 +926,8 @@
                                     <div class="relative grow">
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Email</label>
-                                        <input type="email" name="email" required :disabled="disabled"
+                                        <input type="email" name="email" id="email" required
+                                            :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
 
@@ -923,7 +935,8 @@
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Date
                                             of Birth</label>
-                                        <input type="date" name="date-of-birth" required :disabled="disabled"
+                                        <input type="date" name="date-of-birth" id="date-of-birth" required
+                                            :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
                                 </div>
@@ -935,16 +948,16 @@
                                         <div class="text-black text-sm">Marital Status</div>
                                         <div class="flex space-x-4">
                                             <label class="flex items-center space-x-2 cursor-pointer">
-                                                <input type="radio" name="marital-status" value="Married"
-                                                    class="accent-amber-700" :disabled="disabled"
+                                                <input type="radio" name="marital-status" id="marital-status"
+                                                    value="0" class="accent-amber-700" :disabled="disabled"
                                                     @change="maritalStatus = 'Married'" />
                                                 <span>Married</span>
                                             </label>
 
                                             <label class="flex items-center space-x-2 cursor-pointer">
-                                                <input type="radio" name="marital-status" value="Not Married"
-                                                    class="accent-amber-700" :disabled="disabled"
-                                                    @change="maritalStatus = 'Not Married'" />
+                                                <input type="radio" name="marital-status" id="marital-status"
+                                                    value="1" class="accent-amber-700"
+                                                    :disabled="disabled" @change="maritalStatus = 'Not Married'" />
                                                 <span>Not Married</span>
                                             </label>
                                         </div>
@@ -954,7 +967,8 @@
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Anniversary
                                             Date</label>
-                                        <input type="date" name="anniversary-date" :disabled="disabled"
+                                        <input type="date" name="anniversary-date" id="anniversary-date"
+                                            :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
                                 </div>
@@ -964,27 +978,24 @@
                                     <div class="relative grow">
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Profession</label>
-                                        <select id="profession" :disabled="disabled"
+                                        <select id="profession" name="profession" :disabled="disabled"
                                             class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
                                             <option value="">Select</option>
-                                            <option value="Doctor">Doctor</option>
-                                            <option value="Engineer">Engineer</option>
-                                            <option value="Teacher">Teacher</option>
-                                            <option value="Student">Student</option>
-                                            <option value="Other">Other</option>
+                                            @foreach ($professions as $item)
+                                                <option value={{ $item->id }}>{{ $item->profession }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
 
                                     <div class="relative grow">
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Qualification</label>
-                                        <select id="qualification" :disabled="disabled"
+                                        <select id="qualification" name="qualification" :disabled="disabled"
                                             class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
                                             <option value="">Select</option>
-                                            <option value="High School">High School</option>
-                                            <option value="Bachelor's">Bachelor's</option>
-                                            <option value="Master's">Master's</option>
-                                            <option value="PhD">PhD</option>
+                                            @foreach ($qualifications as $item)
+                                                <option value={{ $item->id }}>{{ $item->qualification }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -994,7 +1005,7 @@
                                     <div class="relative grow">
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Address</label>
-                                        <textarea name="address" rows="2" required :disabled="disabled"
+                                        <textarea name="address" id="address" rows="2" required :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3 resize-none"></textarea>
                                     </div>
 
@@ -1002,7 +1013,8 @@
                                         <div class="mb-1 text-sm text-black">Pincode</div>
                                         <div class="input-container zip-group flex gap-1 flex-wrap">
                                             <template x-for="i in 6" :key="i">
-                                                <input required type="text" maxlength="1" :disabled="disabled"
+                                                <input required name="pincode" id="pincode" type="text"
+                                                    maxlength="1" :disabled="disabled"
                                                     class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
                                             </template>
 
@@ -1062,9 +1074,6 @@
                                             <span>Friends & Family</span>
                                         </label>
                                     </div>
-
-
-
                                 </div>
 
                                 <!-- Save Button -->
@@ -1216,33 +1225,33 @@
         addCustomerForm();
 
 
-        function viewCustomerDetails(customer) {
-            console.log(customer, "customer");
-            const form = document.getElementById("customer-details-form");
+        // function viewCustomerDetails(customer) {
+        //     console.log(customer, "customer");
+        //     const form = document.getElementById("customer-details-form");
 
-            const phoneInputs = form.querySelectorAll(".phone.input-box");
+        //     const phoneInputs = form.querySelectorAll(".phone.input-box");
 
-            const zipInputs = form.querySelectorAll(".zip.input-box");
-
-
-            createInputHandlers(phoneInputs, 10);
-            createInputHandlers(zipInputs, 6);
-
-            form.addEventListener("submit", (e) => {
-                e.preventDefault();
+        //     const zipInputs = form.querySelectorAll(".zip.input-box");
 
 
-                const phoneNumber = Array.from(phoneInputs).map(input => input.value).join('');
-                const pincode = Array.from(zipInputs).map(input => input.value).join('');
+        //     createInputHandlers(phoneInputs, 10);
+        //     createInputHandlers(zipInputs, 6);
 
-                console.log({
-                    phoneNumber,
-                    pincode,
-                });
-                form.reset();
-            });
+        //     form.addEventListener("submit", (e) => {
+        //         e.preventDefault();
 
-        }
+
+        //         const phoneNumber = Array.from(phoneInputs).map(input => input.value).join('');
+        //         const pincode = Array.from(zipInputs).map(input => input.value).join('');
+
+        //         console.log({
+        //             phoneNumber,
+        //             pincode,
+        //         });
+        //         form.reset();
+        //     });
+
+        // }
     </script>
 
     <script>

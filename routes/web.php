@@ -29,4 +29,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('voc', [VocController::class, 'voc'])->name('voc');
     Route::post('customer-add', [VocController::class, 'customerCreate'])->name('customercreate');
+    Route::get('/get-customer-details', [VocController::class, 'getCustomerDetails'])->name('getcustomerdetails');
+    Route::get('/update-customer-details/{id}', [VocController::class, 'customerDetailsUpdate'])->name('customersdetailsupdate');
 });
