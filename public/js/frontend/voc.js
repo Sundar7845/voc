@@ -62,8 +62,76 @@ $(document).ready(function () {
         });
     });
 });
+const createInputHandlers = (inputs, expectedLength) => {
+    inputs.forEach((input, index) => {
+        input.addEventListener("input", (e) => {
+            const val = e.target.value;
+            if (/^\d$/.test(val) && index < inputs.length - 1) {
+                inputs[index + 1].focus();
+            } else if (!/^\d$/.test(val)) {
+                e.target.value = ""; // Clear non-digit values
+            }
+        });
 
+        input.addEventListener("keydown", (e) => {
+            const key = e.key;
+
+            if (
+                !/^\d$/.test(key) &&
+                key !== "Backspace" &&
+                key !== "Delete" &&
+                key !== "ArrowLeft" &&
+                key !== "ArrowRight" &&
+                !e.metaKey
+            ) {
+                e.preventDefault();
+            }
+
+            if (key === "Backspace" || key === "Delete") {
+                e.preventDefault();
+                if (input.value !== "") {
+                    input.value = "";
+                } else if (index > 0) {
+                    inputs[index - 1].focus();
+                    inputs[index - 1].value = "";
+                }
+            }
+
+            if (key === "ArrowLeft" && index > 0) {
+                inputs[index - 1].focus();
+            }
+            if (key === "ArrowRight" && index < inputs.length - 1) {
+                inputs[index + 1].focus();
+            }
+        });
+
+        input.addEventListener("focus", (e) => {
+            e.target.select();
+        });
+
+        input.addEventListener("paste", (e) => {
+            e.preventDefault();
+            const text = e.clipboardData.getData("text").trim();
+            if (!/^\d+$/.test(text)) return;
+            const chars = [...text];
+            chars.forEach((char, i) => {
+                if (inputs[i]) {
+                    inputs[i].value = char;
+                }
+            });
+            if (inputs[chars.length - 1]) {
+                inputs[Math.min(chars.length, inputs.length) - 1].focus();
+            }
+        });
+    });
+};
 function viewCustomerDetails(customerId) {
+    const form = document.getElementById("customer-details-form");
+    const phoneInputs = form.querySelectorAll(".phone_number.input-box");
+    const zipInputs = form.querySelectorAll(".zip.input-box");
+    createInputHandlers(phoneInputs, 10);
+    createInputHandlers(zipInputs, 6);
+
     customerDetails.showModal();
     $.ajax({
         url: "/get-customer-details", // Adjust URL if needed
