@@ -74,7 +74,12 @@ function viewCustomerDetails(customerId) {
                 console.log(response.data); // Log data or display it in a modal
                 $("#customerId").val(response.data.id);
                 $("#name").val(response.data.name);
-                $("#phone").val(response.data.phone_number);
+                // ✅ Fill phone number into individual boxes
+                const phoneNumber = response.data.phone_number.split("");
+                $(".phone_number").each(function (index) {
+                    $(this).val(phoneNumber[index] || ""); // Ensure it doesn't break if fewer than 10 digits
+                });
+
                 // Check the radio based on the gender value (M or F)
                 $(
                     "input[name='gender'][value='" + response.data.gender + "']"
@@ -95,7 +100,11 @@ function viewCustomerDetails(customerId) {
                         .trigger("change");
                 }, 500);
                 $("#address").val(response.data.address);
-                $("#pincode").val(response.data.pincode);
+                // ✅ Fill phone number into individual boxes
+                const pincode = response.data.pincode.split("");
+                $(".zip").each(function (index) {
+                    $(this).val(pincode[index] || ""); // Ensure it doesn't break if fewer than 10 digits
+                });
                 $(
                     "input[name='source'][value='" +
                         response.data.know_about +

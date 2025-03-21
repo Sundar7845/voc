@@ -32,9 +32,12 @@
                     <div>
                         <a href="{{ route('logout') }}"
                             class="flex gap-1 text-black items-center border cursor-pointer border-black rounded-sm py-2 px-4 hover:text-white hover:bg-black">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-  <path d="M7.11021 2.43868H5.92517V1.28257H1.18503V12.8437H5.92517V11.6876H7.11021V12.8437C7.11021 13.4822 6.57965 13.9998 5.92517 13.9998H1.18503C0.530556 13.9998 0 13.4822 0 12.8437V1.28257C0 0.644073 0.530556 0.126465 1.18503 0.126465H5.92517C6.57965 0.126465 7.11021 0.644073 7.11021 1.28257V2.43868ZM11.6049 6.48507L9.0613 4.00354L9.89925 3.18605L13.8733 7.06313L9.89925 10.9402L9.0613 10.1227L11.6049 7.64118H4.74014V6.48507H11.6049Z" fill="black"/>
-</svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
+                                fill="none">
+                                <path
+                                    d="M7.11021 2.43868H5.92517V1.28257H1.18503V12.8437H5.92517V11.6876H7.11021V12.8437C7.11021 13.4822 6.57965 13.9998 5.92517 13.9998H1.18503C0.530556 13.9998 0 13.4822 0 12.8437V1.28257C0 0.644073 0.530556 0.126465 1.18503 0.126465H5.92517C6.57965 0.126465 7.11021 0.644073 7.11021 1.28257V2.43868ZM11.6049 6.48507L9.0613 4.00354L9.89925 3.18605L13.8733 7.06313L9.89925 10.9402L9.0613 10.1227L11.6049 7.64118H4.74014V6.48507H11.6049Z"
+                                    fill="black" />
+                            </svg>
 
                             Logout
                         </a>
@@ -172,7 +175,7 @@
                             <div class="text-sm py-2 px-6" style="color: red;">
                                 <span id="timer-{{ $item->id }}"
                                     data-enter-time="{{ $item->customer_enter_time }}">Loading...</span>
-                                    <input type="hidden" name="spent_time" id="spent_time" value="">
+                                <input type="hidden" name="spent_time" id="spent_time" value="">
                             </div>
                         </div>
                     @endforeach
@@ -219,7 +222,7 @@
                                     <div class="flex gap-4">
 
 
-                                 
+
 
 
 
@@ -275,58 +278,55 @@
                                     <div class="block mb-4">1.⁠ ⁠How would you rate the cleanliness and maintenance
                                         of our showroom?</div>
                                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                        <input type="radio" id="inStoreFeedback-option1" name="inStoreFeedback" value="Excellent" class="hidden">
-                                        <label
-                                        for="inStoreFeedback-option1"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                          >
+                                        <input type="radio" id="inStoreFeedback-option1" name="inStoreFeedback"
+                                            value="Excellent" class="hidden">
+                                        <label for="inStoreFeedback-option1"
+                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
 
-                                       <div>
-                                       <input type="radio" id="inStoreFeedback-option2" name="inStoreFeedback" value="Good" class="hidden">
+                                        <div>
+                                            <input type="radio" id="inStoreFeedback-option2" name="inStoreFeedback"
+                                                value="Good" class="hidden">
 
-                                            <label
-                                            for="inStoreFeedback-option2"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            >
+                                            <label for="inStoreFeedback-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
                                                     <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
                                                 <div>Good</div>
                                             </label>
-                                       </div>
-
-                                        <div>
-                                        <input type="radio" id="inStoreFeedback-option3" name="inStoreFeedback" value="Average" class="hidden">
-
-                                                <label
-                                                for="inStoreFeedback-option3"
-                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                                  >
-                                                    <div>
-                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                                    </div>
-                                                    <div>Average</div>
-                                                </label>
                                         </div>
 
-                                       <div>
-                                       <input type="radio" id="inStoreFeedback-option4" name="inStoreFeedback" value="Poor" class="hidden">
+                                        <div>
+                                            <input type="radio" id="inStoreFeedback-option3" name="inStoreFeedback"
+                                                value="Average" class="hidden">
 
-                                        <label
-                                        for="inStoreFeedback-option4"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                           >
-                                            <div>
-                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
-                                            </div>
-                                            <div>Poor</div>
-                                        </label>
-                                       </div>
+                                            <label for="inStoreFeedback-option3"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/average.svg') }}
+                                                        alt="average" />
+                                                </div>
+                                                <div>Average</div>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input type="radio" id="inStoreFeedback-option4" name="inStoreFeedback"
+                                                value="Poor" class="hidden">
+
+                                            <label for="inStoreFeedback-option4"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                                </div>
+                                                <div>Poor</div>
+                                            </label>
+                                        </div>
                                     </div>
 
 
@@ -341,127 +341,121 @@
                                     <div class="block mb-4">1.⁠ ⁠How unique and stylish do you find the Jewellery
                                         design?</div>
 
-                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                        <input type="radio" id=" jewelleryDesignQuestion1-option1" name=" jewelleryDesignQuestion1" value="Excellent" class="hidden">
-                                        <label
-                                        for=" jewelleryDesignQuestion1-option1"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                          >
+                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <input type="radio" id=" jewelleryDesignQuestion1-option1"
+                                            name=" jewelleryDesignQuestion1" value="Excellent" class="hidden">
+                                        <label for=" jewelleryDesignQuestion1-option1"
+                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
 
-                                       <div>
-                                       <input type="radio" id=" jewelleryDesignQuestion1-option2" name=" jewelleryDesignQuestion1" value="Good" class="hidden">
+                                        <div>
+                                            <input type="radio" id=" jewelleryDesignQuestion1-option2"
+                                                name=" jewelleryDesignQuestion1" value="Good" class="hidden">
 
-                                            <label
-                                            for=" jewelleryDesignQuestion1-option2"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            >
+                                            <label for=" jewelleryDesignQuestion1-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
                                                     <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
                                                 <div>Good</div>
                                             </label>
-                                       </div>
-
-                                        <div>
-                                        <input type="radio" id=" jewelleryDesignQuestion1-option3" name=" jewelleryDesignQuestion1" value="Average" class="hidden">
-
-                                                <label
-                                                for=" jewelleryDesignQuestion1-option3"
-                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                                  >
-                                                    <div>
-                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                                    </div>
-                                                    <div>Average</div>
-                                                </label>
                                         </div>
 
-                                       <div>
-                                       <input type="radio" id=" jewelleryDesignQuestion1-option4" name=" jewelleryDesignQuestion1" value="Poor" class="hidden">
+                                        <div>
+                                            <input type="radio" id=" jewelleryDesignQuestion1-option3"
+                                                name=" jewelleryDesignQuestion1" value="Average" class="hidden">
 
-                                        <label
-                                        for=" jewelleryDesignQuestion1-option4"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                           >
-                                            <div>
-                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
-                                            </div>
-                                            <div>Poor</div>
-                                        </label>
-                                       </div>
+                                            <label for=" jewelleryDesignQuestion1-option3"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/average.svg') }}
+                                                        alt="average" />
+                                                </div>
+                                                <div>Average</div>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input type="radio" id=" jewelleryDesignQuestion1-option4"
+                                                name=" jewelleryDesignQuestion1" value="Poor" class="hidden">
+
+                                            <label for=" jewelleryDesignQuestion1-option4"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                                </div>
+                                                <div>Poor</div>
+                                            </label>
+                                        </div>
                                     </div>
-                                  
+
 
 
                                     <div class="block mb-4">2.⁠ ⁠How would you rate our jewelry's design and pricing
                                         compared to other brands</div>
-                                  
-                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                        <input type="radio" id=" jewelleryDesignQuestion2-option1" name=" jewelleryDesignQuestion2" value="Excellent" class="hidden">
-                                        <label
-                                        for=" jewelleryDesignQuestion2-option1"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                          >
+
+                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <input type="radio" id=" jewelleryDesignQuestion2-option1"
+                                            name=" jewelleryDesignQuestion2" value="Excellent" class="hidden">
+                                        <label for=" jewelleryDesignQuestion2-option1"
+                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
 
-                                       <div>
-                                       <input type="radio" id=" jewelleryDesignQuestion2-option2" name=" jewelleryDesignQuestion2" value="Good" class="hidden">
+                                        <div>
+                                            <input type="radio" id=" jewelleryDesignQuestion2-option2"
+                                                name=" jewelleryDesignQuestion2" value="Good" class="hidden">
 
-                                            <label
-                                            for=" jewelleryDesignQuestion2-option2"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            >
+                                            <label for=" jewelleryDesignQuestion2-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
                                                     <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
                                                 <div>Good</div>
                                             </label>
-                                       </div>
-
-                                        <div>
-                                        <input type="radio" id=" jewelleryDesignQuestion2-option3" name=" jewelleryDesignQuestion2" value="Average" class="hidden">
-
-                                                <label
-                                                for=" jewelleryDesignQuestion2-option3"
-                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                                  >
-                                                    <div>
-                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                                    </div>
-                                                    <div>Average</div>
-                                                </label>
                                         </div>
 
-                                       <div>
-                                       <input type="radio" id=" jewelleryDesignQuestion2-option4" name=" jewelleryDesignQuestion2" value="Poor" class="hidden">
+                                        <div>
+                                            <input type="radio" id=" jewelleryDesignQuestion2-option3"
+                                                name=" jewelleryDesignQuestion2" value="Average" class="hidden">
 
-                                        <label
-                                        for=" jewelleryDesignQuestion2-option4"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                           >
-                                            <div>
-                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
-                                            </div>
-                                            <div>Poor</div>
-                                        </label>
-                                       </div>
+                                            <label for=" jewelleryDesignQuestion2-option3"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/average.svg') }}
+                                                        alt="average" />
+                                                </div>
+                                                <div>Average</div>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input type="radio" id=" jewelleryDesignQuestion2-option4"
+                                                name=" jewelleryDesignQuestion2" value="Poor" class="hidden">
+
+                                            <label for=" jewelleryDesignQuestion2-option4"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                                </div>
+                                                <div>Poor</div>
+                                            </label>
+                                        </div>
                                     </div>
 
 
 
                                     <div class="mt-8 flex justify-center">
-                                    <button @click="validateStep2()" class="main-btn ">
-                                        Continue
-                                    </button>
+                                        <button @click="validateStep2()" class="main-btn ">
+                                            Continue
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -486,127 +480,122 @@
                                         today?</div>
                                     <div class="grid gap-6 grid-cols-2 md:grid-cols-4">
 
-                                    
-                                    <div>
-                                       <input type="radio" x-model="formData.nonPurchasedFeedback.reason" id="non-purchase-reason-question1" name=" non-purchase-reason" value="Poor" class="hidden">
 
-                                       <label
-                                       for="non-purchase-reason-question1"
-                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                           >
-                                            <div>
-                                                <img class="h-8"
-                                                    src={{ asset('/images/icons/non-purchase-reason/icon1.svg') }}
-                                                    alt="Expected design not available" />
-                                            </div>
-                                            <div>Expected design not available</div>
-                                        </label>
-                                       </div>
+                                        <div>
+                                            <input type="radio" x-model="formData.nonPurchasedFeedback.reason"
+                                                id="non-purchase-reason-question1" name=" non-purchase-reason"
+                                                value="Poor" class="hidden">
 
-                                       <div>
-                                       <input type="radio" x-model="formData.nonPurchasedFeedback.reason" id="non-purchase-reason-question2" name=" non-purchase-reason" value="Poor" class="hidden">
+                                            <label for="non-purchase-reason-question1"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img class="h-8"
+                                                        src={{ asset('/images/icons/non-purchase-reason/icon1.svg') }}
+                                                        alt="Expected design not available" />
+                                                </div>
+                                                <div>Expected design not available</div>
+                                            </label>
+                                        </div>
 
-                                       <label
-                                       for="non-purchase-reason-question2"
+                                        <div>
+                                            <input type="radio" x-model="formData.nonPurchasedFeedback.reason"
+                                                id="non-purchase-reason-question2" name=" non-purchase-reason"
+                                                value="Poor" class="hidden">
 
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                           >
-                                            <div>
-                                                <img class="h-8"
-                                                    src={{ asset('/images/icons/non-purchase-reason/icon2.svg') }}
-                                                    alt="Less Collection" />
-                                            </div>
-                                            <div>Less Collection</div>
-                                        </label>
-                                       </div>
-
-
-                                       <div>
-                                       <input type="radio" x-model="formData.nonPurchasedFeedback.reason" id="non-purchase-reason-question3" name=" non-purchase-reason" value="Poor" class="hidden">
-
-                                       <label
-                                       for="non-purchase-reason-question3"
-
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            >
-                                            <div>
-                                                <img class="h-8"
-                                                    src={{ asset('/images/icons/non-purchase-reason/icon3.svg') }}
-                                                    alt="Service was Bad" />
-                                            </div>
-                                            <div>Service was Bad</div>
-                                        </label>
-                                       </div>
+                                            <label for="non-purchase-reason-question2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img class="h-8"
+                                                        src={{ asset('/images/icons/non-purchase-reason/icon2.svg') }}
+                                                        alt="Less Collection" />
+                                                </div>
+                                                <div>Less Collection</div>
+                                            </label>
+                                        </div>
 
 
-                                       <div>
-                                       <input type="radio" x-model="formData.nonPurchasedFeedback.reason" id="non-purchase-reason-question4" name=" non-purchase-reason" value="Poor" class="hidden">
+                                        <div>
+                                            <input type="radio" x-model="formData.nonPurchasedFeedback.reason"
+                                                id="non-purchase-reason-question3" name=" non-purchase-reason"
+                                                value="Poor" class="hidden">
 
-                                       <label
-                                       for="non-purchase-reason-question4"
+                                            <label for="non-purchase-reason-question3"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img class="h-8"
+                                                        src={{ asset('/images/icons/non-purchase-reason/icon3.svg') }}
+                                                        alt="Service was Bad" />
+                                                </div>
+                                                <div>Service was Bad</div>
+                                            </label>
+                                        </div>
 
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                           >
-                                            <div>
-                                                <img class="h-8"
-                                                    src={{ asset('/images/icons/non-purchase-reason/icon4.svg') }}
-                                                    alt="Size not available" />
-                                            </div>
-                                            <div>Size not available</div>
-                                        </label>
-                                       </div>
+
+                                        <div>
+                                            <input type="radio" x-model="formData.nonPurchasedFeedback.reason"
+                                                id="non-purchase-reason-question4" name=" non-purchase-reason"
+                                                value="Poor" class="hidden">
+
+                                            <label for="non-purchase-reason-question4"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img class="h-8"
+                                                        src={{ asset('/images/icons/non-purchase-reason/icon4.svg') }}
+                                                        alt="Size not available" />
+                                                </div>
+                                                <div>Size not available</div>
+                                            </label>
+                                        </div>
 
 
 
 
-                                       <div>
-                                       <input type="radio" x-model="formData.nonPurchasedFeedback.reason" id="non-purchase-reason-question5" name=" non-purchase-reason" value="Poor" class="hidden">
+                                        <div>
+                                            <input type="radio" x-model="formData.nonPurchasedFeedback.reason"
+                                                id="non-purchase-reason-question5" name=" non-purchase-reason"
+                                                value="Poor" class="hidden">
 
-                                       <label
-                                       for="non-purchase-reason-question5"
-
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            >
-                                            <div>
-                                                <img class="h-8"
-                                                    src={{ asset('/images/icons/non-purchase-reason/icon5.svg') }}
-                                                    alt="Price is too high" />
-                                            </div>
-                                            <div>Price is too high</div>
-                                        </label>
-                                       </div>
-
+                                            <label for="non-purchase-reason-question5"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img class="h-8"
+                                                        src={{ asset('/images/icons/non-purchase-reason/icon5.svg') }}
+                                                        alt="Price is too high" />
+                                                </div>
+                                                <div>Price is too high</div>
+                                            </label>
+                                        </div>
 
 
-                                       
 
-                                       
 
-                                      
-                                       <div>
-                                       <input type="radio" x-model="formData.nonPurchasedFeedback.reason" id="non-purchase-reason-question6" name=" non-purchase-reason" value="Poor" class="hidden">
 
-                                       <label
-                                       for="non-purchase-reason-question6"
 
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center flex items-center justify-center content-center"
-                                        >
-                                            <div>Others</div>
-                                        </label>
-                                       </div>
-                                        
 
-                                        
 
-                                       
+                                        <div>
+                                            <input type="radio" x-model="formData.nonPurchasedFeedback.reason"
+                                                id="non-purchase-reason-question6" name=" non-purchase-reason"
+                                                value="Poor" class="hidden">
+
+                                            <label for="non-purchase-reason-question6"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center flex items-center justify-center content-center">
+                                                <div>Others</div>
+                                            </label>
+                                        </div>
+
+
+
+
+
                                     </div>
                                     <p x-show="errors.reason" class="text-red-500 text-sm mt-2 mb-4"
                                         x-text="errors.reason"></p>
 
                                     <div class="flex justify-center !px-10">
-                                    <button @click="validateStep2()" class="mt-8 main-btn">
-                                        Submit
-                                    </button>
+                                        <button @click="validateStep2()" class="mt-8 main-btn">
+                                            Submit
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -630,243 +619,231 @@
                                         provided by our showroom staff?
                                     </div>
                                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                        <input type="radio" id=" step3Question1-option1" name=" step3Question1" value="Excellent" class="hidden">
-                                        <label
-                                        for=" step3Question1-option1"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                          >
+                                        <input type="radio" id=" step3Question1-option1" name=" step3Question1"
+                                            value="Excellent" class="hidden">
+                                        <label for=" step3Question1-option1"
+                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
 
-                                       <div>
-                                       <input type="radio" id=" step3Question1-option2" name=" step3Question1" value="Good" class="hidden">
+                                        <div>
+                                            <input type="radio" id=" step3Question1-option2" name=" step3Question1"
+                                                value="Good" class="hidden">
 
-                                            <label
-                                            for=" step3Question1-option2"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            >
+                                            <label for=" step3Question1-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
                                                     <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
                                                 <div>Good</div>
                                             </label>
-                                       </div>
-
-                                        <div>
-                                        <input type="radio" id=" step3Question1-option3" name=" step3Question1" value="Average" class="hidden">
-
-                                                <label
-                                                for=" step3Question1-option3"
-                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                                  >
-                                                    <div>
-                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                                    </div>
-                                                    <div>Average</div>
-                                                </label>
                                         </div>
 
-                                       <div>
-                                       <input type="radio" id=" step3Question1-option4" name=" step3Question1" value="Poor" class="hidden">
+                                        <div>
+                                            <input type="radio" id=" step3Question1-option3" name=" step3Question1"
+                                                value="Average" class="hidden">
 
-                                        <label
-                                        for=" step3Question1-option4"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                           >
-                                            <div>
-                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
-                                            </div>
-                                            <div>Poor</div>
-                                        </label>
-                                       </div>
+                                            <label for=" step3Question1-option3"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/average.svg') }}
+                                                        alt="average" />
+                                                </div>
+                                                <div>Average</div>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input type="radio" id=" step3Question1-option4" name=" step3Question1"
+                                                value="Poor" class="hidden">
+
+                                            <label for=" step3Question1-option4"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                                </div>
+                                                <div>Poor</div>
+                                            </label>
+                                        </div>
                                     </div>
-                             
+
 
 
                                     <div class="block mb-4">2.⁠ ⁠How would you rate the friendliness and courtesy of
                                         our showroom staff?</div>
 
-                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                        <input type="radio" id=" step3Question2-option1" name=" step3Question2" value="Excellent" class="hidden">
-                                        <label
-                                        for=" step3Question2-option1"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                          >
+                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <input type="radio" id=" step3Question2-option1" name=" step3Question2"
+                                            value="Excellent" class="hidden">
+                                        <label for=" step3Question2-option1"
+                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
 
-                                       <div>
-                                       <input type="radio" id=" step3Question2-option2" name=" step3Question2" value="Good" class="hidden">
+                                        <div>
+                                            <input type="radio" id=" step3Question2-option2" name=" step3Question2"
+                                                value="Good" class="hidden">
 
-                                            <label
-                                            for=" step3Question2-option2"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            >
+                                            <label for=" step3Question2-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
                                                     <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
                                                 <div>Good</div>
                                             </label>
-                                       </div>
-
-                                        <div>
-                                        <input type="radio" id=" step3Question2-option3" name=" step3Question2" value="Average" class="hidden">
-
-                                                <label
-                                                for=" step3Question2-option3"
-                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                                  >
-                                                    <div>
-                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                                    </div>
-                                                    <div>Average</div>
-                                                </label>
                                         </div>
 
-                                       <div>
-                                       <input type="radio" id=" step3Question2-option4" name=" step3Question2" value="Poor" class="hidden">
+                                        <div>
+                                            <input type="radio" id=" step3Question2-option3" name=" step3Question2"
+                                                value="Average" class="hidden">
 
-                                        <label
-                                        for=" step3Question2-option4"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                           >
-                                            <div>
-                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
-                                            </div>
-                                            <div>Poor</div>
-                                        </label>
-                                       </div>
+                                            <label for=" step3Question2-option3"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/average.svg') }}
+                                                        alt="average" />
+                                                </div>
+                                                <div>Average</div>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input type="radio" id=" step3Question2-option4" name=" step3Question2"
+                                                value="Poor" class="hidden">
+
+                                            <label for=" step3Question2-option4"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                                </div>
+                                                <div>Poor</div>
+                                            </label>
+                                        </div>
                                     </div>
-                           
+
 
                                     <!-- Question 3 -->
                                     <div class="block mb-4">3.⁠ ⁠How knowledgeable was our staff in explaining
                                         products and services?</div>
-                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                        <input type="radio" id=" step3Question3-option1" name=" step3Question3" value="Excellent" class="hidden">
-                                        <label
-                                        for=" step3Question3-option1"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                          >
+                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <input type="radio" id=" step3Question3-option1" name=" step3Question3"
+                                            value="Excellent" class="hidden">
+                                        <label for=" step3Question3-option1"
+                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
 
-                                       <div>
-                                       <input type="radio" id=" step3Question3-option2" name=" step3Question3" value="Good" class="hidden">
+                                        <div>
+                                            <input type="radio" id=" step3Question3-option2" name=" step3Question3"
+                                                value="Good" class="hidden">
 
-                                            <label
-                                            for=" step3Question3-option2"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            >
+                                            <label for=" step3Question3-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
                                                     <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
                                                 <div>Good</div>
                                             </label>
-                                       </div>
-
-                                        <div>
-                                        <input type="radio" id=" step3Question3-option3" name=" step3Question3" value="Average" class="hidden">
-
-                                                <label
-                                                for=" step3Question3-option3"
-                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                                  >
-                                                    <div>
-                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                                    </div>
-                                                    <div>Average</div>
-                                                </label>
                                         </div>
 
-                                       <div>
-                                       <input type="radio" id=" step3Question3-option4" name=" step3Question3" value="Poor" class="hidden">
+                                        <div>
+                                            <input type="radio" id=" step3Question3-option3" name=" step3Question3"
+                                                value="Average" class="hidden">
 
-                                        <label
-                                        for=" step3Question3-option4"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                           >
-                                            <div>
-                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
-                                            </div>
-                                            <div>Poor</div>
-                                        </label>
-                                       </div>
+                                            <label for=" step3Question3-option3"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/average.svg') }}
+                                                        alt="average" />
+                                                </div>
+                                                <div>Average</div>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input type="radio" id=" step3Question3-option4" name=" step3Question3"
+                                                value="Poor" class="hidden">
+
+                                            <label for=" step3Question3-option4"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                                </div>
+                                                <div>Poor</div>
+                                            </label>
+                                        </div>
                                     </div>
 
                                     <!-- Question 4 -->
                                     <div class="block mb-4">4.How would you rate the attentiveness of our staff in
                                         assisting you?</div>
-                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                        <input type="radio" id=" step3Question4-option1" name=" step3Question4" value="Excellent" class="hidden">
-                                        <label
-                                        for=" step3Question4-option1"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                          >
+                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <input type="radio" id=" step3Question4-option1" name=" step3Question4"
+                                            value="Excellent" class="hidden">
+                                        <label for=" step3Question4-option1"
+                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
 
-                                       <div>
-                                       <input type="radio" id=" step3Question4-option2" name=" step3Question4" value="Good" class="hidden">
+                                        <div>
+                                            <input type="radio" id=" step3Question4-option2" name=" step3Question4"
+                                                value="Good" class="hidden">
 
-                                            <label
-                                            for=" step3Question4-option2"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            >
+                                            <label for=" step3Question4-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
                                                     <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
                                                 <div>Good</div>
                                             </label>
-                                       </div>
-
-                                        <div>
-                                        <input type="radio" id=" step3Question4-option3" name=" step3Question4" value="Average" class="hidden">
-
-                                                <label
-                                                for=" step3Question4-option3"
-                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                                  >
-                                                    <div>
-                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                                    </div>
-                                                    <div>Average</div>
-                                                </label>
                                         </div>
 
-                                       <div>
-                                       <input type="radio" id=" step3Question4-option4" name=" step3Question4" value="Poor" class="hidden">
+                                        <div>
+                                            <input type="radio" id=" step3Question4-option3" name=" step3Question4"
+                                                value="Average" class="hidden">
 
-                                        <label
-                                        for=" step3Question4-option4"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                           >
-                                            <div>
-                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
-                                            </div>
-                                            <div>Poor</div>
-                                        </label>
-                                       </div>
+                                            <label for=" step3Question4-option3"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/average.svg') }}
+                                                        alt="average" />
+                                                </div>
+                                                <div>Average</div>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input type="radio" id=" step3Question4-option4" name=" step3Question4"
+                                                value="Poor" class="hidden">
+
+                                            <label for=" step3Question4-option4"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                <div>
+                                                    <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                                </div>
+                                                <div>Poor</div>
+                                            </label>
+                                        </div>
                                     </div>
 
 
                                     <!-- Continue Button -->
                                     <div class="flex justify-center">
-                                    <button @click="validateStep3()" class="mt-8 main-btn">
-                                        Continue
-                                    </button>
+                                        <button @click="validateStep3()" class="mt-8 main-btn">
+                                            Continue
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -920,7 +897,7 @@
                                     <div class="text-md font-medium text-[#9D4F2A]">
                                         Please enter your below details
                                     </div>
-                                    
+
                                 </div>
 
                                 <!-- Name & Gender -->
@@ -931,7 +908,6 @@
                                             Name
                                         </label>
                                         <input name="name" id="name" type="text" required
-                                          
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black placeholder:!text-black rounded-lg block w-full p-3" />
                                     </div>
 
@@ -941,7 +917,7 @@
                                         <div class="flex gap-1">
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="gender" id="gender" value="M"
-                                                    class="sr-only peer" required  />
+                                                    class="sr-only peer" required />
                                                 <span
                                                     class="flex items-center justify-center py-2 px-4 border-2 border-gray-300 rounded-lg text-gray-700 peer-checked:bg-[#9D4F2A] peer-checked:text-white peer-checked:border-[#9D4F2A] transition duration-300">
                                                     M
@@ -950,7 +926,7 @@
 
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="gender" id="gender" value="F"
-                                                    class="sr-only peer" required  />
+                                                    class="sr-only peer" required />
                                                 <span
                                                     class="flex items-center justify-center py-2 px-4 border-2 border-gray-300 rounded-lg text-gray-700 peer-checked:bg-[#9D4F2A] peer-checked:text-white peer-checked:border-[#9D4F2A] transition duration-300">
                                                     F
@@ -964,13 +940,30 @@
                                 <div class="mb-4">
                                     <div class="mb-1 text-black text-sm">Phone Number</div>
                                     <div class="input-container phone-group flex gap-1 flex-wrap">
-                                        <template x-for="i in 10" :key="i">
-                                            <input required type="text" name="phone" id="phone"
-                                                maxlength="1" 
-                                                class="phone input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
-                                        </template>
+                                        <!-- Generate 10 input fields with the class "phone" -->
+                                        <input type="text" maxlength="1"
+                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                        <input type="text" maxlength="1"
+                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                        <input type="text" maxlength="1"
+                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                        <input type="text" maxlength="1"
+                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                        <input type="text" maxlength="1"
+                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                        <input type="text" maxlength="1"
+                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                        <input type="text" maxlength="1"
+                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                        <input type="text" maxlength="1"
+                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                        <input type="text" maxlength="1"
+                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                        <input type="text" maxlength="1"
+                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
                                     </div>
                                 </div>
+
 
                                 <!-- Email and DOB -->
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-4">
@@ -978,7 +971,6 @@
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Email</label>
                                         <input type="email" name="email" id="email" required
-                                           
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
 
@@ -987,7 +979,6 @@
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Date
                                             of Birth</label>
                                         <input type="date" name="date-of-birth" id="date-of-birth" required
-                                            
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
                                 </div>
@@ -1000,7 +991,7 @@
                                         <div class="flex space-x-4">
                                             <label class="flex items-center space-x-2 cursor-pointer">
                                                 <input type="radio" name="marital-status" id="marital-status"
-                                                    value="0" class="accent-amber-700 sr-only" 
+                                                    value="0" class="accent-amber-700 sr-only"
                                                     @change="maritalStatus = 'Married'" />
                                                 <span>Married</span>
                                             </label>
@@ -1008,7 +999,7 @@
                                             <label class="flex items-center space-x-2 cursor-pointer">
                                                 <input type="radio" name="marital-status" id="marital-status"
                                                     value="1" class="accent-amber-700 sr-only"
-                                                     @change="maritalStatus = 'Not Married'" />
+                                                    @change="maritalStatus = 'Not Married'" />
                                                 <span>Not Married</span>
                                             </label>
                                         </div>
@@ -1028,7 +1019,7 @@
                                     <div class="relative grow">
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Profession</label>
-                                        <select id="profession" name="profession" 
+                                        <select id="profession" name="profession"
                                             class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
                                             <option value="">Select</option>
                                             @foreach ($professions as $item)
@@ -1055,21 +1046,29 @@
                                     <div class="relative grow">
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Address</label>
-                                        <textarea name="address" id="address" rows="2" required 
+                                        <textarea name="address" id="address" rows="2" required
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3 resize-none"></textarea>
                                     </div>
 
                                     <div>
                                         <div class="mb-1 text-sm text-black">Pincode</div>
                                         <div class="input-container zip-group flex gap-1 flex-wrap">
-                                            <template x-for="i in 6" :key="i">
-                                                <input required name="pincode" id="pincode" type="text"
-                                                    maxlength="1" 
-                                                    class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
-                                            </template>
-
+                                            <!-- Pincode inputs with class 'zip' for identification -->
+                                            <input required name="pincode" type="text" maxlength="1"
+                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            <input required name="pincode" type="text" maxlength="1"
+                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            <input required name="pincode" type="text" maxlength="1"
+                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            <input required name="pincode" type="text" maxlength="1"
+                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            <input required name="pincode" type="text" maxlength="1"
+                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            <input required name="pincode" type="text" maxlength="1"
+                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
                                         </div>
                                     </div>
+
 
                                 </div>
 
@@ -1087,7 +1086,6 @@
 
                                     <div>
                                         <input id="source2" name="source" value="Newspaper" type="radio"
-                                       
                                             class="hidden" />
                                         <label for="source2" class="text-center">
                                             <img src={{ asset('/images/icons/newspaper.svg') }} alt="newspaper"
