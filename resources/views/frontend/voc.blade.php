@@ -32,11 +32,9 @@
                     <div>
                         <a href="{{ route('logout') }}"
                             class="flex gap-1 text-black items-center border cursor-pointer border-black rounded-sm py-2 px-4 hover:text-white hover:bg-black">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+  <path d="M7.11021 2.43868H5.92517V1.28257H1.18503V12.8437H5.92517V11.6876H7.11021V12.8437C7.11021 13.4822 6.57965 13.9998 5.92517 13.9998H1.18503C0.530556 13.9998 0 13.4822 0 12.8437V1.28257C0 0.644073 0.530556 0.126465 1.18503 0.126465H5.92517C6.57965 0.126465 7.11021 0.644073 7.11021 1.28257V2.43868ZM11.6049 6.48507L9.0613 4.00354L9.89925 3.18605L13.8733 7.06313L9.89925 10.9402L9.0613 10.1227L11.6049 7.64118H4.74014V6.48507H11.6049Z" fill="black"/>
+</svg>
 
                             Logout
                         </a>
@@ -182,7 +180,7 @@
 
 
                 <dialog id="getFeedback" class="modal">
-                    <div class="modal-box p-0 max-w-3xl min-h-60 bg-[#FCFAF9]">
+                    <div class="modal-box p-0 max-w-4xl min-h-60 bg-[#FCFAF9]">
                         <div x-show="step === 1" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
@@ -216,23 +214,29 @@
                                     </div>
 
                                     <!-- Customer Type Selection -->
-                                    <label class="block mb-4 text-md font-semibold text-[#9D4F2A]">Customer
-                                        Type</label>
+                                    <div class="block mb-4 text-md font-semibold text-[#9D4F2A]">Customer
+                                        Type</div>
                                     <div class="flex gap-4">
+
+
+                                 
+
+
+
                                         <label
                                             @click="formData.customerType = 'Purchased Customer'; errors.customerType = ''; customerType = 'purchased'"
-                                            class="cursor-pointer p-3 border rounded-lg w-1/2 text-center"
+                                            class="cursor-pointer p-3 border border-[#C7C7C7] rounded-lg w-1/2 text-center"
                                             :class="{
-                                                'bg-green-500 text-white': formData
+                                                'border-[#9D4F2A] ring ring-[#9D4F2A]': formData
                                                     .customerType === 'Purchased Customer'
                                             }">
                                             Purchased Customer
                                         </label>
                                         <label
                                             @click="formData.customerType = 'Non-Purchased Customer'; errors.customerType = ''; customerType = 'non-purchased'"
-                                            class="cursor-pointer p-3 border rounded-lg w-1/2 text-center"
+                                            class="cursor-pointer p-3 border border-[#C7C7C7] rounded-lg w-1/2 text-center"
                                             :class="{
-                                                'bg-red-500 text-white': formData
+                                                'border-[#9D4F2A] ring ring-[#9D4F2A]': formData
                                                     .customerType === 'Non-Purchased Customer'
                                             }">
                                             Non-Purchased Customer
@@ -254,7 +258,7 @@
                                 <div class="pe-4">
                                     <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
-                                <div class="text-xl text-white font-medium uppercase">
+                                <div class="text-lg text-white font-medium uppercase">
                                     Please share your thoughts about your
                                     <b>IN-Store Experience</b>
                                 </div>
@@ -263,188 +267,202 @@
                             <div class="px-6 py-10 text-[#4E5356]">
                                 <!-- Step 2A: Purchased Customer Feedback -->
                                 <div>
-                                    <div class="mb-4 text-md text-[#9D4F2A]">
+                                    <div class="mb-4 text-lg text-[#9D4F2A]">
                                         Please share your thoughts about your
                                         <b>IN-Store Experience</b>
                                     </div>
                                     <!-- Satisfaction -->
-                                    <label class="block mb-4">1.⁠ ⁠How would you rate the cleanliness and maintenance
-                                        of our showroom?</label>
+                                    <div class="block mb-4">1.⁠ ⁠How would you rate the cleanliness and maintenance
+                                        of our showroom?</div>
                                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <input type="radio" id="inStoreFeedback-option1" name="inStoreFeedback" value="Excellent" class="hidden">
                                         <label
-                                            @click="formData.purchasedFeedback.cleanlinessRating = 'Excellent'; errors.cleanlinessRating = ''"
+                                        for="inStoreFeedback-option1"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .cleanlinessRating === 'Excellent'
-                                            }">
+                                          >
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
+
+                                       <div>
+                                       <input type="radio" id="inStoreFeedback-option2" name="inStoreFeedback" value="Good" class="hidden">
+
+                                            <label
+                                            for="inStoreFeedback-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                            >
+                                                <div>
+                                                    <img src={{ asset('/images/icons/good.svg') }} alt="good" />
+                                                </div>
+                                                <div>Good</div>
+                                            </label>
+                                       </div>
+
+                                        <div>
+                                        <input type="radio" id="inStoreFeedback-option3" name="inStoreFeedback" value="Average" class="hidden">
+
+                                                <label
+                                                for="inStoreFeedback-option3"
+                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                                  >
+                                                    <div>
+                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
+                                                    </div>
+                                                    <div>Average</div>
+                                                </label>
+                                        </div>
+
+                                       <div>
+                                       <input type="radio" id="inStoreFeedback-option4" name="inStoreFeedback" value="Poor" class="hidden">
+
                                         <label
-                                            @click="formData.purchasedFeedback.cleanlinessRating = 'Good'; errors.cleanlinessRating = ''"
+                                        for="inStoreFeedback-option4"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .cleanlinessRating === 'Good'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
-                                            </div>
-                                            <div>Good</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.cleanlinessRating = 'Average'; errors.cleanlinessRating = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .cleanlinessRating === 'Average'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                            </div>
-                                            <div>Average</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.cleanlinessRating = 'Poor'; errors.cleanlinessRating = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .cleanlinessRating === 'Poor'
-                                            }">
+                                           >
                                             <div>
                                                 <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
+                                       </div>
                                     </div>
-                                    <p x-show="errors.cleanlinessRating" class="text-red-500 text-sm mt-2 mb-4"
-                                        x-text="errors.cleanlinessRating"></p>
+
 
                                     <div class="my-5">
                                         <hr class="border-gray-300" />
                                     </div>
 
-                                    <div class="mb-4 text-md text-[#9D4F2A]">
+                                    <div class="mb-4 text-lg text-[#9D4F2A]">
                                         About our <b>Jewellery Designs</b>
                                     </div>
 
-                                    <label class="block mb-4">1.⁠ ⁠How unique and stylish do you find the Jewellery
-                                        design?</label>
+                                    <div class="block mb-4">1.⁠ ⁠How unique and stylish do you find the Jewellery
+                                        design?</div>
 
-                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <input type="radio" id=" jewelleryDesignQuestion1-option1" name=" jewelleryDesignQuestion1" value="Excellent" class="hidden">
                                         <label
-                                            @click="formData.purchasedFeedback.designUniqueness = 'Excellent'; errors.designUniqueness = ''"
+                                        for=" jewelleryDesignQuestion1-option1"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .designUniqueness === 'Excellent'
-                                            }">
+                                          >
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
+
+                                       <div>
+                                       <input type="radio" id=" jewelleryDesignQuestion1-option2" name=" jewelleryDesignQuestion1" value="Good" class="hidden">
+
+                                            <label
+                                            for=" jewelleryDesignQuestion1-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                            >
+                                                <div>
+                                                    <img src={{ asset('/images/icons/good.svg') }} alt="good" />
+                                                </div>
+                                                <div>Good</div>
+                                            </label>
+                                       </div>
+
+                                        <div>
+                                        <input type="radio" id=" jewelleryDesignQuestion1-option3" name=" jewelleryDesignQuestion1" value="Average" class="hidden">
+
+                                                <label
+                                                for=" jewelleryDesignQuestion1-option3"
+                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                                  >
+                                                    <div>
+                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
+                                                    </div>
+                                                    <div>Average</div>
+                                                </label>
+                                        </div>
+
+                                       <div>
+                                       <input type="radio" id=" jewelleryDesignQuestion1-option4" name=" jewelleryDesignQuestion1" value="Poor" class="hidden">
+
                                         <label
-                                            @click="formData.purchasedFeedback.designUniqueness = 'Good'; errors.designUniqueness = ''"
+                                        for=" jewelleryDesignQuestion1-option4"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .designUniqueness === 'Good'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
-                                            </div>
-                                            <div>Good</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.designUniqueness = 'Average'; errors.designUniqueness = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .designUniqueness === 'Average'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                            </div>
-                                            <div>Average</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.designUniqueness = 'Poor'; errors.designUniqueness = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .designUniqueness === 'Poor'
-                                            }">
+                                           >
                                             <div>
                                                 <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
+                                       </div>
                                     </div>
-                                    <p x-show="errors.designUniqueness" class="text-red-500 text-sm mt-2 mb-4"
-                                        x-text="errors.designUniqueness"></p>
+                                  
 
-                                    <label class="block mb-4">2.⁠ ⁠How would you rate our jewelry's design and pricing
-                                        compared to other brands</label>
-                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+
+                                    <div class="block mb-4">2.⁠ ⁠How would you rate our jewelry's design and pricing
+                                        compared to other brands</div>
+                                  
+                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <input type="radio" id=" jewelleryDesignQuestion2-option1" name=" jewelleryDesignQuestion2" value="Excellent" class="hidden">
                                         <label
-                                            @click="formData.purchasedFeedback.designPricingComparison = 'Excellent'; errors.designPricingComparison = ''"
+                                        for=" jewelleryDesignQuestion2-option1"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .designPricingComparison === 'Excellent'
-                                            }">
+                                          >
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
+
+                                       <div>
+                                       <input type="radio" id=" jewelleryDesignQuestion2-option2" name=" jewelleryDesignQuestion2" value="Good" class="hidden">
+
+                                            <label
+                                            for=" jewelleryDesignQuestion2-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                            >
+                                                <div>
+                                                    <img src={{ asset('/images/icons/good.svg') }} alt="good" />
+                                                </div>
+                                                <div>Good</div>
+                                            </label>
+                                       </div>
+
+                                        <div>
+                                        <input type="radio" id=" jewelleryDesignQuestion2-option3" name=" jewelleryDesignQuestion2" value="Average" class="hidden">
+
+                                                <label
+                                                for=" jewelleryDesignQuestion2-option3"
+                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                                  >
+                                                    <div>
+                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
+                                                    </div>
+                                                    <div>Average</div>
+                                                </label>
+                                        </div>
+
+                                       <div>
+                                       <input type="radio" id=" jewelleryDesignQuestion2-option4" name=" jewelleryDesignQuestion2" value="Poor" class="hidden">
+
                                         <label
-                                            @click="formData.purchasedFeedback.designPricingComparison = 'Good'; errors.designPricingComparison = ''"
+                                        for=" jewelleryDesignQuestion2-option4"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .designPricingComparison === 'Good'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
-                                            </div>
-                                            <div>Good</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.designPricingComparison = 'Average'; errors.designPricingComparison = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .designPricingComparison === 'Average'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                            </div>
-                                            <div>Average</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.designPricingComparison = 'Poor'; errors.designPricingComparison = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .designPricingComparison === 'Poor'
-                                            }">
+                                           >
                                             <div>
                                                 <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
+                                       </div>
                                     </div>
-                                    <p x-show="errors.designPricingComparison" class="text-red-500 text-sm mt-2 mb-4"
-                                        x-text="errors.designPricingComparison"></p>
 
-                                    <button @click="validateStep2()" class="mt-8 main-btn">
+
+
+                                    <div class="mt-8 flex justify-center">
+                                    <button @click="validateStep2()" class="main-btn ">
                                         Continue
                                     </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -454,7 +472,7 @@
                                 <div class="pe-4">
                                     <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
-                                <div class="text-xl text-white font-medium uppercase">
+                                <div class="text-lg text-white font-medium uppercase">
                                     Please let us know how we can serve you better?
                                 </div>
                             </div>
@@ -463,17 +481,19 @@
                                 <!-- Step 2B: Non-Purchased Customer Feedback -->
                                 <div>
                                     <!-- Reason -->
-                                    <label class="block mb-4 text-md text-[#9D4F2A] font-semibold">What was the reason
+                                    <div class="block mb-4 text-lg text-[#9D4F2A] font-semibold">What was the reason
                                         for not purchasing
-                                        today?</label>
+                                        today?</div>
                                     <div class="grid gap-6 grid-cols-2 md:grid-cols-4">
-                                        <label
-                                            @click="formData.nonPurchasedFeedback.reason = 'Expected design not available'; errors.reason = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
-                                                    .nonPurchasedFeedback.reason === 'Expected design not available'
-                                            }">
+
+                                    
+                                    <div>
+                                       <input type="radio" x-model="formData.nonPurchasedFeedback.reason" id="non-purchase-reason-question1" name=" non-purchase-reason" value="Poor" class="hidden">
+
+                                       <label
+                                       for="non-purchase-reason-question1"
+                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                           >
                                             <div>
                                                 <img class="h-8"
                                                     src={{ asset('/images/icons/non-purchase-reason/icon1.svg') }}
@@ -481,14 +501,16 @@
                                             </div>
                                             <div>Expected design not available</div>
                                         </label>
+                                       </div>
 
-                                        <label
-                                            @click="formData.nonPurchasedFeedback.reason = 'Less Collection'; errors.reason = ''"
+                                       <div>
+                                       <input type="radio" x-model="formData.nonPurchasedFeedback.reason" id="non-purchase-reason-question2" name=" non-purchase-reason" value="Poor" class="hidden">
+
+                                       <label
+                                       for="non-purchase-reason-question2"
+
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
-                                                    .nonPurchasedFeedback.reason === 'Less Collection'
-                                            }">
+                                           >
                                             <div>
                                                 <img class="h-8"
                                                     src={{ asset('/images/icons/non-purchase-reason/icon2.svg') }}
@@ -496,14 +518,17 @@
                                             </div>
                                             <div>Less Collection</div>
                                         </label>
+                                       </div>
 
-                                        <label
-                                            @click="formData.nonPurchasedFeedback.reason = 'Service was Bad'; errors.reason = ''"
+
+                                       <div>
+                                       <input type="radio" x-model="formData.nonPurchasedFeedback.reason" id="non-purchase-reason-question3" name=" non-purchase-reason" value="Poor" class="hidden">
+
+                                       <label
+                                       for="non-purchase-reason-question3"
+
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
-                                                    .nonPurchasedFeedback.reason === 'Service was Bad'
-                                            }">
+                                            >
                                             <div>
                                                 <img class="h-8"
                                                     src={{ asset('/images/icons/non-purchase-reason/icon3.svg') }}
@@ -511,14 +536,17 @@
                                             </div>
                                             <div>Service was Bad</div>
                                         </label>
+                                       </div>
 
-                                        <label
-                                            @click="formData.nonPurchasedFeedback.reason = 'Size not available'; errors.reason = ''"
+
+                                       <div>
+                                       <input type="radio" x-model="formData.nonPurchasedFeedback.reason" id="non-purchase-reason-question4" name=" non-purchase-reason" value="Poor" class="hidden">
+
+                                       <label
+                                       for="non-purchase-reason-question4"
+
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
-                                                    .nonPurchasedFeedback.reason === 'Size not available'
-                                            }">
+                                           >
                                             <div>
                                                 <img class="h-8"
                                                     src={{ asset('/images/icons/non-purchase-reason/icon4.svg') }}
@@ -526,14 +554,19 @@
                                             </div>
                                             <div>Size not available</div>
                                         </label>
+                                       </div>
 
-                                        <label
-                                            @click="formData.nonPurchasedFeedback.reason = 'Price is too high'; errors.reason = ''"
+
+
+
+                                       <div>
+                                       <input type="radio" x-model="formData.nonPurchasedFeedback.reason" id="non-purchase-reason-question5" name=" non-purchase-reason" value="Poor" class="hidden">
+
+                                       <label
+                                       for="non-purchase-reason-question5"
+
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
-                                                    .nonPurchasedFeedback.reason === 'Price is too high'
-                                            }">
+                                            >
                                             <div>
                                                 <img class="h-8"
                                                     src={{ asset('/images/icons/non-purchase-reason/icon5.svg') }}
@@ -541,23 +574,40 @@
                                             </div>
                                             <div>Price is too high</div>
                                         </label>
+                                       </div>
 
-                                        <label
-                                            @click="formData.nonPurchasedFeedback.reason = 'Others'; errors.reason = ''"
+
+
+                                       
+
+                                       
+
+                                      
+                                       <div>
+                                       <input type="radio" x-model="formData.nonPurchasedFeedback.reason" id="non-purchase-reason-question6" name=" non-purchase-reason" value="Poor" class="hidden">
+
+                                       <label
+                                       for="non-purchase-reason-question6"
+
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center flex items-center justify-center content-center"
-                                            :class="{
-                                                '!border-[#9D4F2A] !bg-red-100 ring ring-[#9D4F2A]': formData
-                                                    .nonPurchasedFeedback.reason === 'Others'
-                                            }">
+                                        >
                                             <div>Others</div>
                                         </label>
+                                       </div>
+                                        
+
+                                        
+
+                                       
                                     </div>
                                     <p x-show="errors.reason" class="text-red-500 text-sm mt-2 mb-4"
                                         x-text="errors.reason"></p>
 
+                                    <div class="flex justify-center !px-10">
                                     <button @click="validateStep2()" class="mt-8 main-btn">
-                                        Continue
+                                        Submit
                                     </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -567,7 +617,7 @@
                                 <div class="pe-4">
                                     <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
-                                <div class="text-xl text-white font-medium uppercase">
+                                <div class="text-lg text-white font-medium uppercase">
                                     How was your experience with our <b>Sales Executive</b>
                                 </div>
                             </div>
@@ -576,234 +626,248 @@
                                 <!-- Step 3A: Purchased Customer Additional Feedback -->
                                 <div>
                                     <!-- Question 1 -->
-                                    <label class="block mb-4">1.⁠ ⁠How satisfied are you with the overall service
+                                    <div class="block mb-4">1.⁠ ⁠How satisfied are you with the overall service
                                         provided by our showroom staff?
-                                    </label>
+                                    </div>
                                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <input type="radio" id=" step3Question1-option1" name=" step3Question1" value="Excellent" class="hidden">
                                         <label
-                                            @click="formData.purchasedFeedback.serviceSatisfaction = 'Excellent'; errors.serviceSatisfaction = ''"
+                                        for=" step3Question1-option1"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .serviceSatisfaction === 'Excellent'
-                                            }">
+                                          >
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.serviceSatisfaction = 'Good'; errors.serviceSatisfaction = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .serviceSatisfaction === 'Good'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
-                                            </div>
-                                            <div>Good</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.serviceSatisfaction = 'Average'; errors.serviceSatisfaction = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .serviceSatisfaction === 'Average'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                            </div>
-                                            <div>Average</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.serviceSatisfaction = 'Poor'; errors.serviceSatisfaction = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .serviceSatisfaction === 'Poor'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
-                                            </div>
-                                            <div>Poor</div>
-                                        </label>
-                                    </div>
-                                    <p x-show="errors.serviceSatisfaction" class="text-red-500 text-sm mt-2 mb-4"
-                                        x-text="errors.serviceSatisfaction"></p>
 
-                                    <!-- Question 2 -->
-                                    <label class="block mb-4">2.⁠ ⁠How would you rate the friendliness and courtesy of
-                                        our showroom staff?</label>
-                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                       <div>
+                                       <input type="radio" id=" step3Question1-option2" name=" step3Question1" value="Good" class="hidden">
+
+                                            <label
+                                            for=" step3Question1-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                            >
+                                                <div>
+                                                    <img src={{ asset('/images/icons/good.svg') }} alt="good" />
+                                                </div>
+                                                <div>Good</div>
+                                            </label>
+                                       </div>
+
+                                        <div>
+                                        <input type="radio" id=" step3Question1-option3" name=" step3Question1" value="Average" class="hidden">
+
+                                                <label
+                                                for=" step3Question1-option3"
+                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                                  >
+                                                    <div>
+                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
+                                                    </div>
+                                                    <div>Average</div>
+                                                </label>
+                                        </div>
+
+                                       <div>
+                                       <input type="radio" id=" step3Question1-option4" name=" step3Question1" value="Poor" class="hidden">
+
                                         <label
-                                            @click="formData.purchasedFeedback. staffFriendliness = 'Excellent'; errors. staffFriendliness = ''"
+                                        for=" step3Question1-option4"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .staffFriendliness === 'Excellent'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
-                                            </div>
-                                            <div>Excellent</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback. staffFriendliness = 'Good'; errors.staffFriendliness = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .staffFriendliness === 'Good'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
-                                            </div>
-                                            <div>Good</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback. staffFriendliness = 'Average'; errors.staffFriendliness = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .staffFriendliness === 'Average'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                            </div>
-                                            <div>Average</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback. staffFriendliness = 'Poor'; errors.staffFriendliness = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .staffFriendliness === 'Poor'
-                                            }">
+                                           >
                                             <div>
                                                 <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
+                                       </div>
                                     </div>
-                                    <p x-show="errors. staffFriendliness" class="text-red-500 text-sm mt-2 mb-4"
-                                        x-text="errors. staffFriendliness"></p>
+                             
+
+
+                                    <div class="block mb-4">2.⁠ ⁠How would you rate the friendliness and courtesy of
+                                        our showroom staff?</div>
+
+                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <input type="radio" id=" step3Question2-option1" name=" step3Question2" value="Excellent" class="hidden">
+                                        <label
+                                        for=" step3Question2-option1"
+                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                          >
+                                            <div>
+                                                <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
+                                            </div>
+                                            <div>Excellent</div>
+                                        </label>
+
+                                       <div>
+                                       <input type="radio" id=" step3Question2-option2" name=" step3Question2" value="Good" class="hidden">
+
+                                            <label
+                                            for=" step3Question2-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                            >
+                                                <div>
+                                                    <img src={{ asset('/images/icons/good.svg') }} alt="good" />
+                                                </div>
+                                                <div>Good</div>
+                                            </label>
+                                       </div>
+
+                                        <div>
+                                        <input type="radio" id=" step3Question2-option3" name=" step3Question2" value="Average" class="hidden">
+
+                                                <label
+                                                for=" step3Question2-option3"
+                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                                  >
+                                                    <div>
+                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
+                                                    </div>
+                                                    <div>Average</div>
+                                                </label>
+                                        </div>
+
+                                       <div>
+                                       <input type="radio" id=" step3Question2-option4" name=" step3Question2" value="Poor" class="hidden">
+
+                                        <label
+                                        for=" step3Question2-option4"
+                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                           >
+                                            <div>
+                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                            </div>
+                                            <div>Poor</div>
+                                        </label>
+                                       </div>
+                                    </div>
+                           
 
                                     <!-- Question 3 -->
-                                    <label class="block mb-4">3.⁠ ⁠How knowledgeable was our staff in explaining
-                                        products and services?</label>
-                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                    <div class="block mb-4">3.⁠ ⁠How knowledgeable was our staff in explaining
+                                        products and services?</div>
+                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <input type="radio" id=" step3Question3-option1" name=" step3Question3" value="Excellent" class="hidden">
                                         <label
-                                            @click="formData.purchasedFeedback.staffKnowledge = 'Excellent'; errors.staffKnowledge = ''"
+                                        for=" step3Question3-option1"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .staffKnowledge === 'Excellent'
-                                            }">
+                                          >
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
+
+                                       <div>
+                                       <input type="radio" id=" step3Question3-option2" name=" step3Question3" value="Good" class="hidden">
+
+                                            <label
+                                            for=" step3Question3-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                            >
+                                                <div>
+                                                    <img src={{ asset('/images/icons/good.svg') }} alt="good" />
+                                                </div>
+                                                <div>Good</div>
+                                            </label>
+                                       </div>
+
+                                        <div>
+                                        <input type="radio" id=" step3Question3-option3" name=" step3Question3" value="Average" class="hidden">
+
+                                                <label
+                                                for=" step3Question3-option3"
+                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                                  >
+                                                    <div>
+                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
+                                                    </div>
+                                                    <div>Average</div>
+                                                </label>
+                                        </div>
+
+                                       <div>
+                                       <input type="radio" id=" step3Question3-option4" name=" step3Question3" value="Poor" class="hidden">
+
                                         <label
-                                            @click="formData.purchasedFeedback.staffKnowledge = 'Good'; errors.staffKnowledge = ''"
+                                        for=" step3Question3-option4"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .staffKnowledge === 'Good'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
-                                            </div>
-                                            <div>Good</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.staffKnowledge = 'Average'; errors.staffKnowledge = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .staffKnowledge === 'Average'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                            </div>
-                                            <div>Average</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.staffKnowledge = 'Poor'; errors.staffKnowledge = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .staffKnowledge === 'Poor'
-                                            }">
+                                           >
                                             <div>
                                                 <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
+                                       </div>
                                     </div>
-                                    <p x-show="errors.staffKnowledge" class="text-red-500 text-sm mt-2 mb-4"
-                                        x-text="errors.staffKnowledge"></p>
 
                                     <!-- Question 4 -->
-                                    <label class="block mb-4">4.How would you rate the attentiveness of our staff in
-                                        assisting you?</label>
-                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                    <div class="block mb-4">4.How would you rate the attentiveness of our staff in
+                                        assisting you?</div>
+                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                        <input type="radio" id=" step3Question4-option1" name=" step3Question4" value="Excellent" class="hidden">
                                         <label
-                                            @click="formData.purchasedFeedback.staffAttentiveness = 'Excellent'; errors.staffAttentiveness = ''"
+                                        for=" step3Question4-option1"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .staffAttentiveness === 'Excellent'
-                                            }">
+                                          >
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
+
+                                       <div>
+                                       <input type="radio" id=" step3Question4-option2" name=" step3Question4" value="Good" class="hidden">
+
+                                            <label
+                                            for=" step3Question4-option2"
+                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                            >
+                                                <div>
+                                                    <img src={{ asset('/images/icons/good.svg') }} alt="good" />
+                                                </div>
+                                                <div>Good</div>
+                                            </label>
+                                       </div>
+
+                                        <div>
+                                        <input type="radio" id=" step3Question4-option3" name=" step3Question4" value="Average" class="hidden">
+
+                                                <label
+                                                for=" step3Question4-option3"
+                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
+                                                  >
+                                                    <div>
+                                                        <img src={{ asset('/images/icons/average.svg') }} alt="average" />
+                                                    </div>
+                                                    <div>Average</div>
+                                                </label>
+                                        </div>
+
+                                       <div>
+                                       <input type="radio" id=" step3Question4-option4" name=" step3Question4" value="Poor" class="hidden">
+
                                         <label
-                                            @click="formData.purchasedFeedback.staffAttentiveness = 'Good'; errors.staffAttentiveness = ''"
+                                        for=" step3Question4-option4"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-green-500 text-white': formData.purchasedFeedback
-                                                    .staffAttentiveness === 'Good'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
-                                            </div>
-                                            <div>Good</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.staffAttentiveness = 'Average'; errors.staffAttentiveness = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-orange-500 text-white': formData.purchasedFeedback
-                                                    .staffAttentiveness === 'Average'
-                                            }">
-                                            <div>
-                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
-                                            </div>
-                                            <div>Average</div>
-                                        </label>
-                                        <label
-                                            @click="formData.purchasedFeedback.staffAttentiveness = 'Poor'; errors.staffAttentiveness = ''"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center"
-                                            :class="{
-                                                '!bg-red-500 text-white': formData.purchasedFeedback
-                                                    .staffAttentiveness === 'Poor'
-                                            }">
+                                           >
                                             <div>
                                                 <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
+                                       </div>
                                     </div>
-                                    <p x-show="errors.staffAttentiveness" class="text-red-500 text-sm mt-2 mb-4"
-                                        x-text="errors.staffAttentiveness"></p>
+
 
                                     <!-- Continue Button -->
+                                    <div class="flex justify-center">
                                     <button @click="validateStep3()" class="mt-8 main-btn">
                                         Continue
                                     </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -848,7 +912,7 @@
                             </div>
                         </div>
 
-                        <div x-data="{ disabled: true }" class="p-6 text-[#4E5356]">
+                        <div class="p-6 text-[#4E5356]">
                             <form id="customer-details-form">
                                 <input type="hidden" name="customerId" id="customerId" value="">
                                 <!-- Header -->
@@ -856,21 +920,7 @@
                                     <div class="text-md font-medium text-[#9D4F2A]">
                                         Please enter your below details
                                     </div>
-                                    <div>
-                                        <button type="button" @click="disabled = !disabled"
-                                            class="flex items-center gap-1 cursor-pointer px-4 py-2 text-sm border border-[#C7C7C7] rounded-sm">
-                                            <svg width="14" height="14" viewBox="0 0 14 15" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M0.613296 9.58195C0.435577 9.75967 0.336844 9.97688 0.317097 10.2138L0.0011519 14.0052C-0.0185947 14.2816 0.218364 14.5186 0.494817 14.4988L4.28616 14.1829C4.52312 14.1632 4.76008 14.0644 4.91805 13.8867L11 7.80476L6.71499 3.5L0.613296 9.58195Z"
-                                                    fill="#4E5356" />
-                                                <path
-                                                    d="M13.7812 3.99548L10.517 0.721857C10.222 0.426048 9.76975 0.426048 9.47479 0.721857L8 2.2009L12.2867 6.5L13.7615 5.02095C14.0761 4.74486 14.0761 4.27157 13.7812 3.99548Z"
-                                                    fill="#4E5356" />
-                                            </svg>
-                                            <span x-text="disabled ? 'Edit' : 'Cancel'"></span>
-                                        </button>
-                                    </div>
+                                    
                                 </div>
 
                                 <!-- Name & Gender -->
@@ -881,7 +931,7 @@
                                             Name
                                         </label>
                                         <input name="name" id="name" type="text" required
-                                            :disabled="disabled"
+                                          
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black placeholder:!text-black rounded-lg block w-full p-3" />
                                     </div>
 
@@ -891,7 +941,7 @@
                                         <div class="flex gap-1">
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="gender" id="gender" value="M"
-                                                    class="sr-only peer" required :disabled="disabled" />
+                                                    class="sr-only peer" required  />
                                                 <span
                                                     class="flex items-center justify-center py-2 px-4 border-2 border-gray-300 rounded-lg text-gray-700 peer-checked:bg-[#9D4F2A] peer-checked:text-white peer-checked:border-[#9D4F2A] transition duration-300">
                                                     M
@@ -900,7 +950,7 @@
 
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="gender" id="gender" value="F"
-                                                    class="sr-only peer" required :disabled="disabled" />
+                                                    class="sr-only peer" required  />
                                                 <span
                                                     class="flex items-center justify-center py-2 px-4 border-2 border-gray-300 rounded-lg text-gray-700 peer-checked:bg-[#9D4F2A] peer-checked:text-white peer-checked:border-[#9D4F2A] transition duration-300">
                                                     F
@@ -916,7 +966,7 @@
                                     <div class="input-container phone-group flex gap-1 flex-wrap">
                                         <template x-for="i in 10" :key="i">
                                             <input required type="text" name="phone" id="phone"
-                                                maxlength="1" :disabled="disabled"
+                                                maxlength="1" 
                                                 class="phone input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
                                         </template>
                                     </div>
@@ -928,7 +978,7 @@
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Email</label>
                                         <input type="email" name="email" id="email" required
-                                            :disabled="disabled"
+                                           
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
 
@@ -937,7 +987,7 @@
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Date
                                             of Birth</label>
                                         <input type="date" name="date-of-birth" id="date-of-birth" required
-                                            :disabled="disabled"
+                                            
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
                                 </div>
@@ -950,15 +1000,15 @@
                                         <div class="flex space-x-4">
                                             <label class="flex items-center space-x-2 cursor-pointer">
                                                 <input type="radio" name="marital-status" id="marital-status"
-                                                    value="0" class="accent-amber-700" :disabled="disabled"
+                                                    value="0" class="accent-amber-700 sr-only" 
                                                     @change="maritalStatus = 'Married'" />
                                                 <span>Married</span>
                                             </label>
 
                                             <label class="flex items-center space-x-2 cursor-pointer">
                                                 <input type="radio" name="marital-status" id="marital-status"
-                                                    value="1" class="accent-amber-700"
-                                                    :disabled="disabled" @change="maritalStatus = 'Not Married'" />
+                                                    value="1" class="accent-amber-700 sr-only"
+                                                     @change="maritalStatus = 'Not Married'" />
                                                 <span>Not Married</span>
                                             </label>
                                         </div>
@@ -969,7 +1019,6 @@
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Anniversary
                                             Date</label>
                                         <input type="date" name="anniversary-date" id="anniversary-date"
-                                            :disabled="disabled"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
                                 </div>
@@ -979,7 +1028,7 @@
                                     <div class="relative grow">
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Profession</label>
-                                        <select id="profession" name="profession" :disabled="disabled"
+                                        <select id="profession" name="profession" 
                                             class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
                                             <option value="">Select</option>
                                             @foreach ($professions as $item)
@@ -991,7 +1040,7 @@
                                     <div class="relative grow">
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Qualification</label>
-                                        <select id="qualification" name="qualification" :disabled="disabled"
+                                        <select id="qualification" name="qualification"
                                             class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
                                             <option value="">Select</option>
                                             @foreach ($qualifications as $item)
@@ -1006,7 +1055,7 @@
                                     <div class="relative grow">
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Address</label>
-                                        <textarea name="address" id="address" rows="2" required :disabled="disabled"
+                                        <textarea name="address" id="address" rows="2" required 
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3 resize-none"></textarea>
                                     </div>
 
@@ -1015,7 +1064,7 @@
                                         <div class="input-container zip-group flex gap-1 flex-wrap">
                                             <template x-for="i in 6" :key="i">
                                                 <input required name="pincode" id="pincode" type="text"
-                                                    maxlength="1" :disabled="disabled"
+                                                    maxlength="1" 
                                                     class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
                                             </template>
 
@@ -1025,7 +1074,7 @@
                                 </div>
 
                                 <!-- Source Options -->
-                                <div class="flex flex-wrap gap-4 mb-4">
+                                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-4">
                                     <div>
                                         <input id="source1" name="source" value="Television Commercial"
                                             type="radio" class="hidden" />
@@ -1038,6 +1087,7 @@
 
                                     <div>
                                         <input id="source2" name="source" value="Newspaper" type="radio"
+                                       
                                             class="hidden" />
                                         <label for="source2" class="text-center">
                                             <img src={{ asset('/images/icons/newspaper.svg') }} alt="newspaper"
@@ -1079,7 +1129,7 @@
 
                                 <!-- Save Button -->
                                 <div class="flex justify-center">
-                                    <button type="submit" :disabled="disabled"
+                                    <button type="submit"
                                         class="px-10 py-2 cursor-pointer disabled:cursor-not-allowed bg-[#9D4F2A] text-white text-sm rounded hover:bg-[#7C3E21] transition disabled:opacity-50">
                                         Save
                                     </button>
@@ -1294,20 +1344,7 @@
                 validateStep2() {
                     this.errors = {};
                     if (this.customerType === "purchased") {
-                        if (!this.formData.purchasedFeedback.cleanlinessRating) {
-                            this.errors.cleanlinessRating = "Please select an option.";
-                        }
-                        if (!this.formData.purchasedFeedback.designUniqueness) {
-                            this.errors.designUniqueness = "Please select an option.";
-                        }
-                        if (!this.formData.purchasedFeedback.designPricingComparison) {
-                            this.errors.designPricingComparison =
-                                "Please select an option.";
-                        }
-
-                        if (Object.keys(this.errors).length === 0) {
-                            this.step = 3;
-                        }
+                        this.step = 3;
                     } else {
                         if (!this.formData.nonPurchasedFeedback.reason) {
                             this.errors.reason = "Please select a reason.";
@@ -1322,41 +1359,13 @@
                                 nonPurchasedFeedback: this.formData.nonPurchasedFeedback,
                             };
 
-                            console.log("Non-Purchased Feedback Data:", filteredData);
                             this.step = 4;
                         }
                     }
                 },
 
                 validateStep3() {
-                    this.errors = {};
-                    if (this.customerType === "purchased") {
-                        if (!this.formData.purchasedFeedback.serviceSatisfaction) {
-                            this.errors.serviceSatisfaction = "Please select an option.";
-                        }
-                        if (!this.formData.purchasedFeedback.staffFriendliness) {
-                            this.errors.staffFriendliness = "Please select an option.";
-                        }
-                        if (!this.formData.purchasedFeedback.staffKnowledge) {
-                            this.errors.staffKnowledge = "Please select an option.";
-                        }
-                        if (!this.formData.purchasedFeedback.staffAttentiveness) {
-                            this.errors.staffAttentiveness = "Please select an option.";
-                        }
-                    }
-
-                    if (Object.keys(this.errors).length === 0) {
-                        // Create filtered form data for purchased
-                        const filteredData = {
-                            customerId: this.formData.customerId,
-                            salesExecutive: this.formData.salesExecutive,
-                            customerType: this.formData.customerType,
-                            purchasedFeedback: this.formData.purchasedFeedback,
-                        };
-
-                        console.log("Purchased Feedback Data:", filteredData);
-                        this.step = 4;
-                    }
+                    this.step = 4;
                 },
                 clearData() {
                     setTimeout(() => {

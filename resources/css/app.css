@@ -27,7 +27,7 @@
 
 
   input[type='radio'] + label {
-    @apply bg-white rounded-lg shadow-lg border border-gray-200 text-sm size-32 text-black grid gap-1 justify-items-center p-4 cursor-pointer font-medium;
+    @apply bg-white w-full rounded-xl shadow-lg border border-[#EEE6E2] text-sm size-32 text-black grid gap-2 justify-items-center p-4 cursor-pointer font-medium;
   }
   input[type='radio'] + label:hover {
     @apply text-black border-[#964A26];
