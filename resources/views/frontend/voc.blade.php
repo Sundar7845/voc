@@ -8,6 +8,9 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-[#FCFAF9] min-h-screen roboto antialiased">
@@ -82,7 +85,7 @@
                         <div class="modal-box p-0 max-w-2xl bg-[#FCFAF9]">
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                    <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
                                 <div class="text-xl text-white font-medium uppercase">
                                     Welcome to Jewel one
@@ -129,12 +132,10 @@
                             </div>
 
                             <form method="dialog" class="modal-backdrop z-10">
-                                <button class="text-white absolute top-0 right-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="size-6">
-                                        <path fill-rule="evenodd"
-                                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
-                                            clip-rule="evenodd" />
+                                <button class="text-white absolute top-0 right-0 p-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 31 31" fill="none">
+                                    <circle cx="15.5" cy="15.5" r="15.5" fill="black"/>
+                                    <path d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z" fill="#FCFAF9"/>
                                     </svg>
                                 </button>
                             </form>
@@ -187,7 +188,7 @@
                         <div x-show="step === 1" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                    <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
                                 <div class="text-xl text-white font-medium uppercase">
                                     showroom staff usage
@@ -219,7 +220,7 @@
                                     <!-- Customer Type Selection -->
                                     <div class="block mb-4 text-md font-semibold text-[#9D4F2A]">Customer
                                         Type</div>
-                                    <div class="flex gap-4">
+                                    <div class="flex gap-4 flex-wrap">
 
 
 
@@ -228,7 +229,7 @@
 
                                         <label
                                             @click="formData.customerType = 'Purchased Customer'; errors.customerType = ''; customerType = 'purchased'"
-                                            class="cursor-pointer p-3 border border-[#C7C7C7] rounded-lg w-1/2 text-center"
+                                            class="cursor-pointer p-3 border border-[#C7C7C7] rounded-lg px-6 text-center"
                                             :class="{
                                                 'border-[#9D4F2A] ring ring-[#9D4F2A]': formData
                                                     .customerType === 'Purchased Customer'
@@ -237,7 +238,7 @@
                                         </label>
                                         <label
                                             @click="formData.customerType = 'Non-Purchased Customer'; errors.customerType = ''; customerType = 'non-purchased'"
-                                            class="cursor-pointer p-3 border border-[#C7C7C7] rounded-lg w-1/2 text-center"
+                                            class="cursor-pointer p-3 border border-[#C7C7C7] rounded-lg  px-6 text-center"
                                             :class="{
                                                 'border-[#9D4F2A] ring ring-[#9D4F2A]': formData
                                                     .customerType === 'Non-Purchased Customer'
@@ -259,7 +260,7 @@
                         <div x-show="step === 2 && customerType === 'purchased'" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                    <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
                                 <div class="text-lg text-white font-medium uppercase">
                                     Please share your thoughts about your
@@ -464,7 +465,7 @@
                         <div x-show="step === 2 && customerType === 'non-purchased'" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                    <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
                                 <div class="text-lg text-white font-medium uppercase">
                                     Please let us know how we can serve you better?
@@ -604,7 +605,7 @@
                         <div x-show="step === 3 && customerType === 'purchased'" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                    <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
                                 <div class="text-lg text-white font-medium uppercase">
                                     How was your experience with our <b>Sales Executive</b>
@@ -866,13 +867,12 @@
                         </div>
 
                         <form method="dialog" class="modal-backdrop z-10">
-                            <button class="text-white absolute top-0 right-0" @click="clearData">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-6">
-                                    <path fill-rule="evenodd"
-                                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
-                                        clip-rule="evenodd" />
-                                </svg>
+                            <button class="text-white absolute top-0 right-0 p-1" @click="clearData">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 31 31" fill="none">
+                                    <circle cx="15.5" cy="15.5" r="15.5" fill="black"/>
+                                    <path d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z" fill="#FCFAF9"/>
+                                    </svg>
+
                             </button>
                         </form>
                     </div>
@@ -882,14 +882,14 @@
                     <div class="modal-box p-0 max-w-3xl bg-[#FCFAF9]">
                         <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                             <div class="pe-4">
-                                <img class="h-14" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                             </div>
                             <div class="text-xl text-white font-medium uppercase">
                                 Welcome to Jewel one
                             </div>
                         </div>
 
-                        <div class="p-6 text-[#4E5356]">
+                        <div class="p-8 text-[#4E5356]">
                             <form id="customer-details-form">
                                 <input type="hidden" name="customerId" id="customerId" value="">
                                 <!-- Header -->
@@ -987,28 +987,30 @@
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-4"
                                     x-data="{ maritalStatus: '' }">
                                     <div class="grow flex items-center gap-4">
-                                        <div class="text-black text-sm">Marital Status</div>
-                                        <div class="flex space-x-4">
+                                        <div class="text-black text-sm text-black">Marital Status</div>
+                                        <div class="flex gap-1 items-center">
                                         <div>
-                                        <input type="radio" name="marital-status" id="marital-status-married"
-                                            value="Married" class="accent-amber-700 sr-only" x-model="maritalStatus"
+                                            <label class="cursor-pointer ">
+
+                                             <input type="radio" name="marital-status" 
+                                            value="Married" class="accent-amber-700 sr-only peer" x-model="maritalStatus"
                                             />
-                                            <label for="marital-status-married" class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent">
-                                                Married
+                                                <span class="flex items-center justify-center py-2 px-4 border-2 border-gray-300 rounded-lg text-gray-700 peer-checked:bg-[#9D4F2A] peer-checked:text-white peer-checked:border-[#9D4F2A] transition duration-300">Married</span>
                                             </label>
                                         </div>
 
 
 
                                             <div>
-                                        <input type="radio" name="marital-status" id="marital-status-not-married"
-                                            value="Not Married" class="accent-amber-700 sr-only" 
-                                            x-model="maritalStatus"
-                                            />
-                                            <label for="marital-status-not-married" class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent">
-                                                
-                                            Not Married
-                                            </label>
+                                            <label class="cursor-pointer">
+
+                                        <input type="radio" name="marital-status" 
+                                        value="Not Married" class="accent-amber-700 sr-only peer" x-model="maritalStatus"
+                                        />
+                                        <span class="flex items-center justify-center py-2 px-4 border-2 border-gray-300 rounded-lg text-gray-700 peer-checked:bg-[#9D4F2A] peer-checked:text-white peer-checked:border-[#9D4F2A]  transition duration-300">Not Married</span>
+                                        </label>
+                                            
+                                  
                                         </div>
 
                                         </div>
@@ -1150,13 +1152,12 @@
 
 
                         <form method="dialog" class="modal-backdrop z-10">
-                            <button class="text-white absolute top-0 right-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-6">
-                                    <path fill-rule="evenodd"
-                                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
-                                        clip-rule="evenodd" />
-                                </svg>
+                            <button class="text-white absolute  top-0 right-0 p-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 31 31" fill="none">
+                                    <circle cx="15.5" cy="15.5" r="15.5" fill="black"/>
+                                    <path d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z" fill="#FCFAF9"/>
+                                    </svg>
+
                             </button>
                         </form>
                     </div>
