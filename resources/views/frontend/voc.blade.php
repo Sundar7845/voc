@@ -174,6 +174,7 @@
                             <div class="text-sm py-2 px-6" style="color: red;">
                                 <span id="timer-{{ $item->id }}"
                                     data-enter-time="{{ $item->customer_enter_time }}">Loading...</span>
+                                    <input type="hidden" name="spent_time" id="spent_time" value="">
                             </div>
                         </div>
                     @endforeach

@@ -199,6 +199,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const seconds = diff % 60;
 
             timer.textContent = `${hours} hrs ${minutes} mins ${seconds} secs`;
+
+            $("#spent_time").val(timer.textContent);
         }
         updateTimer();
         setInterval(updateTimer, 1000);
