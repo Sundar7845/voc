@@ -1029,7 +1029,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="relative" x-show="maritalStatus === 'Married'" x-transition>
+                                    <div class="relative" x-show="maritalStatus === '0'" x-transition>
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Anniversary
                                             Date</label>
