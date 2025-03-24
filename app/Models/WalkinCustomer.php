@@ -16,7 +16,6 @@ class WalkinCustomer extends Model
         'sales_executive_id',
         'customer_enter_time',
         'customer_out_time',
-        'know_about',
         'is_purchased',
         'store_experience_review',
         'jewellery_review',

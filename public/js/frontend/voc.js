@@ -14,7 +14,7 @@ function storeDetailsPhoneNumber() {
         phoneNumber += input.value;
     });
 
-    document.getElementById("hiddenPhoneNumber").value = phoneNumber;
+    $("#hiddenPhoneNumber").val(phoneNumber);
 }
 
 function storePincode() {
@@ -34,6 +34,10 @@ document.querySelectorAll(".phone").forEach((input) => {
 // Attach event listener for keyup to all inputs
 document.querySelectorAll(".phone_number").forEach((input) => {
     input.addEventListener("keyup", storeDetailsPhoneNumber);
+});
+// Attach event listener for keyup to all inputs
+document.querySelectorAll(".zip").forEach((input) => {
+    input.addEventListener("keyup", storePincode);
 });
 
 $(document).ready(function () {
@@ -101,6 +105,10 @@ function viewCustomerDetails(customerId) {
         data: { customer_id: customerId },
         success: function (response) {
             if (response.status === "success") {
+                setTimeout(() => {
+                    storeDetailsPhoneNumber();
+                    storePincode();
+                }, 500);
                 console.log(response.data); // Log data or display it in a modal
 
                 // Update Alpine's maritalStatus variable
@@ -156,9 +164,6 @@ function viewCustomerDetails(customerId) {
                         response.data.know_about +
                         "']"
                 ).prop("checked", true);
-
-                storeDetailsPhoneNumber();
-                storePincode();
             } else {
                 alert("No details found!");
             }
@@ -259,26 +264,70 @@ document.addEventListener("DOMContentLoaded", function () {
             const minutes = Math.floor((diff % 3600) / 60);
             const seconds = diff % 60;
 
-            timer.textContent = `${hours} hrs ${minutes} mins ${seconds} secs`;
+            const timeText = `${hours} hrs ${minutes} mins ${seconds} secs`;
+            timer.textContent = timeText;
 
-            $("#spent_time").val(timer.textContent);
+            // Update the corresponding hidden input field
+            const spentTimeInput = document.querySelector(
+                `#spent_time_${timer.dataset.customerId}`
+            );
+            if (spentTimeInput) {
+                spentTimeInput.value = timeText;
+            }
         }
         updateTimer();
         setInterval(updateTimer, 1000);
     });
 });
 
+function getFeedback(id) {
+    const modal = document.getElementById("getFeedback");
+    if (modal) {
+        modal.showModal();
+    } else {
+        console.error("Modal not found!");
+    }
+
+    $("#feedbackCustomerId").val(id);
+}
 //CUSOMTER UPDATE
 $(document).ready(function () {
     // Handle form submission via AJAX
     $("#getFeedbackForm").submit(function (e) {
         e.preventDefault(); // Prevent default form submission
+        var id = $("#feedbackCustomerId").val();
+        var spentTime = $("#spent_time_" + id).val();
         var salesExcutiveName = $("#salesExcutiveName").val();
+        var customerType = $("input[name='customerType']:checked").val();
+        var inStoreExperience = $(
+            "input[name='inStoreFeedback']:checked"
+        ).val();
+        var jewellery = $(
+            "input[name='jewelleryDesignQuestion1']:checked"
+        ).val();
+        var pricing = $("input[name='jewelleryDesignQuestion2']:checked").val();
+        var staff = $("input[name='step3Question1']:checked").val();
+        var friendly = $("input[name='step3Question2']:checked").val();
+        var knowledge = $("input[name='step3Question3']:checked").val();
+        var assit = $("input[name='step3Question4']:checked").val();
+        var nonPurchased = $("input[name='non-purchase-reason']:checked").val();
+
         $.ajax({
-            url: "update-customer-details/" + id, // Change this to your actual server endpoint
+            url: "feedback/" + id, // Change this to your actual server endpoint
             type: "POST",
             data: {
                 _token: $('meta[name="csrf-token"]').attr("content"),
+                salesExcutiveName: salesExcutiveName,
+                customerType: customerType,
+                inStoreExperience: inStoreExperience,
+                jewellery: jewellery,
+                pricing: pricing,
+                staff: staff,
+                friendly: friendly,
+                knowledge: knowledge,
+                assit: assit,
+                nonPurchased: nonPurchased,
+                spentTime: spentTime,
             },
             dataType: "json",
             success: function (response) {

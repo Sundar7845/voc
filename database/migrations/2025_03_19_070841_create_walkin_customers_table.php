@@ -23,7 +23,6 @@ class CreateWalkinCustomersTable extends Migration
             $table->foreign('sales_executive_id')->references('id')->on('employees');
             $table->string('customer_enter_time')->nullable();
             $table->string('customer_out_time')->nullable();
-            $table->integer('know_about')->default(0);
             $table->integer('is_purchased')->default(0);
             $table->integer('store_experience_review')->default(0);
             $table->integer('jewellery_review')->default(0);

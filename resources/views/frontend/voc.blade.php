@@ -172,8 +172,7 @@
                                         </button>
                                     </div>
                                     <div>
-                                        <button onclick="getFeedback.showModal()"
-                                            @click="open = true; formData.customerId = {{ $item->id }}"
+                                        <button @click="open = true; getFeedback({{ $item->id }})"
                                             class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
                                             Get Feedback
                                         </button>
@@ -181,9 +180,11 @@
                                 </div>
                                 <div class="text-sm py-2 px-6" style="color: red;">
                                     <span id="timer-{{ $item->id }}"
-                                        data-enter-time="{{ $item->customer_enter_time }}">Loading...</span>
-                                    <input type="hidden" name="spent_time" id="spent_time" value="">
+                                        data-enter-time="{{ $item->customer_enter_time }}"
+                                        data-customer-id="{{ $item->id }}">Loading...</span>
+                                    <input type="hidden" name="spent_time_{{ $item->id }}" id="spent_time_{{ $item->id }}" value="">
                                 </div>
+                                
                             </div>
                         @endforeach
                     </div>
@@ -191,7 +192,7 @@
                     <div
                         class="flex flex-col gap-6 text-lg justify-center items-center max-w-md mx-auto text-center py-10">
                         <div>
-                            <img class="h-20" src="/images/customers.svg" alt="customers">
+                            <img class="h-20" src="{{ asset('/images/customers.svg') }}" alt="customers">
                         </div>
                         <div>
                             Once you have started to create a New Customer, you’ll see it listed here
@@ -205,6 +206,8 @@
                     <div class="modal-box p-0 max-w-4xl min-h-60 bg-[#FCFAF9]">
                         <div>
                             <form id="getFeedbackForm">
+                                <input type="hidden" name="feedbackCustomerId" id="feedbackCustomerId"
+                                    value="">
                                 <div x-show="step === 1" x-cloak>
                                     <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                         <div class="pe-4">
@@ -246,28 +249,26 @@
                                             <div class="flex gap-4 flex-wrap">
 
 
-                                        <div>
-                                            <input type="radio"
-                                            @change="errors.customerType = ''"
-                                            name="customerType" id="purchased-customer" class="sr-only peer" x-model="formData.customerType" value="1">
-                                        <label for="purchased-customer"
-                                        class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300"
-                                            >
-                                            Purchased Customer
-                                        </label>
-                                        </div>
+                                                <div>
+                                                    <input type="radio" @change="errors.customerType = ''"
+                                                        name="customerType" id="purchased-customer"
+                                                        class="sr-only peer" x-model="formData.customerType"
+                                                        value="1">
+                                                    <label for="purchased-customer"
+                                                        class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
+                                                        Purchased Customer
+                                                    </label>
+                                                </div>
 
-                                        <div>
-                                            <input type="radio"
-                                            @change="errors.customerType = ''"
-                                            name="customerType" id="non-purchased" class="sr-only peer" x-model="formData.customerType" value="0">
-                                        <label
-                                        for="non-purchased"
-                                        class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300"
-                                        >
-                                            Non-Purchased Customer
-                                        </label>
-                                        </div>
+                                                <div>
+                                                    <input type="radio" @change="errors.customerType = ''"
+                                                        name="customerType" id="non-purchased" class="sr-only peer"
+                                                        x-model="formData.customerType" value="0">
+                                                    <label for="non-purchased"
+                                                        class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
+                                                        Non-Purchased Customer
+                                                    </label>
+                                                </div>
 
                                             </div>
                                             <p x-show="errors.customerType" class="text-red-500 text-sm mt-2 mb-4"
@@ -281,16 +282,17 @@
                                     </div>
                                 </div>
 
-                        <div x-show="step === 2 && formData.customerType === '1'" x-cloak>
-                            <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
-                                <div class="pe-4">
-                                    <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
-                                </div>
-                                <div class="text-lg text-white font-medium uppercase">
-                                    Please share your thoughts about your
-                                    <b>IN-Store Experience</b>
-                                </div>
-                            </div>
+                                <div x-show="step === 2 && formData.customerType === '1'" x-cloak>
+                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
+                                        <div class="pe-4">
+                                            <img class="h-18" src={{ asset('/images/logo-white.svg') }}
+                                                alt="logo" />
+                                        </div>
+                                        <div class="text-lg text-white font-medium uppercase">
+                                            Please share your thoughts about your
+                                            <b>IN-Store Experience</b>
+                                        </div>
+                                    </div>
 
                                     <div class="px-6 py-10 text-[#4E5356]">
                                         <!-- Step 2A: Purchased Customer Feedback -->
@@ -305,7 +307,8 @@
                                                 of our showroom?</div>
                                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                                                 <input type="radio" id="inStoreFeedback-option1"
-                                                    name="inStoreFeedback" value="Excellent" class="hidden">
+                                                    name="inStoreFeedback" value="{{ App\Enums\Review::EXCELLENT }}"
+                                                    class="hidden">
                                                 <label for="inStoreFeedback-option1"
                                                     class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                     <div>
@@ -317,7 +320,8 @@
 
                                                 <div>
                                                     <input type="radio" id="inStoreFeedback-option2"
-                                                        name="inStoreFeedback" value="Good" class="hidden">
+                                                        name="inStoreFeedback" value="{{ App\Enums\Review::GOOD }}"
+                                                        class="hidden">
 
                                                     <label for="inStoreFeedback-option2"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
@@ -331,7 +335,8 @@
 
                                                 <div>
                                                     <input type="radio" id="inStoreFeedback-option3"
-                                                        name="inStoreFeedback" value="Average" class="hidden">
+                                                        name="inStoreFeedback"
+                                                        value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
 
                                                     <label for="inStoreFeedback-option3"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
@@ -345,7 +350,8 @@
 
                                                 <div>
                                                     <input type="radio" id="inStoreFeedback-option4"
-                                                        name="inStoreFeedback" value="Poor" class="hidden">
+                                                        name="inStoreFeedback" value="{{ App\Enums\Review::POOR }}"
+                                                        class="hidden">
 
                                                     <label for="inStoreFeedback-option4"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
@@ -372,10 +378,10 @@
                                                 design?</div>
 
                                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                                <input type="radio" id=" jewelleryDesignQuestion1-option1"
-                                                    name=" jewelleryDesignQuestion1" value="Excellent"
-                                                    class="hidden">
-                                                <label for=" jewelleryDesignQuestion1-option1"
+                                                <input type="radio" id="jewelleryDesignQuestion1-option1"
+                                                    name="jewelleryDesignQuestion1"
+                                                    value="{{ App\Enums\Review::EXCELLENT }}" class="hidden">
+                                                <label for="jewelleryDesignQuestion1-option1"
                                                     class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                     <div>
                                                         <img src={{ asset('/images/icons/excellent.svg') }}
@@ -385,11 +391,11 @@
                                                 </label>
 
                                                 <div>
-                                                    <input type="radio" id=" jewelleryDesignQuestion1-option2"
-                                                        name=" jewelleryDesignQuestion1" value="Good"
-                                                        class="hidden">
+                                                    <input type="radio" id="jewelleryDesignQuestion1-option2"
+                                                        name="jewelleryDesignQuestion1"
+                                                        value="{{ App\Enums\Review::GOOD }}" class="hidden">
 
-                                                    <label for=" jewelleryDesignQuestion1-option2"
+                                                    <label for="jewelleryDesignQuestion1-option2"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/good.svg') }}
@@ -400,11 +406,11 @@
                                                 </div>
 
                                                 <div>
-                                                    <input type="radio" id=" jewelleryDesignQuestion1-option3"
-                                                        name=" jewelleryDesignQuestion1" value="Average"
-                                                        class="hidden">
+                                                    <input type="radio" id="jewelleryDesignQuestion1-option3"
+                                                        name="jewelleryDesignQuestion1"
+                                                        value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
 
-                                                    <label for=" jewelleryDesignQuestion1-option3"
+                                                    <label for="jewelleryDesignQuestion1-option3"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/average.svg') }}
@@ -416,10 +422,10 @@
 
                                                 <div>
                                                     <input type="radio" id="jewelleryDesignQuestion1-option4"
-                                                        name="jewelleryDesignQuestion1" value="Poor"
-                                                        class="hidden">
+                                                        name="jewelleryDesignQuestion1"
+                                                        value="{{ App\Enums\Review::POOR }}" class="hidden">
 
-                                                    <label for=" jewelleryDesignQuestion1-option4"
+                                                    <label for="jewelleryDesignQuestion1-option4"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/poor.svg') }}
@@ -437,10 +443,10 @@
                                                 compared to other brands</div>
 
                                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                                <input type="radio" id=" jewelleryDesignQuestion2-option1"
-                                                    name=" jewelleryDesignQuestion2" value="Excellent"
-                                                    class="hidden">
-                                                <label for=" jewelleryDesignQuestion2-option1"
+                                                <input type="radio" id="jewelleryDesignQuestion2-option1"
+                                                    name="jewelleryDesignQuestion2"
+                                                    value="{{ App\Enums\Review::EXCELLENT }}" class="hidden">
+                                                <label for="jewelleryDesignQuestion2-option1"
                                                     class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                     <div>
                                                         <img src={{ asset('/images/icons/excellent.svg') }}
@@ -450,11 +456,11 @@
                                                 </label>
 
                                                 <div>
-                                                    <input type="radio" id=" jewelleryDesignQuestion2-option2"
-                                                        name=" jewelleryDesignQuestion2" value="Good"
-                                                        class="hidden">
+                                                    <input type="radio" id="jewelleryDesignQuestion2-option2"
+                                                        name="jewelleryDesignQuestion2"
+                                                        value="{{ App\Enums\Review::GOOD }}" class="hidden">
 
-                                                    <label for=" jewelleryDesignQuestion2-option2"
+                                                    <label for="jewelleryDesignQuestion2-option2"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/good.svg') }}
@@ -465,11 +471,11 @@
                                                 </div>
 
                                                 <div>
-                                                    <input type="radio" id=" jewelleryDesignQuestion2-option3"
-                                                        name=" jewelleryDesignQuestion2" value="Average"
-                                                        class="hidden">
+                                                    <input type="radio" id="jewelleryDesignQuestion2-option3"
+                                                        name="jewelleryDesignQuestion2"
+                                                        value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
 
-                                                    <label for=" jewelleryDesignQuestion2-option3"
+                                                    <label for="jewelleryDesignQuestion2-option3"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/average.svg') }}
@@ -480,11 +486,11 @@
                                                 </div>
 
                                                 <div>
-                                                    <input type="radio" id=" jewelleryDesignQuestion2-option4"
-                                                        name=" jewelleryDesignQuestion2" value="Poor"
-                                                        class="hidden">
+                                                    <input type="radio" id="jewelleryDesignQuestion2-option4"
+                                                        name="jewelleryDesignQuestion2"
+                                                        value="{{ App\Enums\Review::POOR }}" class="hidden">
 
-                                                    <label for=" jewelleryDesignQuestion2-option4"
+                                                    <label for="jewelleryDesignQuestion2-option4"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/poor.svg') }}
@@ -506,15 +512,16 @@
                                     </div>
                                 </div>
 
-                        <div x-show="step === 2 && formData.customerType === '0'" x-cloak>
-                            <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
-                                <div class="pe-4">
-                                    <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
-                                </div>
-                                <div class="text-lg text-white font-medium uppercase">
-                                    Please let us know how we can serve you better?
-                                </div>
-                            </div>
+                                <div x-show="step === 2 && formData.customerType === '0'" x-cloak>
+                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
+                                        <div class="pe-4">
+                                            <img class="h-18" src={{ asset('/images/logo-white.svg') }}
+                                                alt="logo" />
+                                        </div>
+                                        <div class="text-lg text-white font-medium uppercase">
+                                            Please let us know how we can serve you better?
+                                        </div>
+                                    </div>
 
                                     <div class="px-6 py-10 text-[#4E5356]">
                                         <!-- Step 2B: Non-Purchased Customer Feedback -->
@@ -530,8 +537,8 @@
                                                 <div>
                                                     <input type="radio"
                                                         x-model="formData.nonPurchasedFeedback.reason"
-                                                        id="non-purchase-reason-question1" name=" non-purchase-reason"
-                                                        value="Poor" class="hidden">
+                                                        id="non-purchase-reason-question1" name="non-purchase-reason"
+                                                        value="1" class="hidden">
 
                                                     <label for="non-purchase-reason-question1"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
@@ -547,8 +554,8 @@
                                                 <div>
                                                     <input type="radio"
                                                         x-model="formData.nonPurchasedFeedback.reason"
-                                                        id="non-purchase-reason-question2" name=" non-purchase-reason"
-                                                        value="Poor" class="hidden">
+                                                        id="non-purchase-reason-question2" name="non-purchase-reason"
+                                                        value="2" class="hidden">
 
                                                     <label for="non-purchase-reason-question2"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
@@ -565,8 +572,8 @@
                                                 <div>
                                                     <input type="radio"
                                                         x-model="formData.nonPurchasedFeedback.reason"
-                                                        id="non-purchase-reason-question3" name=" non-purchase-reason"
-                                                        value="Poor" class="hidden">
+                                                        id="non-purchase-reason-question3" name="non-purchase-reason"
+                                                        value="3" class="hidden">
 
                                                     <label for="non-purchase-reason-question3"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
@@ -583,8 +590,8 @@
                                                 <div>
                                                     <input type="radio"
                                                         x-model="formData.nonPurchasedFeedback.reason"
-                                                        id="non-purchase-reason-question4" name=" non-purchase-reason"
-                                                        value="Poor" class="hidden">
+                                                        id="non-purchase-reason-question4" name="non-purchase-reason"
+                                                        value="4" class="hidden">
 
                                                     <label for="non-purchase-reason-question4"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
@@ -603,8 +610,8 @@
                                                 <div>
                                                     <input type="radio"
                                                         x-model="formData.nonPurchasedFeedback.reason"
-                                                        id="non-purchase-reason-question5" name=" non-purchase-reason"
-                                                        value="Poor" class="hidden">
+                                                        id="non-purchase-reason-question5" name="non-purchase-reason"
+                                                        value="5" class="hidden">
 
                                                     <label for="non-purchase-reason-question5"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
@@ -617,28 +624,17 @@
                                                     </label>
                                                 </div>
 
-
-
-
-
-
-
-
                                                 <div>
                                                     <input type="radio"
                                                         x-model="formData.nonPurchasedFeedback.reason"
-                                                        id="non-purchase-reason-question6" name=" non-purchase-reason"
-                                                        value="Poor" class="hidden">
+                                                        id="non-purchase-reason-question6" name="non-purchase-reason"
+                                                        value="6" class="hidden">
 
                                                     <label for="non-purchase-reason-question6"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center flex items-center justify-center content-center">
                                                         <div>Others</div>
                                                     </label>
                                                 </div>
-
-
-
-
 
                                             </div>
                                             <p x-show="errors.reason" class="text-red-500 text-sm mt-2 mb-4"
@@ -654,15 +650,16 @@
                                     </div>
                                 </div>
 
-                        <div x-show="step === 3 && formData.customerType === '1'" x-cloak>
-                            <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
-                                <div class="pe-4">
-                                    <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
-                                </div>
-                                <div class="text-lg text-white font-medium uppercase">
-                                    How was your experience with our <b>Sales Executive</b>
-                                </div>
-                            </div>
+                                <div x-show="step === 3 && formData.customerType === '1'" x-cloak>
+                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
+                                        <div class="pe-4">
+                                            <img class="h-18" src={{ asset('/images/logo-white.svg') }}
+                                                alt="logo" />
+                                        </div>
+                                        <div class="text-lg text-white font-medium uppercase">
+                                            How was your experience with our <b>Sales Executive</b>
+                                        </div>
+                                    </div>
 
                                     <div class="px-6 py-10 text-[#4E5356]">
                                         <!-- Step 3A: Purchased Customer Additional Feedback -->
@@ -672,9 +669,10 @@
                                                 provided by our showroom staff?
                                             </div>
                                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                                <input type="radio" id=" step3Question1-option1"
-                                                    name=" step3Question1" value="Excellent" class="hidden">
-                                                <label for=" step3Question1-option1"
+                                                <input type="radio" id="step3Question1-option1"
+                                                    name="step3Question1" value="{{ App\Enums\Review::EXCELLENT }}"
+                                                    class="hidden">
+                                                <label for="step3Question1-option1"
                                                     class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                     <div>
                                                         <img src={{ asset('/images/icons/excellent.svg') }}
@@ -684,10 +682,11 @@
                                                 </label>
 
                                                 <div>
-                                                    <input type="radio" id=" step3Question1-option2"
-                                                        name=" step3Question1" value="Good" class="hidden">
+                                                    <input type="radio" id="step3Question1-option2"
+                                                        name="step3Question1" value="{{ App\Enums\Review::GOOD }}"
+                                                        class="hidden">
 
-                                                    <label for=" step3Question1-option2"
+                                                    <label for="step3Question1-option2"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/good.svg') }}
@@ -698,10 +697,11 @@
                                                 </div>
 
                                                 <div>
-                                                    <input type="radio" id=" step3Question1-option3"
-                                                        name=" step3Question1" value="Average" class="hidden">
+                                                    <input type="radio" id="step3Question1-option3"
+                                                        name="step3Question1" value="{{ App\Enums\Review::AVERAGE }}"
+                                                        class="hidden">
 
-                                                    <label for=" step3Question1-option3"
+                                                    <label for="step3Question1-option3"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/average.svg') }}
@@ -712,10 +712,11 @@
                                                 </div>
 
                                                 <div>
-                                                    <input type="radio" id=" step3Question1-option4"
-                                                        name=" step3Question1" value="Poor" class="hidden">
+                                                    <input type="radio" id="step3Question1-option4"
+                                                        name="step3Question1" value="{{ App\Enums\Review::POOR }}"
+                                                        class="hidden">
 
-                                                    <label for=" step3Question1-option4"
+                                                    <label for="step3Question1-option4"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/poor.svg') }}
@@ -733,9 +734,10 @@
                                                 our showroom staff?</div>
 
                                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                                <input type="radio" id=" step3Question2-option1"
-                                                    name=" step3Question2" value="Excellent" class="hidden">
-                                                <label for=" step3Question2-option1"
+                                                <input type="radio" id="step3Question2-option1"
+                                                    name="step3Question2" value="{{ App\Enums\Review::EXCELLENT }}"
+                                                    class="hidden">
+                                                <label for="step3Question2-option1"
                                                     class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                     <div>
                                                         <img src={{ asset('/images/icons/excellent.svg') }}
@@ -745,10 +747,11 @@
                                                 </label>
 
                                                 <div>
-                                                    <input type="radio" id=" step3Question2-option2"
-                                                        name=" step3Question2" value="Good" class="hidden">
+                                                    <input type="radio" id="step3Question2-option2"
+                                                        name="step3Question2" value="{{ App\Enums\Review::GOOD }}"
+                                                        class="hidden">
 
-                                                    <label for=" step3Question2-option2"
+                                                    <label for="step3Question2-option2"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/good.svg') }}
@@ -759,10 +762,11 @@
                                                 </div>
 
                                                 <div>
-                                                    <input type="radio" id=" step3Question2-option3"
-                                                        name=" step3Question2" value="Average" class="hidden">
+                                                    <input type="radio" id="step3Question2-option3"
+                                                        name="step3Question2" value="{{ App\Enums\Review::AVERAGE }}"
+                                                        class="hidden">
 
-                                                    <label for=" step3Question2-option3"
+                                                    <label for="step3Question2-option3"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/average.svg') }}
@@ -773,10 +777,11 @@
                                                 </div>
 
                                                 <div>
-                                                    <input type="radio" id=" step3Question2-option4"
-                                                        name=" step3Question2" value="Poor" class="hidden">
+                                                    <input type="radio" id="step3Question2-option4"
+                                                        name="step3Question2" value="{{ App\Enums\Review::POOR }}"
+                                                        class="hidden">
 
-                                                    <label for=" step3Question2-option4"
+                                                    <label for="step3Question2-option4"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/poor.svg') }}
@@ -792,9 +797,10 @@
                                             <div class="block mb-4">3.⁠ ⁠How knowledgeable was our staff in explaining
                                                 products and services?</div>
                                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                                <input type="radio" id=" step3Question3-option1"
-                                                    name=" step3Question3" value="Excellent" class="hidden">
-                                                <label for=" step3Question3-option1"
+                                                <input type="radio" id="step3Question3-option1"
+                                                    name="step3Question3" value="{{ App\Enums\Review::EXCELLENT }}"
+                                                    class="hidden">
+                                                <label for="step3Question3-option1"
                                                     class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                     <div>
                                                         <img src={{ asset('/images/icons/excellent.svg') }}
@@ -804,10 +810,11 @@
                                                 </label>
 
                                                 <div>
-                                                    <input type="radio" id=" step3Question3-option2"
-                                                        name=" step3Question3" value="Good" class="hidden">
+                                                    <input type="radio" id="step3Question3-option2"
+                                                        name="step3Question3" value="{{ App\Enums\Review::GOOD }}"
+                                                        class="hidden">
 
-                                                    <label for=" step3Question3-option2"
+                                                    <label for="step3Question3-option2"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/good.svg') }}
@@ -818,10 +825,11 @@
                                                 </div>
 
                                                 <div>
-                                                    <input type="radio" id=" step3Question3-option3"
-                                                        name=" step3Question3" value="Average" class="hidden">
+                                                    <input type="radio" id="step3Question3-option3"
+                                                        name="step3Question3" value="{{ App\Enums\Review::AVERAGE }}"
+                                                        class="hidden">
 
-                                                    <label for=" step3Question3-option3"
+                                                    <label for="step3Question3-option3"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/average.svg') }}
@@ -832,10 +840,11 @@
                                                 </div>
 
                                                 <div>
-                                                    <input type="radio" id=" step3Question3-option4"
-                                                        name=" step3Question3" value="Poor" class="hidden">
+                                                    <input type="radio" id="step3Question3-option4"
+                                                        name="step3Question3" value="{{ App\Enums\Review::POOR }}"
+                                                        class="hidden">
 
-                                                    <label for=" step3Question3-option4"
+                                                    <label for="step3Question3-option4"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/poor.svg') }}
@@ -851,9 +860,10 @@
                                                 in
                                                 assisting you?</div>
                                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                                <input type="radio" id=" step3Question4-option1"
-                                                    name=" step3Question4" value="Excellent" class="hidden">
-                                                <label for=" step3Question4-option1"
+                                                <input type="radio" id="step3Question4-option1"
+                                                    name="step3Question4" value="{{ App\Enums\Review::EXCELLENT }}"
+                                                    class="hidden">
+                                                <label for="step3Question4-option1"
                                                     class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                     <div>
                                                         <img src={{ asset('/images/icons/excellent.svg') }}
@@ -863,10 +873,11 @@
                                                 </label>
 
                                                 <div>
-                                                    <input type="radio" id=" step3Question4-option2"
-                                                        name=" step3Question4" value="Good" class="hidden">
+                                                    <input type="radio" id="step3Question4-option2"
+                                                        name="step3Question4" value="{{ App\Enums\Review::GOOD }}"
+                                                        class="hidden">
 
-                                                    <label for=" step3Question4-option2"
+                                                    <label for="step3Question4-option2"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/good.svg') }}
@@ -877,10 +888,11 @@
                                                 </div>
 
                                                 <div>
-                                                    <input type="radio" id=" step3Question4-option3"
-                                                        name=" step3Question4" value="Average" class="hidden">
+                                                    <input type="radio" id="step3Question4-option3"
+                                                        name="step3Question4" value="{{ App\Enums\Review::AVERAGE }}"
+                                                        class="hidden">
 
-                                                    <label for=" step3Question4-option3"
+                                                    <label for="step3Question4-option3"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/average.svg') }}
@@ -891,10 +903,11 @@
                                                 </div>
 
                                                 <div>
-                                                    <input type="radio" id=" step3Question4-option4"
-                                                        name=" step3Question4" value="Poor" class="hidden">
+                                                    <input type="radio" id="step3Question4-option4"
+                                                        name="step3Question4" value="{{ App\Enums\Review::POOR }}"
+                                                        class="hidden">
 
-                                                    <label for=" step3Question4-option4"
+                                                    <label for="step3Question4-option4"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
                                                             <img src={{ asset('/images/icons/poor.svg') }}
@@ -910,7 +923,7 @@
                                             <div class="flex justify-center">
                                                 <button type="submit" @click="validateStep3()"
                                                     class="mt-8 main-btn">
-                                                    Continue
+                                                    Save
                                                 </button>
                                             </div>
                                         </div>

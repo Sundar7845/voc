@@ -33,7 +33,7 @@ class VocController extends Controller
         $professions = Profession::where('is_active', 1)->get();
         $qualifications = Qualification::where('is_active', 1)->get();
         $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
-        $employee = Employee::where('branch_id', $branch)->get();
+        $employee = Employee::where('branch_id', $branch)->orderBy('name', 'ASC')->get();
         return view('frontend.voc', compact('walkincustomer', 'professions', 'qualifications', 'employee'));
     }
 
@@ -157,18 +157,18 @@ class VocController extends Controller
             WalkinCustomer::where('id', $id)->update([
                 'customer_id' => $id,
                 'branch_id' => $branch,
+                'sales_executive_id' => $request->salesExcutiveName,
                 'customer_out_time' => Carbon::now(),
-                'know_about' => $request->know_about,
-                'is_purchased' => $request->is_purchased,
-                'non_purchased_review' => $request->non_purchased_review,
-                'store_experience_review' => $request->store_experience_review,
-                'jewellery_review' => $request->jewellery_review,
-                'pricing_review' => $request->pricing_review,
-                'staff_review' => $request->staff_review,
-                'friendly_review' => $request->friendly_review,
-                'service_review' => $request->service_review,
-                'assit_review' => $request->assit_review,
-                'spent_time' => $request->spent_time
+                'is_purchased' => $request->customerType,
+                'non_purchased_review' => $request->customerType == 1 ? 0 : $request->nonPurchased,
+                'store_experience_review' => $request->customerType == 0 ? 0 : $request->inStoreExperience,
+                'jewellery_review' => $request->customerType == 0 ? 0 : $request->jewellery,
+                'pricing_review' => $request->customerType == 0 ? 0 : $request->pricing,
+                'staff_review' => $request->customerType == 0 ? 0 : $request->staff,
+                'friendly_review' => $request->customerType == 0 ? 0 : $request->friendly,
+                'service_review' => $request->customerType == 0 ? 0 : $request->knowledge,
+                'assit_review' => $request->customerType == 0 ? 0 : $request->assit,
+                'spent_time' => $request->spentTime
             ]);
 
             return response()->json([
