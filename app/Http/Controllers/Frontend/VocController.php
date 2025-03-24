@@ -160,6 +160,7 @@ class VocController extends Controller
                 'customer_out_time' => Carbon::now(),
                 'know_about' => $request->know_about,
                 'is_purchased' => $request->is_purchased,
+                'non_purchased_review' => $request->non_purchased_review,
                 'store_experience_review' => $request->store_experience_review,
                 'jewellery_review' => $request->jewellery_review,
                 'pricing_review' => $request->pricing_review,
@@ -167,34 +168,6 @@ class VocController extends Controller
                 'friendly_review' => $request->friendly_review,
                 'service_review' => $request->service_review,
                 'assit_review' => $request->assit_review,
-                'spent_time' => $request->spent_time
-            ]);
-
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Feedback updated successfully.'
-            ]);
-        } catch (Exception $e) {
-            DB::rollBack();
-            $this->Log(__FUNCTION__, "POST", $e->getMessage(), Auth::user()->id, request()->ip(), gethostname());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Something went wrong!',
-            ], 500);
-        }
-    }
-
-    function getNonPurchasedFeedback(Request $request, $id)
-    {
-        try {
-            $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
-            WalkinCustomer::where('id', $id)->update([
-                'customer_id' => $id,
-                'branch_id' => $branch,
-                'customer_out_time' => Carbon::now(),
-                'know_about' => $request->know_about,
-                'is_purchased' => $request->is_purchased,
-                'non_purchased_review' => $request->non_purchased_review,
                 'spent_time' => $request->spent_time
             ]);
 
