@@ -116,9 +116,15 @@ function viewCustomerDetails(customerId) {
                 ).prop("checked", true);
                 $("#email").val(response.data.email);
                 $("#date-of-birth").val(response.data.dob);
+                $("#anniversary-date").val(response.data.anniversary_date);
                 $(
                     "input[name='marital-status'][value='" +
                         response.data.martial_status +
+                        "']"
+                ).prop("checked", true);
+                $(
+                    "input[name='source'][value='" +
+                        response.data.know_about +
                         "']"
                 ).prop("checked", true);
                 $("#profession")
@@ -163,7 +169,8 @@ $(document).ready(function () {
         var gender = $("#gender").val();
         var email = $("#email").val();
         var dob = $("#date-of-birth").val();
-        var martial_status = $("input[name='marital-status']").val();
+        var martial_status = $("input[name='marital-status']:checked").val();
+        var know_about = $("input[name='source']:checked").val();
         var anniversary_date = $("#anniversary-date").val();
         var profession_id = $("#profession").val();
         var qualification_id = $("#qualification").val();
@@ -180,6 +187,7 @@ $(document).ready(function () {
                 name: name,
                 gender: gender,
                 email: email,
+                know_about: know_about,
                 dob: dob,
                 martial_status: martial_status,
                 anniversary_date: anniversary_date,

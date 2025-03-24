@@ -29,6 +29,7 @@ class CreateCustomersTable extends Migration
             $table->foreign('qualfication_id')->references('id')->on('qualifications');
             $table->string('address')->nullable();
             $table->string('pincode')->nullable();
+            $table->string('know_about')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

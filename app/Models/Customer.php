@@ -22,6 +22,7 @@ class Customer extends Model
         'profession_id',
         'qualfication_id',
         'address',
-        'pincode'
+        'pincode',
+        'know_about'
     ];
 }
