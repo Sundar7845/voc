@@ -7,7 +7,6 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-500: oklch(0.637 0.237 25.331);
-    --color-amber-700: oklch(0.555 0.163 48.998);
     --color-green-200: oklch(0.925 0.084 155.995);
     --color-green-500: oklch(0.723 0.219 149.579);
     --color-blue-200: oklch(0.882 0.059 254.128);
@@ -1489,22 +1488,6 @@
   .transform {
     transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
   }
-  .link {
-    cursor: pointer;
-    text-decoration-line: underline;
-    &:focus {
-      --tw-outline-style: none;
-      outline-style: none;
-      @media (forced-colors: active) {
-        outline: 2px solid transparent;
-        outline-offset: 2px;
-      }
-    }
-    &:focus-visible {
-      outline: 2px solid currentColor;
-      outline-offset: 2px;
-    }
-  }
   .link\! {
     cursor: pointer !important;
     text-decoration-line: underline !important;
@@ -1858,9 +1841,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  .accent-amber-700 {
-    accent-color: var(--color-amber-700);
-  }
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -1892,14 +1872,29 @@
     --tw-duration: 300ms;
     transition-duration: 300ms;
   }
+  .peer-checked\:\!border-\[\#9D4F2A\] {
+    &:is(:where(.peer):checked ~ *) {
+      border-color: #9D4F2A !important;
+    }
+  }
   .peer-checked\:border-\[\#9D4F2A\] {
     &:is(:where(.peer):checked ~ *) {
       border-color: #9D4F2A;
     }
   }
+  .peer-checked\:\!bg-\[\#9D4F2A\] {
+    &:is(:where(.peer):checked ~ *) {
+      background-color: #9D4F2A !important;
+    }
+  }
   .peer-checked\:bg-\[\#9D4F2A\] {
     &:is(:where(.peer):checked ~ *) {
       background-color: #9D4F2A;
+    }
+  }
+  .peer-checked\:\!text-white {
+    &:is(:where(.peer):checked ~ *) {
+      color: var(--color-white) !important;
     }
   }
   .peer-checked\:text-white {

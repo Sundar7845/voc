@@ -1006,9 +1006,9 @@
                                             <div>
                                                 <input type="radio" name="marital-status"
                                                     id="marital-status-married" value="0"
-                                                    class="accent-amber-700 sr-only" x-model="maritalStatus" />
+                                                    class="peer sr-only" x-model="maritalStatus" />
                                                 <label for="marital-status-married"
-                                                    class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent">
+                                                    class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
                                                     Married
                                                 </label>
                                             </div>
@@ -1018,9 +1018,9 @@
                                             <div>
                                                 <input type="radio" name="marital-status"
                                                     id="marital-status-not-married" value="1"
-                                                    class="accent-amber-700 sr-only" x-model="maritalStatus" />
+                                                    class="peer sr-only" x-model="maritalStatus" />
                                                 <label for="marital-status-not-married"
-                                                    class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent">
+                                                class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
 
                                                     Not Married
                                                 </label>
