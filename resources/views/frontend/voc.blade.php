@@ -190,12 +190,12 @@
                     </div>
                 @else
                     <div
-                        class="flex flex-col gap-6 text-lg justify-center items-center max-w-md mx-auto text-center py-10">
+                        class="flex flex-col  gap-6 text-lg justify-center items-center max-w-md mx-auto text-center py-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                         <div>
                             <img class="h-20" src="{{ asset('/images/customers.svg') }}" alt="customers">
                         </div>
                         <div>
-                            Once you have started to create a New Customer, you’ll see it listed here
+                            Once you have started to create a New Customer, <br> you’ll see it listed here
                         </div>
                     </div>
                 @endif
