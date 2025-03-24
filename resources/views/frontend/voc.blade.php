@@ -999,7 +999,7 @@
 
                                 <!-- Marital Status -->
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-4"
-                                    x-data="{ maritalStatus: '' }">
+                                    x-data="{ maritalStatus: '' }"  x-ref="maritalStatusWrapper">
                                     <div class="grow flex items-center gap-4">
                                         <div class="text-black text-sm">Marital Status</div>
                                         <div class="flex space-x-4">

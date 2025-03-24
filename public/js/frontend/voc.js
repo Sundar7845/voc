@@ -102,6 +102,13 @@ function viewCustomerDetails(customerId) {
         success: function (response) {
             if (response.status === "success") {
                 console.log(response.data); // Log data or display it in a modal
+                    
+                // Update Alpine's maritalStatus variable
+                const maritalStatusWrapper = document.querySelector('[x-ref="maritalStatusWrapper"]');
+                Alpine.$data(maritalStatusWrapper).maritalStatus = response.data.martial_status.toString();
+
+                console.log("marriage status",response.data.martial_status)
+
                 $("#customerId").val(response.data.id);
                 $("#name").val(response.data.name);
                 // ✅ Fill phone number into individual boxes
