@@ -116,6 +116,7 @@ function viewCustomerDetails(customerId) {
                 ).prop("checked", true);
                 $("#email").val(response.data.email);
                 $("#date-of-birth").val(response.data.dob);
+                $("#anniversary-date").val(response.data.anniversary_date);
                 $(
                     "input[name='marital-status'][value='" +
                         response.data.martial_status +
