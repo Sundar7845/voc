@@ -9,6 +9,7 @@ use App\Models\Employee;
 use App\Models\Profession;
 use App\Models\Qualification;
 use App\Models\WalkinCustomer;
+use App\Traits\Common;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\DB;
 
 class VocController extends Controller
 {
+    use Common;
     function voc(Request $request)
     {
         $walkincustomer = WalkinCustomer::select('walkin_customers.*', 'customers.name')
@@ -117,18 +119,18 @@ class VocController extends Controller
     }
 
     function customerDetailsUpdate(Request $request, $id)
-    {
+    {dd($request->all());
         try {
             Customer::where('id', $id)->update([
                 'name' => $request->name,
-                'phone_number' => $request->phone_number,
+                'phone_number' => $request->phone,
                 'email' => $request->email,
                 'gender' => $request->gender,
                 'dob' => $request->dob,
                 'martial_status' => $request->martial_status,
                 'anniversary_date' => $request->anniversary_date,
                 'profession_id' => $request->profession_id,
-                'educational_qualification_id' => $request->educational_qualification_id,
+                'qualfication_id' => $request->qualification_id,
                 'address' => $request->address,
                 'pincode'  => $request->pincode
             ]);

@@ -20,7 +20,7 @@ class Customer extends Model
         'martial_status',
         'anniversary_date',
         'profession_id',
-        'educational_qualification_id',
+        'qualfication_id',
         'address',
         'pincode'
     ];

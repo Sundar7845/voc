@@ -7,9 +7,33 @@ function storePhoneNumber() {
     document.getElementById("hiddenPhone").value = phoneNumber;
 }
 
+function storeDetailsPhoneNumber() {
+    let phoneInputs = document.querySelectorAll(".phone_number");
+    let phoneNumber = "";
+    phoneInputs.forEach((input) => {
+        phoneNumber += input.value;
+    });
+
+    document.getElementById("hiddenPhoneNumber").value = phoneNumber;
+}
+
+function storePincode() {
+    let pincodeInputs = document.querySelectorAll(".zip");
+    let pincode = "";
+    pincodeInputs.forEach((input) => {
+        pincode += input.value;
+    });
+
+    document.getElementById("hiddenPincode").value = pincode;
+}
 // Attach event listener for keyup to all inputs
 document.querySelectorAll(".phone").forEach((input) => {
     input.addEventListener("keyup", storePhoneNumber);
+});
+
+// Attach event listener for keyup to all inputs
+document.querySelectorAll(".phone_number").forEach((input) => {
+    input.addEventListener("keyup", storeDetailsPhoneNumber);
 });
 
 $(document).ready(function () {
@@ -178,6 +202,9 @@ function viewCustomerDetails(customerId) {
                         response.data.know_about +
                         "']"
                 ).prop("checked", true);
+
+                storeDetailsPhoneNumber();
+                storePincode();
             } else {
                 alert("No details found!");
             }
@@ -198,15 +225,16 @@ $(document).ready(function () {
         var gender = $("#gender").val();
         var email = $("#email").val();
         var dob = $("#date-of-birth").val();
-        var martial_status = $("#marital-status").val();
+        var martial_status = $("input[name='marital-status']").val();
         var anniversary_date = $("#anniversary-date").val();
         var profession_id = $("#profession").val();
-        var qualification = $("#qualification").val();
+        var qualification_id = $("#qualification").val();
         var address = $("#address").val();
         var pincode = $("#pincode").val();
         var source = $("#source").val();
+        var phone = $("#hiddenPhoneNumber").val();
         $.ajax({
-            url: "update-customer-details" + id, // Change this to your actual server endpoint
+            url: "update-customer-details/" + id, // Change this to your actual server endpoint
             type: "POST",
             data: {
                 _token: $('meta[name="csrf-token"]').attr("content"),
@@ -218,7 +246,7 @@ $(document).ready(function () {
                 martial_status: martial_status,
                 anniversary_date: anniversary_date,
                 profession_id: profession_id,
-                qualification: qualification,
+                qualification_id: qualification_id,
                 address: address,
                 pincode: pincode,
                 source: source,

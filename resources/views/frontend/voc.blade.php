@@ -962,6 +962,9 @@
                                         <input type="text" maxlength="1"
                                             class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
                                     </div>
+                                    <!-- Hidden input to store combined value -->
+                                    <input type="hidden" id="hiddenPhoneNumber" name="hiddenPhoneNumber" />
+
                                 </div>
 
 
@@ -989,27 +992,28 @@
                                     <div class="grow flex items-center gap-4">
                                         <div class="text-black text-sm">Marital Status</div>
                                         <div class="flex space-x-4">
-                                        <div>
-                                        <input type="radio" name="marital-status" id="marital-status-married"
-                                            value="Married" class="accent-amber-700 sr-only" x-model="maritalStatus"
-                                            />
-                                            <label for="marital-status-married" class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent">
-                                                Married
-                                            </label>
-                                        </div>
+                                            <div>
+                                                <input type="radio" name="marital-status"
+                                                    id="marital-status-married" value="0"
+                                                    class="accent-amber-700 sr-only" x-model="maritalStatus" />
+                                                <label for="marital-status-married"
+                                                    class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent">
+                                                    Married
+                                                </label>
+                                            </div>
 
 
 
                                             <div>
-                                        <input type="radio" name="marital-status" id="marital-status-not-married"
-                                            value="Not Married" class="accent-amber-700 sr-only" 
-                                            x-model="maritalStatus"
-                                            />
-                                            <label for="marital-status-not-married" class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent">
-                                                
-                                            Not Married
-                                            </label>
-                                        </div>
+                                                <input type="radio" name="marital-status"
+                                                    id="marital-status-not-married" value="1"
+                                                    class="accent-amber-700 sr-only" x-model="maritalStatus" />
+                                                <label for="marital-status-not-married"
+                                                    class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent">
+
+                                                    Not Married
+                                                </label>
+                                            </div>
 
                                         </div>
                                     </div>
@@ -1075,6 +1079,8 @@
                                                 class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
                                             <input required name="pincode" type="text" maxlength="1"
                                                 class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+
+                                            <input type="hidden" name="hiddenPincode" id="hiddenPincode">
                                         </div>
                                     </div>
 
@@ -1082,8 +1088,8 @@
                                 </div>
 
                                 <div class="text-lg font-medium text-[#9D4F2A] mt-6 mb-4">
-                                How do you know about Jewel One?
-                                    </div>
+                                    How do you know about Jewel One?
+                                </div>
 
                                 <!-- Source Options -->
                                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-4">
