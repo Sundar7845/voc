@@ -203,7 +203,9 @@
 
                 <dialog id="getFeedback" class="modal">
                     <div class="modal-box p-0 max-w-4xl min-h-60 bg-[#FCFAF9]">
-                        <div x-show="step === 1" x-cloak>
+                        <div>
+                            <form id="getFeedbackForm">
+                            <div x-show="step === 1" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
                                     <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
@@ -241,37 +243,43 @@
                                         Type</div>
                                     <div class="flex gap-4 flex-wrap">
 
-                                        <label
-                                            @click="formData.customerType = 'Purchased Customer'; errors.customerType = ''; customerType = 'purchased'"
-                                            class="cursor-pointer p-3 border border-[#C7C7C7] rounded-lg px-6 text-center"
-                                            :class="{
-                                                'border-[#9D4F2A] ring ring-[#9D4F2A]': formData
-                                                    .customerType === 'Purchased Customer'
-                                            }">
+
+                                        <div>
+                                            <input type="radio"
+                                            @change="errors.customerType = ''"
+                                            name="customerType" id="purchased-customer" class="sr-only peer" x-model="formData.customerType" value="purchased">
+                                        <label for="purchased-customer"
+                                        class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300"
+                                            >
                                             Purchased Customer
                                         </label>
+                                        </div>
+
+                                        <div>
+                                            <input type="radio"
+                                            @change="errors.customerType = ''"
+                                            name="customerType" id="non-purchased" class="sr-only peer" x-model="formData.customerType" value="non-purchased">
                                         <label
-                                            @click="formData.customerType = 'Non-Purchased Customer'; errors.customerType = ''; customerType = 'non-purchased'"
-                                            class="cursor-pointer p-3 border border-[#C7C7C7] rounded-lg  px-6 text-center"
-                                            :class="{
-                                                'border-[#9D4F2A] ring ring-[#9D4F2A]': formData
-                                                    .customerType === 'Non-Purchased Customer'
-                                            }">
+                                        for="non-purchased"
+                                        class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300"
+                                        >
                                             Non-Purchased Customer
                                         </label>
+                                        </div>
+
                                     </div>
                                     <p x-show="errors.customerType" class="text-red-500 text-sm mt-2 mb-4"
                                         x-text="errors.customerType">
                                     </p>
 
-                                    <button @click="validateStep1()" class="mt-8 main-btn">
+                                    <button type="button"  @click="validateStep1()" class="mt-8 main-btn">
                                         Continue
                                     </button>
                                 </div>
                             </div>
                         </div>
 
-                        <div x-show="step === 2 && customerType === 'purchased'" x-cloak>
+                        <div x-show="step === 2 && formData.customerType === 'purchased'" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
                                     <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
@@ -468,7 +476,7 @@
 
 
                                     <div class="mt-8 flex justify-center">
-                                        <button @click="validateStep2()" class="main-btn ">
+                                        <button type="button" @click="validateStep2()" class="main-btn ">
                                             Continue
                                         </button>
                                     </div>
@@ -476,7 +484,7 @@
                             </div>
                         </div>
 
-                        <div x-show="step === 2 && customerType === 'non-purchased'" x-cloak>
+                        <div x-show="step === 2 && formData.customerType === 'non-purchased'" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
                                     <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
@@ -608,7 +616,7 @@
                                         x-text="errors.reason"></p>
 
                                     <div class="flex justify-center !px-10">
-                                        <button @click="validateStep2()" class="mt-8 main-btn">
+                                        <button  type="submit" @click="validateStep2()" class="mt-8 main-btn">
                                             Submit
                                         </button>
                                     </div>
@@ -616,7 +624,7 @@
                             </div>
                         </div>
 
-                        <div x-show="step === 3 && customerType === 'purchased'" x-cloak>
+                        <div x-show="step === 3 && formData.customerType === 'purchased'" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
                                     <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
@@ -856,7 +864,7 @@
 
                                     <!-- Continue Button -->
                                     <div class="flex justify-center">
-                                        <button @click="validateStep3()" class="mt-8 main-btn">
+                                        <button  type="submit"  @click="validateStep3()" class="mt-8 main-btn">
                                             Continue
                                         </button>
                                     </div>
@@ -878,6 +886,8 @@
                                     <button class="main-btn" @click="clearData">OK</button>
                                 </form>
                             </div>
+                        </div>
+                            </form>
                         </div>
 
                         <form method="dialog" class="modal-backdrop z-10">
@@ -1379,7 +1389,7 @@
                 },
                 validateStep2() {
                     this.errors = {};
-                    if (this.customerType === "purchased") {
+                    if (this.formData.customerType === "purchased") {
                         this.step = 3;
                     } else {
                         if (!this.formData.nonPurchasedFeedback.reason) {
@@ -1430,7 +1440,23 @@
                 },
             };
         }
+
+        document.getElementById("getFeedbackForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+
+            const data = {
+            }
+
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            console.log(data);
+        })
     </script>
+
 </body>
 
 </html>
