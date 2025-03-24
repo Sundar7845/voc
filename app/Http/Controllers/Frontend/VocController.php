@@ -119,7 +119,7 @@ class VocController extends Controller
     }
 
     function customerDetailsUpdate(Request $request, $id)
-    {dd($request->all());
+    {
         try {
             Customer::where('id', $id)->update([
                 'name' => $request->name,

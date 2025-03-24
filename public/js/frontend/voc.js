@@ -168,7 +168,7 @@ $(document).ready(function () {
         var profession_id = $("#profession").val();
         var qualification_id = $("#qualification").val();
         var address = $("#address").val();
-        var pincode = $("#pincode").val();
+        var pincode = $("#hiddenPincode").val();
         var source = $("#source").val();
         var phone = $("#hiddenPhoneNumber").val();
         $.ajax({
