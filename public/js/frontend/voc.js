@@ -102,12 +102,15 @@ function viewCustomerDetails(customerId) {
         success: function (response) {
             if (response.status === "success") {
                 console.log(response.data); // Log data or display it in a modal
-                    
-                // Update Alpine's maritalStatus variable
-                const maritalStatusWrapper = document.querySelector('[x-ref="maritalStatusWrapper"]');
-                Alpine.$data(maritalStatusWrapper).maritalStatus = response.data.martial_status.toString();
 
-                console.log("marriage status",response.data.martial_status)
+                // Update Alpine's maritalStatus variable
+                const maritalStatusWrapper = document.querySelector(
+                    '[x-ref="maritalStatusWrapper"]'
+                );
+                Alpine.$data(maritalStatusWrapper).maritalStatus =
+                    response.data.martial_status.toString();
+
+                console.log("marriage status", response.data.martial_status);
 
                 $("#customerId").val(response.data.id);
                 $("#name").val(response.data.name);
@@ -262,5 +265,55 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         updateTimer();
         setInterval(updateTimer, 1000);
+    });
+});
+
+//CUSOMTER UPDATE
+$(document).ready(function () {
+    // Handle form submission via AJAX
+    $("#getFeedbackForm").submit(function (e) {
+        e.preventDefault(); // Prevent default form submission
+        var salesExcutiveName = $("#salesExcutiveName").val();
+        $.ajax({
+            url: "update-customer-details/" + id, // Change this to your actual server endpoint
+            type: "POST",
+            data: {
+                _token: $('meta[name="csrf-token"]').attr("content"),
+            },
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+
+                let bgColor =
+                    response.status == "success"
+                        ? "linear-gradient(to right, #00b09b, #96c93d)"
+                        : "linear-gradient(to right, #ff416c, #ff4b2b)"; // Green for success, red for error
+
+                Toastify({
+                    text: response.message,
+                    className: response.status ? "success" : "error",
+                    close: true,
+                    duration: 3000,
+                    style: {
+                        background: bgColor,
+                    },
+                }).showToast();
+
+                window.location.reload();
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+
+                Toastify({
+                    text: "An error occurred while submitting the form.",
+                    className: "error",
+                    close: true,
+                    duration: 3000,
+                    style: {
+                        background: "#dc3545",
+                    },
+                }).showToast();
+            },
+        });
     });
 });
