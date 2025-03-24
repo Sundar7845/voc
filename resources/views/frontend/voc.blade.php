@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="bg-[#FCFAF9] min-h-screen roboto antialiased">
@@ -133,9 +134,12 @@
 
                             <form method="dialog" class="modal-backdrop z-10">
                                 <button class="text-white absolute top-0 right-0 p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 31 31" fill="none">
-                                    <circle cx="15.5" cy="15.5" r="15.5" fill="black"/>
-                                    <path d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z" fill="#FCFAF9"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                        viewBox="0 0 31 31" fill="none">
+                                        <circle cx="15.5" cy="15.5" r="15.5" fill="black" />
+                                        <path
+                                            d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z"
+                                            fill="#FCFAF9" />
                                     </svg>
                                 </button>
                             </form>
@@ -146,51 +150,54 @@
 
             <div class="p-4" x-data="getfeedbackData">
 
-              
+
                 @if (count($walkincustomer) > 0)
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 flex-wrap">
-                    @foreach ($walkincustomer as $item)
-                        <div class="bg-[#FFEDD9] overflow-hidden rounded-lg">
-                            <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-6">
-                                <div class="flex gap-1 items-center">
-                                    <span class="w-2 h-2 rounded-full bg-green-500 block"></span>
-                                    <span class="text-md">Customer #{{ $item->formattedCount }}</span>
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 flex-wrap">
+                        @foreach ($walkincustomer as $item)
+                            <div class="bg-[#FFEDD9] overflow-hidden rounded-lg">
+                                <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-6">
+                                    <div class="flex gap-1 items-center">
+                                        <span class="w-2 h-2 rounded-full bg-green-500 block"></span>
+                                        <span class="text-md">Customer #{{ $item->formattedCount }}</span>
+                                    </div>
+                                    <div class="text-xl font-semibold">
+                                        {{ $item->name ? $item->name : 'new customer' }}
+                                    </div>
+                                    <div class="my-4">
+                                        <button
+                                            @click="open = true; formData.customerId = {{ $item->id }}; viewCustomerDetails({{ $item->customer_id }})"
+                                            class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white">
+                                            View Details
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button onclick="getFeedback.showModal()"
+                                            @click="open = true; formData.customerId = {{ $item->id }}"
+                                            class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
+                                            Get Feedback
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="text-xl font-semibold">
-                                    {{ $item->name ? $item->name : 'new customer' }}
-                                </div>
-                                <div class="my-4">
-                                    <button
-                                        @click="open = true; formData.customerId = {{ $item->id }}; viewCustomerDetails({{ $item->customer_id }})"
-                                        class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white">
-                                        View Details
-                                    </button>
-                                </div>
-                                <div>
-                                    <button onclick="getFeedback.showModal()"
-                                        @click="open = true; formData.customerId = {{ $item->id }}"
-                                        class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
-                                        Get Feedback
-                                    </button>
+                                <div class="text-sm py-2 px-6" style="color: red;">
+                                    <span id="timer-{{ $item->id }}"
+                                        data-enter-time="{{ $item->customer_enter_time }}">Loading...</span>
+                                    <input type="hidden" name="spent_time" id="spent_time" value="">
                                 </div>
                             </div>
-                            <div class="text-sm py-2 px-6" style="color: red;">
-                                <span id="timer-{{ $item->id }}" data-enter-time="{{ $item->customer_enter_time }}">Loading...</span>
-                                <input type="hidden" name="spent_time" id="spent_time" value="">
-                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div
+                        class="flex flex-col gap-6 text-lg justify-center items-center max-w-md mx-auto text-center py-10">
+                        <div>
+                            <img class="h-20" src="/images/customers.svg" alt="customers">
                         </div>
-                    @endforeach
-                </div>
-            @else
-            <div class="flex flex-col gap-6 text-lg justify-center items-center max-w-md mx-auto text-center py-10">
-                <div>
-                    <img class="h-20" src="/images/customers.svg" alt="customers">
-                </div>
-                <div>
-                    Once you have started to create a New Customer, you’ll see it listed here
-                </div>
-            </div>
-            @endif
+                        <div>
+                            Once you have started to create a New Customer, you’ll see it listed here
+                        </div>
+                    </div>
+                @endif
 
 
 
@@ -215,7 +222,8 @@
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Sales
                                             Executive Name</label>
                                         <select x-model="formData.salesExecutive" @change="errors.salesExecutive = ''"
-                                            class="bg-transparent border py-3 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3">
+                                            class="bg-transparent border py-3 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3"
+                                            name="salesExcutiveName" id="salesExcutiveName">
                                             <option value>Select Executive</option>
                                             @foreach ($employee as $item)
                                                 <option value={{ $item->id }}>
@@ -232,11 +240,6 @@
                                     <div class="block mb-4 text-md font-semibold text-[#9D4F2A]">Customer
                                         Type</div>
                                     <div class="flex gap-4 flex-wrap">
-
-
-
-
-
 
                                         <label
                                             @click="formData.customerType = 'Purchased Customer'; errors.customerType = ''; customerType = 'purchased'"
@@ -879,10 +882,13 @@
 
                         <form method="dialog" class="modal-backdrop z-10">
                             <button class="text-white absolute top-0 right-0 p-1" @click="clearData">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 31 31" fill="none">
-                                    <circle cx="15.5" cy="15.5" r="15.5" fill="black"/>
-                                    <path d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z" fill="#FCFAF9"/>
-                                    </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                    viewBox="0 0 31 31" fill="none">
+                                    <circle cx="15.5" cy="15.5" r="15.5" fill="black" />
+                                    <path
+                                        d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z"
+                                        fill="#FCFAF9" />
+                                </svg>
 
                             </button>
                         </form>
@@ -999,14 +1005,14 @@
 
                                 <!-- Marital Status -->
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-4"
-                                    x-data="{ maritalStatus: '' }"  x-ref="maritalStatusWrapper">
+                                    x-data="{ maritalStatus: '' }" x-ref="maritalStatusWrapper">
                                     <div class="grow flex items-center gap-4">
                                         <div class="text-black text-sm">Marital Status</div>
                                         <div class="flex space-x-4">
                                             <div>
                                                 <input type="radio" name="marital-status"
-                                                    id="marital-status-married" value="0"
-                                                    class="peer sr-only" x-model="maritalStatus" />
+                                                    id="marital-status-married" value="0" class="peer sr-only"
+                                                    x-model="maritalStatus" />
                                                 <label for="marital-status-married"
                                                     class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
                                                     Married
@@ -1020,7 +1026,7 @@
                                                     id="marital-status-not-married" value="1"
                                                     class="peer sr-only" x-model="maritalStatus" />
                                                 <label for="marital-status-not-married"
-                                                class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
+                                                    class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
 
                                                     Not Married
                                                 </label>
@@ -1168,10 +1174,13 @@
 
                         <form method="dialog" class="modal-backdrop z-10">
                             <button class="text-white absolute  top-0 right-0 p-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 31 31" fill="none">
-                                    <circle cx="15.5" cy="15.5" r="15.5" fill="black"/>
-                                    <path d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z" fill="#FCFAF9"/>
-                                    </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                    viewBox="0 0 31 31" fill="none">
+                                    <circle cx="15.5" cy="15.5" r="15.5" fill="black" />
+                                    <path
+                                        d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z"
+                                        fill="#FCFAF9" />
+                                </svg>
 
                             </button>
                         </form>
