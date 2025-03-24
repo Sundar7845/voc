@@ -247,7 +247,7 @@
                                         <div>
                                             <input type="radio"
                                             @change="errors.customerType = ''"
-                                            name="customerType" id="purchased-customer" class="sr-only peer" x-model="formData.customerType" value="purchased">
+                                            name="customerType" id="purchased-customer" class="sr-only peer" x-model="formData.customerType" value="1">
                                         <label for="purchased-customer"
                                         class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300"
                                             >
@@ -258,7 +258,7 @@
                                         <div>
                                             <input type="radio"
                                             @change="errors.customerType = ''"
-                                            name="customerType" id="non-purchased" class="sr-only peer" x-model="formData.customerType" value="non-purchased">
+                                            name="customerType" id="non-purchased" class="sr-only peer" x-model="formData.customerType" value="0">
                                         <label
                                         for="non-purchased"
                                         class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300"
@@ -279,7 +279,7 @@
                             </div>
                         </div>
 
-                        <div x-show="step === 2 && formData.customerType === 'purchased'" x-cloak>
+                        <div x-show="step === 2 && formData.customerType === '1'" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
                                     <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
@@ -484,7 +484,7 @@
                             </div>
                         </div>
 
-                        <div x-show="step === 2 && formData.customerType === 'non-purchased'" x-cloak>
+                        <div x-show="step === 2 && formData.customerType === '0'" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
                                     <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
@@ -624,7 +624,7 @@
                             </div>
                         </div>
 
-                        <div x-show="step === 3 && formData.customerType === 'purchased'" x-cloak>
+                        <div x-show="step === 3 && formData.customerType === '1'" x-cloak>
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
                                 <div class="pe-4">
                                     <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
@@ -1389,7 +1389,7 @@
                 },
                 validateStep2() {
                     this.errors = {};
-                    if (this.formData.customerType === "purchased") {
+                    if (this.formData.customerType === "1") {
                         this.step = 3;
                     } else {
                         if (!this.formData.nonPurchasedFeedback.reason) {
