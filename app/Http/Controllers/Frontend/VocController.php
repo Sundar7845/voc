@@ -132,7 +132,8 @@ class VocController extends Controller
                 'profession_id' => $request->profession_id,
                 'qualfication_id' => $request->qualification_id,
                 'address' => $request->address,
-                'pincode'  => $request->pincode
+                'pincode'  => $request->pincode,
+                'know_about' => $request->know_about
             ]);
 
             return response()->json([
