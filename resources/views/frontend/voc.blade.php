@@ -146,16 +146,18 @@
 
             <div class="p-4" x-data="getfeedbackData">
 
-                <div
-                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 flex-wrap">
+              
+                @if (count($walkincustomer) > 0)
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 flex-wrap">
                     @foreach ($walkincustomer as $item)
                         <div class="bg-[#FFEDD9] overflow-hidden rounded-lg">
                             <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-6">
                                 <div class="flex gap-1 items-center">
                                     <span class="w-2 h-2 rounded-full bg-green-500 block"></span>
-                                    <span class="text-md"> Customer #{{ $item->formattedCount }}</span>
+                                    <span class="text-md">Customer #{{ $item->formattedCount }}</span>
                                 </div>
-                                <div class="text-xl font-semibold">{{ $item->name ? $item->name : 'new customer' }}
+                                <div class="text-xl font-semibold">
+                                    {{ $item->name ? $item->name : 'new customer' }}
                                 </div>
                                 <div class="my-4">
                                     <button
@@ -163,7 +165,6 @@
                                         class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white">
                                         View Details
                                     </button>
-
                                 </div>
                                 <div>
                                     <button onclick="getFeedback.showModal()"
@@ -174,13 +175,23 @@
                                 </div>
                             </div>
                             <div class="text-sm py-2 px-6" style="color: red;">
-                                <span id="timer-{{ $item->id }}"
-                                    data-enter-time="{{ $item->customer_enter_time }}">Loading...</span>
+                                <span id="timer-{{ $item->id }}" data-enter-time="{{ $item->customer_enter_time }}">Loading...</span>
                                 <input type="hidden" name="spent_time" id="spent_time" value="">
                             </div>
                         </div>
                     @endforeach
                 </div>
+            @else
+            <div class="flex flex-col gap-6 text-lg justify-center items-center max-w-md mx-auto text-center py-10">
+                <div>
+                    <img class="h-20" src="/images/customers.svg" alt="customers">
+                </div>
+                <div>
+                    Once you have started to create a New Customer, you’ll see it listed here
+                </div>
+            </div>
+            @endif
+
 
 
                 <dialog id="getFeedback" class="modal">
