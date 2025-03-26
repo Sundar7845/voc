@@ -191,7 +191,7 @@
                     </div>
                 @else
                     <div
-                        class="flex flex-col  gap-6 text-lg justify-center items-center max-w-md mx-auto text-center py-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        class="flex flex-col text-black gap-6 text-lg justify-center items-center max-w-md mx-auto text-center py-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                         <div>
                             <img class="h-20" src="{{ asset('/images/customers.svg') }}" alt="customers">
                         </div>
