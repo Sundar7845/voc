@@ -27,7 +27,7 @@
                     <div>
                         <img src="{{ asset('images/logo.svg') }}" alt="logo" class="px-10" />
                     </div>
-                    <div class="text-xl md:text-3xl text-[#9D4F2A] text-center font-semibold uppercase">
+                    <div class="text-xl md:text-3xl text-[#9D4F2A] text-center font-bold uppercase roboto">
                         JewelOne - VOC Form
                     </div>
                 </div>
@@ -41,6 +41,8 @@
                             <input type="text" id="email" name="email" placeholder="Enter your email" required
                                 class="bg-transparent border py-4 border-[#C7C7C7] text-black focus:outline-black placeholder:!text-black rounded-lg block w-full p-3" />
                         </div>
+
+                       
 
                         <!-- Password -->
                         <div class="relative mb-8">
