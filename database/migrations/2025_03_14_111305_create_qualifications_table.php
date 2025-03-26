@@ -16,7 +16,7 @@ class CreateQualificationsTable extends Migration
         Schema::create('qualifications', function (Blueprint $table) {
             $table->id();
             $table->string('qualification')->nullable();
-            $table->integer('is_active')->default(0);
+            $table->integer('is_active')->default(1);
             $table->timestamps();
         });
     }
