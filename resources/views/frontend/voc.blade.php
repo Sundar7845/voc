@@ -35,12 +35,12 @@
 
                     <div>
                         <a href="{{ route('logout') }}"
-                            class="flex gap-1 text-black items-center border cursor-pointer border-black rounded-sm py-2 px-4 hover:text-white hover:bg-black">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
+                            class="group flex gap-1 text-black items-center border cursor-pointer border-black rounded-sm py-2 px-4 hover:text-white hover:bg-black">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" class="fill-black group-hover:fill-white"
                                 fill="none">
                                 <path
                                     d="M7.11021 2.43868H5.92517V1.28257H1.18503V12.8437H5.92517V11.6876H7.11021V12.8437C7.11021 13.4822 6.57965 13.9998 5.92517 13.9998H1.18503C0.530556 13.9998 0 13.4822 0 12.8437V1.28257C0 0.644073 0.530556 0.126465 1.18503 0.126465H5.92517C6.57965 0.126465 7.11021 0.644073 7.11021 1.28257V2.43868ZM11.6049 6.48507L9.0613 4.00354L9.89925 3.18605L13.8733 7.06313L9.89925 10.9402L9.0613 10.1227L11.6049 7.64118H4.74014V6.48507H11.6049Z"
-                                    fill="black" />
+                                     />
                             </svg>
 
                             Logout
