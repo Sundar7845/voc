@@ -24,12 +24,11 @@ class VocController extends Controller
         $walkincustomer = WalkinCustomer::select('walkin_customers.*', 'customers.name')
             ->join('customers', 'customers.id', 'walkin_customers.customer_id')
             ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
-            ->where('walkin_customers.customer_out_time', null)
-            ->get()
-            ->map(function ($customer, $index) {
-                $customer->formattedCount = str_pad($index + 1, 3, '0', STR_PAD_LEFT);
-                return $customer;
-            });
+            ->whereNull('walkin_customers.customer_out_time')
+            ->orderBy('walkin_customers.customer_enter_time') // Ensure proper order
+            ->get();
+
+
         $professions = Profession::where('is_active', 1)->get();
         $qualifications = Qualification::where('is_active', 1)->get();
         $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
@@ -49,10 +48,12 @@ class VocController extends Controller
                     ->exists();
 
                 if (!$existingWalkin) {
+                    $dailyCount = $this->getDailyCount(); // Fetch the latest count
                     WalkinCustomer::Create([
                         'customer_id' => $customer->id,
                         'branch_id' => Auth::user()->id,
-                        'customer_enter_time' => Carbon::now()
+                        'customer_enter_time' => Carbon::now(),
+                        'daily_count' => $dailyCount,
                     ]);
 
                     return response()->json([
@@ -72,10 +73,13 @@ class VocController extends Controller
                     'phone_number' => $request->phone
                 ]);
 
+                $dailyCount = $this->getDailyCount(); // Fetch the latest count
+
                 WalkinCustomer::Create([
                     'customer_id' => $newCustomer->id,
                     'branch_id' => Auth::user()->id,
-                    'customer_enter_time' => Carbon::now()
+                    'customer_enter_time' => Carbon::now(),
+                    'daily_count' => $dailyCount,
                 ]);
 
                 return response()->json([
@@ -91,6 +95,15 @@ class VocController extends Controller
                 'message' => 'Something went wrong!',
             ], 500);
         }
+    }
+
+    private function getDailyCount()
+    {
+        $lastCount = WalkinCustomer::whereDate('customer_enter_time', Carbon::today())
+            ->orderBy('daily_count', 'desc')
+            ->value('daily_count');
+
+        return $lastCount ? str_pad((int)$lastCount + 1, 3, '0', STR_PAD_LEFT) : '001';
     }
 
     function getCustomerDetails(Request $request)

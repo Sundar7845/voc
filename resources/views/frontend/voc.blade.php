@@ -18,7 +18,7 @@
     <header class="bg-[#F2EDE4] border-b border-[#C7C7C7]">
         <nav class="px-4 md:px-16 py-4 flex justify-between gap-10 items-center">
             <div>
-                <a href="/">
+                <a href="{{ route('voc') }}">
                     <img src="{{ asset('/images/logo.svg') }}" alt="logo" class="h-16" />
                 </a>
             </div>
@@ -26,7 +26,7 @@
             <div>
                 <div class="flex items-center gap-3">
                     <div class="text-end">
-                        <div class="text-md font-medium text-black">Coimbatore</div>
+                        <div class="text-md font-medium text-black">{{ Auth::user()->name }}</div>
                         <div class="text-[#7C7C7C] text-sm">Jewelone Showroom</div>
                     </div>
                     <div>
@@ -159,7 +159,7 @@
                                 <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-6">
                                     <div class="flex gap-1 items-center">
                                         <span class="w-2 h-2 rounded-full bg-green-500 block"></span>
-                                        <span class="text-md">Customer #{{ $item->formattedCount }}</span>
+                                        <span class="text-md">Customer #{{ $item->daily_count }}</span>
                                     </div>
                                     <div class="text-xl font-semibold">
                                         {{ $item->name ? $item->name : 'new customer' }}
@@ -182,9 +182,10 @@
                                     <span id="timer-{{ $item->id }}"
                                         data-enter-time="{{ $item->customer_enter_time }}"
                                         data-customer-id="{{ $item->id }}">Loading...</span>
-                                    <input type="hidden" name="spent_time_{{ $item->id }}" id="spent_time_{{ $item->id }}" value="">
+                                    <input type="hidden" name="spent_time_{{ $item->id }}"
+                                        id="spent_time_{{ $item->id }}" value="">
                                 </div>
-                                
+
                             </div>
                         @endforeach
                     </div>

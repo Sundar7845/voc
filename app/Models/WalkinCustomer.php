@@ -13,6 +13,7 @@ class WalkinCustomer extends Model
     protected $fillable = [
         'customer_id',
         'branch_id',
+        'daily_count',
         'sales_executive_id',
         'customer_enter_time',
         'customer_out_time',

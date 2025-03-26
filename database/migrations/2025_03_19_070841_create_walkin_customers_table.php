@@ -21,6 +21,7 @@ class CreateWalkinCustomersTable extends Migration
             $table->foreign('branch_id')->references('id')->on('branches');
             $table->unsignedBigInteger('sales_executive_id')->nullable();
             $table->foreign('sales_executive_id')->references('id')->on('employees');
+            $table->string('daily_count')->nullable();
             $table->string('customer_enter_time')->nullable();
             $table->string('customer_out_time')->nullable();
             $table->integer('is_purchased')->default(0);
