@@ -36,3 +36,4 @@
   input[type='radio']:checked + label {
     @apply text-black border-[#964A26] ring ring-[#964A26];
   }
+
