@@ -62,7 +62,7 @@ class VocController extends Controller
                     ]);
                 } else {
                     return response()->json([
-                        'status' => 'warning',
+                        'status' => 'error',
                         'message' => 'Customer already has an active Walk-in record.'
                     ]);
                 }

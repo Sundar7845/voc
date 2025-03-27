@@ -71,8 +71,9 @@ $(document).ready(function () {
                         background: bgColor,
                     },
                 }).showToast();
-
-                window.location.reload();
+                if (response.status == "success") {
+                    window.location.reload();
+                }
             },
             error: function (xhr, status, error) {
                 console.error(xhr.responseText);
