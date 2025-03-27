@@ -20,7 +20,7 @@ Route::fallback(function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.login');
 });
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login/store', [LoginController::class, 'login'])->name('loginstore');
