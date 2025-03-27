@@ -37,11 +37,10 @@
                     <div>
                         <a href="{{ route('logout') }}"
                             class="group flex gap-1 text-black items-center border cursor-pointer border-black rounded-sm py-2 px-4 hover:text-white hover:bg-black">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" class="fill-black group-hover:fill-white"
-                                fill="none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
+                                class="fill-black group-hover:fill-white" fill="none">
                                 <path
-                                    d="M7.11021 2.43868H5.92517V1.28257H1.18503V12.8437H5.92517V11.6876H7.11021V12.8437C7.11021 13.4822 6.57965 13.9998 5.92517 13.9998H1.18503C0.530556 13.9998 0 13.4822 0 12.8437V1.28257C0 0.644073 0.530556 0.126465 1.18503 0.126465H5.92517C6.57965 0.126465 7.11021 0.644073 7.11021 1.28257V2.43868ZM11.6049 6.48507L9.0613 4.00354L9.89925 3.18605L13.8733 7.06313L9.89925 10.9402L9.0613 10.1227L11.6049 7.64118H4.74014V6.48507H11.6049Z"
-                                     />
+                                    d="M7.11021 2.43868H5.92517V1.28257H1.18503V12.8437H5.92517V11.6876H7.11021V12.8437C7.11021 13.4822 6.57965 13.9998 5.92517 13.9998H1.18503C0.530556 13.9998 0 13.4822 0 12.8437V1.28257C0 0.644073 0.530556 0.126465 1.18503 0.126465H5.92517C6.57965 0.126465 7.11021 0.644073 7.11021 1.28257V2.43868ZM11.6049 6.48507L9.0613 4.00354L9.89925 3.18605L13.8733 7.06313L9.89925 10.9402L9.0613 10.1227L11.6049 7.64118H4.74014V6.48507H11.6049Z" />
                             </svg>
 
                             Logout
@@ -105,8 +104,8 @@
                                                 class="phone input-box" />
                                             <input required type="text" maxlength="1" id="phone-2"
                                                 class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-3                        "
-                                                class="phone input-box" />
+                                            <input required type="text" maxlength="1"
+                                                id="phone-3                        " class="phone input-box" />
                                             <input required type="text" maxlength="1" id="phone-4"
                                                 class="phone input-box" />
                                             <input required type="text" maxlength="1" id="phone-5"
@@ -202,8 +201,6 @@
                     </div>
                 @endif
 
-
-
                 <dialog id="getFeedback" class="modal">
                     <div class="modal-box p-0 max-w-4xl min-h-60 bg-[#FCFAF9]">
                         <div>
@@ -249,7 +246,6 @@
                                             <div class="block mb-4 text-md font-semibold text-[#9D4F2A]">Customer
                                                 Type</div>
                                             <div class="flex gap-4 flex-wrap">
-
 
                                                 <div>
                                                     <input type="radio" @change="errors.customerType = ''"
@@ -366,7 +362,6 @@
                                                 </div>
                                             </div>
 
-
                                             <div class="my-5">
                                                 <hr class="border-gray-300" />
                                             </div>
@@ -438,8 +433,6 @@
                                                 </div>
                                             </div>
 
-
-
                                             <div class="block mb-4">2.⁠ ⁠How would you rate our jewelry's design and
                                                 pricing
                                                 compared to other brands</div>
@@ -502,8 +495,6 @@
                                                     </label>
                                                 </div>
                                             </div>
-
-
 
                                             <div class="mt-8 flex justify-center">
                                                 <button type="button" @click="validateStep2()" class="main-btn ">
@@ -570,7 +561,6 @@
                                                     </label>
                                                 </div>
 
-
                                                 <div>
                                                     <input type="radio"
                                                         x-model="formData.nonPurchasedFeedback.reason"
@@ -588,7 +578,6 @@
                                                     </label>
                                                 </div>
 
-
                                                 <div>
                                                     <input type="radio"
                                                         x-model="formData.nonPurchasedFeedback.reason"
@@ -605,9 +594,6 @@
                                                         <div>Size not available</div>
                                                     </label>
                                                 </div>
-
-
-
 
                                                 <div>
                                                     <input type="radio"
@@ -729,8 +715,6 @@
                                                 </div>
                                             </div>
 
-
-
                                             <div class="block mb-4">2.⁠ ⁠How would you rate the friendliness and
                                                 courtesy of
                                                 our showroom staff?</div>
@@ -793,7 +777,6 @@
                                                     </label>
                                                 </div>
                                             </div>
-
 
                                             <!-- Question 3 -->
                                             <div class="block mb-4">3.⁠ ⁠How knowledgeable was our staff in explaining
@@ -919,7 +902,6 @@
                                                     </label>
                                                 </div>
                                             </div>
-
 
                                             <!-- Continue Button -->
                                             <div class="flex justify-center">
@@ -1054,7 +1036,6 @@
 
                                 </div>
 
-
                                 <!-- Email and DOB -->
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-4">
                                     <div class="relative grow">
@@ -1088,8 +1069,6 @@
                                                     Married
                                                 </label>
                                             </div>
-
-
 
                                             <div>
                                                 <input type="radio" name="marital-status"
@@ -1170,8 +1149,6 @@
                                             <input type="hidden" name="hiddenPincode" id="hiddenPincode">
                                         </div>
                                     </div>
-
-
                                 </div>
 
                                 <div class="text-lg font-medium text-[#9D4F2A] mt-6 mb-4">
@@ -1241,7 +1218,6 @@
                             </form>
                         </div>
 
-
                         <form method="dialog" class="modal-backdrop z-10">
                             <button class="text-white absolute  top-0 right-0 p-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
@@ -1251,7 +1227,6 @@
                                         d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z"
                                         fill="#FCFAF9" />
                                 </svg>
-
                             </button>
                         </form>
                     </div>
@@ -1364,10 +1339,7 @@
             form.addEventListener("submit", (e) => {
                 e.preventDefault();
 
-
                 const phoneNumber = Array.from(phoneInputs).map(input => input.value).join('');
-
-
 
                 console.log({
                     phoneNumber,
