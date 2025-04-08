@@ -26,6 +26,7 @@ class WalkinCustomer extends Model
         'service_review',
         'assit_review',
         'non_purchased_review',
+        'non_purchased_others',
         'spent_time'
     ];
 }

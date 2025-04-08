@@ -30,6 +30,7 @@ class CreateCustomersTable extends Migration
             $table->string('address')->nullable();
             $table->string('pincode')->nullable();
             $table->string('know_about')->nullable();
+            $table->string('know_about_others')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

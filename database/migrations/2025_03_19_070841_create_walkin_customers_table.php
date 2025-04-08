@@ -33,6 +33,7 @@ class CreateWalkinCustomersTable extends Migration
             $table->integer('service_review')->default(0);
             $table->integer('assit_review')->default(0);
             $table->integer('non_purchased_review')->default(0);
+            $table->string('non_purchased_others')->null();
             $table->string('spent_time')->nullable();
             $table->timestamps();
             $table->softDeletes();

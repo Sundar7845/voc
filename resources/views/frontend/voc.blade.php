@@ -623,7 +623,7 @@
                                                         <div class="w-full">
                                                         <div>Others</div>
                                                         <div x-show ="formData.nonPurchasedFeedback.reason === '6'" x-cloak>
-                                                            <textarea placeholder="Enter your reason" class="border mt-2 resize-none border-gray-400 shadow-md rounded-md p-2 w-full"></textarea>
+                                                            <textarea placeholder="Enter your reason" id="non_purchased_others" class="border mt-2 resize-none border-gray-400 shadow-md rounded-md p-2 w-full"></textarea>
                                                         </div>
                                                         </div>
                                                     </label>
@@ -1213,7 +1213,7 @@
                                         <label for="others" class="text-center block">
                                             <div class="m-auto">Others</div>
                                             <div class="w-full" x-show="source === 'others'" x-cloak>
-                                            <textarea placeholder="Enter your reason"
+                                            <textarea placeholder="Enter your reason" id="know_about_others"
                                                 class="border mt-2 resize-none border-gray-400 shadow-md rounded-md p-2 w-full"></textarea>
                                         </div>
                                         </label>

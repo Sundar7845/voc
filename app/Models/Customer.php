@@ -23,6 +23,7 @@ class Customer extends Model
         'qualfication_id',
         'address',
         'pincode',
-        'know_about'
+        'know_about',
+        'know_about_others'
     ];
 }

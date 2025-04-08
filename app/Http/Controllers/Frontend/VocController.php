@@ -147,7 +147,9 @@ class VocController extends Controller
                 'qualfication_id' => $request->qualification_id,
                 'address' => $request->address,
                 'pincode'  => $request->pincode,
-                'know_about' => $request->know_about
+                'know_about' => $request->know_about,
+                'know_about_others' => $request->know_about_others,
+
             ]);
 
             return response()->json([
@@ -175,6 +177,7 @@ class VocController extends Controller
                 'customer_out_time' => Carbon::now(),
                 'is_purchased' => $request->customerType,
                 'non_purchased_review' => $request->customerType == 1 ? 0 : $request->nonPurchased,
+                'non_purchased_others' => $request->non_purchased_others,
                 'store_experience_review' => $request->customerType == 0 ? 0 : $request->inStoreExperience,
                 'jewellery_review' => $request->customerType == 0 ? 0 : $request->jewellery,
                 'pricing_review' => $request->customerType == 0 ? 0 : $request->pricing,

@@ -183,6 +183,18 @@ function viewCustomerDetails(customerId) {
                         response.data.know_about +
                         "']"
                 ).prop("checked", true);
+                if (response.data.know_about == "others") {
+                    $("#others").parent().addClass("md:col-span-2");
+
+                    // Remove the inline "display: none;" style from the div wrapping the textarea
+                    $("#know_about_others")
+                        .closest("div[style]")
+                        .removeAttr("style");
+
+                    $("#know_about_others").text(
+                        response.data.know_about_others
+                    );
+                }
             } else {
                 alert("No details found!");
             }
@@ -212,6 +224,8 @@ $(document).ready(function () {
         var pincode = $("#hiddenPincode").val();
         var source = $("#source").val();
         var phone = $("#hiddenPhoneNumber").val();
+        var know_about_others = $("#know_about_others").val();
+
         $.ajax({
             url: "update-customer-details/" + id, // Change this to your actual server endpoint
             type: "POST",
@@ -230,6 +244,7 @@ $(document).ready(function () {
                 address: address,
                 pincode: pincode,
                 source: source,
+                know_about_others: know_about_others,
             },
             dataType: "json",
             success: function (response) {
@@ -332,6 +347,7 @@ $(document).ready(function () {
         var knowledge = $("input[name='step3Question3']:checked").val();
         var assit = $("input[name='step3Question4']:checked").val();
         var nonPurchased = $("input[name='non-purchase-reason']:checked").val();
+        var non_purchased_others = $("#non_purchased_others").val();
 
         $.ajax({
             url: "feedback/" + id, // Change this to your actual server endpoint
@@ -348,6 +364,7 @@ $(document).ready(function () {
                 knowledge: knowledge,
                 assit: assit,
                 nonPurchased: nonPurchased,
+                non_purchased_others: non_purchased_others,
                 spentTime: spentTime,
             },
             dataType: "json",
