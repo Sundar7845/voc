@@ -621,6 +621,9 @@
                                                     <label for="non-purchase-reason-question6"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center flex items-center justify-center content-center">
                                                         <div>Others</div>
+                                                        <div x-show ="formData.nonPurchasedFeedback.reason === '6'" x-cloak>
+                                                            <textarea placeholder="Enter your reason" class="border resize-none border-gray-400 shadow-md rounded-md p-2 w-full"></textarea>
+                                                        </div>
                                                     </label>
                                                 </div>
 
