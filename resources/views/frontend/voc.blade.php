@@ -612,15 +612,20 @@
                                                     </label>
                                                 </div>
 
-                                                <div>
+                                                <div :class="{ 'md:col-span-3': formData.nonPurchasedFeedback.reason === '6' }">
                                                     <input type="radio"
                                                         x-model="formData.nonPurchasedFeedback.reason"
                                                         id="non-purchase-reason-question6" name="non-purchase-reason"
                                                         value="6" class="hidden">
 
                                                     <label for="non-purchase-reason-question6"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center flex items-center justify-center content-center">
+                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg  flex flex-col" :class="{ 'items-center text-center justify-center content-center': formData.nonPurchasedFeedback.reason !== '6' }">
+                                                        <div class="w-full">
                                                         <div>Others</div>
+                                                        <div x-show ="formData.nonPurchasedFeedback.reason === '6'" x-cloak>
+                                                            <textarea placeholder="Enter your reason" class="border mt-2 resize-none border-gray-400 shadow-md rounded-md p-2 w-full"></textarea>
+                                                        </div>
+                                                        </div>
                                                     </label>
                                                 </div>
 
