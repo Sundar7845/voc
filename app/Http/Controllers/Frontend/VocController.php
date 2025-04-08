@@ -84,6 +84,7 @@ class VocController extends Controller
 
                 return response()->json([
                     'status' => 'success',
+                    'customerId' => $newCustomer->id,
                     'message' => 'New customer created and Walk-in record added successfully.'
                 ]);
             }

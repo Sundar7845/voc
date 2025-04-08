@@ -165,7 +165,7 @@
                                         {{ $item->name ? $item->name : 'new customer' }}
                                     </div>
                                     <div class="my-4">
-                                        <button
+                                        <button id="viewDetailsBtn-{{ $item->customer_id }}"
                                             @click="open = true; formData.customerId = {{ $item->id }}; viewCustomerDetails({{ $item->customer_id }})"
                                             class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white">
                                             View Details

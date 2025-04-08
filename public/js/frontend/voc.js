@@ -41,6 +41,19 @@ document.querySelectorAll(".zip").forEach((input) => {
 });
 
 $(document).ready(function () {
+    // Check for post-reload click trigger
+    const customerIdToClick = sessionStorage.getItem(
+        "clickViewDetailsForCustomer"
+    );
+    if (customerIdToClick) {
+        sessionStorage.removeItem("clickViewDetailsForCustomer"); // Clear after use
+        const btn = document.getElementById(
+            `viewDetailsBtn-${customerIdToClick}`
+        );
+        if (btn) {
+            btn.click();
+        }
+    }
     // Handle form submission via AJAX
     $("#add-customer-form").submit(function (e) {
         var phone = $("#hiddenPhone").val();
@@ -72,6 +85,11 @@ $(document).ready(function () {
                     },
                 }).showToast();
                 if (response.status == "success") {
+                    // 👇 Set this to auto-click after reload
+                    sessionStorage.setItem(
+                        "clickViewDetailsForCustomer",
+                        response.customerId
+                    );
                     window.location.reload();
                 }
             },
@@ -258,7 +276,7 @@ document.addEventListener("DOMContentLoaded", function () {
     timers.forEach((timer) => {
         const customerEnterTime = new Date(timer.dataset.enterTime);
         console.log(customerEnterTime);
-        
+
         function updateTimer() {
             const now = new Date();
             const diff = Math.floor((now - customerEnterTime) / 1000);
