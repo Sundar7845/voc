@@ -1161,57 +1161,67 @@
                                 </div>
 
                                 <!-- Source Options -->
-                                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-4">
+                                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-4" x-data="{ source: '' }">
+                                    <!-- Television -->
                                     <div>
-                                        <input id="source1" name="source" value="Television Commercial"
-                                            type="radio" class="hidden" />
+                                        <input id="source1" name="source" x-model="source" value="Television Commercial" type="radio" class="hidden" />
                                         <label for="source1" class="text-center">
-                                            <img src={{ asset('/images/icons/televison.svg') }}
-                                                alt="Television Commercial" class="h-8" />
+                                            <img src="{{ asset('/images/icons/televison.svg') }}" alt="Television Commercial" class="h-8" />
                                             <span> Television Commercial </span>
                                         </label>
                                     </div>
 
+                                    <!-- Newspaper -->
                                     <div>
-                                        <input id="source2" name="source" value="Newspaper" type="radio"
-                                            class="hidden" />
+                                        <input id="source2" name="source" x-model="source" value="Newspaper" type="radio" class="hidden" />
                                         <label for="source2" class="text-center">
-                                            <img src={{ asset('/images/icons/newspaper.svg') }} alt="newspaper"
-                                                class="h-8" />
+                                            <img src="{{ asset('/images/icons/newspaper.svg') }}" alt="Newspaper" class="h-8" />
                                             <span> Newspaper </span>
                                         </label>
                                     </div>
 
+                                    <!-- Social Media -->
                                     <div>
-                                        <input id="source3" name="source" value="Social Media" type="radio"
-                                            class="hidden" />
+                                        <input id="source3" name="source" x-model="source" value="Social Media" type="radio" class="hidden" />
                                         <label for="source3" class="text-center">
-                                            <img src={{ asset('/images/icons/socialmedia.svg') }} alt="Social Media"
-                                                class="h-8" />
+                                            <img src="{{ asset('/images/icons/socialmedia.svg') }}" alt="Social Media" class="h-8" />
                                             <span> Social Media </span>
                                         </label>
                                     </div>
 
+                                    <!-- Brochure -->
                                     <div>
-                                        <input id="source4" name="source" value="Flyer, Brochure, Flex"
-                                            type="radio" class="hidden" />
+                                        <input id="source4" name="source" x-model="source" value="Flyer, Brochure, Flex" type="radio" class="hidden" />
                                         <label for="source4" class="text-center">
-                                            <img src={{ asset('/images/icons/brochure.svg') }}
-                                                alt="Flyer, Brochure, Flex" class="h-8" />
-                                            <span>Flyer, Brochure, Flex</span>
+                                            <img src="{{ asset('/images/icons/brochure.svg') }}" alt="Flyer, Brochure, Flex" class="h-8" />
+                                            <span> Flyer, Brochure, Flex </span>
                                         </label>
                                     </div>
 
+                                    <!-- Friends & Family -->
                                     <div>
-                                        <input id="source5" name="source" value="Friends & Family" type="radio"
-                                            class="hidden" />
+                                        <input id="source5" name="source" x-model="source" value="Friends & Family" type="radio" class="hidden" />
                                         <label for="source5" class="text-center">
-                                            <img src={{ asset('/images/icons/family.svg') }} alt="Friends & Family"
-                                                class="h-8" />
-                                            <span>Friends & Family</span>
+                                            <img src="{{ asset('/images/icons/family.svg') }}" alt="Friends & Family" class="h-8" />
+                                            <span> Friends & Family </span>
                                         </label>
                                     </div>
+
+                                    <!-- Others with textarea -->
+                                    <div :class="{ 'md:col-span-2': source === 'others' }">
+                                        <input id="others" name="source" x-model="source" value="others" type="radio" class="hidden" />
+                                        <label for="others" class="text-center block">
+                                            <div class="m-auto">Others</div>
+                                            <div class="w-full" x-show="source === 'others'" x-cloak>
+                                            <textarea placeholder="Enter your reason"
+                                                class="border mt-2 resize-none border-gray-400 shadow-md rounded-md p-2 w-full"></textarea>
+                                        </div>
+                                        </label>
+
+                                        
+                                    </div>
                                 </div>
+
 
                                 <!-- Save Button -->
                                 <div class="flex justify-center">
