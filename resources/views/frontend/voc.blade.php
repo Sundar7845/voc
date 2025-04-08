@@ -105,7 +105,7 @@
                                             <input required type="text" maxlength="1" id="phone-2"
                                                 class="phone input-box" />
                                             <input required type="text" maxlength="1"
-                                                id="phone-3                        " class="phone input-box" />
+                                                id="phone-3" class="phone input-box" />
                                             <input required type="text" maxlength="1" id="phone-4"
                                                 class="phone input-box" />
                                             <input required type="text" maxlength="1" id="phone-5"

@@ -257,6 +257,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     timers.forEach((timer) => {
         const customerEnterTime = new Date(timer.dataset.enterTime);
+        console.log(customerEnterTime);
+        
         function updateTimer() {
             const now = new Date();
             const diff = Math.floor((now - customerEnterTime) / 1000);
