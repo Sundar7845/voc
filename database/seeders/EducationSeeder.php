@@ -15,12 +15,10 @@ class EducationSeeder extends Seeder
     public function run()
     {
         $educations = [
-            ['qualification' => 'BSC'],
-            ['qualification' => 'MBA'],
-            ['qualification' => 'BCOM'],
-            ['qualification' => 'CDF'],
-            ['qualification' => 'VISCOM'],
-            ['qualification' => 'BA']
+            ['qualification' => 'Schooling'],
+            ['qualification' => 'Graduate'],
+            ['qualification' => 'Post Graduate'],
+            ['qualification' => 'Doctorate'],
         ];
 
         foreach ($educations as $education) {

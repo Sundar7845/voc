@@ -15,11 +15,14 @@ class ProfessionSeeder extends Seeder
     public function run()
     {
         $professions = [
-            ['profession' => 'Information Technology'],
+            ['profession' => 'Doctor'],
+            ['profession' => 'Teacher'],
+            ['profession' => 'IT'],
             ['profession' => 'Business'],
-            ['profession' => 'Accountant'],
-            ['profession' => 'Driver'],
-            ['profession' => 'Builder']
+            ['profession' => 'Employed In Govt'],
+            ['profession' => 'Employed In Pvt'],
+            ['profession' => 'Home Maker'],
+            ['profession' => 'Others'],
         ];
 
         foreach ($professions as $profession) {

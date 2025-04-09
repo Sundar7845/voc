@@ -171,7 +171,7 @@ class VocController extends Controller
         try {
             $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
             WalkinCustomer::where('id', $id)->update([
-                'customer_id' => $id,
+                // 'customer_id' => $id,
                 'branch_id' => $branch,
                 'sales_executive_id' => $request->salesExcutiveName,
                 'customer_out_time' => Carbon::now(),

@@ -130,14 +130,24 @@ function viewCustomerDetails(customerId) {
                 }, 500);
                 console.log(response.data); // Log data or display it in a modal
 
-                // Update Alpine's maritalStatus variable
+                // Safely get marital status as a string, fallback to empty string if null
+                const maritalStatus =
+                    response.data.martial_status !== null
+                        ? response.data.martial_status.toString()
+                        : "";
+
+                // Then update Alpine's variable only if maritalStatusWrapper is available
                 const maritalStatusWrapper = document.querySelector(
                     '[x-ref="maritalStatusWrapper"]'
                 );
-                Alpine.$data(maritalStatusWrapper).maritalStatus =
-                    response.data.martial_status.toString();
-
-                console.log("marriage status", response.data.martial_status);
+                if (
+                    maritalStatusWrapper &&
+                    Alpine.$data(maritalStatusWrapper)
+                ) {
+                    Alpine.$data(maritalStatusWrapper).maritalStatus =
+                        maritalStatus;
+                    console.log("marriage status", maritalStatus);
+                }
 
                 $("#customerId").val(response.data.id);
                 $("#name").val(response.data.name);
