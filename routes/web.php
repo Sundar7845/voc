@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Include the admin routes using the group method
+require base_path('routes/admin.php');
 
 Route::fallback(function () {
     return view('frontend.error');
