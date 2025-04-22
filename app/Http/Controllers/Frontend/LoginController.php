@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Enums\Roles;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,21 +18,25 @@ class LoginController extends Controller
         return view('frontend.login');
     }
 
-    function login(Request $request)
+    public function login(Request $request)
     {
-
-        $validator = Validator::make($request->all(), [
-            'email'   => 'required',
+        // Validate input
+        $request->validate([
+            'email' => 'required',
             'employeePassword' => 'required|min:6',
         ]);
-        // Find user by employee number
+
+        // Attempt to find user
         $user = User::where('name', $request->email)->first();
 
-        // Check if user exists and password matches
+        // Check for user existence and password validity
         if (!$user || !Hash::check($request->employeePassword, $user->password)) {
-            Session::flash('message', 'Invalid credentials!');
-            Session::flash('alert-type', 'error');
-            return back();
+            return $this->sendError('Invalid credentials!');
+        }
+
+        // Check if user is active
+        if ($user->is_active != 1) {
+            return $this->sendError('Your account is inactive. Please contact the administrator.');
         }
 
         // Login user
@@ -39,10 +44,27 @@ class LoginController extends Controller
 
         Session::flash('message', 'Logged in successfully!');
         Session::flash('alert-type', 'success');
+        
+        // Redirect based on role
+        if ($user->role_id == Roles::SUPERADMNIN) {
+            return redirect('dashboard');
+        } elseif ($user->role_id == Roles::ADMIN) {
+            return redirect('dashboard');
+        } elseif ($user->role_id == Roles::SHOWROOM) {
+            return redirect('voc');
+        }
 
-        // Store success message in session
-        return redirect('voc');
+        // Unknown role fallback
+        return $this->sendError('Invalid credentials!');
     }
+
+    protected function sendError($message)
+    {
+        Session::flash('message', $message);
+        Session::flash('alert-type', 'error');
+        return back();
+    }
+
 
     public function logout()
     {
