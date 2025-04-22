@@ -45,3 +45,4 @@
   input[type='radio']:checked + label {
     @apply text-[#964A26] border-[#964A26];
   }
+  

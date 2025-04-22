@@ -16,4 +16,10 @@ class DashboardController extends Controller
     {
         return view('backend.liveuser');
     }
+    public function customerDetails($id)
+    {
+        return view('backend.customerdetails', [
+            'customerId' => $id,
+        ]);
+    }
 }
