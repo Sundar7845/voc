@@ -150,7 +150,6 @@
 
             <div class="p-4" x-data="getfeedbackData">
 
-
                 @if (count($walkincustomer) > 0)
                     <div
                         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 flex-wrap">
@@ -185,7 +184,6 @@
                                     <input type="hidden" name="spent_time_{{ $item->id }}"
                                         id="spent_time_{{ $item->id }}" value="">
                                 </div>
-
                             </div>
                         @endforeach
                     </div>
