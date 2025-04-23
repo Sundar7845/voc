@@ -269,7 +269,7 @@
                                                 <div>
                                                     <input type="radio" @change="errors.customerType = ''"
                                                         name="customerType" id="repaired-customer" class="sr-only peer"
-                                                        x-model="formData.customerType" value="3">
+                                                        x-model="formData.customerType" value="2">
                                                     <label for="repaired-customer"
                                                         class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
                                                         Repaired Customer
@@ -279,7 +279,7 @@
                                                 <div>
                                                     <input type="radio" @change="errors.customerType = ''"
                                                         name="customerType" id="scheme-redemption" class="sr-only peer"
-                                                        x-model="formData.customerType" value="4">
+                                                        x-model="formData.customerType" value="3">
                                                     <label for="scheme-redemption"
                                                         class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
                                                         Scheme Redemption
@@ -1001,19 +1001,6 @@
                                             @endforeach
                                         </select>
                                     </div>
-
-                                    <!-- <div class="relative grow">
-                                        <label
-                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Qualification
-                                            <span class="text-red-600">*</span></label>
-                                        <select id="qualification" name="qualification"
-                                            class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
-                                            <option value="">Select</option>
-                                            @foreach ($qualifications as $item)
-                                                <option value={{ $item->id }}>{{ $item->qualification }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div> -->
 
                                     <div>
                                         <div class="mb-1 text-sm text-black">Pincode <span class="text-red-600">*</span></div>

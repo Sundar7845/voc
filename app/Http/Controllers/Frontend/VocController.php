@@ -30,10 +30,9 @@ class VocController extends Controller
 
 
         $professions = Profession::where('is_active', 1)->get();
-        $qualifications = Qualification::where('is_active', 1)->get();
         $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
         $employee = Employee::where('branch_id', $branch)->orderBy('name', 'ASC')->get();
-        return view('frontend.voc', compact('walkincustomer', 'professions', 'qualifications', 'employee'));
+        return view('frontend.voc', compact('walkincustomer', 'professions', 'employee'));
     }
 
     function customerCreate(Request $request)
@@ -144,7 +143,6 @@ class VocController extends Controller
                 'martial_status' => $request->martial_status,
                 'anniversary_date' => $request->anniversary_date,
                 'profession_id' => $request->profession_id,
-                // 'qualfication_id' => $request->qualification_id,
                 'address' => $request->address,
                 'pincode'  => $request->pincode,
                 'know_about' => $request->know_about,
@@ -168,35 +166,36 @@ class VocController extends Controller
 
     function getPurchasedFeedback(Request $request, $id)
     {
-        try {
-            $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
-            WalkinCustomer::where('id', $id)->update([
-                // 'customer_id' => $id,
-                'branch_id' => $branch,
-                'sales_executive_id' => $request->salesExcutiveName,
-                'customer_out_time' => Carbon::now(),
-                'is_purchased' => $request->customerType,
-                'non_purchased_review' => $request->customerType == 1 ? 0 : $request->nonPurchased,
-                'non_purchased_others' => $request->non_purchased_others,
-                'jewellery_review' => $request->customerType == 0 ? 0 : $request->jewellery,
-                'pricing_review' => $request->customerType == 0 ? 0 : $request->pricing,
-                'staff_review' => $request->customerType == 0 ? 0 : $request->staff,
-                'service_review' => $request->customerType == 0 ? 0 : $request->knowledge,
-                'assit_review' => $request->customerType == 0 ? 0 : $request->assit,
-                'spent_time' => $request->spentTime
-            ]);
+        // dd($request->all());
+        // try {
+        $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
+        WalkinCustomer::where('id', $id)->update([
+            // 'customer_id' => $id,
+            'branch_id' => $branch,
+            'sales_executive_id' => $request->salesExcutiveName,
+            'customer_out_time' => Carbon::now(),
+            'is_purchased' => $request->customerType,
+            'non_purchased_review' => $request->customerType,
+            'non_purchased_others' => $request->non_purchased_others,
+            'jewellery_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->jewellery,
+            'pricing_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->pricing,
+            'staff_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->staff,
+            'service_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->knowledge,
+            'assit_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->assit,
+            'spent_time' => $request->spentTime
+        ]);
 
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Feedback updated successfully.'
-            ]);
-        } catch (Exception $e) {
-            DB::rollBack();
-            $this->Log(__FUNCTION__, "POST", $e->getMessage(), Auth::user()->id, request()->ip(), gethostname());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Something went wrong!',
-            ], 500);
-        }
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Feedback updated successfully.'
+        ]);
+        // } catch (Exception $e) {
+        //     DB::rollBack();
+        //     $this->Log(__FUNCTION__, "POST", $e->getMessage(), Auth::user()->id, request()->ip(), gethostname());
+        //     return response()->json([
+        //         'status' => 'error',
+        //         'message' => 'Something went wrong!',
+        //     ], 500);
+        // }
     }
 }
