@@ -67,7 +67,7 @@
         <div class="bg-white border border-gray-200 rounded-lg px-4 py-6 space-y-2">
             <div class="text-sm font-medium uppercase text-[#71717A]">Total cx</div>
             <div class="flex justify-between items-center">
-                <div class="font-semibold text-lg">23</div>
+                <div class="font-semibold text-lg">{{ $totalcustomers }}</div>
                 <div>
                     <svg class="h-10" xmlns="http://www.w3.org/2000/svg" width="44" height="44"
                         viewBox="0 0 44 44" fill="none">
@@ -84,7 +84,7 @@
         <div class="bg-white border border-gray-200 rounded-lg px-4 py-6 space-y-2">
             <div class="text-sm font-medium uppercase text-[#71717A]">live</div>
             <div class="flex justify-between items-center">
-                <div class="font-semibold text-lg">4</div>
+                <div class="font-semibold text-lg">{{ $walkincustomer }}</div>
                 <div>
                     <svg class="h-10" xmlns="http://www.w3.org/2000/svg" width="44" height="44"
                         viewBox="0 0 44 44" fill="none">
@@ -101,7 +101,7 @@
         <div class="bg-white border border-gray-200 rounded-lg px-4 py-6 space-y-2">
             <div class="text-sm font-medium uppercase text-[#71717A]">purchase</div>
             <div class="flex justify-between items-center">
-                <div class="font-semibold text-lg">1</div>
+                <div class="font-semibold text-lg">{{ $purchasedCustomer }}</div>
                 <div>
                     <svg class="h-10" xmlns="http://www.w3.org/2000/svg" width="44" height="44"
                         viewBox="0 0 44 44" fill="none">
@@ -118,7 +118,7 @@
         <div class="bg-white border border-gray-200 rounded-lg px-4 py-6 space-y-2">
             <div class="text-sm font-medium uppercase text-[#71717A]">non-purchase</div>
             <div class="flex justify-between items-center">
-                <div class="font-semibold text-lg">0</div>
+                <div class="font-semibold text-lg">{{ $nonPurchasedCustomer }}</div>
                 <div>
                     <svg class="h-10" xmlns="http://www.w3.org/2000/svg" width="44" height="44"
                         viewBox="0 0 44 44" fill="none">

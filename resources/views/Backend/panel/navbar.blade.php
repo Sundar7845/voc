@@ -8,7 +8,7 @@
     <div>
         <div class="flex items-center gap-3">
             <div class="text-end">
-                <div class="text-md font-medium text-black">Coimbatore</div>
+                <div class="text-md font-medium text-black">{{ Auth::user()->name }}</div>
                 <div class="text-[#7C7C7C] text-sm">Jewelone Showroom</div>
             </div>
             <div>
