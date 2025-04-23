@@ -303,72 +303,6 @@
                                     <div class="px-6 py-10 text-[#4E5356]">
                                         <!-- Step 2A: Purchased Customer Feedback -->
                                         <div>
-                                            {{-- <div class="mb-4 text-lg text-[#9D4F2A]">
-                                                Please share your thoughts about your
-                                                <b>IN-Store Experience</b>
-                                            </div> --}}
-                                            <!-- Satisfaction -->
-                                            {{-- <div class="block mb-4">1.⁠ ⁠How would you rate the cleanliness and
-                                                maintenance
-                                                of our showroom?</div>
-                                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                                <input type="radio" id="inStoreFeedback-option1"
-                                                    name="inStoreFeedback" value="{{ App\Enums\Review::EXCELLENT }}"
-                                                    class="hidden">
-                                                <label for="inStoreFeedback-option1"
-                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                    <div>
-                                                        <img src={{ asset('/images/icons/excellent.svg') }}
-                                                            alt="excellent" />
-                                                    </div>
-                                                    <div>Excellent</div>
-                                                </label>
-
-                                                <div>
-                                                    <input type="radio" id="inStoreFeedback-option2"
-                                                        name="inStoreFeedback" value="{{ App\Enums\Review::GOOD }}"
-                                                        class="hidden">
-
-                                                    <label for="inStoreFeedback-option2"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/good.svg') }}
-                                                                alt="good" />
-                                                        </div>
-                                                        <div>Good</div>
-                                                    </label>
-                                                </div>
-
-                                                <div>
-                                                    <input type="radio" id="inStoreFeedback-option3"
-                                                        name="inStoreFeedback"
-                                                        value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
-
-                                                    <label for="inStoreFeedback-option3"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/average.svg') }}
-                                                                alt="average" />
-                                                        </div>
-                                                        <div>Average</div>
-                                                    </label>
-                                                </div>
-
-                                                <div>
-                                                    <input type="radio" id="inStoreFeedback-option4"
-                                                        name="inStoreFeedback" value="{{ App\Enums\Review::POOR }}"
-                                                        class="hidden">
-
-                                                    <label for="inStoreFeedback-option4"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/poor.svg') }}
-                                                                alt="poor" />
-                                                        </div>
-                                                        <div>Poor</div>
-                                                    </label>
-                                                </div>
-                                            </div> --}}
 
                                             <div class="my-5">
                                                 <hr class="border-gray-300" />
@@ -728,69 +662,6 @@
                                                 </div>
                                             </div>
 
-                                            {{-- <div class="block mb-4">2.⁠ ⁠How would you rate the friendliness and
-                                                courtesy of
-                                                our showroom staff?</div>
-
-                                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                                <input type="radio" id="step3Question2-option1"
-                                                    name="step3Question2" value="{{ App\Enums\Review::EXCELLENT }}"
-                                                    class="hidden">
-                                                <label for="step3Question2-option1"
-                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                    <div>
-                                                        <img src={{ asset('/images/icons/excellent.svg') }}
-                                                            alt="excellent" />
-                                                    </div>
-                                                    <div>Excellent</div>
-                                                </label>
-
-                                                <div>
-                                                    <input type="radio" id="step3Question2-option2"
-                                                        name="step3Question2" value="{{ App\Enums\Review::GOOD }}"
-                                                        class="hidden">
-
-                                                    <label for="step3Question2-option2"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/good.svg') }}
-                                                                alt="good" />
-                                                        </div>
-                                                        <div>Good</div>
-                                                    </label>
-                                                </div>
-
-                                                <div>
-                                                    <input type="radio" id="step3Question2-option3"
-                                                        name="step3Question2" value="{{ App\Enums\Review::AVERAGE }}"
-                                                        class="hidden">
-
-                                                    <label for="step3Question2-option3"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/average.svg') }}
-                                                                alt="average" />
-                                                        </div>
-                                                        <div>Average</div>
-                                                    </label>
-                                                </div>
-
-                                                <div>
-                                                    <input type="radio" id="step3Question2-option4"
-                                                        name="step3Question2" value="{{ App\Enums\Review::POOR }}"
-                                                        class="hidden">
-
-                                                    <label for="step3Question2-option4"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/poor.svg') }}
-                                                                alt="poor" />
-                                                        </div>
-                                                        <div>Poor</div>
-                                                    </label>
-                                                </div>
-                                            </div> --}}
-
                                             <!-- Question 3 -->
                                             <div class="block mb-4">2.⁠ ⁠How knowledgeable was our staff in explaining
                                                 products and services?</div>
@@ -1119,18 +990,6 @@
                                             @endforeach
                                         </select>
                                     </div>
-
-                                    {{-- <div class="relative grow">
-                                        <label
-                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Qualification</label>
-                                        <select id="qualification" name="qualification"
-                                            class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent">
-                                            <option value="">Select</option>
-                                            @foreach ($qualifications as $item)
-                                                <option value={{ $item->id }}>{{ $item->qualification }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div> --}}
                                 </div>
 
                                 <!-- Address -->
@@ -1375,35 +1234,6 @@
         }
 
         addCustomerForm();
-
-
-        // function viewCustomerDetails(customer) {
-        //     console.log(customer, "customer");
-        //     const form = document.getElementById("customer-details-form");
-
-        //     const phoneInputs = form.querySelectorAll(".phone.input-box");
-
-        //     const zipInputs = form.querySelectorAll(".zip.input-box");
-
-
-        //     createInputHandlers(phoneInputs, 10);
-        //     createInputHandlers(zipInputs, 6);
-
-        //     form.addEventListener("submit", (e) => {
-        //         e.preventDefault();
-
-
-        //         const phoneNumber = Array.from(phoneInputs).map(input => input.value).join('');
-        //         const pincode = Array.from(zipInputs).map(input => input.value).join('');
-
-        //         console.log({
-        //             phoneNumber,
-        //             pincode,
-        //         });
-        //         form.reset();
-        //     });
-
-        // }
     </script>
 
     <script>

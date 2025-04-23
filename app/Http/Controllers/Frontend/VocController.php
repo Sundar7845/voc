@@ -178,11 +178,9 @@ class VocController extends Controller
                 'is_purchased' => $request->customerType,
                 'non_purchased_review' => $request->customerType == 1 ? 0 : $request->nonPurchased,
                 'non_purchased_others' => $request->non_purchased_others,
-                // 'store_experience_review' => $request->customerType == 0 ? 0 : $request->inStoreExperience,
                 'jewellery_review' => $request->customerType == 0 ? 0 : $request->jewellery,
                 'pricing_review' => $request->customerType == 0 ? 0 : $request->pricing,
                 'staff_review' => $request->customerType == 0 ? 0 : $request->staff,
-                // 'friendly_review' => $request->customerType == 0 ? 0 : $request->friendly,
                 'service_review' => $request->customerType == 0 ? 0 : $request->knowledge,
                 'assit_review' => $request->customerType == 0 ? 0 : $request->assit,
                 'spent_time' => $request->spentTime
