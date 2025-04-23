@@ -345,15 +345,15 @@ $(document).ready(function () {
         var spentTime = $("#spent_time_" + id).val();
         var salesExcutiveName = $("#salesExcutiveName").val();
         var customerType = $("input[name='customerType']:checked").val();
-        var inStoreExperience = $(
-            "input[name='inStoreFeedback']:checked"
-        ).val();
+        // var inStoreExperience = $(
+        //     "input[name='inStoreFeedback']:checked"
+        // ).val();
         var jewellery = $(
             "input[name='jewelleryDesignQuestion1']:checked"
         ).val();
         var pricing = $("input[name='jewelleryDesignQuestion2']:checked").val();
         var staff = $("input[name='step3Question1']:checked").val();
-        var friendly = $("input[name='step3Question2']:checked").val();
+        // var friendly = $("input[name='step3Question2']:checked").val();
         var knowledge = $("input[name='step3Question3']:checked").val();
         var assit = $("input[name='step3Question4']:checked").val();
         var nonPurchased = $("input[name='non-purchase-reason']:checked").val();
@@ -366,11 +366,11 @@ $(document).ready(function () {
                 _token: $('meta[name="csrf-token"]').attr("content"),
                 salesExcutiveName: salesExcutiveName,
                 customerType: customerType,
-                inStoreExperience: inStoreExperience,
+                // inStoreExperience: inStoreExperience,
                 jewellery: jewellery,
                 pricing: pricing,
                 staff: staff,
-                friendly: friendly,
+                // friendly: friendly,
                 knowledge: knowledge,
                 assit: assit,
                 nonPurchased: nonPurchased,
