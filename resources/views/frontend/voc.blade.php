@@ -266,6 +266,16 @@
                                                     </label>
                                                 </div>
 
+                                                <div>
+                                                    <input type="radio" @change="errors.customerType = ''"
+                                                        name="customerType" id="repaired-customer" class="sr-only peer"
+                                                        x-model="formData.customerType" value="2">
+                                                    <label for="Repaired Customer"
+                                                        class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
+                                                        Repaired Customer
+                                                    </label>
+                                                </div>
+
                                             </div>
                                             <p x-show="errors.customerType" class="text-red-500 text-sm mt-2 mb-4"
                                                 x-text="errors.customerType">
@@ -293,12 +303,12 @@
                                     <div class="px-6 py-10 text-[#4E5356]">
                                         <!-- Step 2A: Purchased Customer Feedback -->
                                         <div>
-                                            <div class="mb-4 text-lg text-[#9D4F2A]">
+                                            {{-- <div class="mb-4 text-lg text-[#9D4F2A]">
                                                 Please share your thoughts about your
                                                 <b>IN-Store Experience</b>
-                                            </div>
+                                            </div> --}}
                                             <!-- Satisfaction -->
-                                            <div class="block mb-4">1.⁠ ⁠How would you rate the cleanliness and
+                                            {{-- <div class="block mb-4">1.⁠ ⁠How would you rate the cleanliness and
                                                 maintenance
                                                 of our showroom?</div>
                                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
@@ -358,7 +368,7 @@
                                                         <div>Poor</div>
                                                     </label>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="my-5">
                                                 <hr class="border-gray-300" />
@@ -718,7 +728,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="block mb-4">2.⁠ ⁠How would you rate the friendliness and
+                                            {{-- <div class="block mb-4">2.⁠ ⁠How would you rate the friendliness and
                                                 courtesy of
                                                 our showroom staff?</div>
 
@@ -779,10 +789,10 @@
                                                         <div>Poor</div>
                                                     </label>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <!-- Question 3 -->
-                                            <div class="block mb-4">3.⁠ ⁠How knowledgeable was our staff in explaining
+                                            <div class="block mb-4">2.⁠ ⁠How knowledgeable was our staff in explaining
                                                 products and services?</div>
                                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                                                 <input type="radio" id="step3Question3-option1"
@@ -844,7 +854,7 @@
                                             </div>
 
                                             <!-- Question 4 -->
-                                            <div class="block mb-4">4.How would you rate the attentiveness of our staff
+                                            <div class="block mb-4">3.How would you rate the attentiveness of our staff
                                                 in
                                                 assisting you?</div>
                                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
@@ -1110,7 +1120,7 @@
                                         </select>
                                     </div>
 
-                                    <div class="relative grow">
+                                    {{-- <div class="relative grow">
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Qualification</label>
                                         <select id="qualification" name="qualification"
@@ -1120,7 +1130,7 @@
                                                 <option value={{ $item->id }}>{{ $item->qualification }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <!-- Address -->
