@@ -177,11 +177,6 @@ function viewCustomerDetails(customerId) {
                 $("#profession")
                     .val(response.data.profession_id)
                     .trigger("change");
-                setTimeout(() => {
-                    $("#qualification")
-                        .val(response.data.qualfication_id)
-                        .trigger("change");
-                }, 500);
                 $("#address").val(response.data.address);
                 // ✅ Fill phone number into individual boxes
                 const pincode = response.data.pincode.split("");
@@ -229,7 +224,6 @@ $(document).ready(function () {
         var know_about = $("input[name='source']:checked").val();
         var anniversary_date = $("#anniversary-date").val();
         var profession_id = $("#profession").val();
-        var qualification_id = $("#qualification").val();
         var address = $("#address").val();
         var pincode = $("#hiddenPincode").val();
         var source = $("#source").val();
@@ -250,7 +244,6 @@ $(document).ready(function () {
                 martial_status: martial_status,
                 anniversary_date: anniversary_date,
                 profession_id: profession_id,
-                qualification_id: qualification_id,
                 address: address,
                 pincode: pincode,
                 source: source,

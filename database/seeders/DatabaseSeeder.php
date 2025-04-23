@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
             BranchSeeder::class,
             UserSeeder::class,
             ProfessionSeeder::class,
-            EducationSeeder::class,
             RoleSeeder::class,
         ]);
     }

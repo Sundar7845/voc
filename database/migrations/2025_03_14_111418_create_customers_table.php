@@ -25,8 +25,6 @@ class CreateCustomersTable extends Migration
             $table->date('anniversary_date')->nullable();
             $table->unsignedBigInteger('profession_id')->nullable();
             $table->foreign('profession_id')->references('id')->on('professions');
-            $table->unsignedBigInteger('qualfication_id')->nullable();
-            $table->foreign('qualfication_id')->references('id')->on('qualifications');
             $table->string('address')->nullable();
             $table->string('pincode')->nullable();
             $table->string('know_about')->nullable();
