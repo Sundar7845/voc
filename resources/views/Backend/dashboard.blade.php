@@ -19,7 +19,7 @@
     <header class="bg-[#F2EDE4] border-b border-[#C7C7C7]">
         <nav class="px-4 md:px-16 py-4 flex justify-between gap-10 items-center ">
             <div>
-                <a href="/">
+                <a href="/dashboard">
                     <img src={{ asset('/images/logo.svg') }} alt="logo" class="h-16" />
                 </a>
             </div>
@@ -112,15 +112,15 @@
 
                             <!-- Dropdown -->
                             <div x-show="open" @click.away="open = false; logSelected()" x-transition
-                                class="absolute z-10 mt-2 w-full bg-white rounded-md shadow-lg border border-[#C7C7C7]">
+                                class="absolute z-10 mt-2 w-full bg-white rounded-md shadow-lg border border-[#C7C7C7] overflow-hidden">
                                 <!-- Search -->
-                                <div class="p-2 border-b border-[#C7C7C7]">
+                                <div class="border-b border-[#C7C7C7]">
                                     <input type="search" x-model="search" placeholder="Search Showroom"
-                                        class="w-full px-3 py-1 border border-gray-300 rounded-md text-sm" />
+                                        class="w-full px-3 py-2 bg-gray-100 border-0 outline-0  text-sm" />
                                 </div>
 
                                 <!-- Checkboxes -->
-                                <div class="h-36  overflow-y-auto p-2 space-y-2">
+                                <div class="h-36  overflow-y-auto p-2 space-y-2 accent-black">
                                     <template x-for="(item, index) in filteredItems" :key="index">
                                         <label class="flex items-center space-x-2 cursor-pointer">
                                             <input type="checkbox" :value="item" :checked="selected.includes(item)"

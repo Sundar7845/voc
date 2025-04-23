@@ -19,7 +19,7 @@
     <header class="bg-[#F2EDE4] border-b border-[#C7C7C7]">
         <nav class="px-4 md:px-16 py-4 flex justify-between gap-10 items-center ">
             <div>
-                <a href="/">
+                <a href="/dashboard">
                     <img src={{ asset('/images/logo.svg') }} alt="logo" class="h-16" />
                 </a>
             </div>
@@ -95,9 +95,7 @@
                         <h1 class="text-xl font-semibold">Customer Details</h1>
     
                     </div>
-                    <div>
-                        <div>date</div>
-                    </div>
+                   
                 </div>
 
 
