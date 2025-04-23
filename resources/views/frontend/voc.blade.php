@@ -84,16 +84,16 @@
 
                     <dialog id="addCustomer" class="modal">
                         <div class="modal-box p-0 max-w-2xl bg-[#FCFAF9]">
-                            <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
+                            <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                    <img class="h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
                                 <div class="text-xl text-white font-medium uppercase">
                                     Welcome to Jewel one
                                 </div>
                             </div>
 
-                            <div class="px-6 py-10 text-[#4E5356]">
+                            <div class="px-6 py-10 lg:px-12 text-[#4E5356]">
                                 <form id="add-customer-form">
 
                                     <!-- Phone Number Fields -->
@@ -206,9 +206,9 @@
                                 <input type="hidden" name="feedbackCustomerId" id="feedbackCustomerId"
                                     value="">
                                 <div x-show="step === 1" x-cloak>
-                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
+                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
-                                            <img class="h-18" src={{ asset('/images/logo-white.svg') }}
+                                            <img class="h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
                                         </div>
                                         <div class="text-xl text-white font-medium uppercase">
@@ -216,7 +216,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="px-6 py-10 text-[#4E5356]">
+                                    <div class="px-6 py-10 lg:px-12 text-[#4E5356]">
                                         <!-- Step 1 -->
                                         <div>
                                             <div class="relative mb-6">
@@ -299,9 +299,9 @@
                                 </div>
 
                                 <div x-show="step === 2 && formData.customerType === '1'" x-cloak>
-                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
+                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
-                                            <img class="h-18" src={{ asset('/images/logo-white.svg') }}
+                                            <img class="h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
                                         </div>
                                         <div class="text-lg text-white font-medium uppercase">
@@ -310,13 +310,13 @@
                                         </div>
                                     </div>
 
-                                    <div class="px-6 py-10 text-[#4E5356]">
+                                    <div class="px-6 py-10 lg:px-12 text-[#4E5356]">
                                         <!-- Step 2A: Purchased Customer Feedback -->
                                         <div>
 
-                                            <div class="my-5">
+                                            <!-- <div class="my-5">
                                                 <hr class="border-gray-300" />
-                                            </div>
+                                            </div> -->
 
                                             <div class="mb-4 text-lg text-[#9D4F2A]">
                                                 About our <b>Jewellery Designs</b>
@@ -458,9 +458,9 @@
                                 </div>
 
                                 <div x-show="step === 2 && formData.customerType === '0'" x-cloak>
-                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
+                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
-                                            <img class="h-18" src={{ asset('/images/logo-white.svg') }}
+                                            <img class="h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
                                         </div>
                                         <div class="text-lg text-white font-medium uppercase">
@@ -468,7 +468,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="px-6 py-10 text-[#4E5356]">
+                                    <div class="px-6 py-10 lg:px-12 text-[#4E5356]">
                                         <!-- Step 2B: Non-Purchased Customer Feedback -->
                                         <div>
                                             <!-- Reason -->
@@ -596,9 +596,9 @@
                                 </div>
 
                                 <div x-show="step === 3 && formData.customerType === '1'" x-cloak>
-                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
+                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
-                                            <img class="h-18" src={{ asset('/images/logo-white.svg') }}
+                                            <img class="h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
                                         </div>
                                         <div class="text-lg text-white font-medium uppercase">
@@ -606,7 +606,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="px-6 py-10 text-[#4E5356]">
+                                    <div class="px-6 py-10 lg:px-12 text-[#4E5356]">
                                         <!-- Step 3A: Purchased Customer Additional Feedback -->
                                         <div>
                                             <!-- Question 1 -->
@@ -808,7 +808,7 @@
                                     </div>
                                 </div>
 
-                                <div class="px-6 py-10 text-[#4E5356]" x-show="step === 4" x-cloak>
+                                <div class="px-6 py-10 lg:px-12 text-[#4E5356]" x-show="step === 4" x-cloak>
                                     <!-- Step 3: Thank You -->
                                     <div class="flex flex-col items-center justify-center gap-6">
                                         <div>
@@ -843,9 +843,9 @@
 
                 <dialog id="customerDetails" class="modal">
                     <div class="modal-box p-0 max-w-3xl bg-[#FCFAF9]">
-                        <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 divide-x divide-white">
+                        <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                             <div class="pe-4">
-                                <img class="h-18" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                <img class="h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                             </div>
                             <div class="text-xl text-white font-medium uppercase">
                                 Welcome to Jewel one
