@@ -94,18 +94,18 @@
                                 <div class="pe-4">
                                     <img class="h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
-                                <div class="text-xl text-white font-medium uppercase">
+                                <div class="text-lg lg:text-xl text-white font-medium uppercase">
                                     Welcome to Jewel one
                                 </div>
                             </div>
 
-                            <div class="px-6 py-10 lg:px-12 text-[#4E5356]">
+                            <div class="px-4 md:px-6 py-10 lg:px-12 text-[#4E5356]">
                                 <form id="add-customer-form">
 
                                     <!-- Phone Number Fields -->
                                     <div class="flex flex-col justify-center items-center gap-6">
                                         <div class="text-[#9D4F2A] text-md font-semibold">Enter your phone number</div>
-                                        <div class="input-container phone-group">
+                                        <div class="input-container phone-group grid grid-cols-10 gap-1">
                                             <input required type="text" maxlength="1" id="phone-1"
                                                 class="phone input-box" />
                                             <input required type="text" maxlength="1" id="phone-2"
@@ -217,12 +217,12 @@
                                             <img class="h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
                                         </div>
-                                        <div class="text-xl text-white font-medium uppercase">
+                                        <div class="text-lg lg:text-xl text-white font-medium uppercase">
                                             showroom staff usage
                                         </div>
                                     </div>
 
-                                    <div class="px-6 py-10 lg:px-12 text-[#4E5356]">
+                                    <div class="px-4 md:px-6 py-10 lg:px-12 text-[#4E5356]">
                                         <!-- Step 1 -->
                                         <div>
                                             <div class="relative mb-6">
@@ -316,7 +316,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="px-6 py-10 lg:px-12 text-[#4E5356]">
+                                    <div class="px-4 md:px-6 py-10 lg:px-12 text-[#4E5356]">
                                         <!-- Step 2A: Purchased Customer Feedback -->
                                         <div>
 
@@ -474,7 +474,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="px-6 py-10 lg:px-12 text-[#4E5356]">
+                                    <div class="px-4 md:px-6 py-10 lg:px-12 text-[#4E5356]">
                                         <!-- Step 2B: Non-Purchased Customer Feedback -->
                                         <div>
                                             <!-- Reason -->
@@ -612,7 +612,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="px-6 py-10 lg:px-12 text-[#4E5356]">
+                                    <div class="px-4 md:px-6 py-10 lg:px-12 text-[#4E5356]">
                                         <!-- Step 3A: Purchased Customer Additional Feedback -->
                                         <div>
                                             <!-- Question 1 -->
@@ -814,7 +814,7 @@
                                     </div>
                                 </div>
 
-                                <div class="px-6 py-10 lg:px-12 text-[#4E5356]" x-show="step === 4" x-cloak>
+                                <div class="px-4 md:px-6 py-10 lg:px-12 text-[#4E5356]" x-show="step === 4" x-cloak>
                                     <!-- Step 3: Thank You -->
                                     <div class="flex flex-col items-center justify-center gap-6">
                                         <div>
@@ -853,12 +853,12 @@
                             <div class="pe-4">
                                 <img class="h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                             </div>
-                            <div class="text-xl text-white font-medium uppercase">
+                            <div class="text-lg lg:text-xl text-white font-medium uppercase">
                                 Welcome to Jewel one
                             </div>
                         </div>
 
-                        <div class="p-8 text-[#4E5356]">
+                        <div class="p-4 py-8 md:p-8 text-[#4E5356]">
                             <form id="customer-details-form">
                                 <input type="hidden" name="customerId" id="customerId" value="">
                                 <!-- Header -->
@@ -908,28 +908,28 @@
                                 <!-- Phone Number -->
                                 <div class="mb-4">
                                     <div class="mb-1 text-black text-sm">Phone Number <span class="text-red-600">*</span></div>
-                                    <div class="input-container phone-group flex gap-1 flex-wrap">
+                                    <div class="input-container phone-group grid gap-1 grid-cols-10 max-w-fit">
                                         <!-- Generate 10 input fields with the class "phone" -->
                                         <input type="text" maxlength="1"
-                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
                                         <input type="text" maxlength="1"
-                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
                                         <input type="text" maxlength="1"
-                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
                                         <input type="text" maxlength="1"
-                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
                                         <input type="text" maxlength="1"
-                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
                                         <input type="text" maxlength="1"
-                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
                                         <input type="text" maxlength="1"
-                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
                                         <input type="text" maxlength="1"
-                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
                                         <input type="text" maxlength="1"
-                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
                                         <input type="text" maxlength="1"
-                                            class="phone_number input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                            class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
                                     </div>
                                     <!-- Hidden input to store combined value -->
                                     <input type="hidden" id="hiddenPhoneNumber" name="hiddenPhoneNumber" />
@@ -957,7 +957,7 @@
                                 <!-- Marital Status -->
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-4"
                                     x-data="{ maritalStatus: '' }" x-ref="maritalStatusWrapper">
-                                    <div class="grow flex items-center gap-4">
+                                    <div class="grow flex items-center gap-4 flex-wrap">
                                         <div class="text-black text-sm">Marital Status <span class="text-red-600">*</span></div>
                                         <div class="flex space-x-2">
                                             <div>
@@ -1010,20 +1010,20 @@
 
                                     <div>
                                         <div class="mb-1 text-sm text-black">Pincode <span class="text-red-600">*</span></div>
-                                        <div class="input-container zip-group flex gap-1 flex-wrap">
+                                        <div class="input-container zip-group grid gap-1 grid-cols-6 max-w-fit">
                                             <!-- Pincode inputs with class 'zip' for identification -->
                                             <input required name="pincode" type="text" maxlength="1"
-                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                                class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
                                             <input required name="pincode" type="text" maxlength="1"
-                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                                class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
                                             <input required name="pincode" type="text" maxlength="1"
-                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                                class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
                                             <input required name="pincode" type="text" maxlength="1"
-                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                                class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
                                             <input required name="pincode" type="text" maxlength="1"
-                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                                class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
                                             <input required name="pincode" type="text" maxlength="1"
-                                                class="zip input-box border border-[#C7C7C7] text-black p-2 w-10 text-center" />
+                                                class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
 
                                             <input type="hidden" name="hiddenPincode" id="hiddenPincode">
                                         </div>

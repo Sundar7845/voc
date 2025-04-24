@@ -21,7 +21,7 @@
   }
 
   .input-box {
-   @apply w-10 h-10 rounded-md border border-[#C7C7C7] text-center text-lg font-medium;
+    @apply max-w-10 md:h-10 md:w-10 rounded-md border border-[#C7C7C7] text-center text-lg font-medium;
   }
 
 
