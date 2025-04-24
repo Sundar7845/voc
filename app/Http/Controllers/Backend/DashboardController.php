@@ -22,27 +22,70 @@ class DashboardController extends Controller
         $purchasedCustomer = WalkinCustomer::join('customers', 'customers.id', 'walkin_customers.customer_id')
             ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
             ->where('is_purchased', 1)
-            ->whereNull('walkin_customers.customer_out_time')
+            ->whereNotNull('walkin_customers.customer_out_time')
             ->count();
 
         $nonPurchasedCustomer = WalkinCustomer::join('customers', 'customers.id', 'walkin_customers.customer_id')
             ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
-            ->where('is_purchased', 1)
-            ->whereNull('walkin_customers.customer_out_time')
+            ->where('is_purchased', 0)
+            ->whereNotNull('walkin_customers.customer_out_time')
             ->count();
 
         return view('backend.dashboard', compact('totalcustomers', 'walkincustomer', 'purchasedCustomer', 'nonPurchasedCustomer'));
     }
 
+    public function getShowroomRecord(Request $request)
+    {
+        // Get selected branch IDs
+        $branchIds = Branches::whereIn('branch_name', $request->selectedShowrooms)
+            ->pluck('id')
+            ->toArray();
+
+        // Total customers in selected branches
+        $totalcustomers = Customer::whereIn('branch_id', $branchIds)->count();
+
+        // Walk-in customers for selected branches on the given date with no out time
+        $walkincustomer = WalkinCustomer::where(function ($query) use ($request, $branchIds) {
+            $query->whereDate('customer_enter_time', $request->date)
+                ->whereIn('branch_id', $branchIds);
+        })
+            ->whereNull('customer_out_time')
+            ->count();
+
+        // Purchased customers
+        $purchasedCustomer = WalkinCustomer::where(function ($query) use ($request, $branchIds) {
+            $query->whereDate('customer_enter_time', $request->date)
+                ->whereIn('branch_id', $branchIds);
+        })
+            ->whereNotNull('customer_out_time')
+            ->where('is_purchased', 1)
+            ->count();
+
+        // Non-purchased customers
+        $nonPurchasedCustomer = WalkinCustomer::where(function ($query) use ($request, $branchIds) {
+            $query->whereDate('customer_enter_time', $request->date)
+                ->whereIn('branch_id', $branchIds);
+        })
+            ->where('is_purchased', 0)
+            ->whereNotNull('customer_out_time')
+            ->count();
+
+        return response()->json([
+            'totalcustomers' => $totalcustomers,
+            'walkincustomer' => $walkincustomer,
+            'purchasedCustomer' => $purchasedCustomer,
+            'nonPurchasedCustomer' => $nonPurchasedCustomer,
+        ]);
+    }
+
     function liveUser()
     {
-        $branches = WalkinCustomer::select('walkin_customers.*','customers.name','branches.branch_name')->join('customers', 'customers.id', 'walkin_customers.customer_id')
-        ->join('branches', 'branches.id', 'walkin_customers.branch_id')
+        $branches = WalkinCustomer::select('walkin_customers.*', 'customers.name', 'branches.branch_name')->join('customers', 'customers.id', 'walkin_customers.customer_id')
+            ->join('branches', 'branches.id', 'walkin_customers.branch_id')
             ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
             ->where('walkin_customers.branch_id', '!=', null)
             ->whereNull('walkin_customers.customer_out_time')
             ->get();
-            // dd($branches);
         return view('backend.liveuser', compact('branches'));
     }
     public function customerDetails($id)

@@ -11,7 +11,7 @@
             <div x-data="{ open: false }" class="relative flex gap-1 items-center">
                 <div class="text-sm font-medium">Date:</div>
                 <!-- Input field to trigger the date picker -->
-                <input x-ref="dateInput" type="date"
+                <input x-ref="dateInput" x-init="$refs.dateInput.value = new Date().toISOString().split('T')[0]" type="date" id="date" name="date"
                     class="w-full px-4 py-2 border text-sm cursor-pointer border-gray-300 rounded-md bg-white"
                     x-on:click="open = true; $nextTick(() => $refs.dateInput.showPicker())" />
             </div>
@@ -42,7 +42,7 @@
                             <label class="flex items-center space-x-2 cursor-pointer">
                                 <input type="checkbox" :value="item" :checked="selected.includes(item)"
                                     @change="toggleSelection(item)"
-                                    class="form-checkbox rounded border-gray-300 text-blue-600" />
+                                    class="showroom form-checkbox rounded border-gray-300 text-blue-600" />
                                 <span x-text="item" class="text-sm"></span>
                             </label>
                         </template>
@@ -51,7 +51,7 @@
                     <!-- Done Button -->
                     <div class="p-2 border-t border-[#C7C7C7] text-center">
                         <button @click="logSelected(); open = false"
-                            class="bg-amber-700 text-white px-4 py-1 rounded-md">Done</button>
+                            class="done-button bg-amber-700 text-white px-4 py-1 rounded-md">Done</button>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
         <div class="bg-white border border-gray-200 rounded-lg px-4 py-6 space-y-2">
             <div class="text-sm font-medium uppercase text-[#71717A]">Total cx</div>
             <div class="flex justify-between items-center">
-                <div class="font-semibold text-lg">{{ $totalcustomers }}</div>
+                <div class="font-semibold text-lg" id="totalCustomer">{{ $totalcustomers }}</div>
                 <div>
                     <svg class="h-10" xmlns="http://www.w3.org/2000/svg" width="44" height="44"
                         viewBox="0 0 44 44" fill="none">
@@ -84,7 +84,7 @@
         <div class="bg-white border border-gray-200 rounded-lg px-4 py-6 space-y-2">
             <div class="text-sm font-medium uppercase text-[#71717A]">live</div>
             <div class="flex justify-between items-center">
-                <div class="font-semibold text-lg">{{ $walkincustomer }}</div>
+                <div class="font-semibold text-lg" id="liveCustomer">{{ $walkincustomer }}</div>
                 <div>
                     <svg class="h-10" xmlns="http://www.w3.org/2000/svg" width="44" height="44"
                         viewBox="0 0 44 44" fill="none">
@@ -101,7 +101,7 @@
         <div class="bg-white border border-gray-200 rounded-lg px-4 py-6 space-y-2">
             <div class="text-sm font-medium uppercase text-[#71717A]">purchase</div>
             <div class="flex justify-between items-center">
-                <div class="font-semibold text-lg">{{ $purchasedCustomer }}</div>
+                <div class="font-semibold text-lg" id="purchasedCustomer">{{ $purchasedCustomer }}</div>
                 <div>
                     <svg class="h-10" xmlns="http://www.w3.org/2000/svg" width="44" height="44"
                         viewBox="0 0 44 44" fill="none">
@@ -118,7 +118,7 @@
         <div class="bg-white border border-gray-200 rounded-lg px-4 py-6 space-y-2">
             <div class="text-sm font-medium uppercase text-[#71717A]">non-purchase</div>
             <div class="flex justify-between items-center">
-                <div class="font-semibold text-lg">{{ $nonPurchasedCustomer }}</div>
+                <div class="font-semibold text-lg" id="nonPurchasedCustomer">{{ $nonPurchasedCustomer }}</div>
                 <div>
                     <svg class="h-10" xmlns="http://www.w3.org/2000/svg" width="44" height="44"
                         viewBox="0 0 44 44" fill="none">
@@ -132,4 +132,7 @@
         </div>
     </div>
 </section>
+@section('scripts')
+    <script src="{{ asset('js/backend/dashboard.js') }}"></script>
+@endsection
 @endsection

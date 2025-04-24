@@ -21,6 +21,7 @@ class Customer extends Model
         'anniversary_date',
         'profession_id',
         'address',
+        'address_line_1',
         'pincode',
         'know_about',
         'know_about_others'

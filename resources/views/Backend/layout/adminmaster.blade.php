@@ -73,7 +73,7 @@
             return {
                 open: false,
                 search: '',
-                selected: ['Anna Nagar', 'Vellore'], // pre-selected
+                selected: ['Coimbatore'], // pre-selected
                 items: ['Anna Nagar', 'Puducherry', 'Vellore', 'Hosur', 'Trichy', 'Coimbatore', 'Hyderabad', 'Bangalore',
                     'Chennai', 'Delhi', 'Mumbai'
                 ],

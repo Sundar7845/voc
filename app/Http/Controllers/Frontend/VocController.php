@@ -69,6 +69,7 @@ class VocController extends Controller
                 // Create a new customer and walk-in record
                 $newCustomer = Customer::Create([
                     'customer_id' => null,
+                    'branch_id' => Auth::user()->branch_id,
                     'phone_number' => $request->phone
                 ]);
 
@@ -144,6 +145,7 @@ class VocController extends Controller
                 'anniversary_date' => $request->anniversary_date,
                 'profession_id' => $request->profession_id,
                 'address' => $request->address,
+                'address_line_1' => $request->address2,
                 'pincode'  => $request->pincode,
                 'know_about' => $request->know_about,
                 'know_about_others' => $request->know_about_others,
