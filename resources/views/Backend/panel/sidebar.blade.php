@@ -1,7 +1,7 @@
 @php
     $route = Route::currentRouteName();
 @endphp
-<aside class="bg-[#F2EDE4] ">
+<aside class="bg-[#F2EDE4]">
     <div class="p-4">
         <div class="flex flex-col gap-2 items-center">
             <a href="/dashboard" class="flex items-center gap-1 @if($route == 'dashboard') bg-[#9D4F2A] text-white @else text-[#4E5356] @endif p-2 w-full rounded-sm">
