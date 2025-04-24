@@ -25,29 +25,35 @@
             </div>
 
             <div>
-                <div class="flex items-center gap-3">
-                    <div class="text-end">
-                        <div class="text-md font-medium text-black">{{ Auth::user()->name }}</div>
-                        <div class="text-[#7C7C7C] text-sm">Jewelone Showroom</div>
-                    </div>
-                    <div>
-                        <img class="size-12 block rounded-full" src={{ asset('/images/avatar.svg') }} alt="avatar" />
-                    </div>
-
-                    <div>
-                        <a href="{{ route('logout') }}"
-                            class="group flex gap-1 text-black items-center border cursor-pointer border-black rounded-sm py-2 px-4 hover:text-white hover:bg-black">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                class="fill-black group-hover:fill-white" fill="none">
-                                <path
-                                    d="M7.11021 2.43868H5.92517V1.28257H1.18503V12.8437H5.92517V11.6876H7.11021V12.8437C7.11021 13.4822 6.57965 13.9998 5.92517 13.9998H1.18503C0.530556 13.9998 0 13.4822 0 12.8437V1.28257C0 0.644073 0.530556 0.126465 1.18503 0.126465H5.92517C6.57965 0.126465 7.11021 0.644073 7.11021 1.28257V2.43868ZM11.6049 6.48507L9.0613 4.00354L9.89925 3.18605L13.8733 7.06313L9.89925 10.9402L9.0613 10.1227L11.6049 7.64118H4.74014V6.48507H11.6049Z" />
-                            </svg>
-
-                            Logout
-                        </a>
-                    </div>
-                </div>
+        <div class="flex items-center gap-3">
+            <div class="text-end">
+                <div class="text-md font-medium text-black">{{ Auth::user()->name }}</div>
+                <div class="text-[#7C7C7C] text-sm hidden lg:block">Jewelone Showroom</div>
             </div>
+            <div class="hidden lg:block">
+                <img class="size-12 block rounded-full" src={{ asset('/images/avatar.svg') }} alt="avatar" />
+            </div>
+
+            <div>
+                <a href="{{ route('logout') }}"
+                    class="hidden lg:flex gap-1 items-center border cursor-pointer text-black border-black rounded-sm py-2 px-4 hover:text-white hover:bg-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
+                    </svg>
+
+                    Logout
+                </a>
+
+                <a  href="{{ route('logout') }}" class="lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                <path d="M19 0C8.52197 0 0 8.52197 0 19C0 29.478 8.52197 38 19 38C29.478 38 38 29.478 38 19C38 8.52197 29.478 0 19 0ZM18.05 8.75425C18.05 8.22729 18.4768 7.80425 19 7.80425C19.5232 7.80425 19.95 8.22729 19.95 8.75425V16.3913C19.95 16.9183 19.5232 17.3413 19 17.3413C18.4768 17.3413 18.05 16.9183 18.05 16.3913V8.75425ZM19 27.5315C14.2983 27.5315 10.4685 23.7036 10.4685 19C10.4685 16.0461 11.964 13.3427 14.4782 11.771C14.9198 11.4908 15.5098 11.6244 15.7844 12.0697C16.0646 12.5113 15.931 13.1014 15.4857 13.376C13.5337 14.6006 12.3704 16.701 12.3704 19C12.3704 22.6571 15.3447 25.6314 19.0018 25.6314C22.659 25.6314 25.6333 22.6571 25.6333 19C25.6333 16.7011 24.47 14.6006 22.518 13.376C22.0708 13.1013 21.9391 12.5113 22.2193 12.0697C22.4939 11.6225 23.0783 11.4908 23.5255 11.771C26.0378 13.3426 27.5352 16.046 27.5352 19C27.5352 23.7017 23.7073 27.5315 19.0037 27.5315H19Z" fill="#9D4F2A"/>
+                </svg>
+                </a>
+            </div>
+        </div>
+    </div>
         </nav>
     </header>
 
@@ -60,7 +66,7 @@
         <section class="p-4 py-8 md:p-16">
             <div class="border-b border-gray-300 pb-4 mb-4 flex gap-4 justify-between items-center flex-wrap">
                 <div>
-                    <button class="px-4 py-2 font-semibold border-b-4 text-lg border-[#9D4F2A] text-[#9D4F2A] relative">
+                    <button class="p-2 font-semibold border-b-3 text-md border-[#9D4F2A] text-[#9D4F2A] relative">
                         Live Customer
 
                         <span
@@ -72,8 +78,8 @@
 
                 <div>
                     <button onclick="addCustomer.showModal()"
-                        class="bg-[#9D4F2A] text-white px-6 py-3 rounded-sm font-medium shadow-md cursor-pointer flex gap-1 items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                        class="bg-[#9D4F2A] text-white px-6 py-3 rounded-sm font-medium shadow-md cursor-pointer text-sm flex gap-1 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
                             <path fill-rule="evenodd"
                                 d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z"
                                 clip-rule="evenodd" />
@@ -148,36 +154,36 @@
                 </div>
             </div>
 
-            <div class="p-4" x-data="getfeedbackData">
+            <div class="lg:p-4" x-data="getfeedbackData">
 
                 @if (count($walkincustomer) > 0)
                     <div
-                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 flex-wrap">
+                        class="grid min-[360px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-2 gap-y-5 sm:gap-5 flex-wrap">
                         @foreach ($walkincustomer as $item)
                             <div class="bg-[#FFEDD9] overflow-hidden rounded-lg">
-                                <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-6">
+                                <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-4">
                                     <div class="flex gap-1 items-center">
                                         <span class="w-2 h-2 rounded-full bg-green-500 block"></span>
-                                        <span class="text-md">Customer #{{ $item->daily_count }}</span>
+                                        <span class="text-sm">Customer #{{ $item->daily_count }}</span>
                                     </div>
-                                    <div class="text-xl font-semibold">
+                                    <div class="text-lg font-semibold">
                                         {{ $item->name ? $item->name : 'new customer' }}
                                     </div>
                                     <div class="my-4">
                                         <button id="viewDetailsBtn-{{ $item->customer_id }}"
                                             @click="open = true; formData.customerId = {{ $item->id }}; viewCustomerDetails({{ $item->customer_id }})"
-                                            class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white">
+                                            class="px-4 py-2 text-sm block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white">
                                             View Details
                                         </button>
                                     </div>
                                     <div>
                                         <button @click="open = true; getFeedback({{ $item->id }})"
-                                            class="px-4 py-2 block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
+                                            class="px-4 py-2 text-sm block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
                                             Get Feedback
                                         </button>
                                     </div>
                                 </div>
-                                <div class="text-sm py-2 px-6" style="color: red;">
+                                <div class="text-xs py-2 px-4" style="color: red;">
                                     <span id="timer-{{ $item->id }}"
                                         data-enter-time="{{ $item->customer_enter_time }}"
                                         data-customer-id="{{ $item->id }}">Loading...</span>
