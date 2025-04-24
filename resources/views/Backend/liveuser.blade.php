@@ -4,7 +4,7 @@
     Live User
 @endsection
 <section class="py-8 px-6">
-    <div class="flex justify-between items-center gap-6">
+    <div class="flex flex-wrap justify-between items-center gap-6">
 
         <h1 class="text-xl font-semibold">Live User</h1>
 
