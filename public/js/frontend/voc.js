@@ -178,6 +178,7 @@ function viewCustomerDetails(customerId) {
                     .val(response.data.profession_id)
                     .trigger("change");
                 $("#address").val(response.data.address);
+                $("#address2").val(response.data.address_line_1);
                 // ✅ Fill phone number into individual boxes
                 const pincode = response.data.pincode.split("");
                 $(".zip").each(function (index) {
@@ -225,6 +226,7 @@ $(document).ready(function () {
         var anniversary_date = $("#anniversary-date").val();
         var profession_id = $("#profession").val();
         var address = $("#address").val();
+        var address2 = $("#address2").val();
         var pincode = $("#hiddenPincode").val();
         var source = $("#source").val();
         var phone = $("#hiddenPhoneNumber").val();
@@ -245,6 +247,7 @@ $(document).ready(function () {
                 anniversary_date: anniversary_date,
                 profession_id: profession_id,
                 address: address,
+                address2: address2,
                 pincode: pincode,
                 source: source,
                 know_about_others: know_about_others,

@@ -11,4 +11,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('live-user', [DashboardController::class, 'liveUser'])->name('liveuser');
     Route::get('customer/{id}', [DashboardController::class, 'customerDetails'])->name('customer.details');
+    Route::get('getrecord', [DashboardController::class, 'getShowroomRecord'])->name('getrecord');
 });

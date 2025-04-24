@@ -26,6 +26,7 @@ class CreateCustomersTable extends Migration
             $table->unsignedBigInteger('profession_id')->nullable();
             $table->foreign('profession_id')->references('id')->on('professions');
             $table->string('address')->nullable();
+            $table->string('address_line_1')->nullable();
             $table->string('pincode')->nullable();
             $table->string('know_about')->nullable();
             $table->string('know_about_others')->nullable();
