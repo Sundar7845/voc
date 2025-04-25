@@ -62,6 +62,7 @@
         background-image: url('/images/watermark.png');
         background-repeat: no-repeat;
         background-position: center;
+        background-size: 280px;
       ">
         <section class="p-4 py-8 md:p-16">
             <div class="border-b border-gray-300 pb-4 mb-4 flex gap-4 justify-between items-center flex-wrap">
@@ -1303,7 +1304,7 @@
                     }
                     if (Object.keys(this.errors).length === 0) {
                         
-                        if(this.formData.customerType === "3" || this.formData.customerType === "4"){
+                        if(this.formData.customerType === "2" || this.formData.customerType === "3"){
                         this.step = 4;
 
                     }

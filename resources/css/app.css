@@ -37,6 +37,6 @@
     @apply text-black border-[#964A26] ring ring-[#964A26];
   }
 
-.modal-box {
-  max-height: 650px;
-}
+  .modal-box {
+    max-height: 650px;
+  }
