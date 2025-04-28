@@ -51,7 +51,7 @@
                     <!-- Done Button -->
                     <div class="p-2 border-t border-[#C7C7C7] text-center">
                         <button @click="logSelected(); open = false"
-                            class="done-button bg-amber-700 text-white px-4 py-1 rounded-md">Done</button>
+                            class="done-button bg-amber-700 text-white px-4 py-1 rounded-md cursor-pointer">Done</button>
                     </div>
                 </div>
             </div>

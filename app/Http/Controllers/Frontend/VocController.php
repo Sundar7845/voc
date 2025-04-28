@@ -24,6 +24,7 @@ class VocController extends Controller
         $walkincustomer = WalkinCustomer::select('walkin_customers.*', 'customers.name')
             ->join('customers', 'customers.id', 'walkin_customers.customer_id')
             ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
+            ->where('walkin_customers.branch_id', Auth::user()->branch_id)
             ->whereNull('walkin_customers.customer_out_time')
             ->orderBy('walkin_customers.customer_enter_time') // Ensure proper order
             ->get();
@@ -43,6 +44,7 @@ class VocController extends Controller
             if ($customer) {
                 // Check if there's an existing walk-in without customer_out_time
                 $existingWalkin = WalkinCustomer::where('customer_id', $customer->id)
+                    ->where('branch_id', Auth::user()->branch_id)
                     ->whereNull('customer_out_time')
                     ->exists();
 
@@ -101,6 +103,7 @@ class VocController extends Controller
     private function getDailyCount()
     {
         $lastCount = WalkinCustomer::whereDate('customer_enter_time', Carbon::today())
+            ->where('branch_id', Auth::user()->branch_id)
             ->orderBy('daily_count', 'desc')
             ->value('daily_count');
 
