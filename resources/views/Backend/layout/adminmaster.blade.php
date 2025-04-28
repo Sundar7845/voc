@@ -74,8 +74,8 @@
                 open: false,
                 search: '',
                 selected: ['Coimbatore'], // pre-selected
-                items: ['Anna Nagar', 'Puducherry', 'Vellore', 'Hosur', 'Trichy', 'Coimbatore', 'Hyderabad', 'Bangalore',
-                    'Chennai', 'Delhi', 'Mumbai'
+                items: ['Anna Nagar', 'Puducherry', 'Vellore', 'Hosur', 'Trichy', 'Salem', 'Erode',
+                    'Coimbatore', 'Experience center', 'Pollachi', 'Udumalpet', 'Madurai', 'Ramnad'
                 ],
 
                 get filteredItems() {

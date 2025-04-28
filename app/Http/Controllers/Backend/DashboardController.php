@@ -78,20 +78,52 @@ class DashboardController extends Controller
         ]);
     }
 
-    function liveUser()
+    function liveUserShowroomRecord(Request $request)
     {
-        $branches = WalkinCustomer::select('walkin_customers.*', 'customers.name', 'branches.branch_name')->join('customers', 'customers.id', 'walkin_customers.customer_id')
+        // Get selected branch IDs
+        $branchIds = Branches::whereIn('branch_name', $request->selectedShowrooms)
+            ->pluck('id')
+            ->toArray();
+
+
+        // Walk-in customers for selected branches on the given date with no out time
+        $branchesData = WalkinCustomer::select('walkin_customers.*', 'customers.name', 'branches.branch_name')
+            ->join('customers', 'customers.id', 'walkin_customers.customer_id')
             ->join('branches', 'branches.id', 'walkin_customers.branch_id')
             ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
-            ->where('walkin_customers.branch_id', '!=', null)
+            ->whereIn('walkin_customers.branch_id', $branchIds)
             ->whereNull('walkin_customers.customer_out_time')
             ->get();
-        return view('backend.liveuser', compact('branches'));
+
+        return response()->json([
+            'branchesData' => $branchesData, // where this is a properly structured array
+        ]);
     }
+
+    public function liveUser()
+    {
+        $branchesData = WalkinCustomer::select('walkin_customers.*', 'customers.name', 'branches.branch_name')
+            ->join('customers', 'customers.id', 'walkin_customers.customer_id')
+            ->join('branches', 'branches.id', 'walkin_customers.branch_id')
+            ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
+            ->whereNotNull('walkin_customers.branch_id')
+            ->whereNull('walkin_customers.customer_out_time')
+            ->get();
+
+        // Group by branch name
+        $groupedData = $branchesData->groupBy('branch_name');
+
+        return view('backend.liveuser', compact('groupedData'));
+    }
+
     public function customerDetails($id)
     {
-        return view('backend.customerdetails', [
-            'customerId' => $id,
-        ]);
+        $customerDetails = WalkinCustomer::where('customer_id', $id)
+            ->orderBy('created_at', 'desc') // latest first
+            ->skip(1) // skip the most recent
+            ->take(1) // get the one before that
+            ->first();
+
+        return view('backend.customerdetails', compact('customerDetails'));
     }
 }

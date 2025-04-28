@@ -29,15 +29,15 @@
                 <tbody>
                     <tr class="border-[#C7C7C7]">
                         <td class="border-r border-[#C7C7C7]">Previous Visit Date</td>
-                        <td>12/02/2025</td>
+                        <td>{{ $customerDetails->customer_enter_time }}</td>
                     </tr>
                     <tr class="border-[#C7C7C7]">
                         <td class="border-r border-[#C7C7C7]">Duration of Visit </td>
-                        <td>-</td>
+                        <td>{{ $customerDetails->spent_time }}</td>
                     </tr>
                     <tr class="border-[#C7C7C7]">
                         <td class="border-r border-[#C7C7C7]">Purchased / Non Purchased</td>
-                        <td>-</td>
+                        <td>{{ $customerDetails->is_purchased == 1 ? 'Purchased' : 'Non Purchased' }}</td>
                     </tr>
                     <tr class="border-[#C7C7C7]">
                         <td class="border-r border-[#C7C7C7]">Sales Data (All in table)</td>
