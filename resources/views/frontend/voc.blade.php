@@ -17,10 +17,10 @@
 
 <body class="bg-[#FCFAF9] min-h-screen roboto antialiased">
     <header class="bg-[#F2EDE4] border-b border-[#C7C7C7]">
-        <nav class="px-4 md:px-16 py-4 flex justify-between gap-10 items-center">
+        <nav class="px-4 md:px-16 py-4 flex justify-between gap-5 items-center">
             <div>
                 <a href="{{ route('voc') }}">
-                    <img src="{{ asset('/images/logo.svg') }}" alt="logo" class="h-16" />
+                    <img src="{{ asset('/images/logo.svg') }}" alt="logo" class="h-14 lg:h-16" />
                 </a>
             </div>
 
@@ -93,7 +93,7 @@
                         <div class="modal-box p-0 max-w-2xl bg-[#FCFAF9]">
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                    <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                                 </div>
                                 <div class="text-lg lg:text-xl text-white font-medium uppercase">
                                     Welcome to Jewel one
@@ -215,7 +215,7 @@
                                 <div x-show="step === 1" x-cloak>
                                     <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
-                                            <img class="h-16" src={{ asset('/images/logo-white.svg') }}
+                                            <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
                                         </div>
                                         <div class="text-lg lg:text-xl text-white font-medium uppercase">
@@ -308,7 +308,7 @@
                                 <div x-show="step === 2 && formData.customerType === '1'" x-cloak>
                                     <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
-                                            <img class="h-16" src={{ asset('/images/logo-white.svg') }}
+                                            <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
                                         </div>
                                         <div class="text-lg text-white font-medium uppercase">
@@ -467,7 +467,7 @@
                                 <div x-show="step === 2 && formData.customerType === '0'" x-cloak>
                                     <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
-                                            <img class="h-16" src={{ asset('/images/logo-white.svg') }}
+                                            <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
                                         </div>
                                         <div class="text-lg text-white font-medium uppercase">
@@ -605,7 +605,7 @@
                                 <div x-show="step === 3 && formData.customerType === '1'" x-cloak>
                                     <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
-                                            <img class="h-16" src={{ asset('/images/logo-white.svg') }}
+                                            <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
                                         </div>
                                         <div class="text-lg text-white font-medium uppercase">
@@ -852,7 +852,7 @@
                     <div class="modal-box p-0 max-w-3xl bg-[#FCFAF9]">
                         <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                             <div class="pe-4">
-                                <img class="h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                             </div>
                             <div class="text-lg lg:text-xl text-white font-medium uppercase">
                                 Welcome to Jewel one
