@@ -21,7 +21,7 @@
   }
 
   .input-box {
-   @apply w-10 h-10 rounded-md border border-[#C7C7C7] text-center text-lg font-medium;
+    @apply max-w-10 md:h-10 md:w-10 rounded-md border border-[#C7C7C7] text-center text-lg font-medium;
   }
 
 
@@ -37,6 +37,6 @@
     @apply text-black border-[#964A26] ring ring-[#964A26];
   }
 
-.modal-box {
-  max-height: 650px;
-}
+  .modal-box {
+    max-height: 650px;
+  }

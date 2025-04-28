@@ -33,10 +33,10 @@
         {{-- <---- Main Content -----> --}}
         <main class="relative min-h-screen border-l border-[#C7C7C7]"
             style="
-            background-image: url('../assets/images/watermark.png');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 260px;
+                   background-image: url('/images/watermark.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 280px;
           ">
             @yield('content')
         </main>
