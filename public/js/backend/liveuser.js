@@ -99,17 +99,17 @@ function todayLiveUserRecord() {
                         html += `
                         <div class="swiper-slide bg-white max-w-52">
                             <div class="bg-[#FFEDD9] overflow-hidden rounded-lg">
-                                <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-6">
+                                <div class="text-[#4E5356] space-y-1 bg-white rounded-lg border border-[#EEE6E2] p-4">
                                     <div class="flex gap-1 items-center">
                                         <span class="w-2 h-2 rounded-full bg-green-500 block"></span>
                                         <span class="text-md">${item.daily_count ?? ""}</span>
                                     </div>
-                                    <div class="text-xl font-semibold">${item.name}</div>
+                                    <div class="text-lg font-semibold">${item.name}</div>
                                     <div class="mt-4">
-                                        <a href="/customer/${item.customer_id}" class="px-4 py-2 block text-center border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white">View Details</a>
+                                        <a href="/customer/${item.customer_id}" class="px-4 py-2 block text-center border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-[#9D4F2A] bg-white hover:bg-[#9D4F2A] hover:text-white text-sm">View Details</a>
                                     </div>
                                 </div>
-                                <div class="text-sm py-2 px-6 text-[#ED3333]">
+                                <div class="text-sm py-2 px-4 text-xs text-[#ED3333]">
                                     <span id="timers-${item.customer_id}" data-enter-time="${item.customer_enter_time}" data-customer-id="${item.customer_id}">Loading...</span>
                                     <input type="hidden" name="spent_time_${item.customer_id}" id="spent_timer_${item.customer_id}" value="">
                                 </div>
