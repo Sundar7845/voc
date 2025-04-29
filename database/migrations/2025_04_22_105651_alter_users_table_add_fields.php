@@ -15,7 +15,7 @@ class AlterUsersTableAddFields extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('role_id')->after('id')->nullable();
-            $table->integer('is_active')->after('email ')->default(1);
+            $table->integer('is_active')->default(1);
             $table->unsignedBigInteger('branch_id')->after('role_id')->nullable();
             $table->foreign('branch_id')->references('id')->on('branches');
         });
