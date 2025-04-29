@@ -1,7 +1,7 @@
-<nav class="px-4 md:px-16 py-4 flex justify-between gap-10 items-center ">
+<nav class="px-4 md:px-16 py-4 flex justify-between gap-5 items-center ">
     <div>
         <a href="/dashboard">
-            <img src={{ asset('/images/logo.svg') }} alt="logo" class="h-16" />
+            <img src={{ asset('/images/logo.svg') }} alt="logo" class="h-14 lg:h-16" />
         </a>
     </div>
 
