@@ -25,6 +25,7 @@ class CreateWalkinCustomersTable extends Migration
             $table->string('customer_enter_time')->nullable();
             $table->string('customer_out_time')->nullable();
             $table->integer('is_purchased')->default(0);
+            $table->integer('is_scheme_redemption')->default(0);
             $table->integer('jewellery_review')->default(0);
             $table->integer('pricing_review')->default(0);
             $table->integer('staff_review')->default(0);

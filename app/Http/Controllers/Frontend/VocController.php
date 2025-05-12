@@ -186,7 +186,8 @@ class VocController extends Controller
                 'staff_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->staff,
                 'service_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->knowledge,
                 'assit_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->assit,
-                'spent_time' => $request->spentTime
+                'spent_time' => $request->spentTime,
+                'is_scheme_redemption' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->scheme,
             ]);
 
             return response()->json([

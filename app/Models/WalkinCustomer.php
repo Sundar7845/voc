@@ -18,6 +18,7 @@ class WalkinCustomer extends Model
         'customer_enter_time',
         'customer_out_time',
         'is_purchased',
+        'is_scheme_redemption',
         'jewellery_review',
         'pricing_review',
         'staff_review',
