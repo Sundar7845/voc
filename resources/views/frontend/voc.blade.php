@@ -283,7 +283,7 @@
                                                     </label>
                                                 </div>
 
-                                                <div>
+                                                <!-- <div>
                                                     <input type="radio" @change="errors.customerType = ''"
                                                         name="customerType" id="scheme-redemption" class="sr-only peer"
                                                         x-model="formData.customerType" value="3">
@@ -291,9 +291,20 @@
                                                         class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
                                                         Scheme Redemption
                                                     </label>
-                                                </div>
+                                                </div> -->
 
                                             </div>
+
+
+                                            <div class="mt-4">
+                                                <label class="text-md text-[#4E5356] label">
+                                                    <input type="checkbox" class="checkbox rounded-sm checkbox-xs border-[#4E5356]"> Scheme Redemption
+                                                </label>
+                                                
+                                            </div>
+
+
+
                                             <p x-show="errors.customerType" class="text-red-500 text-sm mt-2 mb-4"
                                                 x-text="errors.customerType">
                                             </p>
