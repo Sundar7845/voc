@@ -279,7 +279,7 @@
                                                         x-model="formData.customerType" value="2">
                                                     <label for="repaired-customer"
                                                         class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
-                                                        Repaired Customer
+                                                        Repair - Customer
                                                     </label>
                                                 </div>
 
