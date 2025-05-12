@@ -341,6 +341,7 @@ $(document).ready(function () {
         var spentTime = $("#spent_time_" + id).val();
         var salesExcutiveName = $("#salesExcutiveName").val();
         var customerType = $("input[name='customerType']:checked").val();
+        var scheme = $("input[id='scheme-redemption']:checked").val();
         var jewellery = $(
             "input[name='jewelleryDesignQuestion1']:checked"
         ).val();
@@ -366,6 +367,7 @@ $(document).ready(function () {
                 nonPurchased: nonPurchased,
                 non_purchased_others: non_purchased_others,
                 spentTime: spentTime,
+                scheme: scheme,
             },
             dataType: "json",
             success: function (response) {
