@@ -7,7 +7,6 @@ use App\Models\Branches;
 use App\Models\Customer;
 use App\Models\Employee;
 use App\Models\Profession;
-use App\Models\Qualification;
 use App\Models\WalkinCustomer;
 use App\Traits\Common;
 use Carbon\Carbon;
@@ -28,7 +27,6 @@ class VocController extends Controller
             ->whereNull('walkin_customers.customer_out_time')
             ->orderBy('walkin_customers.customer_enter_time') // Ensure proper order
             ->get();
-
 
         $professions = Profession::where('is_active', 1)->get();
         $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
