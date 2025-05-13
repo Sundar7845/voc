@@ -341,7 +341,7 @@ $(document).ready(function () {
         var spentTime = $("#spent_time_" + id).val();
         var salesExcutiveName = $("#salesExcutiveName").val();
         var customerType = $("input[name='customerType']:checked").val();
-        var scheme = $("input[id='scheme-redemption']:checked").val();
+        var scheme = $("input[name='scheme-redemption']:checked").val();
         var jewellery = $(
             "input[name='jewelleryDesignQuestion1']:checked"
         ).val();

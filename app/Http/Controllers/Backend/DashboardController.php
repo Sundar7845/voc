@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Branches;
 use App\Models\Customer;
+use App\Models\SalesReport;
 use App\Models\WalkinCustomer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -119,11 +120,22 @@ class DashboardController extends Controller
     public function customerDetails($id)
     {
         $customerDetails = WalkinCustomer::where('customer_id', $id)
-            ->orderBy('created_at', 'desc') // latest first
-            ->skip(1) // skip the most recent
-            ->take(1) // get the one before that
+            ->orderBy('created_at', 'desc')
+            ->skip(1)
+            ->take(1)
             ->first();
 
-        return view('backend.customerdetails', compact('customerDetails'));
+        return view('backend.customerdetails', compact('customerDetails', 'id'));
+    }
+
+    public function getSalesReportData($id)
+    {
+        $salesreport = SalesReport::select('sales_reports.*', 'branches.branch_name')
+            ->join('branches', 'branches.id', 'sales_reports.branch_id')
+            ->where('sales_reports.customer_id', $id)
+            ->orderBy('sales_reports.invoice_date', 'ASC')
+            ->get();
+
+        return datatables()->of($salesreport)->toJson();
     }
 }

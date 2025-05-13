@@ -25,35 +25,38 @@
             </div>
 
             <div>
-        <div class="flex items-center gap-3">
-            <div class="text-end">
-                <div class="text-md font-medium text-black">{{ Auth::user()->name }}</div>
-                <div class="text-[#7C7C7C] text-sm hidden lg:block">Jewelone Showroom</div>
-            </div>
-            <div class="hidden lg:block">
-                <img class="size-12 block rounded-full" src={{ asset('/images/avatar.svg') }} alt="avatar" />
-            </div>
+                <div class="flex items-center gap-3">
+                    <div class="text-end">
+                        <div class="text-md font-medium text-black">{{ Auth::user()->name }}</div>
+                        <div class="text-[#7C7C7C] text-sm hidden lg:block">Jewelone Showroom</div>
+                    </div>
+                    <div class="hidden lg:block">
+                        <img class="size-12 block rounded-full" src={{ asset('/images/avatar.svg') }} alt="avatar" />
+                    </div>
 
-            <div>
-                <a href="{{ route('logout') }}"
-                    class="hidden lg:flex gap-1 items-center border cursor-pointer text-black border-black rounded-sm py-2 px-4 hover:text-white hover:bg-black">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
-                    </svg>
+                    <div>
+                        <a href="{{ route('logout') }}"
+                            class="hidden lg:flex gap-1 items-center border cursor-pointer text-black border-black rounded-sm py-2 px-4 hover:text-white hover:bg-black">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
+                            </svg>
 
-                    Logout
-                </a>
+                            Logout
+                        </a>
 
-                <a  href="{{ route('logout') }}" class="lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
-                <path d="M19 0C8.52197 0 0 8.52197 0 19C0 29.478 8.52197 38 19 38C29.478 38 38 29.478 38 19C38 8.52197 29.478 0 19 0ZM18.05 8.75425C18.05 8.22729 18.4768 7.80425 19 7.80425C19.5232 7.80425 19.95 8.22729 19.95 8.75425V16.3913C19.95 16.9183 19.5232 17.3413 19 17.3413C18.4768 17.3413 18.05 16.9183 18.05 16.3913V8.75425ZM19 27.5315C14.2983 27.5315 10.4685 23.7036 10.4685 19C10.4685 16.0461 11.964 13.3427 14.4782 11.771C14.9198 11.4908 15.5098 11.6244 15.7844 12.0697C16.0646 12.5113 15.931 13.1014 15.4857 13.376C13.5337 14.6006 12.3704 16.701 12.3704 19C12.3704 22.6571 15.3447 25.6314 19.0018 25.6314C22.659 25.6314 25.6333 22.6571 25.6333 19C25.6333 16.7011 24.47 14.6006 22.518 13.376C22.0708 13.1013 21.9391 12.5113 22.2193 12.0697C22.4939 11.6225 23.0783 11.4908 23.5255 11.771C26.0378 13.3426 27.5352 16.046 27.5352 19C27.5352 23.7017 23.7073 27.5315 19.0037 27.5315H19Z" fill="#9D4F2A"/>
-                </svg>
-                </a>
+                        <a href="{{ route('logout') }}" class="lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38"
+                                fill="none">
+                                <path
+                                    d="M19 0C8.52197 0 0 8.52197 0 19C0 29.478 8.52197 38 19 38C29.478 38 38 29.478 38 19C38 8.52197 29.478 0 19 0ZM18.05 8.75425C18.05 8.22729 18.4768 7.80425 19 7.80425C19.5232 7.80425 19.95 8.22729 19.95 8.75425V16.3913C19.95 16.9183 19.5232 17.3413 19 17.3413C18.4768 17.3413 18.05 16.9183 18.05 16.3913V8.75425ZM19 27.5315C14.2983 27.5315 10.4685 23.7036 10.4685 19C10.4685 16.0461 11.964 13.3427 14.4782 11.771C14.9198 11.4908 15.5098 11.6244 15.7844 12.0697C16.0646 12.5113 15.931 13.1014 15.4857 13.376C13.5337 14.6006 12.3704 16.701 12.3704 19C12.3704 22.6571 15.3447 25.6314 19.0018 25.6314C22.659 25.6314 25.6333 22.6571 25.6333 19C25.6333 16.7011 24.47 14.6006 22.518 13.376C22.0708 13.1013 21.9391 12.5113 22.2193 12.0697C22.4939 11.6225 23.0783 11.4908 23.5255 11.771C26.0378 13.3426 27.5352 16.046 27.5352 19C27.5352 23.7017 23.7073 27.5315 19.0037 27.5315H19Z"
+                                    fill="#9D4F2A" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
         </nav>
     </header>
 
@@ -93,7 +96,8 @@
                         <div class="modal-box p-0 max-w-2xl bg-[#FCFAF9]">
                             <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                 <div class="pe-4">
-                                    <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                    <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
+                                        alt="logo" />
                                 </div>
                                 <div class="text-lg lg:text-xl text-white font-medium uppercase">
                                     Welcome to Jewel one
@@ -111,8 +115,8 @@
                                                 class="phone input-box" />
                                             <input required type="text" maxlength="1" id="phone-2"
                                                 class="phone input-box" />
-                                            <input required type="text" maxlength="1"
-                                                id="phone-3" class="phone input-box" />
+                                            <input required type="text" maxlength="1" id="phone-3"
+                                                class="phone input-box" />
                                             <input required type="text" maxlength="1" id="phone-4"
                                                 class="phone input-box" />
                                             <input required type="text" maxlength="1" id="phone-5"
@@ -213,7 +217,8 @@
                                 <input type="hidden" name="feedbackCustomerId" id="feedbackCustomerId"
                                     value="">
                                 <div x-show="step === 1" x-cloak>
-                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
+                                    <div
+                                        class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
                                             <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
@@ -275,35 +280,24 @@
 
                                                 <div>
                                                     <input type="radio" @change="errors.customerType = ''"
-                                                        name="customerType" id="repaired-customer" class="sr-only peer"
-                                                        x-model="formData.customerType" value="2">
+                                                        name="customerType" id="repaired-customer"
+                                                        class="sr-only peer" x-model="formData.customerType"
+                                                        value="2">
                                                     <label for="repaired-customer"
                                                         class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
                                                         Repair - Customer
                                                     </label>
                                                 </div>
-
-                                                <!-- <div>
-                                                    <input type="radio" @change="errors.customerType = ''"
-                                                        name="customerType" id="scheme-redemption" class="sr-only peer"
-                                                        x-model="formData.customerType" value="3">
-                                                    <label for="scheme-redemption"
-                                                        class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
-                                                        Scheme Redemption
-                                                    </label>
-                                                </div> -->
-
                                             </div>
-
 
                                             <div class="mt-4">
                                                 <label class="text-md text-[#4E5356] label">
-                                                    <input type="checkbox" class="checkbox rounded-sm checkbox-xs border-[#4E5356]"> Scheme Redemption
+                                                    <input type="checkbox" name="scheme-redemption"
+                                                        id="scheme-redemption" value="1"
+                                                        class="checkbox  checkbox-neutral rounded-sm checkbox-xs border-[#4E5356]">
+                                                    Scheme Redemption
                                                 </label>
-                                                
                                             </div>
-
-
 
                                             <p x-show="errors.customerType" class="text-red-500 text-sm mt-2 mb-4"
                                                 x-text="errors.customerType">
@@ -317,7 +311,8 @@
                                 </div>
 
                                 <div x-show="step === 2 && formData.customerType === '1'" x-cloak>
-                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
+                                    <div
+                                        class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
                                             <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
@@ -476,7 +471,8 @@
                                 </div>
 
                                 <div x-show="step === 2 && formData.customerType === '0'" x-cloak>
-                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
+                                    <div
+                                        class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
                                             <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
@@ -582,19 +578,25 @@
                                                     </label>
                                                 </div>
 
-                                                <div :class="{ 'md:col-span-3': formData.nonPurchasedFeedback.reason === '6' }">
+                                                <div
+                                                    :class="{ 'md:col-span-3': formData.nonPurchasedFeedback
+                                                            .reason === '6' }">
                                                     <input type="radio"
                                                         x-model="formData.nonPurchasedFeedback.reason"
                                                         id="non-purchase-reason-question6" name="non-purchase-reason"
                                                         value="6" class="hidden">
 
                                                     <label for="non-purchase-reason-question6"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg  flex flex-col" :class="{ 'items-center text-center justify-center content-center': formData.nonPurchasedFeedback.reason !== '6' }">
+                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg  flex flex-col"
+                                                        :class="{ 'items-center text-center justify-center content-center': formData
+                                                                .nonPurchasedFeedback.reason !== '6' }">
                                                         <div class="w-full">
-                                                        <div>Others</div>
-                                                        <div x-show ="formData.nonPurchasedFeedback.reason === '6'" x-cloak>
-                                                            <textarea placeholder="Enter your reason" id="non_purchased_others" class="border mt-2 resize-none border-gray-400 shadow-md rounded-md p-2 w-full"></textarea>
-                                                        </div>
+                                                            <div>Others</div>
+                                                            <div x-show ="formData.nonPurchasedFeedback.reason === '6'"
+                                                                x-cloak>
+                                                                <textarea placeholder="Enter your reason" id="non_purchased_others"
+                                                                    class="border mt-2 resize-none border-gray-400 shadow-md rounded-md p-2 w-full"></textarea>
+                                                            </div>
                                                         </div>
                                                     </label>
                                                 </div>
@@ -614,7 +616,8 @@
                                 </div>
 
                                 <div x-show="step === 3 && formData.customerType === '1'" x-cloak>
-                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
+                                    <div
+                                        class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
                                             <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
                                                 alt="logo" />
@@ -894,7 +897,8 @@
 
                                     <!-- Gender -->
                                     <div class="flex items-center gap-2">
-                                        <div class="text-sm text-black">Gender <span class="text-red-600">*</span></div>
+                                        <div class="text-sm text-black">Gender <span class="text-red-600">*</span>
+                                        </div>
                                         <div class="flex gap-1">
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="gender" id="gender" value="M"
@@ -919,7 +923,8 @@
 
                                 <!-- Phone Number -->
                                 <div class="mb-4">
-                                    <div class="mb-1 text-black text-sm">Phone Number <span class="text-red-600">*</span></div>
+                                    <div class="mb-1 text-black text-sm">Phone Number <span
+                                            class="text-red-600">*</span></div>
                                     <div class="input-container phone-group grid gap-1 grid-cols-10 max-w-fit">
                                         <!-- Generate 10 input fields with the class "phone" -->
                                         <input type="text" maxlength="1"
@@ -953,7 +958,7 @@
                                     <div class="relative grow">
                                         <label
                                             class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Email</label>
-                                        <input type="email" name="email" id="email" required
+                                        <input type="email" name="email" id="email"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
                                     </div>
 
@@ -970,7 +975,8 @@
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-center mb-4"
                                     x-data="{ maritalStatus: '' }" x-ref="maritalStatusWrapper">
                                     <div class="grow flex items-center gap-4 flex-wrap">
-                                        <div class="text-black text-sm">Marital Status <span class="text-red-600">*</span></div>
+                                        <div class="text-black text-sm">Marital Status <span
+                                                class="text-red-600">*</span></div>
                                         <div class="flex space-x-2">
                                             <div>
                                                 <input type="radio" name="marital-status"
@@ -1021,7 +1027,8 @@
                                     </div>
 
                                     <div>
-                                        <div class="mb-1 text-sm text-black">Pincode <span class="text-red-600">*</span></div>
+                                        <div class="mb-1 text-sm text-black">Pincode <span
+                                                class="text-red-600">*</span></div>
                                         <div class="input-container zip-group grid gap-1 grid-cols-6 max-w-fit">
                                             <!-- Pincode inputs with class 'zip' for identification -->
                                             <input required name="pincode" type="text" maxlength="1"
@@ -1045,25 +1052,25 @@
 
                                 <!-- Address -->
                                 <div class="flex flex-col xl:flex-row gap-4 xl:items-end mb-4">
-                                
+
                                     <div class="grow space-y-4">
-                                    <div class="relative">
-                                        <label
-                                            class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Address
-                                            <span class="text-red-600">*</span></label>
-                                        <!-- <textarea name="address" id="address" rows="2" required
-                                            class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3 resize-none"></textarea>
+                                        <div class="relative">
+                                            <label
+                                                class="text-black absolute transform -translate-y-2 left-4 bg-[#FCFAF9] text-sm px-2">Address
+                                                <span class="text-red-600">*</span></label>
+                                            <!-- <textarea name="address" id="address" rows="2" required
+                                                class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3 resize-none"></textarea>
                                      -->
-                                     <input type="text" name="address" id="address" required
-                                     placeholder="Address Line 1"
-                                            class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
-                                  
+                                            <input type="text" name="address" id="address" required
+                                                placeholder="Address Line 1"
+                                                class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
+
                                         </div>
 
                                         <input type="text" name="address2" id="address2" required
-                                        placeholder="Address Line 2"
+                                            placeholder="Address Line 2"
                                             class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
-                                  
+
                                     </div>
 
                                 </div>
@@ -1073,64 +1080,76 @@
                                 </div>
 
                                 <!-- Source Options -->
-                                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-4" x-data="{ source: '' }">
+                                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-4"
+                                    x-data="{ source: '' }">
                                     <!-- Television -->
                                     <div>
-                                        <input id="source1" name="source" x-model="source" value="Television Commercial" type="radio" class="hidden" />
+                                        <input id="source1" name="source" x-model="source"
+                                            value="Television Commercial" type="radio" class="hidden" />
                                         <label for="source1" class="text-center">
-                                            <img src="{{ asset('/images/icons/televison.svg') }}" alt="Television Commercial" class="h-8" />
+                                            <img src="{{ asset('/images/icons/televison.svg') }}"
+                                                alt="Television Commercial" class="h-8" />
                                             <span> Television Commercial </span>
                                         </label>
                                     </div>
 
                                     <!-- Newspaper -->
                                     <div>
-                                        <input id="source2" name="source" x-model="source" value="Newspaper" type="radio" class="hidden" />
+                                        <input id="source2" name="source" x-model="source" value="Newspaper"
+                                            type="radio" class="hidden" />
                                         <label for="source2" class="text-center">
-                                            <img src="{{ asset('/images/icons/newspaper.svg') }}" alt="Newspaper" class="h-8" />
+                                            <img src="{{ asset('/images/icons/newspaper.svg') }}" alt="Newspaper"
+                                                class="h-8" />
                                             <span> Newspaper </span>
                                         </label>
                                     </div>
 
                                     <!-- Social Media -->
                                     <div>
-                                        <input id="source3" name="source" x-model="source" value="Social Media" type="radio" class="hidden" />
+                                        <input id="source3" name="source" x-model="source" value="Social Media"
+                                            type="radio" class="hidden" />
                                         <label for="source3" class="text-center">
-                                            <img src="{{ asset('/images/icons/socialmedia.svg') }}" alt="Social Media" class="h-8" />
+                                            <img src="{{ asset('/images/icons/socialmedia.svg') }}"
+                                                alt="Social Media" class="h-8" />
                                             <span> Social Media </span>
                                         </label>
                                     </div>
 
                                     <!-- Brochure -->
                                     <div>
-                                        <input id="source4" name="source" x-model="source" value="Flyer, Brochure, Flex" type="radio" class="hidden" />
+                                        <input id="source4" name="source" x-model="source"
+                                            value="Flyer, Brochure, Flex" type="radio" class="hidden" />
                                         <label for="source4" class="text-center">
-                                            <img src="{{ asset('/images/icons/brochure.svg') }}" alt="Flyer, Brochure, Flex" class="h-8" />
+                                            <img src="{{ asset('/images/icons/brochure.svg') }}"
+                                                alt="Flyer, Brochure, Flex" class="h-8" />
                                             <span> Flyer, Brochure, Flex </span>
                                         </label>
                                     </div>
 
                                     <!-- Friends & Family -->
                                     <div>
-                                        <input id="source5" name="source" x-model="source" value="Friends & Family" type="radio" class="hidden" />
+                                        <input id="source5" name="source" x-model="source"
+                                            value="Friends & Family" type="radio" class="hidden" />
                                         <label for="source5" class="text-center">
-                                            <img src="{{ asset('/images/icons/family.svg') }}" alt="Friends & Family" class="h-8" />
+                                            <img src="{{ asset('/images/icons/family.svg') }}" alt="Friends & Family"
+                                                class="h-8" />
                                             <span> Friends & Family </span>
                                         </label>
                                     </div>
 
                                     <!-- Others with textarea -->
                                     <div :class="{ 'md:col-span-2': source === 'others' }">
-                                        <input id="others" name="source" x-model="source" value="others" type="radio" class="hidden" />
+                                        <input id="others" name="source" x-model="source" value="others"
+                                            type="radio" class="hidden" />
                                         <label for="others" class="text-center block">
                                             <div class="m-auto">Others</div>
                                             <div class="w-full" x-show="source === 'others'" x-cloak>
-                                            <textarea placeholder="Enter your reason" id="know_about_others"
-                                                class="border mt-2 resize-none border-gray-400 shadow-md rounded-md p-2 w-full"></textarea>
-                                        </div>
+                                                <textarea placeholder="Enter your reason" id="know_about_others"
+                                                    class="border mt-2 resize-none border-gray-400 shadow-md rounded-md p-2 w-full"></textarea>
+                                            </div>
                                         </label>
 
-                                        
+
                                     </div>
                                 </div>
 
@@ -1314,16 +1333,15 @@
                         this.errors.customerType = "Please select a customer type.";
                     }
                     if (Object.keys(this.errors).length === 0) {
-                        
-                        if(this.formData.customerType === "2" || this.formData.customerType === "3"){
-                        this.step = 4;
 
+                        if (this.formData.customerType === "2" || this.formData.customerType === "3") {
+                            this.step = 4;
+
+                        } else {
+                            this.step = 2;
+                        }
                     }
-                    else{
-                        this.step = 2;
-                    }
-                    }
-                    
+
                 },
                 validateStep2() {
                     this.errors = {};

@@ -22,7 +22,6 @@
     <div class="border-b border-[#C7C7C7] mt-6">
         <div class="border-b-3 border-[#9D4F2A] max-w-fit pe-10 font-medium pb-2">Previous History</div>
     </div>
-
     <div class="mt-8">
         <div class="overflow-x-auto rounded-box border border-[#C7C7C7] max-w-lg">
             <table class="table">
@@ -39,13 +38,63 @@
                         <td class="border-r border-[#C7C7C7]">Purchased / Non Purchased</td>
                         <td>{{ $customerDetails->is_purchased == 1 ? 'Purchased' : 'Non Purchased' }}</td>
                     </tr>
-                    <tr class="border-[#C7C7C7]">
-                        <td class="border-r border-[#C7C7C7]">Sales Data (All in table)</td>
-                        <td>-</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    <input type="hidden" name="customer_id" id="customer_id" value="{{ $customerDetails->customer_id }}">
+    <div class="mt-8 max-h-[500px] overflow-auto border border-[#C7C7C7] rounded-box">
+        <table id="salesReportTable" class="min-w-[1200px] w-full text-sm text-left border-collapse">
+            <thead class="bg-black">
+                <tr>
+                    <th class="px-4 py-2">Branch</th>
+                    <th class="px-4 py-2">Invoice Date</th>
+                    <th class="px-4 py-2">Purchase Location</th>
+                    <th class="px-4 py-2">Article Code</th>
+                    <th class="px-4 py-2">Name</th>
+                    <th class="px-4 py-2">SKU Number</th>
+                    <th class="px-4 py-2">Sales ID</th>
+                    <th class="px-4 py-2">Sales Person</th>
+                    <th class="px-4 py-2">Invoice ID</th>
+                    <th class="px-4 py-2">Gr. Weight</th>
+                    <th class="px-4 py-2">PCS</th>
+                    <th class="px-4 py-2">Net Chargeable</th>
+                    <th class="px-4 py-2">Sales Qty</th>
+                    <th class="px-4 py-2">CT Wght</th>
+                    <th class="px-4 py-2">Textbox 33</th>
+                    <th class="px-4 py-2">Customer ID</th>
+                    <th class="px-4 py-2">Cust Name</th>
+                    <th class="px-4 py-2">Cust Phone</th>
+                    <th class="px-4 py-2">Delivery Name</th>
+                    <th class="px-4 py-2">Sales Price</th>
+                    <th class="px-4 py-2">CValue</th>
+                    <th class="px-4 py-2">Stud Value</th>
+                    <th class="px-4 py-2">MK Code</th>
+                    <th class="px-4 py-2">Sale Calc Type</th>
+                    <th class="px-4 py-2">Amt 1</th>
+                    <th class="px-4 py-2">MK Rate</th>
+                    <th class="px-4 py-2">MK Value</th>
+                    <th class="px-4 py-2">Making Dis%</th>
+                    <th class="px-4 py-2">Making Disc</th>
+                    <th class="px-4 py-2">Scheme Discount</th>
+                    <th class="px-4 py-2">Textbox 89</th>
+                    <th class="px-4 py-2">Tax Item Group</th>
+                    <th class="px-4 py-2">Tax %</th>
+                    <th class="px-4 py-2">Tax Amount</th>
+                    <th class="px-4 py-2">Total Amount</th>
+                    <th class="px-4 py-2">Namline Amount</th>
+                    <th class="px-4 py-2">Invoice Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Your rows go here -->
+            </tbody>
+        </table>
+    </div>
+
+
 </section>
+@section('scripts')
+    <script src="{{ asset('js/backend/liveuser.js') }}"></script>
+@endsection
 @endsection
