@@ -130,9 +130,10 @@ class DashboardController extends Controller
 
     public function getSalesReportData($id)
     {
+        $customer = Customer::where('id', $id)->first();
         $salesreport = SalesReport::select('sales_reports.*', 'branches.branch_name')
             ->join('branches', 'branches.id', 'sales_reports.branch_id')
-            ->where('sales_reports.customer_id', $id)
+            ->where('sales_reports.cust_phone', $customer->phone_number)
             ->orderBy('sales_reports.invoice_date', 'ASC')
             ->get();
 
