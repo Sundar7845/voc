@@ -125,18 +125,33 @@ class DashboardController extends Controller
             ->take(1)
             ->first();
 
-        return view('backend.customerdetails', compact('customerDetails', 'id'));
-    }
-
-    public function getSalesReportData($id)
-    {
         $customer = Customer::where('id', $id)->first();
+
         $salesreport = SalesReport::select('sales_reports.*', 'branches.branch_name')
             ->join('branches', 'branches.id', 'sales_reports.branch_id')
             ->where('sales_reports.cust_phone', $customer->phone_number)
             ->orderBy('sales_reports.invoice_date', 'ASC')
-            ->get();
+            ->get()
+            ->groupBy(function ($item) {
+                // Convert '22-Nov-13' or '22-NOV-13' to proper case
+                $cleanDate = ucwords(strtolower($item->invoice_date));
 
-        return datatables()->of($salesreport)->toJson();
+                // Parse with format: y-M-d => 22-Nov-13 becomes 2022-11-13
+                return \Carbon\Carbon::createFromFormat('y-M-d', $cleanDate)->format('d-m-Y');
+            });
+
+        return view('backend.customerdetails', compact('customerDetails', 'salesreport'));
     }
+
+    // public function getSalesReportData($id)
+    // {
+    //     $customer = Customer::where('id', $id)->first();
+    //     $salesreport = SalesReport::select('sales_reports.*', 'branches.branch_name')
+    //         ->join('branches', 'branches.id', 'sales_reports.branch_id')
+    //         ->where('sales_reports.cust_phone', $customer->phone_number)
+    //         ->orderBy('sales_reports.invoice_date', 'ASC')
+    //         ->get();
+
+    //     return datatables()->of($salesreport)->toJson();
+    // }
 }
