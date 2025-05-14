@@ -406,3 +406,18 @@ $(document).ready(function () {
         });
     });
 });
+
+
+
+
+
+function viewHistory(id) {
+    const modal = document.getElementById("viewHistory");
+    if (modal) {
+        modal.showModal();
+    } else {
+        console.error("Modal not found!");
+    }
+
+    $("#feedbackCustomerId").val(id);
+}

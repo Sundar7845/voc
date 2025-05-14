@@ -181,6 +181,12 @@
                                             View Details
                                         </button>
                                     </div>
+                                    <div class="mb-4">
+                                        <button @click="open = true; viewHistory({{ $item->id }})"
+                                            class="px-4 py-2 text-sm block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
+                                            View  History
+                                        </button>
+                                    </div>
                                     <div>
                                         <button @click="open = true; getFeedback({{ $item->id }})"
                                             class="px-4 py-2 text-sm block border cursor-pointer border-gray-300 shadow-md w-full rounded-md text-black bg-white hover:bg-[#9D4F2A] hover:text-white">
@@ -209,6 +215,225 @@
                         </div>
                     </div>
                 @endif
+
+
+                <dialog id="viewHistory" class="modal">
+                    <div class="modal-box p-0 max-w-4xl min-h-60 bg-[#FCFAF9]">
+                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
+                            <div class="pe-4">
+                                <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                            </div>
+                            <div class="text-lg lg:text-xl text-white font-medium uppercase">
+                            View Passed History
+                            </div>
+                        </div>
+
+
+                        <div class="p-10" x-data="{ openRow: null }">
+       <div class="overflow-x-auto">
+       <table class="min-w-full table-auto border border-[#C7C7C7] text-center">
+            <thead class="bg-black text-white text-sm">
+                <tr>
+                    <th class="px-4 py-3">S.No</th>
+                    <th class="px-4 py-3">DATE OF VISIT</th>
+                    <th class="px-4 py-3">CUSTOMER TYPE</th>
+                    <th class="px-4 py-3">VIEW FEEDBACK</th>
+                    <th class="px-4 py-3">ORDER HISTORY</th>
+                </tr>
+            </thead>
+            <tbody class="text-sm text-gray-700">
+                <!-- Row 1 -->
+                <tr class="border-b border-[#C7C7C7]">
+                    <td class="px-4 py-2">1</td>
+                    <td class="px-4 py-2">28-05-2025</td>
+                    <td class="px-4 py-2">Purchased</td>
+                    <td class="px-4 py-2">Good</td>
+                    <td class="px-4 py-2">
+                        <button class="text-sm text-[#9D4F2A] bg-transparent border border-[#9D4F2A] px-4 py-1 rounded-2xl cursor-pointer"
+                            @click="openRow = openRow === 1 ? null : 1">View Details</button>
+                    </td>
+                </tr>
+
+                <!-- Sub Table -->
+                <tr x-cloak x-show="openRow === 1" class="bg-gray-50">
+                <td colspan="5">
+                        <div class="p-4 overflow-x-auto">
+                            <table class="w-full table-auto text-center text-xs">
+                                <thead class="bg-[#F2EDE4] text-[#313131]">
+                                    <tr>
+                                        <th class="p-2">Branch</th>
+                                        <th class="p-2">Invoice Date</th>
+                                        <th class="p-2">Purchase Location</th>
+                                        <th class="p-2">Article Code</th>
+                                        <th class="p-2">Name</th>
+                                        <th class="p-2">SKU No</th>
+                                        <th class="p-2">Sales ID</th>
+                                        <th class="p-2">Sales Person</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-t border-[#E0E0E0]">
+                                        <td class="p-2">Coimbatore</td>
+                                        <td class="p-2">15-06-2025</td>
+                                        <td class="p-2">Jewel One Showroom</td>
+                                        <td class="p-2">Rings</td>
+                                        <td class="p-2">Ladies Ring</td>
+                                        <td class="p-2">RNG000086619</td>
+                                        <td class="p-2">SO/1314/00030440</td>
+                                        <td class="p-2">RE0030</td>
+                                    </tr>
+                                    <tr class="border-t border-[#E0E0E0]">
+                                        <td class="p-2">Coimbatore</td>
+                                        <td class="p-2">15-06-2025</td>
+                                        <td class="p-2">Jewel One Showroom</td>
+                                        <td class="p-2">Rings</td>
+                                        <td class="p-2">Ladies Ring</td>
+                                        <td class="p-2">RNG000086619</td>
+                                        <td class="p-2">SO/1314/00030440</td>
+                                        <td class="p-2">RE0030</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+
+
+
+                <!-- Row 2 -->
+                <tr class="border-b border-[#C7C7C7]">
+                    <td class="px-4 py-2">2</td>
+                    <td class="px-4 py-2">28-05-2025</td>
+                    <td class="px-4 py-2">Purchased</td>
+                    <td class="px-4 py-2">Good</td>
+                    <td class="px-4 py-2">
+                    <button class="text-sm text-[#9D4F2A] bg-transparent border border-[#9D4F2A] px-4 py-1 rounded-2xl cursor-pointer"
+                    @click="openRow = openRow === 2 ? null : 2">View Details</button>
+                    </td>
+                </tr>
+
+                <!-- Sub Table Row 2 -->
+                <tr x-cloak x-show="openRow === 2" class="bg-gray-50">
+                <td colspan="5">
+                        <div  class="p-4 overflow-x-auto">
+                            <table class="w-full table-auto text-center text-xs">
+                                <thead class="bg-[#F2EDE4] text-[#313131]">
+                                    <tr>
+                                        <th class="p-2">Branch</th>
+                                        <th class="p-2">Invoice Date</th>
+                                        <th class="p-2">Purchase Location</th>
+                                        <th class="p-2">Article Code</th>
+                                        <th class="p-2">Name</th>
+                                        <th class="p-2">SKU No</th>
+                                        <th class="p-2">Sales ID</th>
+                                        <th class="p-2">Sales Person</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-t border-[#E0E0E0]">
+                                        <td class="p-2">Coimbatore</td>
+                                        <td class="p-2">15-06-2025</td>
+                                        <td class="p-2">Jewel One Showroom</td>
+                                        <td class="p-2">Rings</td>
+                                        <td class="p-2">Ladies Ring</td>
+                                        <td class="p-2">RNG000086619</td>
+                                        <td class="p-2">SO/1314/00030440</td>
+                                        <td class="p-2">RE0030</td>
+                                    </tr>
+                                    <tr class="border-t border-[#E0E0E0]">
+                                        <td class="p-2">Coimbatore</td>
+                                        <td class="p-2">15-06-2025</td>
+                                        <td class="p-2">Jewel One Showroom</td>
+                                        <td class="p-2">Rings</td>
+                                        <td class="p-2">Ladies Ring</td>
+                                        <td class="p-2">RNG000086619</td>
+                                        <td class="p-2">SO/1314/00030440</td>
+                                        <td class="p-2">RE0030</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr class="border-b border-[#C7C7C7]">
+                    <td class="px-4 py-2">3</td>
+                    <td class="px-4 py-2">28-05-2025</td>
+                    <td class="px-4 py-2">Purchased</td>
+                    <td class="px-4 py-2">Good</td>
+                    <td class="px-4 py-2">
+                    <button class="text-sm text-[#9D4F2A] bg-transparent border border-[#9D4F2A] px-4 py-1 rounded-2xl cursor-pointer"
+                    @click="openRow = openRow === 3 ? null : 3">View Details</button>
+                    </td>
+                </tr>
+
+                <!-- Sub Table Row 3 -->
+                <tr x-cloak x-show="openRow === 3" class="bg-gray-50">
+                    <td colspan="5">
+                        <div  class="p-4 overflow-x-auto">
+                            <table class="w-full table-auto text-center text-xs">
+                                <thead class="bg-[#F2EDE4] text-[#313131]">
+                                    <tr>
+                                        <th class="p-2">Branch</th>
+                                        <th class="p-2">Invoice Date</th>
+                                        <th class="p-2">Purchase Location</th>
+                                        <th class="p-2">Article Code</th>
+                                        <th class="p-2">Name</th>
+                                        <th class="p-2">SKU No</th>
+                                        <th class="p-2">Sales ID</th>
+                                        <th class="p-2">Sales Person</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-t border-[#E0E0E0]">
+                                        <td class="p-2">Coimbatore</td>
+                                        <td class="p-2">15-06-2025</td>
+                                        <td class="p-2">Jewel One Showroom</td>
+                                        <td class="p-2">Rings</td>
+                                        <td class="p-2">Ladies Ring</td>
+                                        <td class="p-2">RNG000086619</td>
+                                        <td class="p-2">SO/1314/00030440</td>
+                                        <td class="p-2">RE0030</td>
+                                    </tr>
+                                    <tr class="border-t border-[#E0E0E0]">
+                                        <td class="p-2">Coimbatore</td>
+                                        <td class="p-2">15-06-2025</td>
+                                        <td class="p-2">Jewel One Showroom</td>
+                                        <td class="p-2">Rings</td>
+                                        <td class="p-2">Ladies Ring</td>
+                                        <td class="p-2">RNG000086619</td>
+                                        <td class="p-2">SO/1314/00030440</td>
+                                        <td class="p-2">RE0030</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+       </div>
+    </div>
+
+
+
+                       
+                        <form method="dialog" class="modal-backdrop z-10">
+                            <button class="text-white absolute top-0 right-0 p-1" @click="clearData">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                    viewBox="0 0 31 31" fill="none">
+                                    <circle cx="15.5" cy="15.5" r="15.5" fill="black" />
+                                    <path
+                                        d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z"
+                                        fill="#FCFAF9" />
+                                </svg>
+
+                            </button>
+                        </form>
+                    </div>
+                </dialog>
+
 
                 <dialog id="getFeedback" class="modal">
                     <div class="modal-box p-0 max-w-4xl min-h-60 bg-[#FCFAF9]">
