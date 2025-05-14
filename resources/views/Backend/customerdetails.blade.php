@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="border-b border-[#C7C7C7] border-[#C7C7C7] mt-6">
+    <div class="border-b border-[#C7C7C7] mt-6">
         <div class="border-b border-[#C7C7C7]-3 border-[#9D4F2A] max-w-fit pe-10 font-medium pb-2">Previous History
         </div>
     </div>
@@ -48,8 +48,8 @@
     <input type="hidden" name="customer_id" id="customer_id" value="{{ $customerDetails->customer_id }}">
 
     <div class="mt-10" x-data="{ openRow: null }">
-        <div class="overflow-x-auto">
-            <table class="min-w-full table-auto border border-[#C7C7C7] text-center" id="salesReportTable">
+        <div class="overflow-x-auto max-w-screen">
+            <table class="w-full border border-[#C7C7C7] text-center" id="salesReportTable">
                 <thead class="bg-black text-white text-sm">
                     <tr>
                         <th class="px-4 py-3">S.No</th>
@@ -79,8 +79,8 @@
                         <!-- Sub Table -->
                         <tr x-cloak x-show="openRow === {{ $i }}" class="bg-gray-50">
                             <td colspan="5">
-                                <div class="p-4">
-                                    <table class="w-full table-auto text-center text-xs">
+                                <div class="p-4 overflow-x-auto md:max-w-[calc(100vw-340px)]">
+                                    <table class="w-full text-center text-xs">
                                         <thead class="bg-[#F2EDE4] text-[#313131]">
                                             <tr>
                                                 <th class="p-2">Branch</th>
