@@ -7,6 +7,7 @@ use App\Models\Branches;
 use App\Models\Customer;
 use App\Models\Employee;
 use App\Models\Profession;
+use App\Models\SalesReport;
 use App\Models\WalkinCustomer;
 use App\Traits\Common;
 use Carbon\Carbon;
@@ -32,6 +33,30 @@ class VocController extends Controller
         $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
         $employee = Employee::where('branch_id', $branch)->orderBy('name', 'ASC')->get();
         return view('frontend.voc', compact('walkincustomer', 'professions', 'employee'));
+    }
+
+    public function getPassedHistory(Request $request)
+    {
+        $customer = Customer::where('id', $request->customerId)->firstOrFail();
+
+        $salesreport = SalesReport::select('sales_reports.*', 'branches.branch_name')
+            ->join('branches', 'branches.id', '=', 'sales_reports.branch_id')
+            ->where('sales_reports.cust_phone', $customer->phone_number)
+            ->orderBy('sales_reports.invoice_date', 'ASC')
+            ->get()
+            ->groupBy(function ($item) {
+                $cleanDate = ucwords(strtolower($item->invoice_date)); // e.g. 22-Nov-13
+                try {
+                    return \Carbon\Carbon::createFromFormat('y-M-d', $cleanDate)->format('d-m-Y');
+                } catch (\Exception $e) {
+                    return 'Invalid Date';
+                }
+            });
+
+        return response()->json([
+            'status' => 'success',
+            'response' => $salesreport
+        ]);
     }
 
     function customerCreate(Request $request)

@@ -34,5 +34,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/get-customer-details', [VocController::class, 'getCustomerDetails'])->name('getcustomerdetails');
     Route::post('/update-customer-details/{id}', [VocController::class, 'customerDetailsUpdate'])->name('customersdetailsupdate');
     Route::post('/feedback/{id}', [VocController::class, 'getPurchasedFeedback'])->name('getpurchasedfeedback');
-    
+    Route::get('/get-passed-history/{id}', [VocController::class, 'getPassedHistory'])->name('getpassedhistory');
 });
