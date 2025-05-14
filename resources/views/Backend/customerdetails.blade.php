@@ -144,6 +144,7 @@
                                                     <td class="p-2">{{ $value->cust_name }}</td>
                                                     <td class="p-2">{{ $value->cust_phone }}</td>
                                                     <td class="p-2">{{ $value->delivery_name }}</td>
+                                                    <td class="p-2">{{ $value->sales_price }}</td>
                                                     <td class="p-2">{{ $value->cvalue }}</td>
                                                     <td class="p-2">{{ $value->stud_value }}</td>
                                                     <td class="p-2">{{ $value->mk_code }}</td>
