@@ -502,6 +502,9 @@
       visibility: hidden;
     }
   }
+  .visible {
+    visibility: visible;
+  }
   .list {
     display: flex;
     flex-direction: column;
