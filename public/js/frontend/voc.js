@@ -449,8 +449,8 @@ function viewHistory(id) {
 
                         <tr x-show="openRow === ${rowIndex}" x-cloak class="bg-gray-50">
                             <td colspan="5">
-                                <div class="p-4 overflow-x-auto">
-                                    <table class="w-full table-auto text-center text-xs">
+                                <div class="p-4 overflow-x-auto max-w-3xl">
+                                    <table class="table text-center text-xs">
                                         <thead class="bg-[#F2EDE4] text-[#313131]">
                                             <tr>
                                                <th class="p-2">Branch</th>

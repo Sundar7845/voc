@@ -230,7 +230,7 @@
 
                         <div class="p-10" x-data="{ openRow: null }">
                             <div class="overflow-x-auto">
-                                <table class="min-w-full table-auto border border-[#C7C7C7] text-center">
+                                <table class="table border border-[#C7C7C7] text-center">
                                     <thead class="bg-black text-white text-sm">
                                         <tr>
                                             <th class="px-4 py-3">S.No</th>
