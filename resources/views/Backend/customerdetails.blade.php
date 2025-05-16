@@ -599,7 +599,7 @@ Customer Details
             </div>
 
             <form method="dialog" class="modal-backdrop z-10">
-                <button class="text-white absolute top-0 right-0 p-1" @click="clearData">
+                <button class="text-white absolute top-0 right-0 p-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                         viewBox="0 0 31 31" fill="none">
                         <circle cx="15.5" cy="15.5" r="15.5" fill="black" />
