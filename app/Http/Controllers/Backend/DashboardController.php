@@ -86,7 +86,6 @@ class DashboardController extends Controller
             ->pluck('id')
             ->toArray();
 
-
         // Walk-in customers for selected branches on the given date with no out time
         $branchesData = WalkinCustomer::select('walkin_customers.*', 'customers.name', 'branches.branch_name')
             ->join('customers', 'customers.id', 'walkin_customers.customer_id')
