@@ -166,6 +166,76 @@ function todayLiveUserRecord() {
     });
 }
 
+document.getElementById("getFeedbackForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    const data = {};
+
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    console.log(data);
+});
+
+function getFeedback(id) {
+    const modal = document.getElementById("getFeedback");
+    if (modal) {
+        modal.showModal();
+    } else {
+        console.error("Modal not found!");
+    }
+
+    $("#feedbackCustomerId").val(id);
+
+    $.ajax({
+        url: "/getfeedback/" + id, // Change this to your actual server endpoint
+        type: "GET",
+        data: {
+            id: id,
+        },
+        dataType: "json",
+        success: function (response) {
+            // Assuming response.jewellery_review contains 1, 2, 3, or 4
+            let jewelleryReviewValue =
+                response.walkin_customer.jewellery_review;
+            let pricingReviewValue = response.walkin_customer.pricing_review;
+            let staffReviewValue = response.walkin_customer.staff_review;
+            let knowledgeReviewValue = response.walkin_customer.service_review;
+            let assitReviewValue = response.walkin_customer.assit_review;
+
+            $(
+                "input[name='jewelleryDesignQuestion1'][value='" +
+                    jewelleryReviewValue +
+                    "']"
+            ).prop("checked", true);
+            $(
+                "input[name='jewelleryDesignQuestion2'][value='" +
+                    pricingReviewValue +
+                    "']"
+            ).prop("checked", true);
+            $(
+                "input[name='salesExecutiveQuestion1'][value='" +
+                    staffReviewValue +
+                    "']"
+            ).prop("checked", true);
+            $(
+                "input[name='salesExecutiveQuestion2'][value='" +
+                    knowledgeReviewValue +
+                    "']"
+            ).prop("checked", true);
+            $(
+                "input[name='salesExecutiveQuestion3'][value='" +
+                    assitReviewValue +
+                    "']"
+            ).prop("checked", true);
+        },
+        error: function (xhr, status, error) {},
+    });
+}
+
 // $(document).ready(function () {
 //     var customer_id = $("#customer_id").val();
 //     $("#salesReportTable").DataTable({

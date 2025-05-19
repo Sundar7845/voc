@@ -1,7 +1,7 @@
 @extends('backend.layout.adminmaster')
 @section('content')
 @section('title')
-Customer Details
+    Customer Details
 @endsection
 <section class="py-8 px-6">
     <div class="flex justify-between items-center gap-6">
@@ -47,7 +47,7 @@ Customer Details
 
     <input type="hidden" name="customer_id" id="customer_id" value="{{ $customerDetails->customer_id }}">
 
-    <div class="mt-10" x-data="{ openRow: null}">
+    <div class="mt-10" x-data="{ openRow: null }">
         <div class="overflow-x-auto max-w-screen">
             <table class="w-full border border-[#C7C7C7] text-center" id="salesReportTable">
                 <thead class="bg-black text-white text-sm">
@@ -62,116 +62,118 @@ Customer Details
                 <tbody class="text-sm text-gray-700">
                     @php $i = 1; @endphp
                     @foreach ($salesreport as $date => $group)
-                    @php $firstItem = $group->first(); @endphp
-                    <tr class="border-b border-[#C7C7C7]">
-                        <td class="px-4 py-2">{{ $i }}</td>
-                        <td class="px-4 py-2">{{ $date }}</td>
-                        <td class="px-4 py-2">{{ count($group) > 0 ? 'Purchased' : 'Non-Purchased' }}</td>
-                        <td class="px-4 py-2">
-                            <button class="cursor-pointer" @click="getFeedback({{ $customerDetails->customer_id }})">Feedback</button>
-                        </td>
-                        <td class="px-4 py-2">
-                            <button
-                                class="text-sm text-[#9D4F2A] bg-transparent border border-[#9D4F2A] px-4 py-1 rounded-2xl cursor-pointer"
-                                @click="openRow = openRow === {{ $i }} ? null : {{ $i }}">View
-                                Details</button>
-                        </td>
-                    </tr>
+                        @php $firstItem = $group->first(); @endphp
+                        <tr class="border-b border-[#C7C7C7]">
+                            <td class="px-4 py-2">{{ $i }}</td>
+                            <td class="px-4 py-2">{{ $date }}</td>
+                            <td class="px-4 py-2">{{ count($group) > 0 ? 'Purchased' : 'Non-Purchased' }}</td>
+                            <td class="px-4 py-2">
+                                @php $walkinCustomerId = optional($group->first()->walkin_customer)->id; @endphp
+                                <button class="cursor-pointer"
+                                    @click="getFeedback({{ $walkinCustomerId ?? 'null' }})">Feedback</button>
+                            </td>
+                            <td class="px-4 py-2">
+                                <button
+                                    class="text-sm text-[#9D4F2A] bg-transparent border border-[#9D4F2A] px-4 py-1 rounded-2xl cursor-pointer"
+                                    @click="openRow = openRow === {{ $i }} ? null : {{ $i }}">View
+                                    Details</button>
+                            </td>
+                        </tr>
 
-                    <!-- Sub Table -->
-                    <tr x-cloak x-show="openRow === {{ $i }}" class="bg-gray-50">
-                        <td colspan="5">
-                            <div class="p-4 overflow-x-auto md:max-w-[calc(100vw-340px)]">
-                                <table class="w-full text-center text-xs">
-                                    <thead class="bg-[#F2EDE4] text-[#313131]">
-                                        <tr>
-                                            <th class="p-2">Branch</th>
-                                            <th class="p-2">Invoice Date</th>
-                                            <th class="p-2">Purchase Location</th>
-                                            <th class="p-2">Article Code</th>
-                                            <th class="p-2">Name</th>
-                                            <th class="p-2">SKU Number</th>
-                                            <th class="p-2">Sales ID</th>
-                                            <th class="p-2">Sales Person</th>
-                                            <th class="p-2">Invoice ID</th>
-                                            <th class="p-2">Gr. Weight</th>
-                                            <th class="p-2">PCS</th>
-                                            <th class="p-2">Net Chargeable</th>
-                                            <th class="p-2">Sales Qty</th>
-                                            <th class="p-2">CT Wght</th>
-                                            <th class="p-2">Textbox 33</th>
-                                            <th class="p-2">Customer ID</th>
-                                            <th class="p-2">Cust Name</th>
-                                            <th class="p-2">Cust Phone</th>
-                                            <th class="p-2">Delivery Name</th>
-                                            <th class="p-2">Sales Price</th>
-                                            <th class="p-2">CValue</th>
-                                            <th class="p-2">Stud Value</th>
-                                            <th class="p-2">MK Code</th>
-                                            <th class="p-2">Sale Calc Type</th>
-                                            <th class="p-2">Amt 1</th>
-                                            <th class="p-2">MK Rate</th>
-                                            <th class="p-2">MK Value</th>
-                                            <th class="p-2">Making Dis%</th>
-                                            <th class="p-2">Making Disc</th>
-                                            <th class="p-2">Scheme Discount</th>
-                                            <th class="p-2">Textbox 89</th>
-                                            <th class="p-2">Tax Item Group</th>
-                                            <th class="p-2">Tax %</th>
-                                            <th class="p-2">Tax Amount</th>
-                                            <th class="p-2">Total Amount</th>
-                                            <th class="p-2">Namline Amount</th>
-                                            <th class="p-2">Invoice Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($group as $value)
-                                        <tr class="border-t border-[#E0E0E0]">
-                                            <td class="p-2">{{ $value->branch_name }}</td>
-                                            <td class="p-2">{{ $value->invoice_date }}</td>
-                                            <td class="p-2">{{ $value->purchase_location }}</td>
-                                            <td class="p-2">{{ $value->article_code }}</td>
-                                            <td class="p-2">{{ $value->name }}</td>
-                                            <td class="p-2">{{ $value->sku_number }}</td>
-                                            <td class="p-2">{{ $value->sales_id }}</td>
-                                            <td class="p-2">{{ $value->sales_person }}</td>
-                                            <td class="p-2">{{ $value->invoice_id }}</td>
-                                            <td class="p-2">{{ $value->grweight }}</td>
-                                            <td class="p-2">{{ $value->pcs }}</td>
-                                            <td class="p-2">{{ $value->net_chargeable }}</td>
-                                            <td class="p-2">{{ $value->sales_qty }}</td>
-                                            <td class="p-2">{{ $value->ct_wght }}</td>
-                                            <td class="p-2">{{ $value->textbox_33 }}</td>
-                                            <td class="p-2">{{ $value->customer_id }}</td>
-                                            <td class="p-2">{{ $value->cust_name }}</td>
-                                            <td class="p-2">{{ $value->cust_phone }}</td>
-                                            <td class="p-2">{{ $value->delivery_name }}</td>
-                                            <td class="p-2">{{ $value->sales_price }}</td>
-                                            <td class="p-2">{{ $value->cvalue }}</td>
-                                            <td class="p-2">{{ $value->stud_value }}</td>
-                                            <td class="p-2">{{ $value->mk_code }}</td>
-                                            <td class="p-2">{{ $value->sale_calc_type }}</td>
-                                            <td class="p-2">{{ $value->amt_1 }}</td>
-                                            <td class="p-2">{{ $value->mk_rate }}</td>
-                                            <td class="p-2">{{ $value->mk_value }}</td>
-                                            <td class="p-2">{{ $value->makingdisper }}</td>
-                                            <td class="p-2">{{ $value->makingdisc }}</td>
-                                            <td class="p-2">{{ $value->scheme_discount }}</td>
-                                            <td class="p-2">{{ $value->textbox_89 }}</td>
-                                            <td class="p-2">{{ $value->tax_item_group }}</td>
-                                            <td class="p-2">{{ $value->tax_per }}</td>
-                                            <td class="p-2">{{ $value->tax_amount }}</td>
-                                            <td class="p-2">{{ $value->total_amount }}</td>
-                                            <td class="p-2">{{ $value->line_amount }}</td>
-                                            <td class="p-2">{{ $value->invoice_amount }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </td>
-                    </tr>
-                    @php $i++; @endphp
+                        <!-- Sub Table -->
+                        <tr x-cloak x-show="openRow === {{ $i }}" class="bg-gray-50">
+                            <td colspan="5">
+                                <div class="p-4 overflow-x-auto md:max-w-[calc(100vw-340px)]">
+                                    <table class="w-full text-center text-xs">
+                                        <thead class="bg-[#F2EDE4] text-[#313131]">
+                                            <tr>
+                                                <th class="p-2">Branch</th>
+                                                <th class="p-2">Invoice Date</th>
+                                                <th class="p-2">Purchase Location</th>
+                                                <th class="p-2">Article Code</th>
+                                                <th class="p-2">Name</th>
+                                                <th class="p-2">SKU Number</th>
+                                                <th class="p-2">Sales ID</th>
+                                                <th class="p-2">Sales Person</th>
+                                                <th class="p-2">Invoice ID</th>
+                                                <th class="p-2">Gr. Weight</th>
+                                                <th class="p-2">PCS</th>
+                                                <th class="p-2">Net Chargeable</th>
+                                                <th class="p-2">Sales Qty</th>
+                                                <th class="p-2">CT Wght</th>
+                                                <th class="p-2">Textbox 33</th>
+                                                <th class="p-2">Customer ID</th>
+                                                <th class="p-2">Cust Name</th>
+                                                <th class="p-2">Cust Phone</th>
+                                                <th class="p-2">Delivery Name</th>
+                                                <th class="p-2">Sales Price</th>
+                                                <th class="p-2">CValue</th>
+                                                <th class="p-2">Stud Value</th>
+                                                <th class="p-2">MK Code</th>
+                                                <th class="p-2">Sale Calc Type</th>
+                                                <th class="p-2">Amt 1</th>
+                                                <th class="p-2">MK Rate</th>
+                                                <th class="p-2">MK Value</th>
+                                                <th class="p-2">Making Dis%</th>
+                                                <th class="p-2">Making Disc</th>
+                                                <th class="p-2">Scheme Discount</th>
+                                                <th class="p-2">Textbox 89</th>
+                                                <th class="p-2">Tax Item Group</th>
+                                                <th class="p-2">Tax %</th>
+                                                <th class="p-2">Tax Amount</th>
+                                                <th class="p-2">Total Amount</th>
+                                                <th class="p-2">Namline Amount</th>
+                                                <th class="p-2">Invoice Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($group as $value)
+                                                <tr class="border-t border-[#E0E0E0]">
+                                                    <td class="p-2">{{ $value->branch_name }}</td>
+                                                    <td class="p-2">{{ $value->invoice_date }}</td>
+                                                    <td class="p-2">{{ $value->purchase_location }}</td>
+                                                    <td class="p-2">{{ $value->article_code }}</td>
+                                                    <td class="p-2">{{ $value->name }}</td>
+                                                    <td class="p-2">{{ $value->sku_number }}</td>
+                                                    <td class="p-2">{{ $value->sales_id }}</td>
+                                                    <td class="p-2">{{ $value->sales_person }}</td>
+                                                    <td class="p-2">{{ $value->invoice_id }}</td>
+                                                    <td class="p-2">{{ $value->grweight }}</td>
+                                                    <td class="p-2">{{ $value->pcs }}</td>
+                                                    <td class="p-2">{{ $value->net_chargeable }}</td>
+                                                    <td class="p-2">{{ $value->sales_qty }}</td>
+                                                    <td class="p-2">{{ $value->ct_wght }}</td>
+                                                    <td class="p-2">{{ $value->textbox_33 }}</td>
+                                                    <td class="p-2">{{ $value->customer_id }}</td>
+                                                    <td class="p-2">{{ $value->cust_name }}</td>
+                                                    <td class="p-2">{{ $value->cust_phone }}</td>
+                                                    <td class="p-2">{{ $value->delivery_name }}</td>
+                                                    <td class="p-2">{{ $value->sales_price }}</td>
+                                                    <td class="p-2">{{ $value->cvalue }}</td>
+                                                    <td class="p-2">{{ $value->stud_value }}</td>
+                                                    <td class="p-2">{{ $value->mk_code }}</td>
+                                                    <td class="p-2">{{ $value->sale_calc_type }}</td>
+                                                    <td class="p-2">{{ $value->amt_1 }}</td>
+                                                    <td class="p-2">{{ $value->mk_rate }}</td>
+                                                    <td class="p-2">{{ $value->mk_value }}</td>
+                                                    <td class="p-2">{{ $value->makingdisper }}</td>
+                                                    <td class="p-2">{{ $value->makingdisc }}</td>
+                                                    <td class="p-2">{{ $value->scheme_discount }}</td>
+                                                    <td class="p-2">{{ $value->textbox_89 }}</td>
+                                                    <td class="p-2">{{ $value->tax_item_group }}</td>
+                                                    <td class="p-2">{{ $value->tax_per }}</td>
+                                                    <td class="p-2">{{ $value->tax_amount }}</td>
+                                                    <td class="p-2">{{ $value->total_amount }}</td>
+                                                    <td class="p-2">{{ $value->line_amount }}</td>
+                                                    <td class="p-2">{{ $value->invoice_amount }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        @php $i++; @endphp
                     @endforeach
                 </tbody>
             </table>
@@ -227,20 +229,14 @@ Customer Details
         </table>
     </div> -->
 
-
-
     <dialog id="getFeedback" class="modal">
         <div class="modal-box p-0 max-w-4xl min-h-60 bg-[#FCFAF9]">
             <div>
                 <form id="getFeedbackForm">
-
-
                     <div>
-                        <div
-                            class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
+                        <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                             <div class="pe-4">
-                                <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
-                                    alt="logo" />
+                                <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
                             </div>
                             <div class="text-md text-white font-medium uppercase">
                                 Please share your thoughts about your
@@ -251,11 +247,6 @@ Customer Details
                         <div class="px-4 md:px-6 py-10 lg:px-12 text-[#4E5356] text-sm">
                             <!-- Step 2A: Purchased Customer Feedback -->
                             <div>
-
-                                <!-- <div class="my-5">
-                                                <hr class="border-gray-300" />
-                                            </div> -->
-
                                 <div class="mb-4 !text-md text-[#9D4F2A]">
                                     About our <b>Jewellery Designs</b>
                                 </div>
@@ -266,27 +257,25 @@ Customer Details
 
                                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                                     <input type="radio" id="jewelleryDesignQuestion1-option1"
-                                        name="jewelleryDesignQuestion1"
-                                        value="{{ App\Enums\Review::EXCELLENT }}" class="hidden">
+                                        name="jewelleryDesignQuestion1" value="{{ App\Enums\Review::EXCELLENT }}"
+                                        class="hidden">
                                     <label for="jewelleryDesignQuestion1-option1"
                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                         <div>
-                                            <img src={{ asset('/images/icons/excellent.svg') }}
-                                                alt="excellent" />
+                                            <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                         </div>
                                         <div>Excellent</div>
                                     </label>
 
                                     <div>
                                         <input type="radio" id="jewelleryDesignQuestion1-option2"
-                                            name="jewelleryDesignQuestion1"
-                                            value="{{ App\Enums\Review::GOOD }}" class="hidden">
+                                            name="jewelleryDesignQuestion1" value="{{ App\Enums\Review::GOOD }}"
+                                            class="hidden">
 
                                         <label for="jewelleryDesignQuestion1-option2"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
-                                                <img src={{ asset('/images/icons/good.svg') }}
-                                                    alt="good" />
+                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                             </div>
                                             <div>Good</div>
                                         </label>
@@ -294,14 +283,13 @@ Customer Details
 
                                     <div>
                                         <input type="radio" id="jewelleryDesignQuestion1-option3"
-                                            name="jewelleryDesignQuestion1"
-                                            value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
+                                            name="jewelleryDesignQuestion1" value="{{ App\Enums\Review::AVERAGE }}"
+                                            class="hidden">
 
                                         <label for="jewelleryDesignQuestion1-option3"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
-                                                <img src={{ asset('/images/icons/average.svg') }}
-                                                    alt="average" />
+                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
                                             </div>
                                             <div>Average</div>
                                         </label>
@@ -309,14 +297,13 @@ Customer Details
 
                                     <div>
                                         <input type="radio" id="jewelleryDesignQuestion1-option4"
-                                            name="jewelleryDesignQuestion1"
-                                            value="{{ App\Enums\Review::POOR }}" class="hidden">
+                                            name="jewelleryDesignQuestion1" value="{{ App\Enums\Review::POOR }}"
+                                            class="hidden">
 
                                         <label for="jewelleryDesignQuestion1-option4"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
-                                                <img src={{ asset('/images/icons/poor.svg') }}
-                                                    alt="poor" />
+                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
@@ -329,27 +316,25 @@ Customer Details
 
                                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                                     <input type="radio" id="jewelleryDesignQuestion2-option1"
-                                        name="jewelleryDesignQuestion2"
-                                        value="{{ App\Enums\Review::EXCELLENT }}" class="hidden">
+                                        name="jewelleryDesignQuestion2" value="{{ App\Enums\Review::EXCELLENT }}"
+                                        class="hidden">
                                     <label for="jewelleryDesignQuestion2-option1"
                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                         <div>
-                                            <img src={{ asset('/images/icons/excellent.svg') }}
-                                                alt="excellent" />
+                                            <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                         </div>
                                         <div>Excellent</div>
                                     </label>
 
                                     <div>
                                         <input type="radio" id="jewelleryDesignQuestion2-option2"
-                                            name="jewelleryDesignQuestion2"
-                                            value="{{ App\Enums\Review::GOOD }}" class="hidden">
+                                            name="jewelleryDesignQuestion2" value="{{ App\Enums\Review::GOOD }}"
+                                            class="hidden">
 
                                         <label for="jewelleryDesignQuestion2-option2"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
-                                                <img src={{ asset('/images/icons/good.svg') }}
-                                                    alt="good" />
+                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                             </div>
                                             <div>Good</div>
                                         </label>
@@ -357,14 +342,13 @@ Customer Details
 
                                     <div>
                                         <input type="radio" id="jewelleryDesignQuestion2-option3"
-                                            name="jewelleryDesignQuestion2"
-                                            value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
+                                            name="jewelleryDesignQuestion2" value="{{ App\Enums\Review::AVERAGE }}"
+                                            class="hidden">
 
                                         <label for="jewelleryDesignQuestion2-option3"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
-                                                <img src={{ asset('/images/icons/average.svg') }}
-                                                    alt="average" />
+                                                <img src={{ asset('/images/icons/average.svg') }} alt="average" />
                                             </div>
                                             <div>Average</div>
                                         </label>
@@ -372,14 +356,13 @@ Customer Details
 
                                     <div>
                                         <input type="radio" id="jewelleryDesignQuestion2-option4"
-                                            name="jewelleryDesignQuestion2"
-                                            value="{{ App\Enums\Review::POOR }}" class="hidden">
+                                            name="jewelleryDesignQuestion2" value="{{ App\Enums\Review::POOR }}"
+                                            class="hidden">
 
                                         <label for="jewelleryDesignQuestion2-option4"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
-                                                <img src={{ asset('/images/icons/poor.svg') }}
-                                                    alt="poor" />
+                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
                                             <div>Poor</div>
                                         </label>
@@ -403,8 +386,7 @@ Customer Details
                                         <label for="salesExecutiveQuestion1-option1"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
-                                                <img src={{ asset('/images/icons/excellent.svg') }}
-                                                    alt="excellent" />
+                                                <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
@@ -417,8 +399,7 @@ Customer Details
                                             <label for="salesExecutiveQuestion1-option2"
                                                 class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
-                                                    <img src={{ asset('/images/icons/good.svg') }}
-                                                        alt="good" />
+                                                    <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
                                                 <div>Good</div>
                                             </label>
@@ -426,8 +407,8 @@ Customer Details
 
                                         <div>
                                             <input type="radio" id="salesExecutiveQuestion1-option3"
-                                                name="salesExecutiveQuestion1" value="{{ App\Enums\Review::AVERAGE }}"
-                                                class="hidden">
+                                                name="salesExecutiveQuestion1"
+                                                value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
 
                                             <label for="salesExecutiveQuestion1-option3"
                                                 class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
@@ -447,8 +428,7 @@ Customer Details
                                             <label for="salesExecutiveQuestion1-option4"
                                                 class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
-                                                    <img src={{ asset('/images/icons/poor.svg') }}
-                                                        alt="poor" />
+                                                    <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                                 </div>
                                                 <div>Poor</div>
                                             </label>
@@ -465,8 +445,7 @@ Customer Details
                                         <label for="salesExecutiveQuestion2-option1"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
-                                                <img src={{ asset('/images/icons/excellent.svg') }}
-                                                    alt="excellent" />
+                                                <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
@@ -479,8 +458,7 @@ Customer Details
                                             <label for="salesExecutiveQuestion2-option2"
                                                 class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
-                                                    <img src={{ asset('/images/icons/good.svg') }}
-                                                        alt="good" />
+                                                    <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
                                                 <div>Good</div>
                                             </label>
@@ -488,8 +466,8 @@ Customer Details
 
                                         <div>
                                             <input type="radio" id="salesExecutiveQuestion2-option3"
-                                                name="salesExecutiveQuestion2" value="{{ App\Enums\Review::AVERAGE }}"
-                                                class="hidden">
+                                                name="salesExecutiveQuestion2"
+                                                value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
 
                                             <label for="salesExecutiveQuestion2-option3"
                                                 class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
@@ -509,8 +487,7 @@ Customer Details
                                             <label for="salesExecutiveQuestion2-option4"
                                                 class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
-                                                    <img src={{ asset('/images/icons/poor.svg') }}
-                                                        alt="poor" />
+                                                    <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                                 </div>
                                                 <div>Poor</div>
                                             </label>
@@ -528,8 +505,7 @@ Customer Details
                                         <label for="salesExecutiveQuestion3-option1"
                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                             <div>
-                                                <img src={{ asset('/images/icons/excellent.svg') }}
-                                                    alt="excellent" />
+                                                <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
                                             <div>Excellent</div>
                                         </label>
@@ -542,8 +518,7 @@ Customer Details
                                             <label for="salesExecutiveQuestion3-option2"
                                                 class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
-                                                    <img src={{ asset('/images/icons/good.svg') }}
-                                                        alt="good" />
+                                                    <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
                                                 <div>Good</div>
                                             </label>
@@ -551,8 +526,8 @@ Customer Details
 
                                         <div>
                                             <input type="radio" id="salesExecutiveQuestion3-option3"
-                                                name="salesExecutiveQuestion3" value="{{ App\Enums\Review::AVERAGE }}"
-                                                class="hidden">
+                                                name="salesExecutiveQuestion3"
+                                                value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
 
                                             <label for="salesExecutiveQuestion3-option3"
                                                 class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
@@ -572,36 +547,23 @@ Customer Details
                                             <label for="salesExecutiveQuestion3-option4"
                                                 class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                 <div>
-                                                    <img src={{ asset('/images/icons/poor.svg') }}
-                                                        alt="poor" />
+                                                    <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                                 </div>
                                                 <div>Poor</div>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="mt-8 flex justify-center">
-                                    <button type="submit" class="main-btn ">
-                                        Continue
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
                 </form>
             </div>
 
             <form method="dialog" class="modal-backdrop z-10">
                 <button class="text-white absolute top-0 right-0 p-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
-                        viewBox="0 0 31 31" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 31 31"
+                        fill="none">
                         <circle cx="15.5" cy="15.5" r="15.5" fill="black" />
                         <path
                             d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z"
@@ -612,40 +574,8 @@ Customer Details
             </form>
         </div>
     </dialog>
-
-
-
 </section>
 @section('scripts')
-<script src="{{ asset('js/backend/liveuser.js') }}"></script>
-
-<script>
-
-    document.getElementById("getFeedbackForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(e.target);
-
-        const data = {}
-
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
-
-        console.log(data);
-    })
-
-
-    function getFeedback(id) {
-        const modal = document.getElementById("getFeedback");
-        if (modal) {
-            modal.showModal();
-        } else {
-            console.error("Modal not found!");
-        }
-
-        $("#feedbackCustomerId").val(id);
-    }
-</script>
+    <script src="{{ asset('js/backend/liveuser.js') }}"></script>
 @endsection
 @endsection

@@ -428,9 +428,16 @@ function viewHistory(id) {
                 for (const [visitDate, reports] of Object.entries(
                     response.response
                 )) {
-                    const customerType = reports[0]?.customer_type > 0 ? 'Purchased' : 'Non-Purchased';
+                    const customerType =
+                        reports.length > 0 ? "Purchased" : "Non-Purchased";
 
-                    const feedback = reports[0]?.feedback || "Feedback";
+                    const walkinCustomerId =
+                        reports[0]?.walkin_customer?.id ?? null;
+
+                    const feedback = `
+                            <button class="cursor-pointer" onclick="getFeedbackDetail(${walkinCustomerId})">
+                                Feedback
+                            </button>`;
 
                     historyTableHtml += `
                         <tr class="border-b border-[#C7C7C7]">
@@ -556,5 +563,61 @@ function viewHistory(id) {
         error: function () {
             alert("Something went wrong. Please try again.");
         },
+    });
+}
+
+function getFeedbackDetail(id) {
+    const modal = document.getElementById("getFeedbackdetail");
+    if (modal) {
+        modal.showModal();
+    } else {
+        console.error("Modal not found!");
+    }
+
+    $("#feedbackCustomerId").val(id);
+
+    $.ajax({
+        url: "/getfeedback/" + id, // Change this to your actual server endpoint
+        type: "GET",
+        data: {
+            id: id,
+        },
+        dataType: "json",
+        success: function (response) {
+            // Assuming response.jewellery_review contains 1, 2, 3, or 4
+            let jewelleryReviewValue =
+                response.walkin_customer.jewellery_review;
+            let pricingReviewValue = response.walkin_customer.pricing_review;
+            let staffReviewValue = response.walkin_customer.staff_review;
+            let knowledgeReviewValue = response.walkin_customer.service_review;
+            let assitReviewValue = response.walkin_customer.assit_review;
+
+            $(
+                "input[name='jewelleryDesignQuestion1'][value='" +
+                    jewelleryReviewValue +
+                    "']"
+            ).prop("checked", true);
+            $(
+                "input[name='jewelleryDesignQuestion2'][value='" +
+                    pricingReviewValue +
+                    "']"
+            ).prop("checked", true);
+            $(
+                "input[name='salesExecutiveQuestion1'][value='" +
+                    staffReviewValue +
+                    "']"
+            ).prop("checked", true);
+            $(
+                "input[name='salesExecutiveQuestion2'][value='" +
+                    knowledgeReviewValue +
+                    "']"
+            ).prop("checked", true);
+            $(
+                "input[name='salesExecutiveQuestion3'][value='" +
+                    assitReviewValue +
+                    "']"
+            ).prop("checked", true);
+        },
+        error: function (xhr, status, error) {},
     });
 }

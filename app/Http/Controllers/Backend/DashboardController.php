@@ -9,6 +9,7 @@ use App\Models\SalesReport;
 use App\Models\WalkinCustomer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -118,28 +119,72 @@ class DashboardController extends Controller
 
     public function customerDetails($id)
     {
+        // Get the second latest walk-in customer (skip latest, get second)
         $customerDetails = WalkinCustomer::where('customer_id', $id)
             ->orderBy('created_at', 'desc')
             ->skip(1)
             ->take(1)
             ->first();
 
-        $customer = Customer::where('id', $id)->first();
+        // Get customer info
+        $customer = Customer::findOrFail($id);
 
-        $salesreport = SalesReport::select('sales_reports.*', 'branches.branch_name')
+        // Get all walk-in customers for the customer (except the latest one)
+        $walkincustomers = WalkinCustomer::select('walkin_customers.*', 'customers.name')
+            ->join('customers', 'customers.id', 'walkin_customers.customer_id')
+            ->where('customers.phone_number', $customer->phone_number)
+            ->orderBy('walkin_customers.created_at', 'desc')
+            ->get()
+            ->slice(0, -1); // Skip the latest walk-in entry
+
+        // Get all sales reports for that customer
+        $salesreports = SalesReport::select('sales_reports.*', 'branches.branch_name')
             ->join('branches', 'branches.id', 'sales_reports.branch_id')
             ->where('sales_reports.cust_phone', $customer->phone_number)
-            ->orderBy('sales_reports.invoice_date', 'ASC')
-            ->get()
-            ->groupBy(function ($item) {
-                // Convert '22-Nov-13' or '22-NOV-13' to proper case
-                $cleanDate = ucwords(strtolower($item->invoice_date));
+            ->get();
 
-                // Parse with format: y-M-d => 22-Nov-13 becomes 2022-11-13
-                return \Carbon\Carbon::createFromFormat('y-M-d', $cleanDate)->format('d-m-Y');
+        // Match walk-in records to sales reports by date
+        $matchedReports = collect();
+
+        foreach ($walkincustomers as $walkin) {
+            if (!$walkin->customer_enter_time) {
+                continue; // Skip entries without a date
+            }
+
+            // Format walk-in date to match sales report invoice date format
+            $walkinDate = Carbon::parse($walkin->customer_enter_time)->format('y-M-d');
+
+            // Match sales reports by invoice date
+            $matches = $salesreports->filter(function ($report) use ($walkinDate) {
+                return $report->invoice_date === $walkinDate;
             });
 
+            // Attach walk-in review data to matched sales reports
+            foreach ($matches as $match) {
+                $match->jewellery_review = $walkin->jewellery_review;
+                $match->assit_review = $walkin->assit_review;
+                $match->staff_review = $walkin->staff_review;
+                $match->pricing_review = $walkin->pricing_review;
+                $match->walkin_customer = $walkin; // Optional full walk-in object
+                $matchedReports->push($match);
+            }
+        }
+
+        // Group matched reports by invoice date in 'd-m-Y' format
+        $salesreport = $matchedReports->groupBy(function ($item) {
+            return Carbon::createFromFormat('y-M-d', $item->invoice_date)->format('d-m-Y');
+        });
+
         return view('backend.customerdetails', compact('customerDetails', 'salesreport'));
+    }
+
+
+    function getFeedback(Request $request)
+    {
+        $walkincustomer = WalkinCustomer::where('id', $request->id)->first();
+        return response()->json([
+            'walkin_customer' => $walkincustomer
+        ]);
     }
 
     // public function getSalesReportData($id)

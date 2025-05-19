@@ -14,4 +14,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('getrecord', [DashboardController::class, 'getShowroomRecord'])->name('getrecord');
     Route::get('getliveuserrecord', [DashboardController::class, 'liveUserShowroomRecord'])->name('getliveuserrecord');
     // Route::get('/customer/sales-report/{id}', [DashboardController::class, 'getSalesReportData']);
+    Route::get('getfeedback/{id}', [DashboardController::class, 'getfeedback'])->name('getfeedback');
 });
