@@ -512,200 +512,203 @@
                                                 </div>
                                             </div>
 
-                                            
-                                        <div class="mt-8">
-                                        <div class="mb-4 text-lg text-[#9D4F2A]">
-                                        How was your experience with our <b>Sales Executive</b>?
 
-                                            </div>
-                                             <!-- Question 1 -->
-                                             <div class="block mb-4">1.⁠ ⁠How satisfied are you with the overall service
-                                                provided by our showroom staff?
-                                            </div>
-                                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                                <input type="radio" id="step3Question1-option1"
-                                                    name="step3Question1" value="{{ App\Enums\Review::EXCELLENT }}"
-                                                    class="hidden">
-                                                <label for="step3Question1-option1"
-                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                            <div class="mt-8">
+                                                <div class="mb-4 text-lg text-[#9D4F2A]">
+                                                    How was your experience with our <b>Sales Executive</b>?
+
+                                                </div>
+                                                <!-- Question 1 -->
+                                                <div class="block mb-4">1.⁠ ⁠How satisfied are you with the overall
+                                                    service
+                                                    provided by our showroom staff?
+                                                </div>
+                                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                                    <input type="radio" id="step3Question1-option1"
+                                                        name="step3Question1"
+                                                        value="{{ App\Enums\Review::EXCELLENT }}" class="hidden">
+                                                    <label for="step3Question1-option1"
+                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                        <div>
+                                                            <img src={{ asset('/images/icons/excellent.svg') }}
+                                                                alt="excellent" />
+                                                        </div>
+                                                        <div>Excellent</div>
+                                                    </label>
+
                                                     <div>
-                                                        <img src={{ asset('/images/icons/excellent.svg') }}
-                                                            alt="excellent" />
+                                                        <input type="radio" id="step3Question1-option2"
+                                                            name="step3Question1"
+                                                            value="{{ App\Enums\Review::GOOD }}" class="hidden">
+
+                                                        <label for="step3Question1-option2"
+                                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                            <div>
+                                                                <img src={{ asset('/images/icons/good.svg') }}
+                                                                    alt="good" />
+                                                            </div>
+                                                            <div>Good</div>
+                                                        </label>
                                                     </div>
-                                                    <div>Excellent</div>
-                                                </label>
 
-                                                <div>
-                                                    <input type="radio" id="step3Question1-option2"
-                                                        name="step3Question1" value="{{ App\Enums\Review::GOOD }}"
-                                                        class="hidden">
-
-                                                    <label for="step3Question1-option2"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/good.svg') }}
-                                                                alt="good" />
-                                                        </div>
-                                                        <div>Good</div>
-                                                    </label>
-                                                </div>
-
-                                                <div>
-                                                    <input type="radio" id="step3Question1-option3"
-                                                        name="step3Question1" value="{{ App\Enums\Review::AVERAGE }}"
-                                                        class="hidden">
-
-                                                    <label for="step3Question1-option3"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/average.svg') }}
-                                                                alt="average" />
-                                                        </div>
-                                                        <div>Average</div>
-                                                    </label>
-                                                </div>
-
-                                                <div>
-                                                    <input type="radio" id="step3Question1-option4"
-                                                        name="step3Question1" value="{{ App\Enums\Review::POOR }}"
-                                                        class="hidden">
-
-                                                    <label for="step3Question1-option4"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/poor.svg') }}
-                                                                alt="poor" />
-                                                        </div>
-                                                        <div>Poor</div>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <!-- Question 3 -->
-                                            <div class="block mb-4">2.⁠ ⁠How knowledgeable was our staff in explaining
-                                                products and services?</div>
-                                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                                <input type="radio" id="step3Question3-option1"
-                                                    name="step3Question3" value="{{ App\Enums\Review::EXCELLENT }}"
-                                                    class="hidden">
-                                                <label for="step3Question3-option1"
-                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                     <div>
-                                                        <img src={{ asset('/images/icons/excellent.svg') }}
-                                                            alt="excellent" />
+                                                        <input type="radio" id="step3Question1-option3"
+                                                            name="step3Question1"
+                                                            value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
+
+                                                        <label for="step3Question1-option3"
+                                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                            <div>
+                                                                <img src={{ asset('/images/icons/average.svg') }}
+                                                                    alt="average" />
+                                                            </div>
+                                                            <div>Average</div>
+                                                        </label>
                                                     </div>
-                                                    <div>Excellent</div>
-                                                </label>
 
-                                                <div>
-                                                    <input type="radio" id="step3Question3-option2"
-                                                        name="step3Question3" value="{{ App\Enums\Review::GOOD }}"
-                                                        class="hidden">
-
-                                                    <label for="step3Question3-option2"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/good.svg') }}
-                                                                alt="good" />
-                                                        </div>
-                                                        <div>Good</div>
-                                                    </label>
-                                                </div>
-
-                                                <div>
-                                                    <input type="radio" id="step3Question3-option3"
-                                                        name="step3Question3" value="{{ App\Enums\Review::AVERAGE }}"
-                                                        class="hidden">
-
-                                                    <label for="step3Question3-option3"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/average.svg') }}
-                                                                alt="average" />
-                                                        </div>
-                                                        <div>Average</div>
-                                                    </label>
-                                                </div>
-
-                                                <div>
-                                                    <input type="radio" id="step3Question3-option4"
-                                                        name="step3Question3" value="{{ App\Enums\Review::POOR }}"
-                                                        class="hidden">
-
-                                                    <label for="step3Question3-option4"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/poor.svg') }}
-                                                                alt="poor" />
-                                                        </div>
-                                                        <div>Poor</div>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <!-- Question 4 -->
-                                            <div class="block mb-4">3.How would you rate the attentiveness of our staff
-                                                in
-                                                assisting you?</div>
-                                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                                                <input type="radio" id="step3Question4-option1"
-                                                    name="step3Question4" value="{{ App\Enums\Review::EXCELLENT }}"
-                                                    class="hidden">
-                                                <label for="step3Question4-option1"
-                                                    class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                     <div>
-                                                        <img src={{ asset('/images/icons/excellent.svg') }}
-                                                            alt="excellent" />
+                                                        <input type="radio" id="step3Question1-option4"
+                                                            name="step3Question1"
+                                                            value="{{ App\Enums\Review::POOR }}" class="hidden">
+
+                                                        <label for="step3Question1-option4"
+                                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                            <div>
+                                                                <img src={{ asset('/images/icons/poor.svg') }}
+                                                                    alt="poor" />
+                                                            </div>
+                                                            <div>Poor</div>
+                                                        </label>
                                                     </div>
-                                                    <div>Excellent</div>
-                                                </label>
-
-                                                <div>
-                                                    <input type="radio" id="step3Question4-option2"
-                                                        name="step3Question4" value="{{ App\Enums\Review::GOOD }}"
-                                                        class="hidden">
-
-                                                    <label for="step3Question4-option2"
-                                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
-                                                        <div>
-                                                            <img src={{ asset('/images/icons/good.svg') }}
-                                                                alt="good" />
-                                                        </div>
-                                                        <div>Good</div>
-                                                    </label>
                                                 </div>
 
-                                                <div>
-                                                    <input type="radio" id="step3Question4-option3"
-                                                        name="step3Question4" value="{{ App\Enums\Review::AVERAGE }}"
-                                                        class="hidden">
-
-                                                    <label for="step3Question4-option3"
+                                                <!-- Question 3 -->
+                                                <div class="block mb-4">2.⁠ ⁠How knowledgeable was our staff in
+                                                    explaining
+                                                    products and services?</div>
+                                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                                    <input type="radio" id="step3Question3-option1"
+                                                        name="step3Question3"
+                                                        value="{{ App\Enums\Review::EXCELLENT }}" class="hidden">
+                                                    <label for="step3Question3-option1"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
-                                                            <img src={{ asset('/images/icons/average.svg') }}
-                                                                alt="average" />
+                                                            <img src={{ asset('/images/icons/excellent.svg') }}
+                                                                alt="excellent" />
                                                         </div>
-                                                        <div>Average</div>
+                                                        <div>Excellent</div>
                                                     </label>
+
+                                                    <div>
+                                                        <input type="radio" id="step3Question3-option2"
+                                                            name="step3Question3"
+                                                            value="{{ App\Enums\Review::GOOD }}" class="hidden">
+
+                                                        <label for="step3Question3-option2"
+                                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                            <div>
+                                                                <img src={{ asset('/images/icons/good.svg') }}
+                                                                    alt="good" />
+                                                            </div>
+                                                            <div>Good</div>
+                                                        </label>
+                                                    </div>
+
+                                                    <div>
+                                                        <input type="radio" id="step3Question3-option3"
+                                                            name="step3Question3"
+                                                            value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
+
+                                                        <label for="step3Question3-option3"
+                                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                            <div>
+                                                                <img src={{ asset('/images/icons/average.svg') }}
+                                                                    alt="average" />
+                                                            </div>
+                                                            <div>Average</div>
+                                                        </label>
+                                                    </div>
+
+                                                    <div>
+                                                        <input type="radio" id="step3Question3-option4"
+                                                            name="step3Question3"
+                                                            value="{{ App\Enums\Review::POOR }}" class="hidden">
+
+                                                        <label for="step3Question3-option4"
+                                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                            <div>
+                                                                <img src={{ asset('/images/icons/poor.svg') }}
+                                                                    alt="poor" />
+                                                            </div>
+                                                            <div>Poor</div>
+                                                        </label>
+                                                    </div>
                                                 </div>
 
-                                                <div>
-                                                    <input type="radio" id="step3Question4-option4"
-                                                        name="step3Question4" value="{{ App\Enums\Review::POOR }}"
-                                                        class="hidden">
-
-                                                    <label for="step3Question4-option4"
+                                                <!-- Question 4 -->
+                                                <div class="block mb-4">3.How would you rate the attentiveness of our
+                                                    staff
+                                                    in
+                                                    assisting you?</div>
+                                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                                                    <input type="radio" id="step3Question4-option1"
+                                                        name="step3Question4"
+                                                        value="{{ App\Enums\Review::EXCELLENT }}" class="hidden">
+                                                    <label for="step3Question4-option1"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
-                                                            <img src={{ asset('/images/icons/poor.svg') }}
-                                                                alt="poor" />
+                                                            <img src={{ asset('/images/icons/excellent.svg') }}
+                                                                alt="excellent" />
                                                         </div>
-                                                        <div>Poor</div>
+                                                        <div>Excellent</div>
                                                     </label>
+
+                                                    <div>
+                                                        <input type="radio" id="step3Question4-option2"
+                                                            name="step3Question4"
+                                                            value="{{ App\Enums\Review::GOOD }}" class="hidden">
+
+                                                        <label for="step3Question4-option2"
+                                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                            <div>
+                                                                <img src={{ asset('/images/icons/good.svg') }}
+                                                                    alt="good" />
+                                                            </div>
+                                                            <div>Good</div>
+                                                        </label>
+                                                    </div>
+
+                                                    <div>
+                                                        <input type="radio" id="step3Question4-option3"
+                                                            name="step3Question4"
+                                                            value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
+
+                                                        <label for="step3Question4-option3"
+                                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                            <div>
+                                                                <img src={{ asset('/images/icons/average.svg') }}
+                                                                    alt="average" />
+                                                            </div>
+                                                            <div>Average</div>
+                                                        </label>
+                                                    </div>
+
+                                                    <div>
+                                                        <input type="radio" id="step3Question4-option4"
+                                                            name="step3Question4"
+                                                            value="{{ App\Enums\Review::POOR }}" class="hidden">
+
+                                                        <label for="step3Question4-option4"
+                                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                            <div>
+                                                                <img src={{ asset('/images/icons/poor.svg') }}
+                                                                    alt="poor" />
+                                                            </div>
+                                                            <div>Poor</div>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
                                             <div class="mt-8 flex justify-center">
                                                 <button type="button" @click="validateStep2()" class="main-btn ">
@@ -864,7 +867,7 @@
                                         </div>
                                     </div>
 
-                                    
+
                                 </div>
 
                                 <!-- <div x-show="step === 3 && formData.customerType === '1'" x-cloak>
@@ -1110,324 +1113,346 @@
                 </dialog>
 
                 <dialog id="getFeedbackdetail" class="modal">
-                    <div class="modal-box p-0 max-w-4xl min-h-60 bg-[#FCFAF9]">
+                    <div class="modal-box p-0 min-h-60 bg-[#FCFAF9]">
                         <div>
                             <form id="getFeedbackForm">
                                 <div>
-                                    <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
+                                    <div
+                                        class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                                         <div class="pe-4">
-                                            <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                            <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
+                                                alt="logo" />
                                         </div>
                                         <div class="text-md text-white font-medium uppercase">
                                             Please share your thoughts about your
                                             <b>IN-Store Experience</b>
                                         </div>
                                     </div>
-            
+
                                     <div class="px-4 md:px-6 py-10 lg:px-12 text-[#4E5356] text-sm">
                                         <!-- Step 2A: Purchased Customer Feedback -->
                                         <div>
                                             <div class="mb-4 !text-md text-[#9D4F2A]">
                                                 About our <b>Jewellery Designs</b>
                                             </div>
-            
+
                                             <div class="block mb-4">1.⁠ ⁠How unique and stylish do you find the
                                                 Jewellery
                                                 design?</div>
-            
+
                                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                                                 <input type="radio" id="jewelleryDesignQuestion1-option1"
-                                                    name="jewelleryDesignQuestion1" value="{{ App\Enums\Review::EXCELLENT }}"
-                                                    class="hidden">
+                                                    name="jewelleryDesignQuestion1"
+                                                    value="{{ App\Enums\Review::EXCELLENT }}" class="hidden">
                                                 <label for="jewelleryDesignQuestion1-option1"
                                                     class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                     <div>
-                                                        <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
+                                                        <img src={{ asset('/images/icons/excellent.svg') }}
+                                                            alt="excellent" width="40" />
                                                     </div>
                                                     <div>Excellent</div>
                                                 </label>
-            
+
                                                 <div>
                                                     <input type="radio" id="jewelleryDesignQuestion1-option2"
-                                                        name="jewelleryDesignQuestion1" value="{{ App\Enums\Review::GOOD }}"
-                                                        class="hidden">
-            
+                                                        name="jewelleryDesignQuestion1"
+                                                        value="{{ App\Enums\Review::GOOD }}" class="hidden">
+
                                                     <label for="jewelleryDesignQuestion1-option2"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
-                                                            <img src={{ asset('/images/icons/good.svg') }} alt="good" />
+                                                            <img src={{ asset('/images/icons/good.svg') }}
+                                                                alt="good" width="40" />
                                                         </div>
                                                         <div>Good</div>
                                                     </label>
                                                 </div>
-            
+
                                                 <div>
                                                     <input type="radio" id="jewelleryDesignQuestion1-option3"
-                                                        name="jewelleryDesignQuestion1" value="{{ App\Enums\Review::AVERAGE }}"
-                                                        class="hidden">
-            
+                                                        name="jewelleryDesignQuestion1"
+                                                        value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
+
                                                     <label for="jewelleryDesignQuestion1-option3"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
-                                                            <img src={{ asset('/images/icons/average.svg') }} alt="average" />
+                                                            <img src={{ asset('/images/icons/average.svg') }}
+                                                                alt="average" width="40" />
                                                         </div>
                                                         <div>Average</div>
                                                     </label>
                                                 </div>
-            
+
                                                 <div>
                                                     <input type="radio" id="jewelleryDesignQuestion1-option4"
-                                                        name="jewelleryDesignQuestion1" value="{{ App\Enums\Review::POOR }}"
-                                                        class="hidden">
-            
+                                                        name="jewelleryDesignQuestion1"
+                                                        value="{{ App\Enums\Review::POOR }}" class="hidden">
+
                                                     <label for="jewelleryDesignQuestion1-option4"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
-                                                            <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                                            <img src={{ asset('/images/icons/poor.svg') }}
+                                                                alt="poor" width="40" />
                                                         </div>
                                                         <div>Poor</div>
                                                     </label>
                                                 </div>
                                             </div>
-            
+
                                             <div class="block mb-4">2.⁠ ⁠How would you rate our jewelry's design and
                                                 pricing
                                                 compared to other brands</div>
-            
+
                                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                                                 <input type="radio" id="jewelleryDesignQuestion2-option1"
-                                                    name="jewelleryDesignQuestion2" value="{{ App\Enums\Review::EXCELLENT }}"
-                                                    class="hidden">
+                                                    name="jewelleryDesignQuestion2"
+                                                    value="{{ App\Enums\Review::EXCELLENT }}" class="hidden">
                                                 <label for="jewelleryDesignQuestion2-option1"
                                                     class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                     <div>
-                                                        <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
+                                                        <img src={{ asset('/images/icons/excellent.svg') }}
+                                                            alt="excellent" width="40" />
                                                     </div>
                                                     <div>Excellent</div>
                                                 </label>
-            
+
                                                 <div>
                                                     <input type="radio" id="jewelleryDesignQuestion2-option2"
-                                                        name="jewelleryDesignQuestion2" value="{{ App\Enums\Review::GOOD }}"
-                                                        class="hidden">
-            
+                                                        name="jewelleryDesignQuestion2"
+                                                        value="{{ App\Enums\Review::GOOD }}" class="hidden">
+
                                                     <label for="jewelleryDesignQuestion2-option2"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
-                                                            <img src={{ asset('/images/icons/good.svg') }} alt="good" />
+                                                            <img src={{ asset('/images/icons/good.svg') }}
+                                                                alt="good" width="40" />
                                                         </div>
                                                         <div>Good</div>
                                                     </label>
                                                 </div>
-            
+
                                                 <div>
                                                     <input type="radio" id="jewelleryDesignQuestion2-option3"
-                                                        name="jewelleryDesignQuestion2" value="{{ App\Enums\Review::AVERAGE }}"
-                                                        class="hidden">
-            
+                                                        name="jewelleryDesignQuestion2"
+                                                        value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
+
                                                     <label for="jewelleryDesignQuestion2-option3"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
-                                                            <img src={{ asset('/images/icons/average.svg') }} alt="average" />
+                                                            <img src={{ asset('/images/icons/average.svg') }}
+                                                                alt="average" width="40" />
                                                         </div>
                                                         <div>Average</div>
                                                     </label>
                                                 </div>
-            
+
                                                 <div>
                                                     <input type="radio" id="jewelleryDesignQuestion2-option4"
-                                                        name="jewelleryDesignQuestion2" value="{{ App\Enums\Review::POOR }}"
-                                                        class="hidden">
-            
+                                                        name="jewelleryDesignQuestion2"
+                                                        value="{{ App\Enums\Review::POOR }}" class="hidden">
+
                                                     <label for="jewelleryDesignQuestion2-option4"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
-                                                            <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                                            <img src={{ asset('/images/icons/poor.svg') }}
+                                                                alt="poor" width="40" />
                                                         </div>
                                                         <div>Poor</div>
                                                     </label>
                                                 </div>
                                             </div>
-            
-            
+
+
                                             <div class="mt-8">
                                                 <div class="mb-4 !text-md text-[#9D4F2A]">
                                                     How was your experience with our <b>Sales Executive</b>?
-            
+
                                                 </div>
                                                 <!-- Question 1 -->
-                                                <div class="block mb-4">1.⁠ ⁠How satisfied are you with the overall service
+                                                <div class="block mb-4">1.⁠ ⁠How satisfied are you with the overall
+                                                    service
                                                     provided by our showroom staff?
                                                 </div>
                                                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                                                     <input type="radio" id="salesExecutiveQuestion1-option1"
-                                                        name="salesExecutiveQuestion1" value="{{ App\Enums\Review::EXCELLENT }}"
-                                                        class="hidden">
+                                                        name="salesExecutiveQuestion1"
+                                                        value="{{ App\Enums\Review::EXCELLENT }}" class="hidden">
                                                     <label for="salesExecutiveQuestion1-option1"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
-                                                            <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
+                                                            <img src={{ asset('/images/icons/excellent.svg') }}
+                                                                alt="excellent" width="40" />
                                                         </div>
                                                         <div>Excellent</div>
                                                     </label>
-            
+
                                                     <div>
                                                         <input type="radio" id="salesExecutiveQuestion1-option2"
-                                                            name="salesExecutiveQuestion1" value="{{ App\Enums\Review::GOOD }}"
-                                                            class="hidden">
-            
+                                                            name="salesExecutiveQuestion1"
+                                                            value="{{ App\Enums\Review::GOOD }}" class="hidden">
+
                                                         <label for="salesExecutiveQuestion1-option2"
                                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                             <div>
-                                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
+                                                                <img src={{ asset('/images/icons/good.svg') }}
+                                                                    alt="good" width="40" />
                                                             </div>
                                                             <div>Good</div>
                                                         </label>
                                                     </div>
-            
+
                                                     <div>
                                                         <input type="radio" id="salesExecutiveQuestion1-option3"
                                                             name="salesExecutiveQuestion1"
                                                             value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
-            
+
                                                         <label for="salesExecutiveQuestion1-option3"
                                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                             <div>
                                                                 <img src={{ asset('/images/icons/average.svg') }}
-                                                                    alt="average" />
+                                                                    alt="average" width="40" />
                                                             </div>
                                                             <div>Average</div>
                                                         </label>
                                                     </div>
-            
+
                                                     <div>
                                                         <input type="radio" id="salesExecutiveQuestion1-option4"
-                                                            name="salesExecutiveQuestion1" value="{{ App\Enums\Review::POOR }}"
-                                                            class="hidden">
-            
+                                                            name="salesExecutiveQuestion1"
+                                                            value="{{ App\Enums\Review::POOR }}" class="hidden">
+
                                                         <label for="salesExecutiveQuestion1-option4"
                                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                             <div>
-                                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                                                <img src={{ asset('/images/icons/poor.svg') }}
+                                                                    alt="poor" width="40" />
                                                             </div>
                                                             <div>Poor</div>
                                                         </label>
                                                     </div>
                                                 </div>
-            
+
                                                 <!-- Question 3 -->
-                                                <div class="block mb-4">2.⁠ ⁠How knowledgeable was our staff in explaining
+                                                <div class="block mb-4">2.⁠ ⁠How knowledgeable was our staff in
+                                                    explaining
                                                     products and services?</div>
                                                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                                                     <input type="radio" id="salesExecutiveQuestion2-option1"
-                                                        name="salesExecutiveQuestion2" value="{{ App\Enums\Review::EXCELLENT }}"
-                                                        class="hidden">
+                                                        name="salesExecutiveQuestion2"
+                                                        value="{{ App\Enums\Review::EXCELLENT }}" class="hidden">
                                                     <label for="salesExecutiveQuestion2-option1"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
-                                                            <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
+                                                            <img src={{ asset('/images/icons/excellent.svg') }}
+                                                                alt="excellent" width="40" />
                                                         </div>
                                                         <div>Excellent</div>
                                                     </label>
-            
+
                                                     <div>
                                                         <input type="radio" id="salesExecutiveQuestion2-option2"
-                                                            name="salesExecutiveQuestion2" value="{{ App\Enums\Review::GOOD }}"
-                                                            class="hidden">
-            
+                                                            name="salesExecutiveQuestion2"
+                                                            value="{{ App\Enums\Review::GOOD }}" class="hidden">
+
                                                         <label for="salesExecutiveQuestion2-option2"
                                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                             <div>
-                                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
+                                                                <img src={{ asset('/images/icons/good.svg') }}
+                                                                    alt="good" width="40" />
                                                             </div>
                                                             <div>Good</div>
                                                         </label>
                                                     </div>
-            
+
                                                     <div>
                                                         <input type="radio" id="salesExecutiveQuestion2-option3"
                                                             name="salesExecutiveQuestion2"
                                                             value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
-            
+
                                                         <label for="salesExecutiveQuestion2-option3"
                                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                             <div>
                                                                 <img src={{ asset('/images/icons/average.svg') }}
-                                                                    alt="average" />
+                                                                    alt="average" width="40" />
                                                             </div>
                                                             <div>Average</div>
                                                         </label>
                                                     </div>
-            
+
                                                     <div>
                                                         <input type="radio" id="salesExecutiveQuestion2-option4"
-                                                            name="salesExecutiveQuestion2" value="{{ App\Enums\Review::POOR }}"
-                                                            class="hidden">
-            
+                                                            name="salesExecutiveQuestion2"
+                                                            value="{{ App\Enums\Review::POOR }}" class="hidden">
+
                                                         <label for="salesExecutiveQuestion2-option4"
                                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                             <div>
-                                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                                                <img src={{ asset('/images/icons/poor.svg') }}
+                                                                    alt="poor" width="40" />
                                                             </div>
                                                             <div>Poor</div>
                                                         </label>
                                                     </div>
                                                 </div>
-            
+
                                                 <!-- Question 4 -->
-                                                <div class="block mb-4">3.How would you rate the attentiveness of our staff
+                                                <div class="block mb-4">3.How would you rate the attentiveness of our
+                                                    staff
                                                     in
                                                     assisting you?</div>
                                                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                                                     <input type="radio" id="salesExecutiveQuestion3-option1"
-                                                        name="salesExecutiveQuestion3" value="{{ App\Enums\Review::EXCELLENT }}"
-                                                        class="hidden">
+                                                        name="salesExecutiveQuestion3"
+                                                        value="{{ App\Enums\Review::EXCELLENT }}" class="hidden">
                                                     <label for="salesExecutiveQuestion3-option1"
                                                         class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                         <div>
-                                                            <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
+                                                            <img src={{ asset('/images/icons/excellent.svg') }}
+                                                                alt="excellent" width="40" />
                                                         </div>
                                                         <div>Excellent</div>
                                                     </label>
-            
+
                                                     <div>
                                                         <input type="radio" id="salesExecutiveQuestion3-option2"
-                                                            name="salesExecutiveQuestion3" value="{{ App\Enums\Review::GOOD }}"
-                                                            class="hidden">
-            
+                                                            name="salesExecutiveQuestion3"
+                                                            value="{{ App\Enums\Review::GOOD }}" class="hidden">
+
                                                         <label for="salesExecutiveQuestion3-option2"
                                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                             <div>
-                                                                <img src={{ asset('/images/icons/good.svg') }} alt="good" />
+                                                                <img src={{ asset('/images/icons/good.svg') }}
+                                                                    alt="good" width="40" />
                                                             </div>
                                                             <div>Good</div>
                                                         </label>
                                                     </div>
-            
+
                                                     <div>
                                                         <input type="radio" id="salesExecutiveQuestion3-option3"
                                                             name="salesExecutiveQuestion3"
                                                             value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
-            
+
                                                         <label for="salesExecutiveQuestion3-option3"
                                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                             <div>
                                                                 <img src={{ asset('/images/icons/average.svg') }}
-                                                                    alt="average" />
+                                                                    alt="average" width="40" />
                                                             </div>
                                                             <div>Average</div>
                                                         </label>
                                                     </div>
-            
+
                                                     <div>
                                                         <input type="radio" id="salesExecutiveQuestion3-option4"
-                                                            name="salesExecutiveQuestion3" value="{{ App\Enums\Review::POOR }}"
-                                                            class="hidden">
-            
+                                                            name="salesExecutiveQuestion3"
+                                                            value="{{ App\Enums\Review::POOR }}" class="hidden">
+
                                                         <label for="salesExecutiveQuestion3-option4"
                                                             class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
                                                             <div>
-                                                                <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
+                                                                <img src={{ asset('/images/icons/poor.svg') }}
+                                                                    alt="poor" width="40" />
                                                             </div>
                                                             <div>Poor</div>
                                                         </label>
@@ -1439,17 +1464,17 @@
                                 </div>
                             </form>
                         </div>
-            
+
                         <form method="dialog" class="modal-backdrop z-10">
                             <button class="text-white absolute top-0 right-0 p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 31 31"
-                                    fill="none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                    viewBox="0 0 31 31" fill="none">
                                     <circle cx="15.5" cy="15.5" r="15.5" fill="black" />
                                     <path
                                         d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z"
                                         fill="#FCFAF9" />
                                 </svg>
-            
+
                             </button>
                         </form>
                     </div>
@@ -1459,7 +1484,8 @@
                     <div class="modal-box p-0 max-w-3xl bg-[#FCFAF9]">
                         <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                             <div class="pe-4">
-                                <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }} alt="logo" />
+                                <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
+                                    alt="logo" />
                             </div>
                             <div class="text-lg lg:text-xl text-white font-medium uppercase">
                                 Welcome to Jewel one
@@ -1699,8 +1725,8 @@
 
                                     <!-- Social Media -->
                                     <div>
-                                        <input id="source3" name="source" x-model="source" value="Social Media"
-                                            type="radio" class="hidden" />
+                                        <input id="source3" name="source" x-model="source"
+                                            value="Social Media" type="radio" class="hidden" />
                                         <label for="source3" class="text-center">
                                             <img src="{{ asset('/images/icons/socialmedia.svg') }}"
                                                 alt="Social Media" class="h-8" />
@@ -1724,8 +1750,8 @@
                                         <input id="source5" name="source" x-model="source"
                                             value="Friends & Family" type="radio" class="hidden" />
                                         <label for="source5" class="text-center">
-                                            <img src="{{ asset('/images/icons/family.svg') }}" alt="Friends & Family"
-                                                class="h-8" />
+                                            <img src="{{ asset('/images/icons/family.svg') }}"
+                                                alt="Friends & Family" class="h-8" />
                                             <span> Friends & Family </span>
                                         </label>
                                     </div>
