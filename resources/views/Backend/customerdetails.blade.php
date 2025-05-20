@@ -230,7 +230,7 @@
     </div> -->
 
     <dialog id="getFeedback" class="modal">
-        <div class="modal-box p-0 max-w-4xl min-h-60 bg-[#FCFAF9]">
+        <div class="modal-box p-0 max-w-2xl min-h-60 bg-[#FCFAF9]">
             <div>
                 <form id="getFeedbackForm">
                     <div>
@@ -260,7 +260,7 @@
                                         name="jewelleryDesignQuestion1" value="{{ App\Enums\Review::EXCELLENT }}"
                                         class="hidden">
                                     <label for="jewelleryDesignQuestion1-option1"
-                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                        class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                         <div>
                                             <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                         </div>
@@ -273,7 +273,7 @@
                                             class="hidden">
 
                                         <label for="jewelleryDesignQuestion1-option2"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                            class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                             <div>
                                                 <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                             </div>
@@ -287,7 +287,7 @@
                                             class="hidden">
 
                                         <label for="jewelleryDesignQuestion1-option3"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                            class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                             <div>
                                                 <img src={{ asset('/images/icons/average.svg') }} alt="average" />
                                             </div>
@@ -301,7 +301,7 @@
                                             class="hidden">
 
                                         <label for="jewelleryDesignQuestion1-option4"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                            class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                             <div>
                                                 <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
@@ -319,7 +319,7 @@
                                         name="jewelleryDesignQuestion2" value="{{ App\Enums\Review::EXCELLENT }}"
                                         class="hidden">
                                     <label for="jewelleryDesignQuestion2-option1"
-                                        class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                        class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                         <div>
                                             <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                         </div>
@@ -332,7 +332,7 @@
                                             class="hidden">
 
                                         <label for="jewelleryDesignQuestion2-option2"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                            class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                             <div>
                                                 <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                             </div>
@@ -346,7 +346,7 @@
                                             class="hidden">
 
                                         <label for="jewelleryDesignQuestion2-option3"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                            class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                             <div>
                                                 <img src={{ asset('/images/icons/average.svg') }} alt="average" />
                                             </div>
@@ -360,7 +360,7 @@
                                             class="hidden">
 
                                         <label for="jewelleryDesignQuestion2-option4"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                            class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                             <div>
                                                 <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                             </div>
@@ -384,7 +384,7 @@
                                             name="salesExecutiveQuestion1" value="{{ App\Enums\Review::EXCELLENT }}"
                                             class="hidden">
                                         <label for="salesExecutiveQuestion1-option1"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                            class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
@@ -397,7 +397,7 @@
                                                 class="hidden">
 
                                             <label for="salesExecutiveQuestion1-option2"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                                 <div>
                                                     <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
@@ -411,7 +411,7 @@
                                                 value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
 
                                             <label for="salesExecutiveQuestion1-option3"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                                 <div>
                                                     <img src={{ asset('/images/icons/average.svg') }}
                                                         alt="average" />
@@ -426,7 +426,7 @@
                                                 class="hidden">
 
                                             <label for="salesExecutiveQuestion1-option4"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                                 <div>
                                                     <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                                 </div>
@@ -443,7 +443,7 @@
                                             name="salesExecutiveQuestion2" value="{{ App\Enums\Review::EXCELLENT }}"
                                             class="hidden">
                                         <label for="salesExecutiveQuestion2-option1"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                            class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
@@ -456,7 +456,7 @@
                                                 class="hidden">
 
                                             <label for="salesExecutiveQuestion2-option2"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                                 <div>
                                                     <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
@@ -470,7 +470,7 @@
                                                 value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
 
                                             <label for="salesExecutiveQuestion2-option3"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                                 <div>
                                                     <img src={{ asset('/images/icons/average.svg') }}
                                                         alt="average" />
@@ -485,7 +485,7 @@
                                                 class="hidden">
 
                                             <label for="salesExecutiveQuestion2-option4"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                                 <div>
                                                     <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                                 </div>
@@ -503,7 +503,7 @@
                                             name="salesExecutiveQuestion3" value="{{ App\Enums\Review::EXCELLENT }}"
                                             class="hidden">
                                         <label for="salesExecutiveQuestion3-option1"
-                                            class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                            class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                             <div>
                                                 <img src={{ asset('/images/icons/excellent.svg') }} alt="excellent" />
                                             </div>
@@ -516,7 +516,7 @@
                                                 class="hidden">
 
                                             <label for="salesExecutiveQuestion3-option2"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                                 <div>
                                                     <img src={{ asset('/images/icons/good.svg') }} alt="good" />
                                                 </div>
@@ -530,7 +530,7 @@
                                                 value="{{ App\Enums\Review::AVERAGE }}" class="hidden">
 
                                             <label for="salesExecutiveQuestion3-option3"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                                 <div>
                                                     <img src={{ asset('/images/icons/average.svg') }}
                                                         alt="average" />
@@ -545,7 +545,7 @@
                                                 class="hidden">
 
                                             <label for="salesExecutiveQuestion3-option4"
-                                                class="cursor-pointer p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center">
+                                                class="cursor-pointer !h-full p-3 border bg-white shadow rounded-lg text-center grid gap-2 justify-items-center content-center !aspect-square">
                                                 <div>
                                                     <img src={{ asset('/images/icons/poor.svg') }} alt="poor" />
                                                 </div>
