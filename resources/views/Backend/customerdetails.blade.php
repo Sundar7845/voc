@@ -230,7 +230,7 @@
     </div> -->
 
     <dialog id="getFeedback" class="modal">
-        <div class="modal-box p-0 max-w-2xl min-h-60 bg-[#FCFAF9]">
+        <div class="modal-box p-0 min-h-60 bg-[#FCFAF9]">
             <div>
                 <form id="getFeedbackForm">
                     <div>
