@@ -11,9 +11,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class DashboardController extends Controller
+class HomeController extends Controller
 {
-    function dashboard()
+    public function dashboard()
     {
         $totalcustomers = Customer::count();
         $walkincustomer = WalkinCustomer::join('customers', 'customers.id', 'walkin_customers.customer_id')
@@ -80,7 +80,7 @@ class DashboardController extends Controller
         ]);
     }
 
-    function liveUserShowroomRecord(Request $request)
+    public function liveUserShowroomRecord(Request $request)
     {
         // Get selected branch IDs
         $branchIds = Branches::whereIn('branch_name', $request->selectedShowrooms)
@@ -179,7 +179,7 @@ class DashboardController extends Controller
     }
 
 
-    function getFeedback(Request $request)
+    public function getFeedback(Request $request)
     {
         $walkincustomer = WalkinCustomer::where('id', $request->id)->first();
         return response()->json([
@@ -187,7 +187,7 @@ class DashboardController extends Controller
         ]);
     }
 
-    // public function getSalesReportData($id)
+    // function getSalesReportData($id)
     // {
     //     $customer = Customer::where('id', $id)->first();
     //     $salesreport = SalesReport::select('sales_reports.*', 'branches.branch_name')
