@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SalesReport extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'branch_id',
@@ -50,4 +50,9 @@ class SalesReport extends Model
         'invoice_amount',
         'buyer_tin'
     ];
+
+    public function branch()
+    {
+        return $this->belongsTo(Branches::class, 'branch_id');
+    }
 }

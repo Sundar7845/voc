@@ -17,4 +17,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::get('/customer/sales-report/{id}', [HomeController::class, 'getSalesReportData']);
     Route::get('getfeedback/{id}', [HomeController::class, 'getfeedback'])->name('getfeedback');
     Route::get('sales', [SaleController::class, 'sales'])->name('sales');
+    Route::post('/import-sales', [SaleController::class, 'import'])->name('sales.import');
+    Route::get('sales-report', [SaleController::class, 'getSalesReport'])->name('sales.getreport');
+    Route::get('/download-example-sheet', [SaleController::class, 'exampleSheet']);
 });
