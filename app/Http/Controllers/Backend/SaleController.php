@@ -9,6 +9,6 @@ class SaleController extends Controller
 {
     function sales()
     {
-        return view('backend.sales.index');
+        return view('backend.salesreport');
     }
 }
