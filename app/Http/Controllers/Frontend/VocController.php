@@ -41,7 +41,7 @@ class VocController extends Controller
         $customer = Customer::findOrFail($request->id);
 
         // Get all walk-in customers for the customer (except the latest one)
-        $walkincustomers = WalkinCustomer::select('walkin_customers.*', 'customers.name')
+        $walkincustomers = WalkinCustomer::select('walkin_customers.*', 'customers.name', 'customers.customer_id')
             ->join('customers', 'customers.id', 'walkin_customers.customer_id')
             ->where('customers.phone_number', $customer->phone_number)
             ->orderBy('walkin_customers.created_at', 'desc')
@@ -49,7 +49,8 @@ class VocController extends Controller
             ->slice(0, -1); // Skip the latest walk-in entry
 
         // Get all sales reports for that customer
-        $salesreports = SalesReport::select('sales_reports.*', 'branches.branch_name')
+        $salesreports = SalesReport::with('customer')
+            ->select('sales_reports.*', 'branches.branch_name')
             ->join('branches', 'branches.id', 'sales_reports.branch_id')
             ->where('sales_reports.cust_phone', $customer->phone_number)
             ->get();

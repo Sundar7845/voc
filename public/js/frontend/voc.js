@@ -519,7 +519,7 @@ function viewHistory(id) {
                                 <td class="p-2">${report.sales_qty}</td>
                                 <td class="p-2">${report.ct_wght}</td>
                                 <td class="p-2">${report.textbox_33}</td>
-                                <td class="p-2">${report.customer_id}</td>
+                                <td class="p-2">${report.customer?.customer_id}</td>
                                 <td class="p-2">${report.cust_name}</td>
                                 <td class="p-2">${report.cust_phone}</td>
                                 <td class="p-2">${report.delivery_name}</td>

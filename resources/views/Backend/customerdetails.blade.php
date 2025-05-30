@@ -144,7 +144,7 @@
                                                     <td class="p-2">{{ $value->sales_qty }}</td>
                                                     <td class="p-2">{{ $value->ct_wght }}</td>
                                                     <td class="p-2">{{ $value->textbox_33 }}</td>
-                                                    <td class="p-2">{{ $value->customer_id }}</td>
+                                                    <td class="p-2">{{ $value->customer->customer_id }}</td>
                                                     <td class="p-2">{{ $value->cust_name }}</td>
                                                     <td class="p-2">{{ $value->cust_phone }}</td>
                                                     <td class="p-2">{{ $value->delivery_name }}</td>
