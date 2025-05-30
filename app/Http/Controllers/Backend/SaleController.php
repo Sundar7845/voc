@@ -5,13 +5,19 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Imports\SalesReportImport;
 use App\Models\SalesReport;
+use App\Traits\Common;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 
 class SaleController extends Controller
 {
+    use Common;
     function sales()
     {
         return view('backend.salesreport');
@@ -32,20 +38,39 @@ class SaleController extends Controller
             ->addColumn('branch_name', function ($row) {
                 return $row->branch->branch_name ?? '-';
             })
+            ->addColumn('customer_id', function ($row) {
+                return $row->customer->customer_id ?? '-';
+            })
             ->toJson();
     }
 
-    function import(Request $request)
+    public function import(Request $request)
     {
-        $this->validate($request, [
-            'file' => 'required|mimes:xlsx,xls,csv'
-        ]);
+        try {
+            $this->validate($request, [
+                'file' => 'required|mimes:xlsx,xls,csv'
+            ]);
 
-        $file = $request->file('file');
+            $file = $request->file('file');
 
-        // Import the file using the SalesReportImport class
-        Excel::import(new SalesReportImport, $file);
+            // Ensure the extension is used to infer type
+            Excel::import(new SalesReportImport, $file->getRealPath(), null, \Maatwebsite\Excel\Excel::XLSX);
 
-        return redirect()->back()->with('success', 'Sales report imported successfully.');
+            return redirect()->back()->with('success', 'Sales report imported successfully.');
+        } catch (\Exception $e) {
+            $this->Log(
+                __FUNCTION__,
+                "POST",
+                $e->getMessage(),
+                Auth::user()->id ?? null,
+                request()->ip(),
+                gethostname()
+            );
+
+            return redirect()->back()->with([
+                'message' => 'Something went wrong!',
+                'alert-type' => 'error'
+            ]);
+        }
     }
 }

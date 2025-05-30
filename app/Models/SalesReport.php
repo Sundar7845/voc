@@ -55,4 +55,9 @@ class SalesReport extends Model
     {
         return $this->belongsTo(Branches::class, 'branch_id');
     }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
 }

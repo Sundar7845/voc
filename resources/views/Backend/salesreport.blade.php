@@ -3,7 +3,7 @@
 @section('title')
     Sales Report
 @endsection
-<section class="px-6 py-8">
+<section class="pr-10 px-6 py-8">
     <div class="flex flex-wrap justify-between items-center gap-6 border-b border-[#C7C7C7] pb-5">
 
         <div class="flex gap-2 items-center">
@@ -46,23 +46,21 @@
                             Import Sales Report
                         </div>
                     </div>
-
-                    <div
-                        class="px-4 md:px-6 py-10 lg:px-12 text-[#4E5356] flex flex-col justify-center  items-center gap-8">
-                        <div>
-                            <input type="file"
-                                class="file-input outline-none ring-0 focus:ring-0 focus:outline-none" />
-                        </div>
-                        <button
-                            class="bg-[#9D4F2A] text-white px-8 py-3 rounded-sm font-medium shadow-md cursor-pointer text-sm flex gap-1 items-center">
-                            Import
-                        </button>
-                    </div>
-
                     <form action="{{ route('sales.import') }}" method="POST" enctype="multipart/form-data"
                         class="modal-backdrop z-10">
                         @csrf
-                        <button class="text-white absolute top-0 right-0 p-1">
+                        <div
+                            class="px-4 md:px-6 py-10 lg:px-12 text-[#4E5356] flex flex-col justify-center  items-center gap-8">
+                            <div>
+                                <input type="file" name="file" id="file" accept=".xlsx, .xls, .csv"
+                                    class="file-input outline-none ring-0 focus:ring-0 focus:outline-none" required />
+                            </div>
+                            <button
+                                class="bg-[#9D4F2A] text-white px-8 py-3 rounded-sm font-medium shadow-md cursor-pointer text-sm flex gap-1 items-center">
+                                Import
+                            </button>
+                        </div>
+                        <button type="submit" class="text-white absolute top-0 right-0 p-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 31 31"
                                 fill="none">
                                 <circle cx="15.5" cy="15.5" r="15.5" fill="black"></circle>

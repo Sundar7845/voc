@@ -2,13 +2,14 @@
 
 namespace App\Imports;
 
+use App\Models\Branches;
+use App\Models\Customer;
 use App\Models\SalesReport;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class SalesReportImport implements ToModel, WithHeadingRow, ShouldQueue, WithBatchInserts
+class SalesReportImport implements ToModel, WithHeadingRow, WithBatchInserts
 {
     public function batchSize(): int
     {
@@ -22,8 +23,10 @@ class SalesReportImport implements ToModel, WithHeadingRow, ShouldQueue, WithBat
 
     public function model(array $row)
     {
+        $branchId = Branches::where('slug', $row['branch_id'])->value('id');
+        $customerId = Customer::where('customer_id', $row['customer_id'])->value('id');
         return new SalesReport([
-            'branch_id' => $row['branch_id'],
+            'branch_id' => $branchId,
             'invoice_date' => $row['invoice_date'],
             'purchase_location' => $row['purchase_location'],
             'article_code' => $row['article_code'],
@@ -38,7 +41,7 @@ class SalesReportImport implements ToModel, WithHeadingRow, ShouldQueue, WithBat
             'sales_qty' => $row['sales_qty'],
             'ct_wght' => $row['ct_wght'],
             'textbox_33' => $row['textbox_33'],
-            'customer_id' => $row['customer_id'],
+            'customer_id' => $customerId,
             'cust_name' => $row['cust_name'],
             'cust_phone' => $row['cust_phone'],
             'delivery_name' => $row['delivery_name'],
