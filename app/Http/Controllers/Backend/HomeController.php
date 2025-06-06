@@ -119,12 +119,22 @@ class HomeController extends Controller
 
     public function customerDetails($id)
     {
-        // Get the second latest walk-in customer (skip latest, get second)
-        $customerDetails = WalkinCustomer::where('customer_id', $id)
-            ->orderBy('created_at', 'desc')
-            ->skip(1)
-            ->take(1)
-            ->first();
+        $customerVisit = WalkinCustomer::where('customer_id', $id)
+            ->count();
+
+        if ($customerVisit < 0) {
+            // Get the second latest walk-in customer (skip latest, get second)
+            $customerDetails = WalkinCustomer::where('customer_id', $id)
+                ->orderBy('created_at', 'desc')
+                ->skip(1)
+                ->take(1)
+                ->first();
+        } else {
+            // Get the latest walk-in customer
+            $customerDetails = WalkinCustomer::where('customer_id', $id)
+                ->orderBy('created_at', 'desc')
+                ->first();
+        }
 
         // Get customer info
         $customer = Customer::findOrFail($id);

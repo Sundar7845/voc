@@ -40,7 +40,7 @@
                 <div class="modal-box p-0 max-w-2xl bg-[#FCFAF9]">
                     <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
                         <div class="pe-4">
-                            <img class="h-14 lg:h-16" src="http://localhost:8000/images/logo-white.svg" alt="logo">
+                            <img class="h-14 lg:h-16" src="{{ asset('images/logo-white.svg') }}" alt="logo">
                         </div>
                         <div class="text-lg lg:text-xl text-white font-medium uppercase">
                             Import Sales Report

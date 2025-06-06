@@ -555,9 +555,9 @@ function viewHistory(id) {
 
                 // Inject HTML
                 $("#history").html(historyTableHtml);
-                Alpine.discoverUninitializedComponents(() => {
+                // Alpine.discoverUninitializedComponents(() => {
                     Alpine.initTree(modal);
-                });
+                // });
             }
         },
         error: function () {

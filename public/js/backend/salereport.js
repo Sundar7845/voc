@@ -3,6 +3,9 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: "sales-report",
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"), // For Laravel, adjust as needed for your backend
+        },
         columns: [
             { data: "branch_name" },
             { data: "invoice_date" },

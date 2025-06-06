@@ -19,5 +19,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('sales', [SaleController::class, 'sales'])->name('sales');
     Route::post('/import-sales', [SaleController::class, 'import'])->name('sales.import');
     Route::get('sales-report', [SaleController::class, 'getSalesReport'])->name('sales.getreport');
-    Route::get('/download-example-sheet', [SaleController::class, 'exampleSheet']);
+    Route::post('/download-example-sheet', [SaleController::class, 'exampleSheet']);
 });
