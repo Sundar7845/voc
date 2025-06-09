@@ -2,9 +2,12 @@ $(document).ready(function () {
     $("#salesReportTable").DataTable({
         processing: true,
         serverSide: true,
-        ajax: "sales-report",
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"), // For Laravel, adjust as needed for your backend
+        ajax: {
+            url: "sales-report",
+            type: "POST",
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
         },
         columns: [
             { data: "branch_name" },
@@ -49,9 +52,9 @@ $(document).ready(function () {
 });
 
 function downloadExampleSheet() {
-    if (window.Laravel && window.Laravel.downloadExampleSheetUrl) {
-        window.location.href = window.Laravel.downloadExampleSheetUrl;
-    } else {
-        console.error("Download URL not defined");
-    }
+  if (window.Laravel && window.Laravel.download) {
+    window.location.href = window.Laravel.download;
+  } else {
+    console.error("Download URL not defined");
+  }
 }

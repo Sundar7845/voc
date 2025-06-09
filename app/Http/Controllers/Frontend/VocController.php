@@ -31,7 +31,7 @@ class VocController extends Controller
 
         $professions = Profession::where('is_active', 1)->get();
         $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
-        $employee = Employee::where('branch_id', $branch)->orderBy('name', 'ASC')->get();
+        $employee = Employee::where('branch_id', Auth::user()->branch_id)->where('is_active', 1)->orderBy('name', 'ASC')->get();
         return view('frontend.voc', compact('walkincustomer', 'professions', 'employee'));
     }
 

@@ -21,10 +21,10 @@
         </div>
 
         <div class="flex gap-2 items-center">
-            <button onclick="downloadExampleSheet()"
+            <a href="{{ route('downloadsheet') }}"
                 class="bg-[#9D4F2A] text-white px-6 py-3 rounded-sm font-medium shadow-md cursor-pointer text-sm flex gap-1 items-center">
                 Example Sheet
-            </button>
+            </a>
             <button onclick="importFile.showModal()"
                 class="bg-[#9D4F2A] text-white px-6 py-3 rounded-sm font-medium shadow-md cursor-pointer text-sm flex gap-1 items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5" viewBox="0 0 22 16" fill="none">

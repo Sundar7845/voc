@@ -218,7 +218,7 @@ $(document).ready(function () {
         e.preventDefault(); // Prevent default form submission
         var id = $("#customerId").val();
         var name = $("#name").val();
-        var gender = $("#gender").val();
+        var gender = $("input[name='gender']:checked").val();
         var email = $("#email").val();
         var dob = $("#date-of-birth").val();
         var martial_status = $("input[name='marital-status']:checked").val();

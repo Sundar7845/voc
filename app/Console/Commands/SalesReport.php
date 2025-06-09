@@ -52,7 +52,7 @@ class SalesReport extends Command
             $this->output->progressStart(count($sales));
             foreach ($sales as $item) {
 
-                $branch = Branches::where('slug', $item->branch_id)->value('id');
+                $branch = Branches::where('branch_name', $item->branch_id)->value('id');
                 $customer = Customer::where('customer_id', $item->customer_id)->value('id');
                 ModelsSalesReport::Updateorcreate([
                     'branch_id' => $branch,
