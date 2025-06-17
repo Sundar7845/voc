@@ -10,6 +10,7 @@ use App\Models\WalkinCustomer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class HomeController extends Controller
 {
@@ -209,7 +210,53 @@ class HomeController extends Controller
 
         // Group by branch name
         $groupedData = $branchesData->groupBy('branch_name');
-        return view('backend.showroom' , compact('groupedData'));
+        return view('backend.showroom', compact('groupedData'));
+    }
+
+    public function getShowroomData(Request $request)
+    {
+        // dd($request->all());
+        // Normalize and parse the date
+        $date = $request->date
+            ? Carbon::parse($request->date)->toDateString()
+            : Carbon::today()->toDateString();
+
+        // Build the query with leftJoin to prevent exclusions
+        $showroom = WalkinCustomer::select(
+            'walkin_customers.*',
+            'customers.name',
+            'branches.branch_name',
+            'employees.name as sales_executive_name'
+        )
+            ->leftJoin('customers', 'customers.id', '=', 'walkin_customers.customer_id')
+            ->leftJoin('branches', 'branches.id', '=', 'walkin_customers.branch_id')
+            ->leftJoin('employees', 'employees.id', '=', 'walkin_customers.sales_executive_id');
+
+        if (!empty($request->date)) {
+            $showroom = $showroom->whereDate('walkin_customers.customer_enter_time', $date);
+        }
+        // Filter by selected showroom checkboxes if provided
+        if (!empty($request->selectedShowrooms)) {
+            $branchIds = Branches::whereIn('branch_name', $request->selectedShowrooms)
+                ->pluck('id')
+                ->toArray();
+            // dd($branchIds);
+            $showroom->whereIn('walkin_customers.branch_id', $branchIds);
+        }
+        $showroom = $showroom->get();
+
+        // Return DataTables response
+        return DataTables::of($showroom)
+            ->addColumn('is_purchased', function ($row) {
+                return $row->is_purchased == 1 ? 'Purchased' : 'Non Purchased';
+            })
+            ->addColumn('customer_in_out', function ($row) {
+                return ($row->customer_enter_time ?? '') . ' / ' . ($row->customer_out_time ?? '');
+            })
+            ->addColumn('sales_executive_name', function ($row) {
+                return $row->sales_executive_name ?? '-';
+            })
+            ->make(true);
     }
 
     // function getSalesReportData($id)
