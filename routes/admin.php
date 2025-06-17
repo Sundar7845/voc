@@ -20,4 +20,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/import-sales', [SaleController::class, 'import'])->name('sales.import');
     Route::match(['get', 'post'], '/sales-report', [SaleController::class, 'getSalesReport'])->name('sales.getreport');
     Route::get('/downloadsheet', [SaleController::class, 'exampleSheet'])->name('downloadsheet');
+    Route::get('showroom',[HomeController::class, 'showroom'])->name('showroom');
 });

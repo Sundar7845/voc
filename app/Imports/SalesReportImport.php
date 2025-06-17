@@ -25,6 +25,18 @@ class SalesReportImport implements ToModel, WithHeadingRow, WithBatchInserts
     {
         $branchId = Branches::where('slug', $row['branch_id'])->value('id');
         $customerId = Customer::where('customer_id', $row['customer_id'])->value('id');
+
+        if ($customerId === null) {
+            $customer = Customer::where('phone_number', $row['cust_phone'])->first();
+
+            if ($customer) {
+                $customer->update([
+                    'customer_id' => $row['customer_id']
+                ]);
+                $customerId = $customer->id;
+            }
+        }
+
         return new SalesReport([
             'branch_id' => $branchId,
             'invoice_date' => $row['invoice_date'],
