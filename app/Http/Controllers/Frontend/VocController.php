@@ -39,14 +39,14 @@ class VocController extends Controller
     {
         // Get customer info
         $customer = Customer::findOrFail($request->id);
-
         // Get all walk-in customers for the customer (except the latest one)
-        $walkincustomers = WalkinCustomer::select('walkin_customers.*', 'customers.name', 'customers.customer_id')
-            ->join('customers', 'customers.id', 'walkin_customers.customer_id')
+        $walkins = WalkinCustomer::select('walkin_customers.*', 'customers.name', 'customers.customer_id')
+            ->join('customers', 'customers.id', '=', 'walkin_customers.customer_id')
             ->where('customers.phone_number', $customer->phone_number)
             ->orderBy('walkin_customers.created_at', 'desc')
-            ->get()
-            ->slice(0, -1); // Skip the latest walk-in entry
+            ->get();
+
+        $walkincustomers = $walkins->count() > 1 ? $walkins->slice(0, -1) : $walkins;
 
         // Get all sales reports for that customer
         $salesreports = SalesReport::with('customer')
@@ -55,35 +55,26 @@ class VocController extends Controller
             ->where('sales_reports.cust_phone', $customer->phone_number)
             ->get();
 
-        // Match walk-in records to sales reports by date
-        $matchedReports = collect();
+        // Attach walk-in review data (if exists) to the sales reports sequentially
+        $enhancedReports = collect();
+        $walkinIndex = 0;
 
-        foreach ($walkincustomers as $walkin) {
-            if (!$walkin->customer_enter_time) {
-                continue; // Skip entries without a date
+
+        foreach ($salesreports as $report) {
+            if (isset($walkincustomers[$walkinIndex])) {
+                $walkin = $walkincustomers[$walkinIndex];
+                $report->jewellery_review = $walkin->jewellery_review;
+                $report->assit_review = $walkin->assit_review;
+                $report->staff_review = $walkin->staff_review;
+                $report->pricing_review = $walkin->pricing_review;
+                $report->walkin_customer = $walkin;
+                $walkinIndex++;
             }
-
-            // Format walk-in date to match sales report invoice date format
-            $walkinDate = Carbon::parse($walkin->customer_enter_time)->format('y-M-d');
-
-            // Match sales reports by invoice date
-            $matches = $salesreports->filter(function ($report) use ($walkinDate) {
-                return $report->invoice_date === $walkinDate;
-            });
-
-            // Attach walk-in review data to matched sales reports
-            foreach ($matches as $match) {
-                $match->jewellery_review = $walkin->jewellery_review;
-                $match->assit_review = $walkin->assit_review;
-                $match->staff_review = $walkin->staff_review;
-                $match->pricing_review = $walkin->pricing_review;
-                $match->walkin_customer = $walkin; // Optional full walk-in object
-                $matchedReports->push($match);
-            }
+            $enhancedReports->push($report);
         }
 
-        // Group matched reports by invoice date in 'd-m-Y' format
-        $salesreport = $matchedReports->groupBy(function ($item) {
+        // Group by invoice date in d-m-Y format
+        $salesreport = $enhancedReports->groupBy(function ($item) {
             return Carbon::createFromFormat('y-M-d', $item->invoice_date)->format('d-m-Y');
         });
 
@@ -244,7 +235,8 @@ class VocController extends Controller
                 'service_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->knowledge,
                 'assit_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->assit,
                 'spent_time' => $request->spentTime,
-                'is_scheme_redemption' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->scheme,
+                'is_scheme_redemption' => $request->customerType == 0 || $request->customerType == 1 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->scheme,
+                'is_scheme_joining' => $request->customerType == 0 || $request->customerType == 1 || $request->customerType == 2 ? 0 : 1
             ]);
 
             return response()->json([

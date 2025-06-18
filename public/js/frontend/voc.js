@@ -178,7 +178,7 @@ function viewCustomerDetails(customerId) {
                     .val(response.data.profession_id)
                     .trigger("change");
                 $("#address").val(response.data.address);
-                $("#address2").val(response.data.address_line_1);
+                // $("#address2").val(response.data.address_line_1);
                 // ✅ Fill phone number into individual boxes
                 const pincode = response.data.pincode.split("");
                 $(".zip").each(function (index) {
@@ -352,6 +352,11 @@ $(document).ready(function () {
         var nonPurchased = $("input[name='non-purchase-reason']:checked").val();
         var non_purchased_others = $("#non_purchased_others").val();
 
+        if (customerType === 3) {
+            var schemejoining = $(
+                "input[id='schemejoining-customer']:checked"
+            ).val();
+        }
         $.ajax({
             url: "feedback/" + id, // Change this to your actual server endpoint
             type: "POST",
@@ -368,6 +373,7 @@ $(document).ready(function () {
                 non_purchased_others: non_purchased_others,
                 spentTime: spentTime,
                 scheme: scheme,
+                schemejoining: schemejoining,
             },
             dataType: "json",
             success: function (response) {
@@ -556,7 +562,7 @@ function viewHistory(id) {
                 // Inject HTML
                 $("#history").html(historyTableHtml);
                 // Alpine.discoverUninitializedComponents(() => {
-                    Alpine.initTree(modal);
+                Alpine.initTree(modal);
                 // });
             }
         },

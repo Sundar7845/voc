@@ -339,6 +339,16 @@
                                                         Repair - Customer
                                                     </label>
                                                 </div>
+                                                <div>
+                                                    <input type="radio" @change="errors.customerType = ''"
+                                                        name="customerType" id="schemejoining-customer"
+                                                        class="sr-only peer" x-model="formData.customerType"
+                                                        value="3">
+                                                    <label for="schemejoining-customer"
+                                                        class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
+                                                        Scheme Joining Customer
+                                                    </label>
+                                                </div>
                                             </div>
 
                                             <div class="mt-4">
@@ -1686,9 +1696,9 @@
 
                                         </div>
 
-                                        <input type="text" name="address2" id="address2" required
+                                        {{-- <input type="text" name="address2" id="address2" required
                                             placeholder="Address Line 2"
-                                            class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" />
+                                            class="bg-transparent border py-2 border-[#C7C7C7] text-black rounded-lg block w-full p-3" /> --}}
 
                                     </div>
 
