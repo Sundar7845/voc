@@ -224,8 +224,14 @@
                                     alt="logo" />
                             </div>
                             <div class="text-lg lg:text-xl text-white font-medium uppercase">
-                                Passed History
+                                Past History
                             </div>
+                        </div>
+
+                        <div class="padding_alignment_1 flex flex-row justify-between">
+                            <div class="text-black">Customer Id: <span id="customer-id"></span></div>
+                            <div class="text-black">Customer Name: <span id="customer-name"></span></div>
+                            <div class="text-black">Customer Number: <span id="customer-phone"></span></div>
                         </div>
 
                         <div class="p-10" x-data="{ openRow: null }">
@@ -1609,8 +1615,8 @@
                                         <div class="flex space-x-2">
                                             <div>
                                                 <input type="radio" name="marital-status"
-                                                    id="marital-status-married" value="0" class="peer sr-only"
-                                                    x-model="maritalStatus" />
+                                                    id="marital-status-married" value="0"
+                                                    class="peer sr-only" x-model="maritalStatus" />
                                                 <label for="marital-status-married"
                                                     class="flex items-center space-x-2 cursor-pointer !h-auto !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300 !py-2 !px-5 !rounded-sm !border-[#C7C7C7]">
                                                     Married

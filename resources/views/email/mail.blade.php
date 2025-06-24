@@ -7,6 +7,8 @@
 </head>
 
 <body>
+    <div>Showroom : {{ $data->first()->branch_name }}</div>
+    <div>Date : {{ $data->first()->created_at->format('Y-m-d') }}</div>
     <div>Total Walkin : {{ $data->count() }}</div>
 
     <div>Purchased customers : {{ $data->where('is_purchased', 1)->count() }}</div>

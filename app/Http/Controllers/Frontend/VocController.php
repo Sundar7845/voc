@@ -75,8 +75,8 @@ class VocController extends Controller
 
         // Group by invoice date in d-m-Y format
         $salesreport = $enhancedReports->groupBy(function ($item) {
-            return Carbon::createFromFormat('y-M-d', $item->invoice_date)->format('d-m-Y');
-        });
+            return Carbon::createFromFormat('y-M-d', $item->invoice_date)->format('Y-M-d');
+        });        
 
         return response()->json([
             'status' => 'success',

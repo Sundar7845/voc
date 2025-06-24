@@ -4624,3 +4624,7 @@ select:-webkit-autofill:focus {
     syntax: "*";
     inherits: false;
 }
+.padding_alignment_1 {
+    padding: 2% 5% 0% 5%;
+    margin-bottom: -25px;
+}

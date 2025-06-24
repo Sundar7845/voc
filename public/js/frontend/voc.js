@@ -426,6 +426,16 @@ function viewHistory(id) {
         success: function (response) {
             console.log(response);
 
+            // Get customer info from first report
+            const firstEntry = Object.values(response.response)[0];
+            const firstReport = firstEntry[0]; // First report in the first entry
+            const customerId = firstReport?.customer?.customer_id ?? "";
+            const customerName = firstReport?.customer?.name ?? "";
+            const customerPhone = firstReport?.customer?.phone_number ?? "";
+            $("#customer-id").text(customerId);
+            $("#customer-name").text(customerName);
+            $("#customer-phone").text(customerPhone);
+
             if (response.status === "success") {
                 let historyTableHtml = "";
                 let serial = 1;

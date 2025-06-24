@@ -42,8 +42,11 @@ class SendWalkinEmail extends Command
      */
     public function handle()
     {
-        $data = WalkinCustomer::whereDate('customer_enter_time', Carbon::today())
-            ->where('branch_id', 5)->get();
+        $data = WalkinCustomer::select('walkin_customers.*', 'branches.branch_name')
+            ->join('branches', 'branches.id', 'walkin_customers.branch_id')
+            ->whereDate('walkin_customers.customer_enter_time', Carbon::yesterday())
+            ->where('walkin_customers.branch_id', 5)
+            ->get();
 
         // Mail::to('manager.trichy@ejindia.com')
         //     ->cc(['dhiaan@ejindia.com', 'vivinrajkumar.r@ejindia.com', 'sathiskumar.p@ejindia.com', 'srinivasan.m@ejindia.com', 'sundaram@brightbridgeinfotech.com'])

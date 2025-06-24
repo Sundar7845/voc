@@ -94,7 +94,7 @@ function showroom() {
             {
                 data: "customer_id",
                 render: function (data, type, row) {
-                    return `<a href="#" class="customer-link no-underline" data-id="${row.customerid}">${data}</a>`;
+                    return `<a href="#" class="customer-link no-underline text-blue-600" data-id="${row.customerid}">${data}</a>`;
                 },
             },
             { data: "sales_executive_name" },
