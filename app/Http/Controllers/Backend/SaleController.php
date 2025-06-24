@@ -56,7 +56,12 @@ class SaleController extends Controller
             // Ensure the extension is used to infer type
             Excel::import(new SalesReportImport, $file->getRealPath(), null, \Maatwebsite\Excel\Excel::XLSX);
 
-            return redirect()->back()->with('success', 'Sales report imported successfully.');
+            Session::flash('message', 'Sales Report Imported Successfully!');
+            Session::flash('alert-type', 'success');
+            return redirect()->back()->with([
+                'message' => 'Sales Report Imported Successfully!',
+                'alert-type' => 'success'
+            ]);
         } catch (\Exception $e) {
             $this->Log(
                 __FUNCTION__,

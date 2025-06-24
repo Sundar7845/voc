@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Console\Commands\Customer;
 use App\Console\Commands\Employee;
 use App\Console\Commands\SalesReport;
+use App\Console\Commands\SendWalkinEmail;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -20,11 +21,12 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Employee::class,
         Customer::class,
-        SalesReport::class
+        SalesReport::class,
+        SendWalkinEmail::class,
     ];
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('email:send-walkin')->dailyAt('23:00');
     }
 
     /**

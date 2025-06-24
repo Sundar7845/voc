@@ -23,13 +23,13 @@ class HomeController extends Controller
             ->count();
 
         $purchasedCustomer = WalkinCustomer::join('customers', 'customers.id', 'walkin_customers.customer_id')
-            ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
+            ->whereDate('walkin_customers.customer_enter_time', Carbon::yesterday())
             ->where('is_purchased', 1)
             ->whereNotNull('walkin_customers.customer_out_time')
             ->count();
 
         $nonPurchasedCustomer = WalkinCustomer::join('customers', 'customers.id', 'walkin_customers.customer_id')
-            ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
+            ->whereDate('walkin_customers.customer_enter_time', Carbon::yesterday())
             ->where('is_purchased', 0)
             ->whereNotNull('walkin_customers.customer_out_time')
             ->count();
@@ -198,20 +198,20 @@ class HomeController extends Controller
         ]);
     }
 
-    function showroom(Request $request)
-    {
-        $branchesData = WalkinCustomer::select('walkin_customers.*', 'customers.name', 'branches.branch_name')
-            ->join('customers', 'customers.id', 'walkin_customers.customer_id')
-            ->join('branches', 'branches.id', 'walkin_customers.branch_id')
-            ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
-            ->whereNotNull('walkin_customers.branch_id')
-            ->whereNull('walkin_customers.customer_out_time')
-            ->get();
+    // function showroom(Request $request)
+    // {
+    //     $branchesData = WalkinCustomer::select('walkin_customers.*', 'customers.name', 'branches.branch_name')
+    //         ->join('customers', 'customers.id', 'walkin_customers.customer_id')
+    //         ->join('branches', 'branches.id', 'walkin_customers.branch_id')
+    //         ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
+    //         ->whereNotNull('walkin_customers.branch_id')
+    //         ->whereNull('walkin_customers.customer_out_time')
+    //         ->get();
 
-        // Group by branch name
-        $groupedData = $branchesData->groupBy('branch_name');
-        return view('backend.showroom', compact('groupedData'));
-    }
+    //     // Group by branch name
+    //     $groupedData = $branchesData->groupBy('branch_name');
+    //     return view('backend.showroom', compact('groupedData'));
+    // }
 
     public function getShowroomData(Request $request)
     {
@@ -225,6 +225,8 @@ class HomeController extends Controller
         $showroom = WalkinCustomer::select(
             'walkin_customers.*',
             'customers.name',
+            'customers.customer_id',
+            'customers.id as customerid',
             'branches.branch_name',
             'employees.name as sales_executive_name'
         )
@@ -243,18 +245,39 @@ class HomeController extends Controller
             // dd($branchIds);
             $showroom->whereIn('walkin_customers.branch_id', $branchIds);
         }
+
+        if ($request->has('purchase') && $request->purchase !== null) {
+            $showroom = $showroom->where('walkin_customers.is_purchased', $request->purchase);
+        }
+
         $showroom = $showroom->get();
 
-        // Return DataTables response
         return DataTables::of($showroom)
             ->addColumn('is_purchased', function ($row) {
                 return $row->is_purchased == 1 ? 'Purchased' : 'Non Purchased';
             })
-            ->addColumn('customer_in_out', function ($row) {
-                return ($row->customer_enter_time ?? '') . ' / ' . ($row->customer_out_time ?? '');
+            ->addColumn('customer_in', function ($row) {
+                return $row->customer_enter_time ?? '-';
             })
-            ->addColumn('sales_executive_name', function ($row) {
-                return $row->sales_executive_name ?? '-';
+            ->addColumn('customer_out', function ($row) {
+                return $row->customer_out_time ?? '-';
+            })
+            ->addColumn('spent_time', function ($row) {
+                if ($row->customer_enter_time && $row->customer_out_time) {
+                    $start = Carbon::parse($row->customer_enter_time);
+                    $end = Carbon::parse($row->customer_out_time);
+                    return $start->diff($end)->format('%H:%I:%S');
+                }
+                return '-';
+            })
+            ->addColumn('daily_count', function ($row) {
+                return 1; // or calculate per day per branch if needed
+            })
+            ->addColumn('is_scheme_redemption', function ($row) {
+                return $row->is_scheme_redemption == 1 ? 'Yes' : 'No';
+            })
+            ->addColumn('is_scheme_joining', function ($row) {
+                return $row->is_scheme_joining == 1 ? 'Yes' : 'No';
             })
             ->make(true);
     }

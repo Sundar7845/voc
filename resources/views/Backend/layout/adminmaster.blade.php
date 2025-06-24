@@ -75,7 +75,7 @@
             return {
                 open: false,
                 search: '',
-                selected: ['Coimbatore'], // pre-selected
+                selected: ['Trichy'], // pre-selected
                 items: ['Anna Nagar', 'Puducherry', 'Vellore', 'Hosur', 'Trichy', 'Salem', 'Erode',
                     'Coimbatore', 'Experience center', 'Pollachi', 'Udumalpet', 'Madurai', 'Ramnad'
                 ],

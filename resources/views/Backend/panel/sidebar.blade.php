@@ -45,7 +45,7 @@
 
                 Sales Report
             </a>
-            <a href="/showroom"
+            {{-- <a href="/showroom"
                 class="flex items-center gap-1 @if ($route == 'showroom') bg-[#9D4F2A] text-white @else text-[#4E5356] @endif p-2 w-full rounded-sm">
 
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -56,5 +56,5 @@
                         fill="white" />
                 </svg>
                 Showroom
-            </a>
+            </a> --}}
 </aside>

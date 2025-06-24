@@ -5,9 +5,11 @@ namespace App\Imports;
 use App\Models\Branches;
 use App\Models\Customer;
 use App\Models\SalesReport;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 
 class SalesReportImport implements ToModel, WithHeadingRow, WithBatchInserts
 {
@@ -37,9 +39,20 @@ class SalesReportImport implements ToModel, WithHeadingRow, WithBatchInserts
             }
         }
 
+        $excelDateValue = $row['invoice_date']; // Example: 45826
+
+        // Check if the value is numeric (Excel serial date format)
+        if (is_numeric($excelDateValue)) {
+            $carbonDate = Carbon::instance(Date::excelToDateTimeObject($excelDateValue));
+        } else {
+            $carbonDate = Carbon::parse($excelDateValue);
+        }
+
+        $formattedDate = $carbonDate->format('y-M-d');
+
         return new SalesReport([
-            'branch_id' => $branchId,
-            'invoice_date' => $row['invoice_date'],
+            'branch_id' => $row['branch_id'],
+            'invoice_date' => $formattedDate,
             'purchase_location' => $row['purchase_location'],
             'article_code' => $row['article_code'],
             'name' => $row['name'],
