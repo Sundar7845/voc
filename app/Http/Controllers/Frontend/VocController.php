@@ -76,7 +76,7 @@ class VocController extends Controller
         // Group by invoice date in d-m-Y format
         $salesreport = $enhancedReports->groupBy(function ($item) {
             return Carbon::createFromFormat('y-M-d', $item->invoice_date)->format('Y-M-d');
-        });        
+        });
 
         return response()->json([
             'status' => 'success',
@@ -220,7 +220,7 @@ class VocController extends Controller
     function getPurchasedFeedback(Request $request, $id)
     {
         try {
-            $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
+            $branch = Auth::user()->branch_id;
             WalkinCustomer::where('id', $id)->update([
                 // 'customer_id' => $id,
                 'branch_id' => $branch,
