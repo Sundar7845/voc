@@ -42,6 +42,7 @@ class SendWalkinEmail extends Command
      */
     public function handle()
     {
+        file_put_contents(storage_path('logs/cron-test.log'), now() . " - Cron ran\n", FILE_APPEND);
         $data = WalkinCustomer::select('walkin_customers.*', 'branches.branch_name')
             ->join('branches', 'branches.id', 'walkin_customers.branch_id')
             ->whereDate('walkin_customers.customer_enter_time', Carbon::yesterday())
