@@ -198,24 +198,8 @@ class HomeController extends Controller
         ]);
     }
 
-    // function showroom(Request $request)
-    // {
-    //     $branchesData = WalkinCustomer::select('walkin_customers.*', 'customers.name', 'branches.branch_name')
-    //         ->join('customers', 'customers.id', 'walkin_customers.customer_id')
-    //         ->join('branches', 'branches.id', 'walkin_customers.branch_id')
-    //         ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
-    //         ->whereNotNull('walkin_customers.branch_id')
-    //         ->whereNull('walkin_customers.customer_out_time')
-    //         ->get();
-
-    //     // Group by branch name
-    //     $groupedData = $branchesData->groupBy('branch_name');
-    //     return view('backend.showroom', compact('groupedData'));
-    // }
-
     public function getShowroomData(Request $request)
     {
-        // dd($request->all());
         // Normalize and parse the date
         $date = $request->date
             ? Carbon::parse($request->date)->toDateString()

@@ -180,6 +180,12 @@
                 </div>
             </div>
 
+            <div class="padding_alignment_1 flex flex-row justify-between">
+                <div class="text-black">Customer Id: <span id="customer-id"></span></div>
+                <div class="text-black">Customer Name: <span id="customer-name"></span></div>
+                <div class="text-black">Customer Number: <span id="customer-phone"></span></div>
+            </div>
+
             <div class="p-10" x-data="{ openRow: null }">
                 <div class="overflow-x-auto">
                     <table class="table border border-[#C7C7C7] text-center">

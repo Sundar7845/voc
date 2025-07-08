@@ -146,6 +146,9 @@ function viewHistory(id) {
         data: { customerId: id },
         success: function (response) {
             if (response.status === "success") {
+                $("#customer-id").text(response.customer.customer_id);
+                $("#customer-name").text(response.customer.name);
+                $("#customer-phone").text(response.customer.phone_number);
                 let historyTableHtml = "";
                 let serial = 1;
                 let rowIndex = 1;

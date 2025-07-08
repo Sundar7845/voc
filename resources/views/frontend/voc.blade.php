@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard</title>
-    
+
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" href="{{ asset('/images/avatar.svg') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
 
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.css">
 </head>
 
 <body class="bg-[#FCFAF9] min-h-screen roboto antialiased">
@@ -73,7 +74,8 @@
         <section class="p-4 py-8 md:p-16" x-data="{ tab: 'live-customer' }">
             <div class="border-b border-gray-300 pb-4 mb-4 flex gap-4 justify-between items-center flex-wrap">
                 <div class="space-x-6">
-                    <button class="p-2 font-semibold text-md border-[#9D4F2A] text-[#9D4F2A] relative" :class="{ 'border-b-3': tab === 'live-customer' }" @click="tab = 'live-customer'">
+                    <button class="p-2 font-semibold text-md border-[#9D4F2A] text-[#9D4F2A] relative"
+                        :class="{ 'border-b-3': tab === 'live-customer' }" @click="tab = 'live-customer'">
                         Live Customer
 
                         <span
@@ -82,7 +84,8 @@
                         </span>
                     </button>
 
-                    <button class="p-2 font-semibold text-md border-[#9D4F2A] text-[#9D4F2A] relative" :class="{ 'border-b-3': tab === 'customer-list' }" @click="tab = 'customer-list'">
+                    <button class="p-2 font-semibold text-md border-[#9D4F2A] text-[#9D4F2A] relative"
+                        :class="{ 'border-b-3': tab === 'customer-list' }" @click="tab = 'customer-list'">
                         Customer List
                     </button>
                 </div>
@@ -1825,124 +1828,62 @@
             <div x-show="tab === 'customer-list'" x-cloak>
 
 
-            <div class="mt-6 flex justify-between items-center gap-5">
-                <div class="w-full max-w-md">
-                <label class="input">
-                <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <g
-                    stroke-linejoin="round"
-                    stroke-linecap="round"
-                    stroke-width="2.5"
-                    fill="none"
-                    stroke="currentColor"
-                    >
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="m21 21-4.3-4.3"></path>
-                    </g>
-                </svg>
-                <input type="search" class="grow" placeholder="Type to search" />
-                </label>
+                <div class="mt-6 flex justify-between items-center gap-5">
+
+
+                    <div class="relative max-w-xs">
+
+
+
+                        <!-- Flatpickr Date Input -->
+                        <input type="text" id="datePicker" class="input pr-10 w-full" placeholder="Date" />
+
+                        <!-- Calendar Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5 absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none z-2"
+                            viewBox="0 0 25 24" fill="none">
+                            <path
+                                d="M7.72266 5.0061V5.83264H6.45791C5.38265 5.83264 4.5 6.70776 4.5 7.78057V18.8086C4.5 19.8814 5.38265 20.7565 6.45791 20.7565H18.3324C19.4076 20.7565 20.2939 19.8814 20.2939 18.8086V7.78057C20.2939 6.70775 19.4076 5.83264 18.3324 5.83264H17.0677V5.0061H16.1377V5.83264H8.65262V5.0061H7.72266ZM6.45791 6.7626H7.72266V7.58823H8.65262V6.7626H16.1377V7.58823H17.0677V6.7626H18.3324C18.9127 6.7626 19.3649 7.21013 19.3649 7.78057V9.09703H5.42906V7.78057C5.42906 7.21012 5.87755 6.7626 6.45791 6.7626ZM5.42906 10.027H19.3649V18.8086C19.3649 19.379 18.9127 19.8274 18.3324 19.8274H6.45791C5.87755 19.8274 5.42906 19.379 5.42906 18.8086V10.027ZM7.0168 11.6175V12.5474H9.62251V11.6175H7.0168ZM11.0941 11.6175V12.5474H13.6962V11.6175H11.0941ZM15.1714 11.6175V12.5474H17.7735V11.6175H15.1714ZM7.0168 14.4636V15.3936H9.62251V14.4636H7.0168ZM11.0941 14.4636V15.3936H13.6962V14.4636H11.0941ZM15.1714 14.4636V15.3936H17.7735V14.4636H15.1714ZM7.0168 17.307V18.2361H9.62251V17.307H7.0168ZM11.0941 17.307V18.2361H13.6962V17.307H11.0941ZM15.1714 17.307V18.2361H17.7735V17.307H15.1714Z"
+                                fill="#9D4F2A" />
+                        </svg>
+                    </div>
+
                 </div>
-
-
-                <div class="relative max-w-xs">
-                
-               
-
-                <!-- Flatpickr Date Input -->
-                <input
-                    type="text"
-                    id="datePicker"
-                    class="input pr-10 w-full"
-                    placeholder="Date"
-                />
-
-                <!-- Calendar Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg"                     
-                class="w-5 h-5 absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none z-2"
-                                viewBox="0 0 25 24" fill="none">
-                <path d="M7.72266 5.0061V5.83264H6.45791C5.38265 5.83264 4.5 6.70776 4.5 7.78057V18.8086C4.5 19.8814 5.38265 20.7565 6.45791 20.7565H18.3324C19.4076 20.7565 20.2939 19.8814 20.2939 18.8086V7.78057C20.2939 6.70775 19.4076 5.83264 18.3324 5.83264H17.0677V5.0061H16.1377V5.83264H8.65262V5.0061H7.72266ZM6.45791 6.7626H7.72266V7.58823H8.65262V6.7626H16.1377V7.58823H17.0677V6.7626H18.3324C18.9127 6.7626 19.3649 7.21013 19.3649 7.78057V9.09703H5.42906V7.78057C5.42906 7.21012 5.87755 6.7626 6.45791 6.7626ZM5.42906 10.027H19.3649V18.8086C19.3649 19.379 18.9127 19.8274 18.3324 19.8274H6.45791C5.87755 19.8274 5.42906 19.379 5.42906 18.8086V10.027ZM7.0168 11.6175V12.5474H9.62251V11.6175H7.0168ZM11.0941 11.6175V12.5474H13.6962V11.6175H11.0941ZM15.1714 11.6175V12.5474H17.7735V11.6175H15.1714ZM7.0168 14.4636V15.3936H9.62251V14.4636H7.0168ZM11.0941 14.4636V15.3936H13.6962V14.4636H11.0941ZM15.1714 14.4636V15.3936H17.7735V14.4636H15.1714ZM7.0168 17.307V18.2361H9.62251V17.307H7.0168ZM11.0941 17.307V18.2361H13.6962V17.307H11.0941ZM15.1714 17.307V18.2361H17.7735V17.307H15.1714Z" fill="#9D4F2A"/>
-                </svg>
-                </div>
-
-            </div>
 
                 <div class="overflow-x-auto rounded-box border border-[#E0E0E0] bg-white mt-8">
-                    <table class="table">
+                    <table class="table" id="customerListTable">
                         <!-- head -->
                         <thead class="bg-black text-white text-center">
-                        <tr>
-                            <th>S.No</th>
-                            <th>Token No</th>
-                            <th>Customer Name</th>
-                            <th>Customer In / Out</th>
-                            <th>Branch</th>
-                            <th>Sales Executive</th>
-                            <th>Spent Time</th>
-                            <th>Purchased / Non Purchased</th>
-                            <th>Scheme Redemption</th>
-                        </tr>
+                            <tr>
+                                <th class="px-4 py-3">Branch</th>
+                                <th class="px-4 py-3">Token No</th>
+                                <th class="px-4 py-3">Customer Name</th>
+                                <th class="px-4 py-3">Customer ID</th>
+                                <th class="px-4 py-3">Sales Executive</th>
+                                <th class="px-4 py-3">Customer In Time</th>
+                                <th class="px-4 py-3">Customer Out Time</th>
+                                <th class="px-4 py-3">Spent Time</th>
+                                <th class="px-4 py-3">Purchased / Non Purchased</th>
+                                <th class="px-4 py-3">Scehme Redemption</th>
+                                <th class="px-4 py-3">Scehme Payment</th>
+                            </tr>
                         </thead>
                         <tbody class="text-center">
-                        <!-- row 1 -->
-                        <tr>
-                            <th>1</th>
-                            <td>001</td>
-                            <td>Vivin Raj</td>
-                            <td>
-                            <div class="text-sm">
-                                2025-04-23 09:51:51<br />
-                                2025-04-23 09:59:51
-                            </div>
-                            </td>
-                            <td>Coimbatore</td>
-                            <td>Narasimman</td>
-                            <td>0hr 8min 0sec</td>
-                            <td class="text-error">Non Purchased</td>
-                            <td>-</td>
-                        </tr>
-                        <!-- row 2 -->
-                        <tr>
-                            <th>2</th>
-                            <td>002</td>
-                            <td>Vinoth</td>
-                            <td>
-                            <div class="text-sm">
-                                2025-04-23 09:51:51<br />
-                                2025-04-23 09:59:51
-                            </div>
-                            </td>
-                            <td>Coimbatore</td>
-                            <td>Narasimman</td>
-                            <td>0hr 8min 0sec</td>
-                            <td class="text-success">Purchased</td>
-                            <td>-</td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
-
-
-
             </div>
-
-
         </section>
+
     </main>
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-
-    <script>
-  flatpickr("#datePicker", {
-    dateFormat: "Y-m-d", // Customize format if needed
-    allowInput: true
-  });
-</script>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

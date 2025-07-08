@@ -15,6 +15,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class VocController extends Controller
 {
@@ -28,6 +29,51 @@ class VocController extends Controller
             ->whereNull('walkin_customers.customer_out_time')
             ->orderBy('walkin_customers.customer_enter_time') // Ensure proper order
             ->get();
+        // 2. Check if this is an AJAX request for DataTable
+        if ($request->ajax()) {
+
+            // Normalize the date
+            $date = $request->date
+                ? Carbon::parse($request->date)->toDateString()
+                : Carbon::today()->toDateString();
+
+            // Build showroom query
+            $showroom = WalkinCustomer::select(
+                'walkin_customers.*',
+                'customers.name',
+                'customers.customer_id',
+                'customers.id as customerid',
+                'branches.branch_name',
+                'employees.name as sales_executive_name'
+            )
+                ->leftJoin('customers', 'customers.id', '=', 'walkin_customers.customer_id')
+                ->leftJoin('branches', 'branches.id', '=', 'walkin_customers.branch_id')
+                ->leftJoin('employees', 'employees.id', '=', 'walkin_customers.sales_executive_id');
+
+            if (!empty($request->date)) {
+                $showroom->whereDate('walkin_customers.customer_enter_time', $date);
+            }
+
+            $showroom = $showroom->get();
+
+            return DataTables::of($showroom)
+                ->addColumn('is_purchased', fn($row) => $row->is_purchased == 1 ? 'Purchased' : 'Non Purchased')
+                ->addColumn('customer_in', fn($row) => $row->customer_enter_time ?? '-')
+                ->addColumn('customer_out', fn($row) => $row->customer_out_time ?? '-')
+                ->addColumn('spent_time', function ($row) {
+                    if ($row->customer_enter_time && $row->customer_out_time) {
+                        $start = Carbon::parse($row->customer_enter_time);
+                        $end = Carbon::parse($row->customer_out_time);
+                        return $start->diff($end)->format('%H:%I:%S');
+                    }
+                    return '-';
+                })
+                ->addColumn('daily_count', fn($row) => 1)
+                ->addColumn('is_scheme_redemption', fn($row) => $row->is_scheme_redemption == 1 ? 'Yes' : 'No')
+                ->addColumn('is_scheme_joining', fn($row) => $row->is_scheme_joining == 1 ? 'Yes' : 'No')
+                ->make(true);
+        }
+
 
         $professions = Profession::where('is_active', 1)->get();
         $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
@@ -80,7 +126,8 @@ class VocController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'response' => $salesreport
+            'response' => $salesreport,
+            'customer' => $customer,
         ]);
     }
 
