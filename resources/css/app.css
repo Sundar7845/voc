@@ -1,7 +1,12 @@
+
+@plugin "daisyui" {
+  themes: light --default;
+}
 @import "tailwindcss";
-@plugin "daisyui";
 
-
+body{
+  color: #000 !important;
+}
 .roboto {
   font-family: "Roboto", sans-serif;
 }
