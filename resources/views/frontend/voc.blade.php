@@ -226,7 +226,12 @@
                     </div>
                 @endif
 
-                <dialog id="viewHistory" class="modal">
+            
+
+            </div>
+
+
+            <dialog id="viewHistory" class="modal">
                     <div class="modal-box p-0 max-w-4xl min-h-60 bg-[#FCFAF9]">
                         <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10 divide-x divide-white">
                             <div class="pe-4">
@@ -1823,8 +1828,6 @@
                     </div>
                 </dialog>
 
-            </div>
-
             <div x-show="tab === 'customer-list'" x-cloak>
 
 
@@ -1850,7 +1853,7 @@
 
                 </div>
 
-                <div class="overflow-x-auto rounded-box border border-[#E0E0E0] bg-white mt-8">
+                <div class="overflow-x-auto rounded-box border border-[#E0E0E0] bg-white mt-8 p-4">
                     <table class="table" id="customerListTable">
                         <!-- head -->
                         <thead class="bg-black text-white text-center">
