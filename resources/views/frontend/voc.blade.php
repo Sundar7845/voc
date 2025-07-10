@@ -169,7 +169,8 @@
                 </div>
             </div>
 
-            <div class="lg:p-4" x-data="getfeedbackData" x-show="tab === 'live-customer'" x-cloak>
+            <div x-data="getfeedbackData">
+                <div class="lg:p-4"  x-show="tab === 'live-customer'" x-cloak>
 
                 @if (count($walkincustomer) > 0)
                     <div
@@ -1809,20 +1810,19 @@
             </dialog>
 
             <div x-show="tab === 'customer-list'" x-cloak>
-
-
                 <div class="mt-6 flex justify-between items-center gap-5">
                     <div class="relative max-w-xs">
                         <div x-data="{ open: false }" class="relative flex gap-1 items-center">
                             <div class="text-sm font-medium">Date:</div>
                             <!-- Input field to trigger the date picker -->
-                            <input x-ref="dateInput" x-init="const yesterday = new Date(Date.now() - 86400000);
-                            const formattedYesterday = yesterday.toISOString().split('T')[0];
-                            $refs.dateInput.value = formattedYesterday;
-                            $refs.dateInput.max = formattedYesterday;" type="date" id="date"
+                            <input x-ref="dateInput" x-init="const today = new Date();
+                            const formattedToday = today.toISOString().split('T')[0];
+                            $refs.dateInput.value = formattedToday;
+                            $refs.dateInput.max = formattedToday;" type="date" id="date"
                                 name="date"
                                 class="w-full px-4 py-2 border text-sm cursor-pointer border-gray-300 rounded-md bg-white"
                                 x-on:click="open = true; $nextTick(() => $refs.dateInput.showPicker())" />
+
                         </div>
                     </div>
 
@@ -1851,6 +1851,7 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
             </div>
         </section>
 

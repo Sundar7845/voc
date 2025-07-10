@@ -31,13 +31,10 @@ class VocController extends Controller
             ->get();
         // 2. Check if this is an AJAX request for DataTable
         if ($request->ajax()) {
-
-            // Normalize the date
             $date = $request->date
                 ? Carbon::parse($request->date)->toDateString()
                 : Carbon::today()->toDateString();
 
-            // Build showroom query
             $showroom = WalkinCustomer::select(
                 'walkin_customers.*',
                 'customers.name',
@@ -50,13 +47,9 @@ class VocController extends Controller
                 ->leftJoin('branches', 'branches.id', '=', 'walkin_customers.branch_id')
                 ->leftJoin('employees', 'employees.id', '=', 'walkin_customers.sales_executive_id')
                 ->where('walkin_customers.branch_id', Auth::user()->branch_id)
-                ->whereNotNull('walkin_customers.customer_out_time');
-
-            if (!empty($request->date)) {
-                $showroom->whereDate('walkin_customers.customer_enter_time', $date);
-            }
-
-            $showroom = $showroom->get();
+                ->whereNotNull('walkin_customers.customer_out_time')
+                ->whereDate('walkin_customers.customer_enter_time', $date)
+                ->get();
 
             return DataTables::of($showroom)
                 ->addColumn('is_purchased', fn($row) => $row->is_purchased == 1 ? 'Purchased' : 'Non Purchased')

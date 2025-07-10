@@ -639,6 +639,12 @@ function getFeedbackDetail(id) {
 }
 
 $(document).ready(function () {
+    // Bind the change event correctly
+    $(document).on("change", "#date", function () {
+        console.log("Date changed:", $(this).val()); // ✅ Test log
+        customerList();
+    });
+
     function customerList() {
         const date = $("#date").val();
 
@@ -714,7 +720,10 @@ $(document).ready(function () {
         });
     }
 
-    customerList(); // Call function on load
+    // Let Alpine initialize before fetching data
+    setTimeout(function () {
+        customerList();
+    }, 500);
 });
 
 $(document)
@@ -747,7 +756,6 @@ function viewHistory(id) {
         type: "GET",
         data: { customerId: id },
         success: function (response) {
-
             if (response.status === "success") {
                 $("#customer-id").text(response.customer.customer_id);
                 $("#customer-name").text(response.customer.name);
