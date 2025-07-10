@@ -952,8 +952,3 @@ function getFeedbackDetail(id) {
         error: function (xhr, status, error) {},
     });
 }
-
-flatpickr("#datePicker", {
-    dateFormat: "Y-m-d", // Customize format if needed
-    allowInput: true,
-});

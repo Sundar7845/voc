@@ -48,7 +48,9 @@ class VocController extends Controller
             )
                 ->leftJoin('customers', 'customers.id', '=', 'walkin_customers.customer_id')
                 ->leftJoin('branches', 'branches.id', '=', 'walkin_customers.branch_id')
-                ->leftJoin('employees', 'employees.id', '=', 'walkin_customers.sales_executive_id');
+                ->leftJoin('employees', 'employees.id', '=', 'walkin_customers.sales_executive_id')
+                ->where('walkin_customers.branch_id', Auth::user()->branch_id)
+                ->whereNotNull('walkin_customers.customer_out_time');
 
             if (!empty($request->date)) {
                 $showroom->whereDate('walkin_customers.customer_enter_time', $date);

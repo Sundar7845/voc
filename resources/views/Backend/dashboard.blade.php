@@ -176,7 +176,7 @@
                     <img class="h-14 lg:h-16" src="{{ asset('/images/logo-white.svg') }}" alt="logo" />
                 </div>
                 <div class="text-lg lg:text-xl text-white font-medium uppercase">
-                    Past History
+                    Passed History
                 </div>
             </div>
 
