@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
- 
+
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" href="{{ asset('/images/avatar.svg') }}">
@@ -78,7 +78,7 @@
                 search: '',
                 selected: ['Trichy'], // pre-selected
                 items: ['Anna Nagar', 'Puducherry', 'Vellore', 'Hosur', 'Trichy', 'Salem', 'Erode',
-                    'Coimbatore', 'Experience center', 'Pollachi', 'Udumalpet', 'Madurai', 'Ramnad','Ganapthy'
+                    'Coimbatore', 'Experience center', 'Pollachi', 'Udumalpet', 'Madurai', 'Ramnad', 'Ganapthy'
                 ],
 
                 get filteredItems() {
