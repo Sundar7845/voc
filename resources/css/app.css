@@ -62,3 +62,8 @@ body{
   transition: background-color 5000s ease-in-out 0s !important; 
 
 }
+
+
+input[type="text"],input[type="email"],input[type="date"], select{
+@apply min-h-12;
+}
