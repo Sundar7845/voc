@@ -121,25 +121,25 @@
                                     <div class="flex flex-col justify-center items-center gap-6">
                                         <div class="text-[#9D4F2A] text-md font-semibold">Enter your phone number</div>
                                         <div class="input-container phone-group grid grid-cols-10 gap-1">
-                                            <input required type="text" maxlength="1" id="phone-1"
+                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-1"
                                                 class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-2"
+                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-2"
                                                 class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-3"
+                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-3"
                                                 class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-4"
+                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-4"
                                                 class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-5"
+                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-5"
                                                 class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-6"
+                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-6"
                                                 class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-7"
+                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-7"
                                                 class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-8"
+                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-8"
                                                 class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-9"
+                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-9"
                                                 class="phone input-box" />
-                                            <input required type="text" maxlength="1" id="phone-10"
+                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-10"
                                                 class="phone input-box" />
                                         </div>
 
@@ -1576,25 +1576,25 @@
                                     </div>
                                     <div class="input-container phone-group grid gap-1 grid-cols-10 max-w-fit">
                                         <!-- Generate 10 input fields with the class "phone" -->
-                                        <input type="text" maxlength="1"
+                                        <input type="text" maxlength="1" inputmode="numeric"
                                             class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
-                                        <input type="text" maxlength="1"
+                                        <input type="text" maxlength="1" inputmode="numeric"
                                             class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
-                                        <input type="text" maxlength="1"
+                                        <input type="text" maxlength="1" inputmode="numeric"
                                             class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
-                                        <input type="text" maxlength="1"
+                                        <input type="text" maxlength="1" inputmode="numeric"
                                             class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
-                                        <input type="text" maxlength="1"
+                                        <input type="text" maxlength="1" inputmode="numeric"
                                             class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
-                                        <input type="text" maxlength="1"
+                                        <input type="text" maxlength="1" inputmode="numeric"
                                             class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
-                                        <input type="text" maxlength="1"
+                                        <input type="text" maxlength="1" inputmode="numeric"
                                             class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
-                                        <input type="text" maxlength="1"
+                                        <input type="text" maxlength="1" inputmode="numeric"
                                             class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
-                                        <input type="text" maxlength="1"
+                                        <input type="text" maxlength="1" inputmode="numeric"
                                             class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
-                                        <input type="text" maxlength="1"
+                                        <input type="text" maxlength="1" inputmode="numeric"
                                             class="phone_number input-box border border-[#C7C7C7] text-black text-center h-10" />
                                     </div>
                                     <!-- Hidden input to store combined value -->
@@ -1681,17 +1681,17 @@
                                         </div>
                                         <div class="input-container zip-group grid gap-1 grid-cols-6 max-w-fit">
                                             <!-- Pincode inputs with class 'zip' for identification -->
-                                            <input required name="pincode" type="text" maxlength="1"
+                                            <input required name="pincode" type="text" maxlength="1" inputmode="numeric" pattern="\d*" 
                                                 class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
-                                            <input required name="pincode" type="text" maxlength="1"
+                                            <input required name="pincode" type="text" maxlength="1" inputmode="numeric" pattern="\d*"
                                                 class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
-                                            <input required name="pincode" type="text" maxlength="1"
+                                            <input required name="pincode" type="text" maxlength="1" inputmode="numeric" pattern="\d*"
                                                 class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
-                                            <input required name="pincode" type="text" maxlength="1"
+                                            <input required name="pincode" type="text" maxlength="1" inputmode="numeric" pattern="\d*"
                                                 class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
-                                            <input required name="pincode" type="text" maxlength="1"
+                                            <input required name="pincode" type="text" maxlength="1" inputmode="numeric" pattern="\d*"
                                                 class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
-                                            <input required name="pincode" type="text" maxlength="1"
+                                            <input required name="pincode" type="text" maxlength="1" inputmode="numeric" pattern="\d*"
                                                 class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
 
                                             <input type="hidden" name="hiddenPincode" id="hiddenPincode">
