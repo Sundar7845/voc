@@ -38,6 +38,7 @@ class VocController extends Controller
             $showroom = WalkinCustomer::select(
                 'walkin_customers.*',
                 'customers.name',
+                'customers.phone_number',
                 'customers.customer_id',
                 'customers.id as customerid',
                 'branches.branch_name',

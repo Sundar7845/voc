@@ -677,6 +677,9 @@ $(document).ready(function () {
                     data: "name",
                 },
                 {
+                    data: "phone_number",
+                },
+                {
                     data: "customer_id",
                     render: function (data, type, row) {
                         return `<a href="#" class="customer-link no-underline text-blue-600" data-id="${row.customerid}">${data}</a>`;

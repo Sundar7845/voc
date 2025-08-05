@@ -1857,6 +1857,7 @@
                                     <th class="px-4 py-3">Branch</th>
                                     <th class="px-4 py-3">Token No</th>
                                     <th class="px-4 py-3">Customer Name</th>
+                                    <th class="px-4 py-3">Customer Mobile</th>
                                     <th class="px-4 py-3">Customer ID</th>
                                     <th class="px-4 py-3">Sales Executive</th>
                                     <th class="px-4 py-3">Customer In Time</th>
