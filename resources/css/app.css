@@ -67,3 +67,7 @@ body{
 input[type="text"],input[type="email"],input[type="date"], select{
 @apply min-h-12;
 }
+
+button:not(:disabled){
+  @apply cursor-pointer;
+}

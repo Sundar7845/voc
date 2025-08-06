@@ -88,6 +88,11 @@
                         :class="{ 'border-b-3': tab === 'customer-list' }" @click="tab = 'customer-list'">
                         Customer List
                     </button>
+
+                    <button class="p-2 font-semibold text-md border-[#9D4F2A] text-[#9D4F2A] relative"
+                        :class="{ 'border-b-3': tab === 'birthday-list' }" @click="tab = 'birthday-list'">
+                        Birthday List
+                    </button>
                 </div>
 
                 <div>
@@ -1874,6 +1879,61 @@
                         </table>
                     </div>
                 </div>
+
+
+                <div x-show="tab === 'birthday-list'" x-cloak>
+                                            
+                <div class="mt-6 flex justify-between items-center gap-5">
+                        <div class="relative max-w-xs">
+                            <div x-data="{ open: false }" class="relative flex gap-1 items-center">
+                                <div class="text-sm font-medium">Date:</div>
+                                <!-- Input field to trigger the date picker -->
+                                <input x-ref="dateInput" x-init="const today = new Date();
+                                const formattedToday = today.toISOString().split('T')[0];
+                                $refs.dateInput.value = formattedToday;
+                                $refs.dateInput.max = formattedToday;" type="date" id="date"
+                                    name="date"
+                                    class="w-full px-4 py-2 border text-sm cursor-pointer border-gray-300 rounded-md bg-white"
+                                    x-on:click="open = true; $nextTick(() => $refs.dateInput.showPicker())" />
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="overflow-x-auto rounded-box border border-[#E0E0E0] bg-white mt-8 p-4">
+                        <table class="table" id="customerListTable">
+                            <!-- head -->
+                            <thead class="bg-black text-white text-center">
+                                <tr>
+                                    <th class="px-4 py-3">S.No</th>
+                                    <th class="px-4 py-3">Token No</th>
+                                    <th class="px-4 py-3">Customer Name</th>
+                                    <th class="px-4 py-3">Customer In / Out</th>
+                                    <th class="px-4 py-3">Branch</th>
+                                    <th class="px-4 py-3">Sales Executive</th>
+                                    <th class="px-4 py-3">Spent Time</th>
+                                    <th class="px-4 py-3">Purchased / Non Purchased</th>
+                                    <th class="px-4 py-3">Scehme Redemption</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </section>
 
