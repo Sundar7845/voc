@@ -1,73 +1,88 @@
-
 @plugin "daisyui" {
-  themes: light --default;
+    themes: light --default;
 }
+
 @import "tailwindcss";
 
-body{
-  color: #000 !important;
+body {
+    color: #000 !important;
 }
+
 .roboto {
-  font-family: "Roboto", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 
-  
-  .open-sans {
+
+.open-sans {
     font-family: "Open Sans", sans-serif;
-  }
+}
 
 
-  [x-cloak] { display: none !important; }
+[x-cloak] {
+    display: none !important;
+}
 
 
-  .main-btn{
+.main-btn {
     @apply bg-[#9D4F2A] text-white px-6 py-2 rounded-sm font-medium shadow-md cursor-pointer flex gap-1 items-center;
-  }
+}
 
-  .input-box {
-    @apply max-w-10 md:h-10 md:w-10 rounded-md border border-[#C7C7C7] text-center text-lg font-medium;
-  }
+.input-box {
+    @apply max-w-10 md: h-10 md:w-10 rounded-md border border-[#C7C7C7] text-center text-lg font-medium;
+}
 
 
 
-  input[type='radio'] + label {
+input[type='radio']+label {
     @apply bg-white w-full rounded-xl shadow-lg border border-[#EEE6E2] text-sm size-32 text-black grid gap-2 justify-items-center p-4 cursor-pointer font-medium;
-  }
-  input[type='radio'] + label:hover {
+}
+
+input[type='radio']+label:hover {
     @apply text-black border-[#964A26];
-  }
+}
 
-  input[type='radio']:checked + label {
+input[type='radio']:checked+label {
     @apply text-black border-[#964A26] ring ring-[#964A26];
-  }
+}
 
-  .modal-box {
+.modal-box {
     max-height: 650px;
-  }
+}
 
 
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover, 
-  input:-webkit-autofill:focus,
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus,
-  select:-webkit-autofill,
-  select:-webkit-autofill:hover,
-  select:-webkit-autofill:focus {
-  border: 1px solid #220e0e !important;
-  -webkit-text-fill-color: #000 !important;
-  color: #000 !important;
-  transition: background-color 5000s ease-in-out 0s !important; 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    border: 1px solid #220e0e !important;
+    -webkit-text-fill-color: #000 !important;
+    color: #000 !important;
+    transition: background-color 5000s ease-in-out 0s !important;
 
 }
 
 
-input[type="text"],input[type="email"],input[type="date"], select{
-@apply min-h-12;
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select {
+    @apply min-h-12;
 }
 
-button:not(:disabled){
-  @apply cursor-pointer;
+button:not(:disabled) {
+    @apply cursor-pointer;
+}
+
+
+#customerBdayListTable table.dataTable th.dt-type-numeric,
+#customerBdayListTable table.dataTable th.dt-type-date,
+#customerBdayListTable table.dataTable td.dt-type-numeric,
+#customerBdayListTable table.dataTable td.dt-type-date {
+    @apply  !text-start;
 }
