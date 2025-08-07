@@ -1914,7 +1914,7 @@
                                     <th class="px-4 py-2">Birthday</th>
                                 </tr>
                             </thead>
-                            <tbody  class="text-black">
+                            <tbody class="text-black">
 
                             </tbody>
                         </table>
