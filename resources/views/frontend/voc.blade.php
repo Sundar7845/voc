@@ -93,6 +93,11 @@
                         :class="{ 'border-b-3': tab === 'birthday-list' }" @click="tab = 'birthday-list'">
                         Birthday List
                     </button>
+
+                    <button class="p-2 font-semibold text-md border-[#9D4F2A] text-[#9D4F2A] relative"
+                        :class="{ 'border-b-3': tab === 'anniversary-list' }" @click="tab = 'anniversary-list'">
+                        Anniversary List
+                    </button>
                 </div>
 
                 <div>
@@ -1912,6 +1917,41 @@
                                     <th class="px-4 py-2">Customer Name</th>
                                     <th class="px-4 py-2">Customer Mobile</th>
                                     <th class="px-4 py-2">Birthday</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-black text-start">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div x-show="tab === 'anniversary-list'" x-cloak>
+
+                    <div class="mt-6 flex justify-between items-center gap-5">
+                        <div class="relative max-w-xs">
+                            <div x-data="{ open: false }" class="relative flex gap-1 items-center">
+                                <div class="text-sm font-medium">Date:</div>
+                                <!-- Input field to trigger the date picker -->
+                                <input type="date" x-ref="dateInput" x-init="$refs.dateInput.value = (new Date()).toISOString().split('T')[0]" id="anniversarydate"
+                                    name="anniversarydate"
+                                    class="w-full px-4 py-2 border text-sm cursor-pointer border-gray-300 rounded-md bg-white"
+                                    x-on:click="open = true; $nextTick(() => $refs.dateInput.showPicker())" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="overflow-x-auto rounded-box border border-[#E0E0E0] bg-white mt-8 p-4">
+                        <table class="table" id="anniversaryListTable">
+                            <!-- head -->
+                            <thead class="bg-black text-white text-center">
+                                <tr>
+                                    <th class="px-4 py-2">Branch</th>
+                                    <th class="px-4 py-2">Customer Name</th>
+                                    <th class="px-4 py-2">Customer Mobile</th>
+                                    <th class="px-4 py-2">Anniversary</th>
                                 </tr>
                             </thead>
                             <tbody class="text-black text-start">

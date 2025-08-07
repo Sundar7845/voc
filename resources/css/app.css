@@ -29,7 +29,7 @@ body {
 }
 
 .input-box {
-    @apply max-w-10 md: h-10 md:w-10 rounded-md border border-[#C7C7C7] text-center text-lg font-medium;
+    @apply max-w-10 md:h-10 md:w-10 rounded-md border border-[#C7C7C7] text-center text-lg font-medium;
 }
 
 
@@ -80,9 +80,9 @@ button:not(:disabled) {
 }
 
 
-#customerBdayListTable table.dataTable th.dt-type-numeric,
-#customerBdayListTable table.dataTable th.dt-type-date,
-#customerBdayListTable table.dataTable td.dt-type-numeric,
-#customerBdayListTable table.dataTable td.dt-type-date {
+table.dataTable th.dt-type-numeric,
+table.dataTable th.dt-type-date,
+table.dataTable td.dt-type-numeric,
+table.dataTable td.dt-type-date {
     @apply  !text-start;
 }
