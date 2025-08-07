@@ -20,16 +20,32 @@ use Yajra\DataTables\Facades\DataTables;
 class VocController extends Controller
 {
     use Common;
-    function voc(Request $request)
+
+    public function voc(Request $request)
     {
-        $walkincustomer = WalkinCustomer::select('walkin_customers.*', 'customers.name')
-            ->join('customers', 'customers.id', 'walkin_customers.customer_id')
-            ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
-            ->where('walkin_customers.branch_id', Auth::user()->branch_id)
-            ->whereNull('walkin_customers.customer_out_time')
-            ->orderBy('walkin_customers.customer_enter_time') // Ensure proper order
-            ->get();
-        // 2. Check if this is an AJAX request for DataTable
+        // ✅ Handle AJAX request for Birthday Customers FIRST
+        if ($request->ajax() && $request->type === 'birthday') {
+            try {
+                $bdaydate = $request->bdaydate
+                    ? Carbon::parse($request->bdaydate)
+                    : Carbon::today();
+
+                $birthdayCustomers = Customer::join('branches', 'customers.branch_id', '=', 'branches.id')
+                    ->where('customers.branch_id', Auth::user()->branch_id)
+                    ->whereMonth('customers.dob', $bdaydate->month)
+                    ->whereDay('customers.dob', $bdaydate->day)
+                    ->select('customers.*', 'branches.branch_name')
+                    ->get();
+
+                return DataTables::of($birthdayCustomers)
+                    ->addColumn('dob', fn($row) => Carbon::parse($row->dob)->format('d-m-Y'))
+                    ->make(true);
+            } catch (Exception $e) {
+                return response()->json(['error' => 'Server Error: ' . $e->getMessage()], 500);
+            }
+        }
+
+        // ✅ 2. Generic showroom AJAX
         if ($request->ajax()) {
             $date = $request->date
                 ? Carbon::parse($request->date)->toDateString()
@@ -70,12 +86,25 @@ class VocController extends Controller
                 ->make(true);
         }
 
+        // ✅ Non-AJAX page load
+        $walkincustomer = WalkinCustomer::select('walkin_customers.*', 'customers.name')
+            ->join('customers', 'customers.id', 'walkin_customers.customer_id')
+            ->whereDate('walkin_customers.customer_enter_time', Carbon::today())
+            ->where('walkin_customers.branch_id', Auth::user()->branch_id)
+            ->whereNull('walkin_customers.customer_out_time')
+            ->orderBy('walkin_customers.customer_enter_time')
+            ->get();
 
         $professions = Profession::where('is_active', 1)->get();
         $branch = Branches::where('branch_name', Auth::user()->name)->value('id');
-        $employee = Employee::where('branch_id', Auth::user()->branch_id)->where('is_active', 1)->orderBy('name', 'ASC')->get();
+        $employee = Employee::where('branch_id', Auth::user()->branch_id)
+            ->where('is_active', 1)
+            ->orderBy('name', 'ASC')
+            ->get();
+
         return view('frontend.voc', compact('walkincustomer', 'professions', 'employee'));
     }
+
 
     public function getPassedHistory(Request $request)
     {

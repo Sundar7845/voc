@@ -639,11 +639,40 @@ function getFeedbackDetail(id) {
 }
 
 $(document).ready(function () {
+    bdaylist(); // Initialize birthday list on page load
     // Bind the change event correctly
     $(document).on("change", "#date", function () {
         console.log("Date changed:", $(this).val()); // ✅ Test log
         customerList();
     });
+    $(document).on("change", "#bdaydate", function () {
+        console.log("Date changed:", $(this).val()); // ✅ Test log
+        bdaylist();
+    });
+
+    function bdaylist() {
+        const bdaydate = $("#bdaydate").val();
+        $("#customerBdayListTable").DataTable({
+            processing: true,
+            serverSide: true,
+            destroy: true,
+            responsive: true,
+            ordering: false, // Disable sorting for all columns
+            ajax: {
+                url: "voc",
+                data: {
+                    type: "birthday",
+                    bdaydate: $("#bdaydate").val(),
+                },
+            },
+            columns: [
+                { data: "branch_name" },
+                { data: "name" },
+                { data: "phone_number" },
+                { data: "dob" },
+            ],
+        });
+    }
 
     function customerList() {
         const date = $("#date").val();

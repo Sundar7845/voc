@@ -126,26 +126,26 @@
                                     <div class="flex flex-col justify-center items-center gap-6">
                                         <div class="text-[#9D4F2A] text-md font-semibold">Enter your phone number</div>
                                         <div class="input-container phone-group grid grid-cols-10 gap-1">
-                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-1"
-                                                class="phone input-box" />
-                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-2"
-                                                class="phone input-box" />
-                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-3"
-                                                class="phone input-box" />
-                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-4"
-                                                class="phone input-box" />
-                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-5"
-                                                class="phone input-box" />
-                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-6"
-                                                class="phone input-box" />
-                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-7"
-                                                class="phone input-box" />
-                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-8"
-                                                class="phone input-box" />
-                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-9"
-                                                class="phone input-box" />
-                                            <input required type="text" inputmode="numeric" pattern="\d*" maxlength="1" id="phone-10"
-                                                class="phone input-box" />
+                                            <input required type="text" inputmode="numeric" pattern="\d*"
+                                                maxlength="1" id="phone-1" class="phone input-box" />
+                                            <input required type="text" inputmode="numeric" pattern="\d*"
+                                                maxlength="1" id="phone-2" class="phone input-box" />
+                                            <input required type="text" inputmode="numeric" pattern="\d*"
+                                                maxlength="1" id="phone-3" class="phone input-box" />
+                                            <input required type="text" inputmode="numeric" pattern="\d*"
+                                                maxlength="1" id="phone-4" class="phone input-box" />
+                                            <input required type="text" inputmode="numeric" pattern="\d*"
+                                                maxlength="1" id="phone-5" class="phone input-box" />
+                                            <input required type="text" inputmode="numeric" pattern="\d*"
+                                                maxlength="1" id="phone-6" class="phone input-box" />
+                                            <input required type="text" inputmode="numeric" pattern="\d*"
+                                                maxlength="1" id="phone-7" class="phone input-box" />
+                                            <input required type="text" inputmode="numeric" pattern="\d*"
+                                                maxlength="1" id="phone-8" class="phone input-box" />
+                                            <input required type="text" inputmode="numeric" pattern="\d*"
+                                                maxlength="1" id="phone-9" class="phone input-box" />
+                                            <input required type="text" inputmode="numeric" pattern="\d*"
+                                                maxlength="1" id="phone-10" class="phone input-box" />
                                         </div>
 
                                         <!-- Hidden input to store combined value -->
@@ -1686,17 +1686,23 @@
                                         </div>
                                         <div class="input-container zip-group grid gap-1 grid-cols-6 max-w-fit">
                                             <!-- Pincode inputs with class 'zip' for identification -->
-                                            <input required name="pincode" type="text" maxlength="1" inputmode="numeric" pattern="\d*" 
+                                            <input required name="pincode" type="text" maxlength="1"
+                                                inputmode="numeric" pattern="\d*"
                                                 class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
-                                            <input required name="pincode" type="text" maxlength="1" inputmode="numeric" pattern="\d*"
+                                            <input required name="pincode" type="text" maxlength="1"
+                                                inputmode="numeric" pattern="\d*"
                                                 class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
-                                            <input required name="pincode" type="text" maxlength="1" inputmode="numeric" pattern="\d*"
+                                            <input required name="pincode" type="text" maxlength="1"
+                                                inputmode="numeric" pattern="\d*"
                                                 class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
-                                            <input required name="pincode" type="text" maxlength="1" inputmode="numeric" pattern="\d*"
+                                            <input required name="pincode" type="text" maxlength="1"
+                                                inputmode="numeric" pattern="\d*"
                                                 class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
-                                            <input required name="pincode" type="text" maxlength="1" inputmode="numeric" pattern="\d*"
+                                            <input required name="pincode" type="text" maxlength="1"
+                                                inputmode="numeric" pattern="\d*"
                                                 class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
-                                            <input required name="pincode" type="text" maxlength="1" inputmode="numeric" pattern="\d*"
+                                            <input required name="pincode" type="text" maxlength="1"
+                                                inputmode="numeric" pattern="\d*"
                                                 class="zip input-box border border-[#C7C7C7] text-black h-10 text-center" />
 
                                             <input type="hidden" name="hiddenPincode" id="hiddenPincode">
@@ -1882,53 +1888,34 @@
 
 
                 <div x-show="tab === 'birthday-list'" x-cloak>
-                                            
-                <div class="mt-6 flex justify-between items-center gap-5">
+
+                    <div class="mt-6 flex justify-between items-center gap-5">
                         <div class="relative max-w-xs">
                             <div x-data="{ open: false }" class="relative flex gap-1 items-center">
                                 <div class="text-sm font-medium">Date:</div>
                                 <!-- Input field to trigger the date picker -->
-                                <input x-ref="dateInput" x-init="const today = new Date();
-                                const formattedToday = today.toISOString().split('T')[0];
-                                $refs.dateInput.value = formattedToday;
-                                $refs.dateInput.max = formattedToday;" type="date" id="date"
-                                    name="date"
+                                <input type="date" x-ref="dateInput" x-init="$refs.dateInput.value = (new Date()).toISOString().split('T')[0]" id="bdaydate"
+                                    name="bdaydate"
                                     class="w-full px-4 py-2 border text-sm cursor-pointer border-gray-300 rounded-md bg-white"
                                     x-on:click="open = true; $nextTick(() => $refs.dateInput.showPicker())" />
-
                             </div>
                         </div>
 
                     </div>
 
                     <div class="overflow-x-auto rounded-box border border-[#E0E0E0] bg-white mt-8 p-4">
-                        <table class="table" id="customerListTable">
+                        <table class="table" id="customerBdayListTable">
                             <!-- head -->
                             <thead class="bg-black text-white text-center">
                                 <tr>
-                                    <th class="px-4 py-3">S.No</th>
-                                    <th class="px-4 py-3">Token No</th>
-                                    <th class="px-4 py-3">Customer Name</th>
-                                    <th class="px-4 py-3">Customer In / Out</th>
-                                    <th class="px-4 py-3">Branch</th>
-                                    <th class="px-4 py-3">Sales Executive</th>
-                                    <th class="px-4 py-3">Spent Time</th>
-                                    <th class="px-4 py-3">Purchased / Non Purchased</th>
-                                    <th class="px-4 py-3">Scehme Redemption</th>
+                                    <th class="px-4 py-2">Branch</th>
+                                    <th class="px-4 py-2">Customer Name</th>
+                                    <th class="px-4 py-2">Customer Mobile</th>
+                                    <th class="px-4 py-2">Birthday</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-center">
-                                <tr>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
+                            <tbody  class="text-black">
+
                             </tbody>
                         </table>
                     </div>
