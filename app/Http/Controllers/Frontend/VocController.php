@@ -44,6 +44,27 @@ class VocController extends Controller
                 return response()->json(['error' => 'Server Error: ' . $e->getMessage()], 500);
             }
         }
+        // ✅ Handle AJAX request for Anniversary Customers FIRST
+        if ($request->ajax() && $request->type === 'anniversary') {
+            try {
+                $anniversarydate = $request->anniversarydate
+                    ? Carbon::parse($request->anniversarydate)
+                    : Carbon::today();
+
+                $anniversaryCustomers = Customer::join('branches', 'customers.branch_id', '=', 'branches.id')
+                    ->where('customers.branch_id', Auth::user()->branch_id)
+                    ->whereMonth('customers.anniversary_date', $anniversarydate->month)
+                    ->whereDay('customers.anniversary_date', $anniversarydate->day)
+                    ->select('customers.*', 'branches.branch_name')
+                    ->get();
+
+                return DataTables::of($anniversaryCustomers)
+                    ->addColumn('anniversary', fn($row) => Carbon::parse($row->anniversary)->format('d-m-Y'))
+                    ->make(true);
+            } catch (Exception $e) {
+                return response()->json(['error' => 'Server Error: ' . $e->getMessage()], 500);
+            }
+        }
 
         // ✅ 2. Generic showroom AJAX
         if ($request->ajax()) {

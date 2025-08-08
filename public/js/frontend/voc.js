@@ -640,6 +640,7 @@ function getFeedbackDetail(id) {
 
 $(document).ready(function () {
     bdaylist(); // Initialize birthday list on page load
+    anniversaeylist(); // Initialize anniversary list on page load
     // Bind the change event correctly
     $(document).on("change", "#date", function () {
         console.log("Date changed:", $(this).val()); // ✅ Test log
@@ -648,6 +649,10 @@ $(document).ready(function () {
     $(document).on("change", "#bdaydate", function () {
         console.log("Date changed:", $(this).val()); // ✅ Test log
         bdaylist();
+    });
+    $(document).on("change", "#anniversarydate", function () {
+        console.log("Date changed:", $(this).val()); // ✅ Test log
+        anniversaeylist();
     });
 
     function bdaylist() {
@@ -670,6 +675,30 @@ $(document).ready(function () {
                 { data: "name" },
                 { data: "phone_number" },
                 { data: "dob" },
+            ],
+        });
+    }
+
+    function anniversaeylist() {
+        const anniversarydate = $("#anniversarydate").val();
+        $("#anniversaryListTable").DataTable({
+            processing: true,
+            serverSide: true,
+            destroy: true,
+            responsive: true,
+            ordering: false, // Disable sorting for all columns
+            ajax: {
+                url: "voc",
+                data: {
+                    type: "anniversary",
+                    anniversarydate: anniversarydate,
+                },
+            },
+            columns: [
+                { data: "branch_name" },
+                { data: "name" },
+                { data: "phone_number" },
+                { data: "anniversary_date" },
             ],
         });
     }
