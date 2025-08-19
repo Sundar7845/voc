@@ -238,7 +238,7 @@ class HomeController extends Controller
 
         return DataTables::of($showroom)
             ->addColumn('is_purchased', function ($row) {
-                return $row->is_purchased == 1 ? 'Purchased' : 'Non Purchased';
+                return $row->is_purchased == 1 ? 'Purchased' : ($row->is_purchased == 0 ? 'Not Purchased' : ($row->is_purchased == 2 ? 'Repaired' : ($row->is_purchased == 3 ? '-' : 'Unknown')));
             })
             ->addColumn('customer_in', function ($row) {
                 return $row->customer_enter_time ?? '-';

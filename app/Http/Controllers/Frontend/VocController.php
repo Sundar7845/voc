@@ -167,7 +167,7 @@ class VocController extends Controller
 
         // Group by invoice date in d-m-Y format
         $salesreport = $enhancedReports->groupBy(function ($item) {
-            return Carbon::createFromFormat('y-M-d', $item->invoice_date)->format('Y-M-d');
+            return Carbon::createFromFormat('d-M-y', $item->invoice_date)->format('d-M-Y');
         });
 
         return response()->json([
@@ -328,7 +328,7 @@ class VocController extends Controller
                 'service_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->knowledge,
                 'assit_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->assit,
                 'spent_time' => $request->spentTime,
-                'is_scheme_redemption' => $request->customerType == 0 || $request->customerType == 1 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->scheme,
+                'is_scheme_redemption' => $request->customerType == 0 || $request->customerType == 1 || $request->customerType == 2 || $request->customerType == 3 ? $request->scheme : 0,
                 'is_scheme_joining' => $request->customerType == 0 || $request->customerType == 1 || $request->customerType == 2 ? 0 : 1
             ]);
 
