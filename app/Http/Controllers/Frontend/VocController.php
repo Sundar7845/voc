@@ -294,6 +294,7 @@ class VocController extends Controller
                 'pincode'  => $request->pincode,
                 'know_about' => $request->know_about,
                 'know_about_others' => $request->know_about_others,
+                'reference' => $request->reference,
 
             ]);
 

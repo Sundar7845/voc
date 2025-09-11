@@ -25,6 +25,7 @@ class Customer extends Model
         'address_line_1',
         'pincode',
         'know_about',
-        'know_about_others'
+        'know_about_others',
+        'reference',
     ];
 }

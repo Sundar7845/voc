@@ -1817,6 +1817,20 @@
 
 
                                     </div>
+
+                                    <div :class="{ 'md:col-span-2': source === 'referred' }">
+                                        <input id="referred" name="source" x-model="source" value="referred"
+                                            type="radio" class="hidden" />
+                                        <label for="referred" class="text-center block">
+                                            <div class="m-auto">Reference</div>
+                                            <div class="w-full" x-show="source === 'referred'" x-cloak>
+                                                <textarea placeholder="Enter your reference" id="reference"
+                                                    class="border mt-2 resize-none border-gray-400 shadow-md rounded-md p-2 w-full"></textarea>
+                                            </div>
+                                        </label>
+
+
+                                    </div>
                                 </div>
 
 

@@ -201,6 +201,18 @@ function viewCustomerDetails(customerId) {
                         response.data.know_about_others
                     );
                 }
+                if (response.data.know_about == "referred") {
+                    $("#referred").parent().addClass("md:col-span-2");
+
+                    // Remove the inline "display: none;" style from the div wrapping the textarea
+                    $("#reference")
+                        .closest("div[style]")
+                        .removeAttr("style");
+
+                    $("#reference").text(
+                        response.data.reference
+                    );
+                }
             } else {
                 alert("No details found!");
             }
@@ -231,6 +243,7 @@ $(document).ready(function () {
         var source = $("#source").val();
         var phone = $("#hiddenPhoneNumber").val();
         var know_about_others = $("#know_about_others").val();
+        var reference = $("#reference").val();
 
         $.ajax({
             url: "update-customer-details/" + id, // Change this to your actual server endpoint
@@ -251,6 +264,7 @@ $(document).ready(function () {
                 pincode: pincode,
                 source: source,
                 know_about_others: know_about_others,
+                reference: reference,
             },
             dataType: "json",
             success: function (response) {
