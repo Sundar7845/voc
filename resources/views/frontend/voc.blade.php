@@ -1879,6 +1879,7 @@
                                     <th class="px-4 py-3">Customer In Time</th>
                                     <th class="px-4 py-3">Customer Out Time</th>
                                     <th class="px-4 py-3">Spent Time</th>
+                                    <th class="px-4 py-3">Customer Type</th>
                                     <th class="px-4 py-3">Purchased / Non Purchased</th>
                                     <th class="px-4 py-3">Scehme Redemption</th>
                                     <th class="px-4 py-3">Scehme Payment</th>

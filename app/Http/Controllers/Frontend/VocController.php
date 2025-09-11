@@ -77,6 +77,7 @@ class VocController extends Controller
                 'customers.name',
                 'customers.phone_number',
                 'customers.customer_id',
+                'customers.know_about_others',
                 'customers.id as customerid',
                 'branches.branch_name',
                 'employees.name as sales_executive_name'

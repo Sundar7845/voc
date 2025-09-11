@@ -766,6 +766,10 @@ $(document).ready(function () {
                     },
                 },
                 {
+                    data: "know_about_others",
+                    orderable: false,
+                },
+                {
                     data: "is_purchased",
                     orderable: false,
                 },
