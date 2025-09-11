@@ -375,7 +375,7 @@
                                                         value="3">
                                                     <label for="schemejoining-customer"
                                                         class="flex items-center cursor-pointer !py-0 !h-12 !bg-transparent peer-checked:!bg-[#9D4F2A] peer-checked:!text-white peer-checked:!border-[#9D4F2A] transition duration-300">
-                                                        Scheme Payment Customer
+                                                        Scheme Joining Customer
                                                     </label>
                                                 </div>
                                             </div>
