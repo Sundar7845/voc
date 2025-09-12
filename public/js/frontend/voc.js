@@ -433,7 +433,7 @@ function viewHistory(id) {
         modal.showModal();
     }
 
-    $.ajax({
+    $.irunthajax({
         url: "/get-passed-history/" + id,
         type: "GET",
         data: { customerId: id },
@@ -781,6 +781,10 @@ $(document).ready(function () {
                 },
                 {
                     data: "know_about_others",
+                    orderable: false,
+                },
+                {
+                    data: "reference",
                     orderable: false,
                 },
                 {
