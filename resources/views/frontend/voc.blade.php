@@ -1929,10 +1929,11 @@
                             <!-- head -->
                             <thead class="bg-black text-white text-center">
                                 <tr>
-                                    <th class="px-4 py-2">Branch</th>
-                                    <th class="px-4 py-2">Customer Name</th>
-                                    <th class="px-4 py-2">Customer Mobile</th>
-                                    <th class="px-4 py-2">Birthday</th>
+                                    <th class="px-4 py-2 text-center">Branch</th>
+                                    <th class="px-4 py-2 text-center">Customer Name</th>
+                                    <th class="px-4 py-2 text-center">Customer Mobile</th>
+                                    <th class="px-4 py-2 text-center">Birthday</th>
+                                    <th class="px-4 py-2 text-center">Remarks</th>
                                 </tr>
                             </thead>
                             <tbody class="text-black text-start">
@@ -1940,6 +1941,52 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <dialog id="addbdayremark" class="modal">
+                        <div class="modal-box p-0 bg-[#FCFAF9]">
+                            <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
+                                <div class="pe-4">
+                                    <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
+                                        alt="logo" />
+                                </div>
+                                <div class="text-lg lg:text-xl text-white font-medium uppercase">
+                                    Remarks for Birthday Customers
+                                </div>
+                            </div>
+
+                            <div class="px-4 md:px-6 py-10 lg:px-12 text-[#4E5356]">
+                                <form id="add-bday-remark-form" action="{{ route('bdayremarkupdate') }}"
+                                    method="post">
+                                    @csrf
+                                    <input type="hidden" name="bdaycustomerId" id="bdaycustomerId">
+                                    <!-- Phone Number Fields -->
+                                    <div class="flex flex-col justify-center gap-6">
+                                        <div class="text-[#9D4F2A] text-md font-semibold">Enter your Remarks
+                                            <input type="text" name="bdayremark" id="bdayremark"
+                                                class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent"
+                                                placeholder="Enter Remarks here..." />
+                                        </div>
+
+                                        <div class="flex justify-center">
+                                            <button type="submit" class="main-btn !px-10">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <form method="dialog" class="modal-backdrop z-10">
+                                <button class="text-white absolute top-0 right-0 p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                        viewBox="0 0 31 31" fill="none">
+                                        <circle cx="15.5" cy="15.5" r="15.5" fill="black" />
+                                        <path
+                                            d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z"
+                                            fill="#FCFAF9" />
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </dialog>
                 </div>
 
 
@@ -1950,8 +1997,8 @@
                             <div x-data="{ open: false }" class="relative flex gap-1 items-center">
                                 <div class="text-sm font-medium">Date:</div>
                                 <!-- Input field to trigger the date picker -->
-                                <input type="date" x-ref="dateInput" x-init="$refs.dateInput.value = (new Date()).toISOString().split('T')[0]" id="anniversarydate"
-                                    name="anniversarydate"
+                                <input type="date" x-ref="dateInput" x-init="$refs.dateInput.value = (new Date()).toISOString().split('T')[0]"
+                                    id="anniversarydate" name="anniversarydate"
                                     class="w-full px-4 py-2 border text-sm cursor-pointer border-gray-300 rounded-md bg-white"
                                     x-on:click="open = true; $nextTick(() => $refs.dateInput.showPicker())" />
                             </div>
@@ -1968,6 +2015,7 @@
                                     <th class="px-4 py-2">Customer Name</th>
                                     <th class="px-4 py-2">Customer Mobile</th>
                                     <th class="px-4 py-2">Anniversary</th>
+                                    <th class="px-4 py-2">Remark</th>
                                 </tr>
                             </thead>
                             <tbody class="text-black text-start">
@@ -1975,6 +2023,52 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <dialog id="addanniversaryremark" class="modal">
+                        <div class="modal-box p-0 bg-[#FCFAF9]">
+                            <div class="flex gap-4 items-center bg-[#9D4F2A] p-4 lg:px-10  divide-x divide-white">
+                                <div class="pe-4">
+                                    <img class="h-14 lg:h-16" src={{ asset('/images/logo-white.svg') }}
+                                        alt="logo" />
+                                </div>
+                                <div class="text-lg lg:text-xl text-white font-medium uppercase">
+                                    Remarks for Anniversary Customers
+                                </div>
+                            </div>
+
+                            <div class="px-4 md:px-6 py-10 lg:px-12 text-[#4E5356]">
+                                <form id="add-anniversary-remark-form" action="{{ route('anniversaryremarkupdate') }}"
+                                    method="post">
+                                    @csrf
+                                    <input type="hidden" name="anniversarycustomerId" id="anniversarycustomerId">
+                                    <!-- Phone Number Fields -->
+                                    <div class="flex flex-col justify-center gap-6">
+                                        <div class="text-[#9D4F2A] text-md font-semibold">Enter your Remarks
+                                            <input type="text" name="anniversaryremark" id="anniversaryremark"
+                                                class="w-full border border-[#C7C7C7] p-3 rounded text-black bg-transparent"
+                                                placeholder="Enter Remarks here..." />
+                                        </div>
+
+                                        <div class="flex justify-center">
+                                            <button type="submit" class="main-btn !px-10">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <form method="dialog" class="modal-backdrop z-10">
+                                <button class="text-white absolute top-0 right-0 p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                        viewBox="0 0 31 31" fill="none">
+                                        <circle cx="15.5" cy="15.5" r="15.5" fill="black" />
+                                        <path
+                                            d="M9.39522 23L15.5 16.8462L21.6048 23L23 21.6048L16.8462 15.5L23 9.39522L21.6048 8L15.5 14.1538L9.39522 8L8 9.39522L14.1538 15.5L8 21.6048L9.39522 23Z"
+                                            fill="#FCFAF9" />
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </dialog>
                 </div>
 
             </div>

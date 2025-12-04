@@ -39,6 +39,17 @@ class VocController extends Controller
 
                 return DataTables::of($birthdayCustomers)
                     ->addColumn('dob', fn($row) => Carbon::parse($row->dob)->format('d-m-Y'))
+                    ->addColumn('action', function ($row) {
+                        // Encode row as JSON and escape quotes for HTML
+                        $rowData = htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8');
+                        return '<button 
+                                    onclick="openBdayRemarkModal(this, ' . $row->id . ')" 
+                                    data-row=\'' . $rowData . '\'
+                                    class="bg-[#9D4F2A] text-white px-6 py-3 rounded-sm font-medium shadow-md cursor-pointer text-sm flex gap-1 items-center">
+                                    Add Remarks
+                                </button>';
+                    })
+                    ->rawColumns(['action'])   // allow HTML
                     ->make(true);
             } catch (Exception $e) {
                 return response()->json(['error' => 'Server Error: ' . $e->getMessage()], 500);
@@ -60,6 +71,17 @@ class VocController extends Controller
 
                 return DataTables::of($anniversaryCustomers)
                     ->addColumn('anniversary', fn($row) => Carbon::parse($row->anniversary)->format('d-m-Y'))
+                    ->addColumn('action', function ($row) {
+                        // Encode row as JSON and escape quotes for HTML
+                        $rowData = htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8');
+                        return '<button 
+                                    onclick="openAnniversaryRemarkModal(this, ' . $row->id . ')" 
+                                    data-row=\'' . $rowData . '\'
+                                    class="bg-[#9D4F2A] text-white px-6 py-3 rounded-sm font-medium shadow-md cursor-pointer text-sm flex gap-1 items-center">
+                                    Add Remarks
+                                </button>';
+                    })
+                    ->rawColumns(['action'])   // allow HTML
                     ->make(true);
             } catch (Exception $e) {
                 return response()->json(['error' => 'Server Error: ' . $e->getMessage()], 500);
@@ -323,7 +345,7 @@ class VocController extends Controller
                 'sales_executive_id' => $request->salesExcutiveName,
                 'customer_out_time' => Carbon::now(),
                 'is_purchased' => $request->customerType,
-                'non_purchased_review' => $request->customerType,
+                'non_purchased_review' => $request->nonPurchased,
                 'non_purchased_others' => $request->non_purchased_others,
                 'jewellery_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->jewellery,
                 'pricing_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->pricing,
@@ -331,7 +353,7 @@ class VocController extends Controller
                 'service_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->knowledge,
                 'assit_review' => $request->customerType == 0 || $request->customerType == 2 || $request->customerType == 3 ? 0 : $request->assit,
                 'spent_time' => $request->spentTime,
-                'is_scheme_redemption' => $request->customerType == 0 || $request->customerType == 1 || $request->customerType == 2 || $request->customerType == 3 ? $request->scheme : 0,
+                'is_scheme_redemption' => $request->customerType == 1 || $request->customerType == 2 || $request->customerType == 3 ? $request->scheme : 0,
                 'is_scheme_joining' => $request->customerType == 0 || $request->customerType == 1 || $request->customerType == 2 ? 0 : 1
             ]);
 
@@ -339,6 +361,42 @@ class VocController extends Controller
                 'status' => 'success',
                 'message' => 'Feedback updated successfully.'
             ]);
+        } catch (Exception $e) {
+            DB::rollBack();
+            $this->Log(__FUNCTION__, "POST", $e->getMessage(), Auth::user()->id, request()->ip(), gethostname());
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Something went wrong!',
+            ], 500);
+        }
+    }
+
+    public function bdayRemarkUpdate(Request $request)
+    {
+        try {
+            Customer::find($request->bdaycustomerId)->update([
+                'birthday_remarks' => $request->bdayremark,
+            ]);
+
+            return response()->json(['status' => "success", 'message' => 'Birthday Remark added successfully.']);
+        } catch (Exception $e) {
+            DB::rollBack();
+            $this->Log(__FUNCTION__, "POST", $e->getMessage(), Auth::user()->id, request()->ip(), gethostname());
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Something went wrong!',
+            ], 500);
+        }
+    }
+
+    public function anniversaryRemarkUpdate(Request $request)
+    {
+        try {
+            Customer::find($request->anniversarycustomerId)->update([
+                'anniversary_remarks' => $request->anniversaryremark,
+            ]);
+
+            return response()->json(['status' => "success", 'message' => 'Anniversary Remark added successfully.']);
         } catch (Exception $e) {
             DB::rollBack();
             $this->Log(__FUNCTION__, "POST", $e->getMessage(), Auth::user()->id, request()->ip(), gethostname());

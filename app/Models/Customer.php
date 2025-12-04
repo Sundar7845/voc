@@ -27,5 +27,7 @@ class Customer extends Model
         'know_about',
         'know_about_others',
         'reference',
+        'birthday_remarks',
+        'anniversary_remarks',
     ];
 }

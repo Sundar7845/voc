@@ -205,13 +205,9 @@ function viewCustomerDetails(customerId) {
                     $("#referred").parent().addClass("md:col-span-2");
 
                     // Remove the inline "display: none;" style from the div wrapping the textarea
-                    $("#reference")
-                        .closest("div[style]")
-                        .removeAttr("style");
+                    $("#reference").closest("div[style]").removeAttr("style");
 
-                    $("#reference").text(
-                        response.data.reference
-                    );
+                    $("#reference").text(response.data.reference);
                 }
             } else {
                 alert("No details found!");
@@ -355,7 +351,7 @@ $(document).ready(function () {
         var spentTime = $("#spent_time_" + id).val();
         var salesExcutiveName = $("#salesExcutiveName").val();
         var customerType = $("input[name='customerType']:checked").val();
-        var scheme = $("input[name='scheme-redemption']:checked").val();
+        var scheme = $("input[name='scheme-redemption']:checked").val() ?? 0;
         var jewellery = $(
             "input[name='jewelleryDesignQuestion1']:checked"
         ).val();
@@ -363,7 +359,8 @@ $(document).ready(function () {
         var staff = $("input[name='step3Question1']:checked").val();
         var knowledge = $("input[name='step3Question3']:checked").val();
         var assit = $("input[name='step3Question4']:checked").val();
-        var nonPurchased = $("input[name='non-purchase-reason']:checked").val();
+        var nonPurchased =
+            $("input[name='non-purchase-reason']:checked").val() ?? 0;
         var non_purchased_others = $("#non_purchased_others").val();
 
         if (customerType === 3) {
@@ -385,8 +382,8 @@ $(document).ready(function () {
                 assit: assit,
                 nonPurchased: nonPurchased,
                 non_purchased_others: non_purchased_others,
-                spentTime: spentTime,
                 scheme: scheme,
+                spentTime: spentTime,
                 schemejoining: schemejoining,
             },
             dataType: "json",
@@ -671,7 +668,7 @@ $(document).ready(function () {
 
     function bdaylist() {
         const bdaydate = $("#bdaydate").val();
-        $("#customerBdayListTable").DataTable({
+        bdaytable = $("#customerBdayListTable").DataTable({
             processing: true,
             serverSide: true,
             destroy: true,
@@ -689,13 +686,14 @@ $(document).ready(function () {
                 { data: "name" },
                 { data: "phone_number" },
                 { data: "dob" },
+                { data: "action" },
             ],
         });
     }
 
     function anniversaeylist() {
         const anniversarydate = $("#anniversarydate").val();
-        $("#anniversaryListTable").DataTable({
+        anniversaryTable = $("#anniversaryListTable").DataTable({
             processing: true,
             serverSide: true,
             destroy: true,
@@ -713,6 +711,7 @@ $(document).ready(function () {
                 { data: "name" },
                 { data: "phone_number" },
                 { data: "anniversary_date" },
+                { data: "action" },
             ],
         });
     }
@@ -807,6 +806,120 @@ $(document).ready(function () {
     setTimeout(function () {
         customerList();
     }, 500);
+
+    window.openBdayRemarkModal = function (btn, id) {
+        // Set hidden input
+        document.getElementById("bdaycustomerId").value = id;
+
+        // Get the data-row attribute from the clicked button
+        var rowData = btn.getAttribute("data-row"); // this is a JSON string
+
+        // Parse JSON to object
+        var row = JSON.parse(rowData);
+
+        // Set the remark input value
+        document.getElementById("bdayremark").value = row.birthday_remarks;
+
+        // Open modal
+        document.getElementById("addbdayremark").showModal();
+    };
+
+    $("#add-bday-remark-form").on("submit", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: "/add-birthday-remark",
+            type: "POST",
+            data: $(this).serialize(),
+            success: function (response) {
+                console.log(response);
+
+                document.getElementById("addbdayremark").close();
+                // Reset form
+                $("#add-bday-remark-form")[0].reset();
+
+                // Reload DataTable
+                bdaytable.ajax.reload(null, false);
+
+                Toastify({
+                    text: response.message,
+                    close: true,
+                    duration: 3000,
+                    style: {
+                        background:
+                            "linear-gradient(to right, #00b09b, #96c93d)",
+                    },
+                }).showToast();
+            },
+            error: function () {
+                Toastify({
+                    text: "Something went wrong!",
+                    close: true,
+                    duration: 3000,
+                    style: {
+                        background: "#dc3545",
+                    },
+                }).showToast();
+            },
+        });
+    });
+
+    window.openAnniversaryRemarkModal = function (btn, id) {
+        // Set hidden input
+        document.getElementById("anniversarycustomerId").value = id;
+
+        // Get the data-row attribute from the clicked button
+        var rowData = btn.getAttribute("data-row"); // this is a JSON string
+
+        // Parse JSON to object
+        var row = JSON.parse(rowData);
+
+        // Set the remark input value
+        document.getElementById("anniversaryremark").value = row.anniversary_remarks;
+
+        // Open modal
+        document.getElementById("addanniversaryremark").showModal();
+    };
+
+    $("#add-anniversary-remark-form").on("submit", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: "/add-anniversary-remark",
+            type: "POST",
+            data: $(this).serialize(),
+            success: function (response) {
+                console.log(response);
+
+                document.getElementById("addanniversaryremark").close();
+                // Reset form
+                $("#add-anniversary-remark-form")[0].reset();
+
+                // Reload DataTable
+                bdaytable.ajax.reload(null, false);
+
+                Toastify({
+                    text: response.message,
+                    close: true,
+                    duration: 3000,
+                    style: {
+                        background:
+                            "linear-gradient(to right, #00b09b, #96c93d)",
+                    },
+                }).showToast();
+            },
+            error: function () {
+                Toastify({
+                    text: "Something went wrong!",
+                    close: true,
+                    duration: 3000,
+                    style: {
+                        background: "#dc3545",
+                    },
+                }).showToast();
+            },
+        });
+    });
 });
 
 $(document)

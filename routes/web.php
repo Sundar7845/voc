@@ -35,4 +35,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/update-customer-details/{id}', [VocController::class, 'customerDetailsUpdate'])->name('customersdetailsupdate');
     Route::post('/feedback/{id}', [VocController::class, 'getPurchasedFeedback'])->name('getpurchasedfeedback');
     Route::get('/get-passed-history/{id}', [VocController::class, 'getPassedHistory'])->name('getpassedhistory');
+    Route::post('/add-birthday-remark', [VocController::class, 'bdayRemarkUpdate'])->name('bdayremarkupdate');
+    Route::post('/add-anniversary-remark', [VocController::class, 'anniversaryRemarkUpdate'])->name('anniversaryremarkupdate');
 });
